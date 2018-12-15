@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InputKey;
 
 namespace TimbresIP
 {
@@ -58,12 +59,13 @@ namespace TimbresIP
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
-            string tabTitle;
-            if(){ }
-            tabTitle = Microsoft.VisualBasic.Interaction.InputBox("Ingrese nombre del TAB: ", "Crear nuevo TAB", "TabPage ",100,100);
-            string title = tabTitle.ToString()+ " " + (tabControlHorary.TabCount + 1).ToString();
-            TabPage myTabPage = new TabPage(title);
-            tabControlHorary.TabPages.Add(myTabPage);
+            string tabTitle = InputDialog.mostrar("Ingrese nombre del TAB:");
+            if (tabTitle!= "")
+            {
+                string title = tabTitle.ToString() + " " + (tabControlHorary.TabCount + 1).ToString();
+                TabPage horaryTabPage = new TabPage(title);
+                tabControlHorary.TabPages.Add(horaryTabPage);
+            }
         }
 
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
