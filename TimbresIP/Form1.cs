@@ -62,7 +62,7 @@ namespace TimbresIP
             string tabTitle = InputDialog.mostrar("Ingrese nombre del TAB:");
             if (tabTitle!= "")
             {
-                string title = tabTitle.ToString() + " " + (tabControlHorary.TabCount + 1).ToString();
+                string title = tabTitle.ToString();
                 TabPage horaryTabPage = new TabPage(title);
                 tabControlHorary.TabPages.Add(horaryTabPage);
             }
@@ -71,6 +71,17 @@ namespace TimbresIP
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
         {
             tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
+        }
+
+        private void buttonEditHorary_Click(object sender, EventArgs e)
+        {
+            string tabTitle = InputDialog.mostrar("Ingrese nombre del Horario:");
+            if (tabTitle != "")
+            {
+                string title = tabTitle.ToString();
+                TabPage horaryTabPage = new TabPage(title);
+                tabControlHorary.SelectedTab.Text = title;
+            }
         }
     }
 }

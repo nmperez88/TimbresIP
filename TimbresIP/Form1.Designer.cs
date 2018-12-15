@@ -359,6 +359,7 @@
             this.buttonEditHorary.TabIndex = 4;
             this.buttonEditHorary.Text = "Editar Horario";
             this.buttonEditHorary.UseVisualStyleBackColor = true;
+            this.buttonEditHorary.Click += new System.EventHandler(this.buttonEditHorary_Click);
             // 
             // buttonDeleteHorary
             // 
