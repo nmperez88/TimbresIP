@@ -65,6 +65,7 @@ namespace TimbresIP
                 string title = tabTitle.ToString();
                 TabPage horaryTabPage = new TabPage(title);
                 tabControlHorary.TabPages.Add(horaryTabPage);
+                horaryTabPage.ImageIndex = 0;
             }
         }
 
