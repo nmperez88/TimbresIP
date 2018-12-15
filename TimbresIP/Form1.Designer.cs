@@ -51,16 +51,17 @@
             this.buttonEditExtension = new System.Windows.Forms.Button();
             this.buttonSaveExtension = new System.Windows.Forms.Button();
             this.dataGridViewHorary = new System.Windows.Forms.DataGridView();
+            this.buttonAddHorary = new System.Windows.Forms.Button();
+            this.buttonEditHorary = new System.Windows.Forms.Button();
+            this.buttonDeleteHorary = new System.Windows.Forms.Button();
             this.ColumnNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnHoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSoundTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnObservations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonAddHorary = new System.Windows.Forms.Button();
-            this.buttonEditHorary = new System.Windows.Forms.Button();
-            this.buttonDeleteHorary = new System.Windows.Forms.Button();
             this.groupBoxMainControl.SuspendLayout();
             this.groupBoxHorary.SuspendLayout();
             this.tabControlHorary.SuspendLayout();
@@ -220,7 +221,7 @@
             // labelExtension
             // 
             this.labelExtension.AutoSize = true;
-            this.labelExtension.Location = new System.Drawing.Point(7, 67);
+            this.labelExtension.Location = new System.Drawing.Point(7, 70);
             this.labelExtension.Name = "labelExtension";
             this.labelExtension.Size = new System.Drawing.Size(56, 13);
             this.labelExtension.TabIndex = 1;
@@ -291,12 +292,43 @@
             this.ColumnSoundTime,
             this.ColumnTone,
             this.ColumnCheck,
+            this.ColumnExtension,
             this.ColumnCall,
             this.ColumnObservations});
             this.dataGridViewHorary.Location = new System.Drawing.Point(6, 17);
             this.dataGridViewHorary.Name = "dataGridViewHorary";
             this.dataGridViewHorary.Size = new System.Drawing.Size(599, 224);
             this.dataGridViewHorary.TabIndex = 2;
+            // 
+            // buttonAddHorary
+            // 
+            this.buttonAddHorary.Location = new System.Drawing.Point(691, 12);
+            this.buttonAddHorary.Name = "buttonAddHorary";
+            this.buttonAddHorary.Size = new System.Drawing.Size(96, 60);
+            this.buttonAddHorary.TabIndex = 3;
+            this.buttonAddHorary.Text = "Agregar Horario";
+            this.buttonAddHorary.UseVisualStyleBackColor = true;
+            this.buttonAddHorary.Click += new System.EventHandler(this.buttonAddHorary_Click);
+            // 
+            // buttonEditHorary
+            // 
+            this.buttonEditHorary.Location = new System.Drawing.Point(793, 12);
+            this.buttonEditHorary.Name = "buttonEditHorary";
+            this.buttonEditHorary.Size = new System.Drawing.Size(96, 30);
+            this.buttonEditHorary.TabIndex = 4;
+            this.buttonEditHorary.Text = "Editar Horario";
+            this.buttonEditHorary.UseVisualStyleBackColor = true;
+            this.buttonEditHorary.Click += new System.EventHandler(this.buttonEditHorary_Click);
+            // 
+            // buttonDeleteHorary
+            // 
+            this.buttonDeleteHorary.Location = new System.Drawing.Point(793, 42);
+            this.buttonDeleteHorary.Name = "buttonDeleteHorary";
+            this.buttonDeleteHorary.Size = new System.Drawing.Size(96, 30);
+            this.buttonDeleteHorary.TabIndex = 5;
+            this.buttonDeleteHorary.Text = "Eliminar Horario";
+            this.buttonDeleteHorary.UseVisualStyleBackColor = true;
+            this.buttonDeleteHorary.Click += new System.EventHandler(this.buttonDeleteHorary_Click);
             // 
             // ColumnNo
             // 
@@ -330,6 +362,12 @@
             this.ColumnCheck.Name = "ColumnCheck";
             this.ColumnCheck.Width = 55;
             // 
+            // ColumnExtension
+            // 
+            this.ColumnExtension.HeaderText = "Extensión";
+            this.ColumnExtension.Name = "ColumnExtension";
+            this.ColumnExtension.Width = 50;
+            // 
             // ColumnCall
             // 
             this.ColumnCall.HeaderText = "Llamar";
@@ -341,36 +379,6 @@
             this.ColumnObservations.HeaderText = "Observaciones";
             this.ColumnObservations.Name = "ColumnObservations";
             this.ColumnObservations.Width = 180;
-            // 
-            // buttonAddHorary
-            // 
-            this.buttonAddHorary.Location = new System.Drawing.Point(691, 12);
-            this.buttonAddHorary.Name = "buttonAddHorary";
-            this.buttonAddHorary.Size = new System.Drawing.Size(96, 60);
-            this.buttonAddHorary.TabIndex = 3;
-            this.buttonAddHorary.Text = "Agregar Horario";
-            this.buttonAddHorary.UseVisualStyleBackColor = true;
-            this.buttonAddHorary.Click += new System.EventHandler(this.buttonAddHorary_Click);
-            // 
-            // buttonEditHorary
-            // 
-            this.buttonEditHorary.Location = new System.Drawing.Point(793, 12);
-            this.buttonEditHorary.Name = "buttonEditHorary";
-            this.buttonEditHorary.Size = new System.Drawing.Size(96, 30);
-            this.buttonEditHorary.TabIndex = 4;
-            this.buttonEditHorary.Text = "Editar Horario";
-            this.buttonEditHorary.UseVisualStyleBackColor = true;
-            this.buttonEditHorary.Click += new System.EventHandler(this.buttonEditHorary_Click);
-            // 
-            // buttonDeleteHorary
-            // 
-            this.buttonDeleteHorary.Location = new System.Drawing.Point(793, 42);
-            this.buttonDeleteHorary.Name = "buttonDeleteHorary";
-            this.buttonDeleteHorary.Size = new System.Drawing.Size(96, 30);
-            this.buttonDeleteHorary.TabIndex = 5;
-            this.buttonDeleteHorary.Text = "Eliminar Horario";
-            this.buttonDeleteHorary.UseVisualStyleBackColor = true;
-            this.buttonDeleteHorary.Click += new System.EventHandler(this.buttonDeleteHorary_Click);
             // 
             // FormPrincipal
             // 
@@ -422,16 +430,17 @@
         private System.Windows.Forms.Label labelExtension;
         private System.Windows.Forms.TextBox textBoxIdExtension;
         private System.Windows.Forms.DataGridView dataGridViewHorary;
+        private System.Windows.Forms.Button buttonAddHorary;
+        private System.Windows.Forms.Button buttonEditHorary;
+        private System.Windows.Forms.Button buttonDeleteHorary;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHoraInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSoundTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTone;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnCheck;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExtension;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservations;
-        private System.Windows.Forms.Button buttonAddHorary;
-        private System.Windows.Forms.Button buttonEditHorary;
-        private System.Windows.Forms.Button buttonDeleteHorary;
     }
 }
 
