@@ -259,6 +259,7 @@
             this.textBoxPasswordExtension.Name = "textBoxPasswordExtension";
             this.textBoxPasswordExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxPasswordExtension.TabIndex = 4;
+            this.textBoxPasswordExtension.UseSystemPasswordChar = true;
             // 
             // buttonEditExtension
             // 
