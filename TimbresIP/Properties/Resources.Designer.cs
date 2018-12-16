@@ -131,6 +131,16 @@ namespace TimbresIP.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon iconfinder_sound_115787 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_sound_115787", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap information24x24 {
