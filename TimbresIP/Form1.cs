@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InputKey;
+//using InputKey;
 
 namespace TimbresIP
 {
@@ -59,14 +59,22 @@ namespace TimbresIP
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
-            string tabTitle = InputDialog.mostrar("Ingrese nombre del TAB:");
-            if (tabTitle!= "")
+            inputBox input = new inputBox();
+            string tabPageName = "Horario";
+            if (input.InputBox("Crear nuevo Horario", "Ningrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
-                string title = tabTitle.ToString();
-                TabPage horaryTabPage = new TabPage(title);
+                TabPage horaryTabPage = new TabPage(tabPageName);
                 tabControlHorary.TabPages.Add(horaryTabPage);
                 horaryTabPage.ImageIndex = 0;
             }
+            //string tabTitle = InputDialog.mostrar("Ingrese nombre del TabPage:", "Crear nuevo TabPage", InputDialog.ACEPTAR_CANCELAR_BOTON, InputDialog.MENSAJE_PREGUNTA);
+            //if (tabTitle != "")
+            //{
+            //    string title = tabTitle.ToString();
+            //    TabPage horaryTabPage = new TabPage(title);
+            //    tabControlHorary.TabPages.Add(horaryTabPage);
+            //    horaryTabPage.ImageIndex = 0;
+            //}
         }
 
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
@@ -76,13 +84,20 @@ namespace TimbresIP
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
         {
-            string tabTitle = InputDialog.mostrar("Ingrese nombre del Horario:");
-            if (tabTitle != "")
+            inputBox input = new inputBox();
+            string tabPageName = "";
+            if (input.InputBox("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
-                string title = tabTitle.ToString();
-                TabPage horaryTabPage = new TabPage(title);
-                tabControlHorary.SelectedTab.Text = title;
+                TabPage horaryTabPage = new TabPage(tabPageName);
+                tabControlHorary.SelectedTab.Text = tabPageName;
             }
+            //string tabTitle = InputDialog.mostrar("Ingrese nombre del Horario:", "Modificar nombre horario",InputDialog.ACEPTAR_CANCELAR_BOTON,InputDialog.MENSAJE_INFORMACION);
+            //if (tabTitle != "")
+            //{
+            //    string title = tabTitle.ToString();
+            //    TabPage horaryTabPage = new TabPage(title);
+            //    tabControlHorary.SelectedTab.Text = title;
+            //}
         }
     }
 }

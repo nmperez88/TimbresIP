@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.groupBoxMainControl = new System.Windows.Forms.GroupBox();
+            this.buttonEditServer = new System.Windows.Forms.Button();
+            this.buttonSaveServer = new System.Windows.Forms.Button();
             this.labelPort = new System.Windows.Forms.Label();
             this.labelServer = new System.Windows.Forms.Label();
             this.textBoxPort = new System.Windows.Forms.TextBox();
@@ -48,6 +50,8 @@
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnObservations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxHoraryExtension = new System.Windows.Forms.GroupBox();
+            this.buttonSaveExtension = new System.Windows.Forms.Button();
+            this.buttonEditExtension = new System.Windows.Forms.Button();
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxPasswordExtension = new System.Windows.Forms.TextBox();
             this.labelID = new System.Windows.Forms.Label();
@@ -55,21 +59,20 @@
             this.labelExtension = new System.Windows.Forms.Label();
             this.textBoxIdExtension = new System.Windows.Forms.TextBox();
             this.tabPageSchedule2 = new System.Windows.Forms.TabPage();
+            this.imageListTabHorary = new System.Windows.Forms.ImageList(this.components);
             this.groupBoxGeneralSound = new System.Windows.Forms.GroupBox();
             this.buttonDeleteHorary = new System.Windows.Forms.Button();
             this.buttonEditHorary = new System.Windows.Forms.Button();
             this.buttonAddHorary = new System.Windows.Forms.Button();
-            this.buttonSaveExtension = new System.Windows.Forms.Button();
-            this.buttonEditExtension = new System.Windows.Forms.Button();
-            this.buttonEditServer = new System.Windows.Forms.Button();
-            this.buttonSaveServer = new System.Windows.Forms.Button();
-            this.imageListTabHorary = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxMainControl.SuspendLayout();
             this.groupBoxHorary.SuspendLayout();
             this.tabControlHorary.SuspendLayout();
             this.tabPageSchedule1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorary)).BeginInit();
             this.groupBoxHoraryExtension.SuspendLayout();
+            this.groupBoxGeneralSound.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMainControl
@@ -86,6 +89,33 @@
             this.groupBoxMainControl.TabIndex = 0;
             this.groupBoxMainControl.TabStop = false;
             this.groupBoxMainControl.Text = "Controles globales";
+            // 
+            // buttonEditServer
+            // 
+            this.buttonEditServer.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonEditServer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonEditServer.Location = new System.Drawing.Point(347, 18);
+            this.buttonEditServer.Name = "buttonEditServer";
+            this.buttonEditServer.Size = new System.Drawing.Size(75, 30);
+            this.buttonEditServer.TabIndex = 5;
+            this.buttonEditServer.Text = "Editar";
+            this.buttonEditServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonEditServer.UseVisualStyleBackColor = true;
+            this.buttonEditServer.Click += new System.EventHandler(this.buttonEditServer_Click);
+            // 
+            // buttonSaveServer
+            // 
+            this.buttonSaveServer.Enabled = false;
+            this.buttonSaveServer.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonSaveServer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSaveServer.Location = new System.Drawing.Point(437, 18);
+            this.buttonSaveServer.Name = "buttonSaveServer";
+            this.buttonSaveServer.Size = new System.Drawing.Size(75, 30);
+            this.buttonSaveServer.TabIndex = 4;
+            this.buttonSaveServer.Text = "Guardar";
+            this.buttonSaveServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSaveServer.UseVisualStyleBackColor = true;
+            this.buttonSaveServer.Click += new System.EventHandler(this.buttonSaveServer_Click);
             // 
             // labelPort
             // 
@@ -148,10 +178,10 @@
             this.tabPageSchedule1.Controls.Add(this.dataGridViewHorary);
             this.tabPageSchedule1.Controls.Add(this.groupBoxHoraryExtension);
             this.tabPageSchedule1.ImageIndex = 0;
-            this.tabPageSchedule1.Location = new System.Drawing.Point(4, 31);
+            this.tabPageSchedule1.Location = new System.Drawing.Point(4, 27);
             this.tabPageSchedule1.Name = "tabPageSchedule1";
             this.tabPageSchedule1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSchedule1.Size = new System.Drawing.Size(863, 244);
+            this.tabPageSchedule1.Size = new System.Drawing.Size(863, 248);
             this.tabPageSchedule1.TabIndex = 0;
             this.tabPageSchedule1.Text = "tabPage1";
             this.tabPageSchedule1.UseVisualStyleBackColor = true;
@@ -240,6 +270,33 @@
             this.groupBoxHoraryExtension.TabStop = false;
             this.groupBoxHoraryExtension.Text = "Extensión";
             // 
+            // buttonSaveExtension
+            // 
+            this.buttonSaveExtension.Enabled = false;
+            this.buttonSaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonSaveExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSaveExtension.Location = new System.Drawing.Point(92, 162);
+            this.buttonSaveExtension.Name = "buttonSaveExtension";
+            this.buttonSaveExtension.Size = new System.Drawing.Size(75, 30);
+            this.buttonSaveExtension.TabIndex = 7;
+            this.buttonSaveExtension.Text = "Guardar";
+            this.buttonSaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSaveExtension.UseVisualStyleBackColor = true;
+            this.buttonSaveExtension.Click += new System.EventHandler(this.buttonSaveExtension_Click);
+            // 
+            // buttonEditExtension
+            // 
+            this.buttonEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonEditExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonEditExtension.Location = new System.Drawing.Point(10, 162);
+            this.buttonEditExtension.Name = "buttonEditExtension";
+            this.buttonEditExtension.Size = new System.Drawing.Size(75, 30);
+            this.buttonEditExtension.TabIndex = 6;
+            this.buttonEditExtension.Text = "Editar";
+            this.buttonEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonEditExtension.UseVisualStyleBackColor = true;
+            this.buttonEditExtension.Click += new System.EventHandler(this.buttonEditExtension_Click);
+            // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
@@ -295,16 +352,23 @@
             // tabPageSchedule2
             // 
             this.tabPageSchedule2.ImageIndex = 0;
-            this.tabPageSchedule2.Location = new System.Drawing.Point(4, 31);
+            this.tabPageSchedule2.Location = new System.Drawing.Point(4, 27);
             this.tabPageSchedule2.Name = "tabPageSchedule2";
             this.tabPageSchedule2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSchedule2.Size = new System.Drawing.Size(863, 244);
+            this.tabPageSchedule2.Size = new System.Drawing.Size(863, 248);
             this.tabPageSchedule2.TabIndex = 1;
             this.tabPageSchedule2.Text = "tabPage2";
             this.tabPageSchedule2.UseVisualStyleBackColor = true;
             // 
+            // imageListTabHorary
+            // 
+            this.imageListTabHorary.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTabHorary.ImageStream")));
+            this.imageListTabHorary.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListTabHorary.Images.SetKeyName(0, "clock24x24.png");
+            // 
             // groupBoxGeneralSound
             // 
+            this.groupBoxGeneralSound.Controls.Add(this.pictureBox1);
             this.groupBoxGeneralSound.Location = new System.Drawing.Point(12, 379);
             this.groupBoxGeneralSound.Name = "groupBoxGeneralSound";
             this.groupBoxGeneralSound.Size = new System.Drawing.Size(877, 170);
@@ -351,65 +415,13 @@
             this.buttonAddHorary.UseVisualStyleBackColor = true;
             this.buttonAddHorary.Click += new System.EventHandler(this.buttonAddHorary_Click);
             // 
-            // buttonSaveExtension
+            // pictureBox1
             // 
-            this.buttonSaveExtension.Enabled = false;
-            this.buttonSaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonSaveExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSaveExtension.Location = new System.Drawing.Point(92, 162);
-            this.buttonSaveExtension.Name = "buttonSaveExtension";
-            this.buttonSaveExtension.Size = new System.Drawing.Size(75, 30);
-            this.buttonSaveExtension.TabIndex = 7;
-            this.buttonSaveExtension.Text = "Guardar";
-            this.buttonSaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSaveExtension.UseVisualStyleBackColor = true;
-            this.buttonSaveExtension.Click += new System.EventHandler(this.buttonSaveExtension_Click);
-            // 
-            // buttonEditExtension
-            // 
-            this.buttonEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
-            this.buttonEditExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEditExtension.Location = new System.Drawing.Point(10, 162);
-            this.buttonEditExtension.Name = "buttonEditExtension";
-            this.buttonEditExtension.Size = new System.Drawing.Size(75, 30);
-            this.buttonEditExtension.TabIndex = 6;
-            this.buttonEditExtension.Text = "Editar";
-            this.buttonEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonEditExtension.UseVisualStyleBackColor = true;
-            this.buttonEditExtension.Click += new System.EventHandler(this.buttonEditExtension_Click);
-            // 
-            // buttonEditServer
-            // 
-            this.buttonEditServer.Image = global::TimbresIP.Properties.Resources.editc20x20;
-            this.buttonEditServer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEditServer.Location = new System.Drawing.Point(347, 18);
-            this.buttonEditServer.Name = "buttonEditServer";
-            this.buttonEditServer.Size = new System.Drawing.Size(75, 30);
-            this.buttonEditServer.TabIndex = 5;
-            this.buttonEditServer.Text = "Editar";
-            this.buttonEditServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonEditServer.UseVisualStyleBackColor = true;
-            this.buttonEditServer.Click += new System.EventHandler(this.buttonEditServer_Click);
-            // 
-            // buttonSaveServer
-            // 
-            this.buttonSaveServer.Enabled = false;
-            this.buttonSaveServer.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonSaveServer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSaveServer.Location = new System.Drawing.Point(437, 18);
-            this.buttonSaveServer.Name = "buttonSaveServer";
-            this.buttonSaveServer.Size = new System.Drawing.Size(75, 30);
-            this.buttonSaveServer.TabIndex = 4;
-            this.buttonSaveServer.Text = "Guardar";
-            this.buttonSaveServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSaveServer.UseVisualStyleBackColor = true;
-            this.buttonSaveServer.Click += new System.EventHandler(this.buttonSaveServer_Click);
-            // 
-            // imageListTabHorary
-            // 
-            this.imageListTabHorary.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTabHorary.ImageStream")));
-            this.imageListTabHorary.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListTabHorary.Images.SetKeyName(0, "clock24x24.png");
+            this.pictureBox1.Location = new System.Drawing.Point(331, 60);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FormPrincipal
             // 
@@ -433,6 +445,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorary)).EndInit();
             this.groupBoxHoraryExtension.ResumeLayout(false);
             this.groupBoxHoraryExtension.PerformLayout();
+            this.groupBoxGeneralSound.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,6 +487,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservations;
         private System.Windows.Forms.ImageList imageListTabHorary;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

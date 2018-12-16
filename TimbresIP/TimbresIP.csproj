@@ -36,6 +36,9 @@
     <ApplicationIcon>iconfinder_sound_115787.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InputBox, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Essy.Tools.InputBox.1.0.0\lib\net20\InputBox.dll</HintPath>
+    </Reference>
     <Reference Include="InputKey">
       <HintPath>Recursos\InputKey\InputKey.dll</HintPath>
     </Reference>
@@ -59,6 +62,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="inputBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -74,6 +78,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconfinder_sound_115787.ico" />
+    <None Include="Recursos\Imagenes\information24x24.png" />
+    <None Include="Recursos\Imagenes\information64x64.png" />
     <None Include="Recursos\Imagenes\clock24x24.png" />
     <None Include="Recursos\Imagenes\removec20x20.png" />
     <None Include="Recursos\Imagenes\addc20x20.png" />
