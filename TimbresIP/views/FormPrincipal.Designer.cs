@@ -1,4 +1,4 @@
-﻿namespace TimbresIP
+﻿namespace TimbresIP.views
 {
     partial class FormPrincipal
     {
