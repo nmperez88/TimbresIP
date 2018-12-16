@@ -61,7 +61,7 @@ namespace TimbresIP
         {
             inputBox input = new inputBox();
             string tabPageName = "Horario";
-            if (input.InputBox("Crear nuevo Horario", "Ningrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
+            if (input.InputBox("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
                 TabPage horaryTabPage = new TabPage(tabPageName);
                 tabControlHorary.TabPages.Add(horaryTabPage);
