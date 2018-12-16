@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconfinder_sound_115787.ico</ApplicationIcon>
+    <ApplicationIcon>resources\sound.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="InputBox, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -94,20 +94,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="iconfinder_sound_115787.ico" />
-    <None Include="Recursos\Imagenes\information24x24.png" />
-    <None Include="Recursos\Imagenes\information64x64.png" />
-    <None Include="Recursos\Imagenes\clock24x24.png" />
-    <None Include="Recursos\Imagenes\removec20x20.png" />
-    <None Include="Recursos\Imagenes\addc20x20.png" />
-    <None Include="Recursos\Imagenes\savec20x20.png" />
-    <None Include="Recursos\Imagenes\editc20x20.png" />
-    <None Include="Recursos\Imagenes\save20x20.png" />
-    <None Include="Recursos\Imagenes\edit20x20.png" />
-    <None Include="Recursos\Imagenes\edit16x16.png" />
-    <None Include="Recursos\Imagenes\save.png" />
-    <None Include="Recursos\Imagenes\edit.png" />
-    <None Include="Recursos\Imagenes\add.png" />
+    <None Include="resources\images\add20x20.png" />
+    <None Include="resources\images\call20x20.png" />
+    <None Include="resources\images\clock20x20.png" />
+    <Content Include="resources\sound.ico" />
+    <None Include="resources\images\information24x24.png" />
+    <None Include="resources\images\information64x64.png" />
+    <None Include="resources\images\clock24x24.png" />
+    <None Include="resources\images\removec20x20.png" />
+    <None Include="resources\images\addc20x20.png" />
+    <None Include="resources\images\savec20x20.png" />
+    <None Include="resources\images\editc20x20.png" />
+    <None Include="resources\images\save20x20.png" />
+    <None Include="resources\images\edit20x20.png" />
+    <None Include="resources\images\edit16x16.png" />
+    <None Include="resources\images\save.png" />
+    <None Include="resources\images\edit.png" />
+    <None Include="resources\images\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
