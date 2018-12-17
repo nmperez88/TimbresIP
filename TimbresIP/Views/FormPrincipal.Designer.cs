@@ -44,6 +44,7 @@
             this.buttonDeleteHorary = new System.Windows.Forms.Button();
             this.buttonEditHorary = new System.Windows.Forms.Button();
             this.buttonAddHorary = new System.Windows.Forms.Button();
+            this.toolTipFormPrincipal = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxMainControl.SuspendLayout();
             this.groupBoxHorary.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +116,7 @@
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(65, 20);
             this.textBoxPort.TabIndex = 1;
+            this.textBoxPort.Text = "5060";
             // 
             // textBoxServer
             // 
@@ -123,6 +125,7 @@
             this.textBoxServer.Name = "textBoxServer";
             this.textBoxServer.Size = new System.Drawing.Size(128, 20);
             this.textBoxServer.TabIndex = 0;
+            this.textBoxServer.Text = "100.50.40.3";
             // 
             // groupBoxHorary
             // 
@@ -169,6 +172,7 @@
             this.buttonDeleteHorary.TabIndex = 5;
             this.buttonDeleteHorary.Text = "Eliminar Horario";
             this.buttonDeleteHorary.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTipFormPrincipal.SetToolTip(this.buttonDeleteHorary, "Seleccione primero el TabPage a eliminar");
             this.buttonDeleteHorary.UseVisualStyleBackColor = true;
             this.buttonDeleteHorary.Click += new System.EventHandler(this.buttonDeleteHorary_Click);
             // 
@@ -182,6 +186,7 @@
             this.buttonEditHorary.TabIndex = 4;
             this.buttonEditHorary.Text = "Editar Horario";
             this.buttonEditHorary.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTipFormPrincipal.SetToolTip(this.buttonEditHorary, "Seleccionar primero el TabPage a modificar");
             this.buttonEditHorary.UseVisualStyleBackColor = true;
             this.buttonEditHorary.Click += new System.EventHandler(this.buttonEditHorary_Click);
             // 
@@ -197,6 +202,11 @@
             this.buttonAddHorary.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonAddHorary.UseVisualStyleBackColor = true;
             this.buttonAddHorary.Click += new System.EventHandler(this.buttonAddHorary_Click);
+            // 
+            // toolTipFormPrincipal
+            // 
+            this.toolTipFormPrincipal.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipFormPrincipal.ToolTipTitle = "Información";
             // 
             // FormPrincipal
             // 
@@ -237,6 +247,7 @@
         private System.Windows.Forms.Button buttonEditHorary;
         private System.Windows.Forms.Button buttonDeleteHorary;
         private System.Windows.Forms.ImageList imageListTabHorary;
+        private System.Windows.Forms.ToolTip toolTipFormPrincipal;
     }
 }
 

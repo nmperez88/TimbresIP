@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHorary = new System.Windows.Forms.DataGridView();
             this.groupBoxHoraryExtension = new System.Windows.Forms.GroupBox();
             this.buttonHorarySaveExtension = new System.Windows.Forms.Button();
@@ -52,6 +53,14 @@
             // 
             // dataGridViewHorary
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHorary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewHorary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewHorary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnNo,
@@ -64,6 +73,7 @@
             this.ColumnObservations});
             this.dataGridViewHorary.Location = new System.Drawing.Point(6, 18);
             this.dataGridViewHorary.Name = "dataGridViewHorary";
+            this.dataGridViewHorary.RowHeadersWidth = 30;
             this.dataGridViewHorary.Size = new System.Drawing.Size(599, 224);
             this.dataGridViewHorary.TabIndex = 4;
             this.dataGridViewHorary.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewHorary_CellPainting);
@@ -128,6 +138,7 @@
             this.textBoxHoraryPasswordExtension.Name = "textBoxHoraryPasswordExtension";
             this.textBoxHoraryPasswordExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryPasswordExtension.TabIndex = 4;
+            this.textBoxHoraryPasswordExtension.Text = "Caeunagota";
             this.textBoxHoraryPasswordExtension.UseSystemPasswordChar = true;
             // 
             // labelHoraryID
@@ -146,6 +157,7 @@
             this.textBoxHoraryExtExtension.Name = "textBoxHoraryExtExtension";
             this.textBoxHoraryExtExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryExtExtension.TabIndex = 2;
+            this.textBoxHoraryExtExtension.Text = "4578";
             // 
             // labelHoraryExtension
             // 
@@ -163,6 +175,7 @@
             this.textBoxHoraryIdExtension.Name = "textBoxHoraryIdExtension";
             this.textBoxHoraryIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryIdExtension.TabIndex = 0;
+            this.textBoxHoraryIdExtension.Text = "4578";
             // 
             // ColumnNo
             // 
@@ -174,18 +187,19 @@
             // 
             // ColumnHoraInicio
             // 
-            this.ColumnHoraInicio.HeaderText = "Hora Inicio";
+            this.ColumnHoraInicio.HeaderText = "H/Inicio";
             this.ColumnHoraInicio.Name = "ColumnHoraInicio";
             this.ColumnHoraInicio.Width = 50;
             // 
             // ColumnSoundTime
             // 
-            this.ColumnSoundTime.HeaderText = "Tiempo Sonido";
+            this.ColumnSoundTime.HeaderText = "T/Sonido";
             this.ColumnSoundTime.Name = "ColumnSoundTime";
-            this.ColumnSoundTime.Width = 50;
+            this.ColumnSoundTime.Width = 55;
             // 
             // ColumnTone
             // 
+            this.ColumnTone.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.ColumnTone.HeaderText = "Tono";
             this.ColumnTone.Name = "ColumnTone";
             this.ColumnTone.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -202,10 +216,11 @@
             // 
             this.ColumnExtension.HeaderText = "Extensión";
             this.ColumnExtension.Name = "ColumnExtension";
-            this.ColumnExtension.Width = 55;
+            this.ColumnExtension.Width = 60;
             // 
             // ColumnCall
             // 
+            this.ColumnCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnCall.HeaderText = "Llamar";
             this.ColumnCall.Name = "ColumnCall";
             this.ColumnCall.Text = "Llamar";
@@ -215,7 +230,7 @@
             // 
             this.ColumnObservations.HeaderText = "Observaciones";
             this.ColumnObservations.Name = "ColumnObservations";
-            this.ColumnObservations.Width = 155;
+            this.ColumnObservations.Width = 157;
             // 
             // UserControlHorary
             // 

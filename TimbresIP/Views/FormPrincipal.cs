@@ -76,12 +76,15 @@ namespace TimbresIP
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
         {
-            inputBox input = new inputBox();
-            string tabPageName = "";
-            if (input.InputBox("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
+            if (tabControlHorary.TabPages.Count > 0)
             {
-                TabPage horaryTabPage = new TabPage(tabPageName);
-                tabControlHorary.SelectedTab.Text = tabPageName;
+                inputBox input = new inputBox();
+                string tabPageName = "";
+                if (input.InputBox("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
+                {
+                    TabPage horaryTabPage = new TabPage(tabPageName);
+                    tabControlHorary.SelectedTab.Text = tabPageName;
+                }
             }
             //string tabTitle = InputDialog.mostrar("Ingrese nombre del Horario:", "Modificar nombre horario",InputDialog.ACEPTAR_CANCELAR_BOTON,InputDialog.MENSAJE_INFORMACION);
             //if (tabTitle != "")

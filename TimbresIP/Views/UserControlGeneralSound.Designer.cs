@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxGeneralSoundExtension = new System.Windows.Forms.GroupBox();
+            this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
+            this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
             this.labelGeneralSoundPassword = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundPasswordExtension = new System.Windows.Forms.TextBox();
             this.labelGeneralSoundID = new System.Windows.Forms.Label();
@@ -37,8 +39,6 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
-            this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
-            this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
             this.ColumnTone = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -63,72 +63,6 @@
             this.groupBoxGeneralSoundExtension.TabIndex = 0;
             this.groupBoxGeneralSoundExtension.TabStop = false;
             this.groupBoxGeneralSoundExtension.Text = "Extensión";
-            // 
-            // labelGeneralSoundPassword
-            // 
-            this.labelGeneralSoundPassword.AutoSize = true;
-            this.labelGeneralSoundPassword.Location = new System.Drawing.Point(6, 88);
-            this.labelGeneralSoundPassword.Name = "labelGeneralSoundPassword";
-            this.labelGeneralSoundPassword.Size = new System.Drawing.Size(56, 13);
-            this.labelGeneralSoundPassword.TabIndex = 13;
-            this.labelGeneralSoundPassword.Text = "Password:";
-            // 
-            // textBoxGeneralSoundPasswordExtension
-            // 
-            this.textBoxGeneralSoundPasswordExtension.Enabled = false;
-            this.textBoxGeneralSoundPasswordExtension.Location = new System.Drawing.Point(66, 84);
-            this.textBoxGeneralSoundPasswordExtension.Name = "textBoxGeneralSoundPasswordExtension";
-            this.textBoxGeneralSoundPasswordExtension.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGeneralSoundPasswordExtension.TabIndex = 12;
-            this.textBoxGeneralSoundPasswordExtension.UseSystemPasswordChar = true;
-            // 
-            // labelGeneralSoundID
-            // 
-            this.labelGeneralSoundID.AutoSize = true;
-            this.labelGeneralSoundID.Location = new System.Drawing.Point(6, 16);
-            this.labelGeneralSoundID.Name = "labelGeneralSoundID";
-            this.labelGeneralSoundID.Size = new System.Drawing.Size(21, 13);
-            this.labelGeneralSoundID.TabIndex = 11;
-            this.labelGeneralSoundID.Text = "ID:";
-            // 
-            // textBoxGeneralSoundExtExtension
-            // 
-            this.textBoxGeneralSoundExtExtension.Enabled = false;
-            this.textBoxGeneralSoundExtExtension.Location = new System.Drawing.Point(66, 49);
-            this.textBoxGeneralSoundExtExtension.Name = "textBoxGeneralSoundExtExtension";
-            this.textBoxGeneralSoundExtExtension.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGeneralSoundExtExtension.TabIndex = 10;
-            // 
-            // labelGeneralSoundExtension
-            // 
-            this.labelGeneralSoundExtension.AutoSize = true;
-            this.labelGeneralSoundExtension.Location = new System.Drawing.Point(6, 52);
-            this.labelGeneralSoundExtension.Name = "labelGeneralSoundExtension";
-            this.labelGeneralSoundExtension.Size = new System.Drawing.Size(56, 13);
-            this.labelGeneralSoundExtension.TabIndex = 9;
-            this.labelGeneralSoundExtension.Text = "Extensión:";
-            // 
-            // textBoxGeneralSoundIdExtension
-            // 
-            this.textBoxGeneralSoundIdExtension.Enabled = false;
-            this.textBoxGeneralSoundIdExtension.Location = new System.Drawing.Point(66, 13);
-            this.textBoxGeneralSoundIdExtension.Name = "textBoxGeneralSoundIdExtension";
-            this.textBoxGeneralSoundIdExtension.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGeneralSoundIdExtension.TabIndex = 8;
-            // 
-            // dataGridViewGeneralSound
-            // 
-            this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnTone,
-            this.ColumnExtension,
-            this.ColumnCall,
-            this.ColumnObservation});
-            this.dataGridViewGeneralSound.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewGeneralSound.Name = "dataGridViewGeneralSound";
-            this.dataGridViewGeneralSound.Size = new System.Drawing.Size(515, 156);
-            this.dataGridViewGeneralSound.TabIndex = 4;
-            this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             // 
             // buttonGeneralSoundSaveExtension
             // 
@@ -155,11 +89,82 @@
             this.buttonGeneralSoundEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonGeneralSoundEditExtension.UseVisualStyleBackColor = true;
             // 
+            // labelGeneralSoundPassword
+            // 
+            this.labelGeneralSoundPassword.AutoSize = true;
+            this.labelGeneralSoundPassword.Location = new System.Drawing.Point(6, 88);
+            this.labelGeneralSoundPassword.Name = "labelGeneralSoundPassword";
+            this.labelGeneralSoundPassword.Size = new System.Drawing.Size(56, 13);
+            this.labelGeneralSoundPassword.TabIndex = 13;
+            this.labelGeneralSoundPassword.Text = "Password:";
+            // 
+            // textBoxGeneralSoundPasswordExtension
+            // 
+            this.textBoxGeneralSoundPasswordExtension.Enabled = false;
+            this.textBoxGeneralSoundPasswordExtension.Location = new System.Drawing.Point(66, 84);
+            this.textBoxGeneralSoundPasswordExtension.Name = "textBoxGeneralSoundPasswordExtension";
+            this.textBoxGeneralSoundPasswordExtension.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneralSoundPasswordExtension.TabIndex = 12;
+            this.textBoxGeneralSoundPasswordExtension.Text = "Caeunagota";
+            this.textBoxGeneralSoundPasswordExtension.UseSystemPasswordChar = true;
+            // 
+            // labelGeneralSoundID
+            // 
+            this.labelGeneralSoundID.AutoSize = true;
+            this.labelGeneralSoundID.Location = new System.Drawing.Point(6, 16);
+            this.labelGeneralSoundID.Name = "labelGeneralSoundID";
+            this.labelGeneralSoundID.Size = new System.Drawing.Size(21, 13);
+            this.labelGeneralSoundID.TabIndex = 11;
+            this.labelGeneralSoundID.Text = "ID:";
+            // 
+            // textBoxGeneralSoundExtExtension
+            // 
+            this.textBoxGeneralSoundExtExtension.Enabled = false;
+            this.textBoxGeneralSoundExtExtension.Location = new System.Drawing.Point(66, 49);
+            this.textBoxGeneralSoundExtExtension.Name = "textBoxGeneralSoundExtExtension";
+            this.textBoxGeneralSoundExtExtension.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneralSoundExtExtension.TabIndex = 10;
+            this.textBoxGeneralSoundExtExtension.Text = "1111";
+            // 
+            // labelGeneralSoundExtension
+            // 
+            this.labelGeneralSoundExtension.AutoSize = true;
+            this.labelGeneralSoundExtension.Location = new System.Drawing.Point(6, 52);
+            this.labelGeneralSoundExtension.Name = "labelGeneralSoundExtension";
+            this.labelGeneralSoundExtension.Size = new System.Drawing.Size(56, 13);
+            this.labelGeneralSoundExtension.TabIndex = 9;
+            this.labelGeneralSoundExtension.Text = "Extensión:";
+            // 
+            // textBoxGeneralSoundIdExtension
+            // 
+            this.textBoxGeneralSoundIdExtension.Enabled = false;
+            this.textBoxGeneralSoundIdExtension.Location = new System.Drawing.Point(66, 13);
+            this.textBoxGeneralSoundIdExtension.Name = "textBoxGeneralSoundIdExtension";
+            this.textBoxGeneralSoundIdExtension.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneralSoundIdExtension.TabIndex = 8;
+            this.textBoxGeneralSoundIdExtension.Text = "1111";
+            // 
+            // dataGridViewGeneralSound
+            // 
+            this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnTone,
+            this.ColumnExtension,
+            this.ColumnCall,
+            this.ColumnObservation});
+            this.dataGridViewGeneralSound.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewGeneralSound.Name = "dataGridViewGeneralSound";
+            this.dataGridViewGeneralSound.RowHeadersWidth = 30;
+            this.dataGridViewGeneralSound.Size = new System.Drawing.Size(515, 156);
+            this.dataGridViewGeneralSound.TabIndex = 4;
+            this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
+            // 
             // ColumnTone
             // 
+            this.ColumnTone.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.ColumnTone.HeaderText = "Tono";
             this.ColumnTone.Name = "ColumnTone";
-            this.ColumnTone.Width = 110;
+            this.ColumnTone.Width = 121;
             // 
             // ColumnExtension
             // 
@@ -173,6 +178,7 @@
             // 
             // ColumnCall
             // 
+            this.ColumnCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnCall.HeaderText = "Llamar";
             this.ColumnCall.Name = "ColumnCall";
             this.ColumnCall.Text = "Llamar";
