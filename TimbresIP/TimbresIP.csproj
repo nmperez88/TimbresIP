@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Horary.cs" />
+    <Compile Include="Model\ServerExtension.cs" />
+    <Compile Include="Model\SoundFile.cs" />
+    <Compile Include="Model\ToneCall.cs" />
+    <Compile Include="Utils\File.cs" />
+    <Compile Include="Utils\Json.cs" />
     <Compile Include="Views\UserControlGeneralSound.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,8 +132,6 @@
     <None Include="Resources\Images\edit.png" />
     <None Include="Resources\Images\add.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
