@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconfinder_sound_115787.ico</ApplicationIcon>
+    <ApplicationIcon>sound.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="InputBox, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -56,16 +56,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="UserControlGeneralSound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlGeneralSound.Designer.cs">
+      <DependentUpon>UserControlGeneralSound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControlHorary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControlHorary.Designer.cs">
+      <DependentUpon>UserControlHorary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Views\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="inputBox.cs" />
+    <Compile Include="Views\inputBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="UserControlGeneralSound.resx">
+      <DependentUpon>UserControlGeneralSound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -78,6 +93,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\UserControlHorary.resx">
+      <DependentUpon>UserControlHorary.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,20 +111,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="iconfinder_sound_115787.ico" />
-    <None Include="Recursos\Imagenes\information24x24.png" />
-    <None Include="Recursos\Imagenes\information64x64.png" />
-    <None Include="Recursos\Imagenes\clock24x24.png" />
-    <None Include="Recursos\Imagenes\removec20x20.png" />
-    <None Include="Recursos\Imagenes\addc20x20.png" />
-    <None Include="Recursos\Imagenes\savec20x20.png" />
-    <None Include="Recursos\Imagenes\editc20x20.png" />
-    <None Include="Recursos\Imagenes\save20x20.png" />
-    <None Include="Recursos\Imagenes\edit20x20.png" />
-    <None Include="Recursos\Imagenes\edit16x16.png" />
-    <None Include="Recursos\Imagenes\save.png" />
-    <None Include="Recursos\Imagenes\edit.png" />
-    <None Include="Recursos\Imagenes\add.png" />
+    <Content Include="sound.ico" />
+    <None Include="Resources\Images\sound.ico" />
+    <None Include="Resources\Images\information24x24.png" />
+    <None Include="Resources\Images\information64x64.png" />
+    <None Include="Resources\Images\clock24x24.png" />
+    <None Include="Resources\Images\removec20x20.png" />
+    <None Include="Resources\Images\addc20x20.png" />
+    <None Include="Resources\Images\savec20x20.png" />
+    <None Include="Resources\Images\editc20x20.png" />
+    <None Include="Resources\Images\save20x20.png" />
+    <None Include="Resources\Images\edit20x20.png" />
+    <None Include="Resources\Images\edit16x16.png" />
+    <None Include="Resources\Images\save.png" />
+    <None Include="Resources\Images\edit.png" />
+    <None Include="Resources\Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

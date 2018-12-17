@@ -39,33 +39,18 @@ namespace TimbresIP
             this.buttonEditServer.Enabled = true;
         }
 
-        private void buttonEditExtension_Click(object sender, EventArgs e)
-        {
-            this.textBoxExtExtension.Enabled = true;
-            this.textBoxIdExtension.Enabled = true;
-            this.textBoxPasswordExtension.Enabled = true;
-            this.buttonSaveExtension.Enabled = true;
-            this.buttonEditExtension.Enabled = false;
-        }
-
-        private void buttonSaveExtension_Click(object sender, EventArgs e)
-        {
-            this.textBoxExtExtension.Enabled = false;
-            this.textBoxIdExtension.Enabled = false;
-            this.textBoxPasswordExtension.Enabled = false;
-            this.buttonSaveExtension.Enabled = false;
-            this.buttonEditExtension.Enabled = true;
-        }
-
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
             inputBox input = new inputBox();
+            UserControlHorary userControlHorary = new UserControlHorary();
+            userControlHorary.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
             if (input.InputBox("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
                 TabPage horaryTabPage = new TabPage(tabPageName);
                 tabControlHorary.TabPages.Add(horaryTabPage);
                 horaryTabPage.ImageIndex = 0;
+                horaryTabPage.Controls.Add(userControlHorary);
             }
             //string tabTitle = InputDialog.mostrar("Ingrese nombre del TabPage:", "Crear nuevo TabPage", InputDialog.ACEPTAR_CANCELAR_BOTON, InputDialog.MENSAJE_PREGUNTA);
             //if (tabTitle != "")
@@ -98,6 +83,12 @@ namespace TimbresIP
             //    TabPage horaryTabPage = new TabPage(title);
             //    tabControlHorary.SelectedTab.Text = title;
             //}
+        }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            UserControlGeneralSound userControlGeneralSound = new UserControlGeneralSound();
+            this.groupBoxGeneralSound.Controls.Add(userControlGeneralSound);
         }
     }
 }
