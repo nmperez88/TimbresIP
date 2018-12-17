@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TimbresIP
 {
@@ -19,7 +20,10 @@ namespace TimbresIP
 
         private void UserControlGeneralSound_Load(object sender, EventArgs e)
         {
-
+            listViewGeneralSound.View = View.Details;
+            listViewGeneralSound.Columns.Add("Tono", 200, HorizontalAlignment.Left);
+            listViewGeneralSound.Columns.Add("Extensión", 150, HorizontalAlignment.Left);
+            listViewGeneralSound.Columns.Add("Llamar", 150, HorizontalAlignment.Left);
         }
 
         private void buttonGeneralSoundEditExtension_Click(object sender, EventArgs e)
@@ -38,6 +42,15 @@ namespace TimbresIP
             this.textBoxGeneralSoundPasswordExtension.Enabled = false;
             this.buttonGeneralSoundSaveExtension.Enabled = false;
             this.buttonGeneralSoundEditExtension.Enabled = true;
+        }
+
+        private void buttonGeneralSoundAdd_Click(object sender, EventArgs e)
+        {
+            Button button = new Button();
+            TextBox textBox = new TextBox();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+
         }
     }
 }

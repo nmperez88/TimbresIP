@@ -64,7 +64,11 @@ namespace TimbresIP
 
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
         {
-            tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
+            string tabName = tabControlHorary.SelectedTab.Text;
+            if ((MessageBox.Show("Esta seguro que desea eliminar: " + tabName, "Eliminar Horario",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning))==DialogResult.OK)
+            {
+                tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
+            }
         }
 
         private void buttonEditHorary_Click(object sender, EventArgs e)

@@ -37,7 +37,7 @@
             this.textBoxGeneralSoundExtExtension = new System.Windows.Forms.TextBox();
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewGeneralSound = new System.Windows.Forms.ListView();
             this.buttonGeneralSoundAdd = new System.Windows.Forms.Button();
             this.buttonGeneralSoundRemove = new System.Windows.Forms.Button();
             this.groupBoxGeneralSoundExtension.SuspendLayout();
@@ -139,13 +139,13 @@
             this.textBoxGeneralSoundIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundIdExtension.TabIndex = 8;
             // 
-            // listView1
+            // listViewGeneralSound
             // 
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(515, 156);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewGeneralSound.Location = new System.Drawing.Point(3, 3);
+            this.listViewGeneralSound.Name = "listViewGeneralSound";
+            this.listViewGeneralSound.Size = new System.Drawing.Size(515, 156);
+            this.listViewGeneralSound.TabIndex = 1;
+            this.listViewGeneralSound.UseCompatibleStateImageBehavior = false;
             // 
             // buttonGeneralSoundAdd
             // 
@@ -158,6 +158,7 @@
             this.buttonGeneralSoundAdd.Text = "Adicionar Sonido";
             this.buttonGeneralSoundAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonGeneralSoundAdd.UseVisualStyleBackColor = true;
+            this.buttonGeneralSoundAdd.Click += new System.EventHandler(this.buttonGeneralSoundAdd_Click);
             // 
             // buttonGeneralSoundRemove
             // 
@@ -178,7 +179,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.buttonGeneralSoundRemove);
             this.Controls.Add(this.buttonGeneralSoundAdd);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewGeneralSound);
             this.Controls.Add(this.groupBoxGeneralSoundExtension);
             this.Name = "UserControlGeneralSound";
             this.Size = new System.Drawing.Size(869, 162);
@@ -200,7 +201,7 @@
         private System.Windows.Forms.TextBox textBoxGeneralSoundExtExtension;
         private System.Windows.Forms.Label labelGeneralSoundExtension;
         private System.Windows.Forms.TextBox textBoxGeneralSoundIdExtension;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewGeneralSound;
         private System.Windows.Forms.Button buttonGeneralSoundAdd;
         private System.Windows.Forms.Button buttonGeneralSoundRemove;
     }
