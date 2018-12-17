@@ -33,7 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>sound.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="InputBox, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -56,10 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserControlGeneralSound.cs">
+    <Compile Include="Views\UserControlGeneralSound.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlGeneralSound.Designer.cs">
+    <Compile Include="Views\UserControlGeneralSound.Designer.cs">
       <DependentUpon>UserControlGeneralSound.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControlHorary.cs">
@@ -68,20 +69,20 @@
     <Compile Include="Views\UserControlHorary.Designer.cs">
       <DependentUpon>UserControlHorary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Form1.cs">
+    <Compile Include="Views\FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\inputBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UserControlGeneralSound.resx">
+    <EmbeddedResource Include="Views\UserControlGeneralSound.resx">
       <DependentUpon>UserControlGeneralSound.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,8 +112,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sound.ico" />
-    <None Include="Resources\Images\sound.ico" />
     <None Include="Resources\Images\information24x24.png" />
     <None Include="Resources\Images\information64x64.png" />
     <None Include="Resources\Images\clock24x24.png" />
