@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxGeneralSoundExtension = new System.Windows.Forms.GroupBox();
             this.labelGeneralSoundPassword = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundPasswordExtension = new System.Windows.Forms.TextBox();
@@ -36,12 +37,12 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
+            this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
+            this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
             this.ColumnTone = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnObservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
-            this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
             this.SuspendLayout();
@@ -129,33 +130,6 @@
             this.dataGridViewGeneralSound.TabIndex = 4;
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             // 
-            // ColumnTone
-            // 
-            this.ColumnTone.HeaderText = "Tono";
-            this.ColumnTone.Name = "ColumnTone";
-            this.ColumnTone.Width = 130;
-            // 
-            // ColumnExtension
-            // 
-            this.ColumnExtension.HeaderText = "Extesión";
-            this.ColumnExtension.Name = "ColumnExtension";
-            this.ColumnExtension.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnExtension.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnExtension.Width = 90;
-            // 
-            // ColumnCall
-            // 
-            this.ColumnCall.HeaderText = "Llamar";
-            this.ColumnCall.Name = "ColumnCall";
-            this.ColumnCall.Text = "Llamar";
-            this.ColumnCall.Width = 50;
-            // 
-            // ColumnObservation
-            // 
-            this.ColumnObservation.HeaderText = "Observaciones";
-            this.ColumnObservation.Name = "ColumnObservation";
-            this.ColumnObservation.Width = 200;
-            // 
             // buttonGeneralSoundSaveExtension
             // 
             this.buttonGeneralSoundSaveExtension.Enabled = false;
@@ -180,6 +154,35 @@
             this.buttonGeneralSoundEditExtension.Text = "Editar";
             this.buttonGeneralSoundEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonGeneralSoundEditExtension.UseVisualStyleBackColor = true;
+            // 
+            // ColumnTone
+            // 
+            this.ColumnTone.HeaderText = "Tono";
+            this.ColumnTone.Name = "ColumnTone";
+            this.ColumnTone.Width = 110;
+            // 
+            // ColumnExtension
+            // 
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnExtension.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnExtension.HeaderText = "Extesión";
+            this.ColumnExtension.Name = "ColumnExtension";
+            this.ColumnExtension.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnExtension.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnExtension.Width = 50;
+            // 
+            // ColumnCall
+            // 
+            this.ColumnCall.HeaderText = "Llamar";
+            this.ColumnCall.Name = "ColumnCall";
+            this.ColumnCall.Text = "Llamar";
+            this.ColumnCall.Width = 50;
+            // 
+            // ColumnObservation
+            // 
+            this.ColumnObservation.HeaderText = "Observaciones";
+            this.ColumnObservation.Name = "ColumnObservation";
+            this.ColumnObservation.Width = 262;
             // 
             // UserControlGeneralSound
             // 
