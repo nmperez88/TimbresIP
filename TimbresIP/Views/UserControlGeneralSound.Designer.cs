@@ -29,18 +29,21 @@
         private void InitializeComponent()
         {
             this.groupBoxGeneralSoundExtension = new System.Windows.Forms.GroupBox();
-            this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
-            this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
             this.labelGeneralSoundPassword = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundPasswordExtension = new System.Windows.Forms.TextBox();
             this.labelGeneralSoundID = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundExtExtension = new System.Windows.Forms.TextBox();
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
-            this.listViewGeneralSound = new System.Windows.Forms.ListView();
-            this.buttonGeneralSoundAdd = new System.Windows.Forms.Button();
-            this.buttonGeneralSoundRemove = new System.Windows.Forms.Button();
+            this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
+            this.ColumnTone = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnObservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
+            this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
             this.groupBoxGeneralSoundExtension.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGeneralSoundExtension
@@ -59,33 +62,6 @@
             this.groupBoxGeneralSoundExtension.TabIndex = 0;
             this.groupBoxGeneralSoundExtension.TabStop = false;
             this.groupBoxGeneralSoundExtension.Text = "Extensión";
-            // 
-            // buttonGeneralSoundSaveExtension
-            // 
-            this.buttonGeneralSoundSaveExtension.Enabled = false;
-            this.buttonGeneralSoundSaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonGeneralSoundSaveExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonGeneralSoundSaveExtension.Location = new System.Drawing.Point(122, 115);
-            this.buttonGeneralSoundSaveExtension.Name = "buttonGeneralSoundSaveExtension";
-            this.buttonGeneralSoundSaveExtension.Size = new System.Drawing.Size(75, 30);
-            this.buttonGeneralSoundSaveExtension.TabIndex = 15;
-            this.buttonGeneralSoundSaveExtension.Text = "Guardar";
-            this.buttonGeneralSoundSaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonGeneralSoundSaveExtension.UseVisualStyleBackColor = true;
-            this.buttonGeneralSoundSaveExtension.Click += new System.EventHandler(this.buttonGeneralSoundSaveExtension_Click);
-            // 
-            // buttonGeneralSoundEditExtension
-            // 
-            this.buttonGeneralSoundEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
-            this.buttonGeneralSoundEditExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonGeneralSoundEditExtension.Location = new System.Drawing.Point(40, 115);
-            this.buttonGeneralSoundEditExtension.Name = "buttonGeneralSoundEditExtension";
-            this.buttonGeneralSoundEditExtension.Size = new System.Drawing.Size(75, 30);
-            this.buttonGeneralSoundEditExtension.TabIndex = 14;
-            this.buttonGeneralSoundEditExtension.Text = "Editar";
-            this.buttonGeneralSoundEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonGeneralSoundEditExtension.UseVisualStyleBackColor = true;
-            this.buttonGeneralSoundEditExtension.Click += new System.EventHandler(this.buttonGeneralSoundEditExtension_Click);
             // 
             // labelGeneralSoundPassword
             // 
@@ -139,53 +115,84 @@
             this.textBoxGeneralSoundIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundIdExtension.TabIndex = 8;
             // 
-            // listViewGeneralSound
+            // dataGridViewGeneralSound
             // 
-            this.listViewGeneralSound.Location = new System.Drawing.Point(3, 3);
-            this.listViewGeneralSound.Name = "listViewGeneralSound";
-            this.listViewGeneralSound.Size = new System.Drawing.Size(515, 156);
-            this.listViewGeneralSound.TabIndex = 1;
-            this.listViewGeneralSound.UseCompatibleStateImageBehavior = false;
+            this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnTone,
+            this.ColumnExtension,
+            this.ColumnCall,
+            this.ColumnObservation});
+            this.dataGridViewGeneralSound.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewGeneralSound.Name = "dataGridViewGeneralSound";
+            this.dataGridViewGeneralSound.Size = new System.Drawing.Size(515, 156);
+            this.dataGridViewGeneralSound.TabIndex = 4;
+            this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             // 
-            // buttonGeneralSoundAdd
+            // ColumnTone
             // 
-            this.buttonGeneralSoundAdd.Image = global::TimbresIP.Properties.Resources.addc20x20;
-            this.buttonGeneralSoundAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonGeneralSoundAdd.Location = new System.Drawing.Point(524, 3);
-            this.buttonGeneralSoundAdd.Name = "buttonGeneralSoundAdd";
-            this.buttonGeneralSoundAdd.Size = new System.Drawing.Size(103, 43);
-            this.buttonGeneralSoundAdd.TabIndex = 2;
-            this.buttonGeneralSoundAdd.Text = "Adicionar Sonido";
-            this.buttonGeneralSoundAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonGeneralSoundAdd.UseVisualStyleBackColor = true;
-            this.buttonGeneralSoundAdd.Click += new System.EventHandler(this.buttonGeneralSoundAdd_Click);
+            this.ColumnTone.HeaderText = "Tono";
+            this.ColumnTone.Name = "ColumnTone";
+            this.ColumnTone.Width = 130;
             // 
-            // buttonGeneralSoundRemove
+            // ColumnExtension
             // 
-            this.buttonGeneralSoundRemove.Image = global::TimbresIP.Properties.Resources.removec20x20;
-            this.buttonGeneralSoundRemove.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonGeneralSoundRemove.Location = new System.Drawing.Point(524, 52);
-            this.buttonGeneralSoundRemove.Name = "buttonGeneralSoundRemove";
-            this.buttonGeneralSoundRemove.Size = new System.Drawing.Size(103, 43);
-            this.buttonGeneralSoundRemove.TabIndex = 3;
-            this.buttonGeneralSoundRemove.Text = "Eliminar Sonido";
-            this.buttonGeneralSoundRemove.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonGeneralSoundRemove.UseVisualStyleBackColor = true;
+            this.ColumnExtension.HeaderText = "Extesión";
+            this.ColumnExtension.Name = "ColumnExtension";
+            this.ColumnExtension.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnExtension.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnExtension.Width = 90;
+            // 
+            // ColumnCall
+            // 
+            this.ColumnCall.HeaderText = "Llamar";
+            this.ColumnCall.Name = "ColumnCall";
+            this.ColumnCall.Text = "Llamar";
+            this.ColumnCall.Width = 50;
+            // 
+            // ColumnObservation
+            // 
+            this.ColumnObservation.HeaderText = "Observaciones";
+            this.ColumnObservation.Name = "ColumnObservation";
+            this.ColumnObservation.Width = 200;
+            // 
+            // buttonGeneralSoundSaveExtension
+            // 
+            this.buttonGeneralSoundSaveExtension.Enabled = false;
+            this.buttonGeneralSoundSaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonGeneralSoundSaveExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonGeneralSoundSaveExtension.Location = new System.Drawing.Point(122, 115);
+            this.buttonGeneralSoundSaveExtension.Name = "buttonGeneralSoundSaveExtension";
+            this.buttonGeneralSoundSaveExtension.Size = new System.Drawing.Size(75, 30);
+            this.buttonGeneralSoundSaveExtension.TabIndex = 15;
+            this.buttonGeneralSoundSaveExtension.Text = "Guardar";
+            this.buttonGeneralSoundSaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonGeneralSoundSaveExtension.UseVisualStyleBackColor = true;
+            // 
+            // buttonGeneralSoundEditExtension
+            // 
+            this.buttonGeneralSoundEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonGeneralSoundEditExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonGeneralSoundEditExtension.Location = new System.Drawing.Point(40, 115);
+            this.buttonGeneralSoundEditExtension.Name = "buttonGeneralSoundEditExtension";
+            this.buttonGeneralSoundEditExtension.Size = new System.Drawing.Size(75, 30);
+            this.buttonGeneralSoundEditExtension.TabIndex = 14;
+            this.buttonGeneralSoundEditExtension.Text = "Editar";
+            this.buttonGeneralSoundEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonGeneralSoundEditExtension.UseVisualStyleBackColor = true;
             // 
             // UserControlGeneralSound
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.buttonGeneralSoundRemove);
-            this.Controls.Add(this.buttonGeneralSoundAdd);
-            this.Controls.Add(this.listViewGeneralSound);
+            this.Controls.Add(this.dataGridViewGeneralSound);
             this.Controls.Add(this.groupBoxGeneralSoundExtension);
             this.Name = "UserControlGeneralSound";
             this.Size = new System.Drawing.Size(869, 162);
-            this.Load += new System.EventHandler(this.UserControlGeneralSound_Load);
             this.groupBoxGeneralSoundExtension.ResumeLayout(false);
             this.groupBoxGeneralSoundExtension.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,8 +208,10 @@
         private System.Windows.Forms.TextBox textBoxGeneralSoundExtExtension;
         private System.Windows.Forms.Label labelGeneralSoundExtension;
         private System.Windows.Forms.TextBox textBoxGeneralSoundIdExtension;
-        private System.Windows.Forms.ListView listViewGeneralSound;
-        private System.Windows.Forms.Button buttonGeneralSoundAdd;
-        private System.Windows.Forms.Button buttonGeneralSoundRemove;
+        private System.Windows.Forms.DataGridView dataGridViewGeneralSound;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnTone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExtension;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservation;
     }
 }

@@ -32,20 +32,20 @@
             this.ColumnNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnHoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSoundTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTone = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnObservations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxHoraryExtension = new System.Windows.Forms.GroupBox();
+            this.buttonHorarySaveExtension = new System.Windows.Forms.Button();
+            this.buttonHoraryEditExtension = new System.Windows.Forms.Button();
             this.labelHoraryPassword = new System.Windows.Forms.Label();
             this.textBoxHoraryPasswordExtension = new System.Windows.Forms.TextBox();
             this.labelHoraryID = new System.Windows.Forms.Label();
             this.textBoxHoraryExtExtension = new System.Windows.Forms.TextBox();
             this.labelHoraryExtension = new System.Windows.Forms.Label();
             this.textBoxHoraryIdExtension = new System.Windows.Forms.TextBox();
-            this.buttonHorarySaveExtension = new System.Windows.Forms.Button();
-            this.buttonHoraryEditExtension = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorary)).BeginInit();
             this.groupBoxHoraryExtension.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,7 @@
             this.dataGridViewHorary.Name = "dataGridViewHorary";
             this.dataGridViewHorary.Size = new System.Drawing.Size(599, 224);
             this.dataGridViewHorary.TabIndex = 4;
+            this.dataGridViewHorary.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewHorary_CellPainting);
             // 
             // ColumnNo
             // 
@@ -91,7 +92,9 @@
             // 
             this.ColumnTone.HeaderText = "Tono";
             this.ColumnTone.Name = "ColumnTone";
-            this.ColumnTone.Width = 150;
+            this.ColumnTone.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnTone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnTone.Width = 120;
             // 
             // ColumnCheck
             // 
@@ -109,13 +112,14 @@
             // 
             this.ColumnCall.HeaderText = "Llamar";
             this.ColumnCall.Name = "ColumnCall";
+            this.ColumnCall.Text = "Llamar";
             this.ColumnCall.Width = 40;
             // 
             // ColumnObservations
             // 
             this.ColumnObservations.HeaderText = "Observaciones";
             this.ColumnObservations.Name = "ColumnObservations";
-            this.ColumnObservations.Width = 180;
+            this.ColumnObservations.Width = 160;
             // 
             // groupBoxHoraryExtension
             // 
@@ -133,6 +137,33 @@
             this.groupBoxHoraryExtension.TabIndex = 3;
             this.groupBoxHoraryExtension.TabStop = false;
             this.groupBoxHoraryExtension.Text = "Extensión";
+            // 
+            // buttonHorarySaveExtension
+            // 
+            this.buttonHorarySaveExtension.Enabled = false;
+            this.buttonHorarySaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonHorarySaveExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonHorarySaveExtension.Location = new System.Drawing.Point(92, 162);
+            this.buttonHorarySaveExtension.Name = "buttonHorarySaveExtension";
+            this.buttonHorarySaveExtension.Size = new System.Drawing.Size(75, 30);
+            this.buttonHorarySaveExtension.TabIndex = 7;
+            this.buttonHorarySaveExtension.Text = "Guardar";
+            this.buttonHorarySaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonHorarySaveExtension.UseVisualStyleBackColor = true;
+            this.buttonHorarySaveExtension.Click += new System.EventHandler(this.buttonSaveExtension_Click);
+            // 
+            // buttonHoraryEditExtension
+            // 
+            this.buttonHoraryEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonHoraryEditExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonHoraryEditExtension.Location = new System.Drawing.Point(10, 162);
+            this.buttonHoraryEditExtension.Name = "buttonHoraryEditExtension";
+            this.buttonHoraryEditExtension.Size = new System.Drawing.Size(75, 30);
+            this.buttonHoraryEditExtension.TabIndex = 6;
+            this.buttonHoraryEditExtension.Text = "Editar";
+            this.buttonHoraryEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonHoraryEditExtension.UseVisualStyleBackColor = true;
+            this.buttonHoraryEditExtension.Click += new System.EventHandler(this.buttonEditExtension_Click);
             // 
             // labelHoraryPassword
             // 
@@ -186,33 +217,6 @@
             this.textBoxHoraryIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryIdExtension.TabIndex = 0;
             // 
-            // buttonHorarySaveExtension
-            // 
-            this.buttonHorarySaveExtension.Enabled = false;
-            this.buttonHorarySaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonHorarySaveExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonHorarySaveExtension.Location = new System.Drawing.Point(92, 162);
-            this.buttonHorarySaveExtension.Name = "buttonHorarySaveExtension";
-            this.buttonHorarySaveExtension.Size = new System.Drawing.Size(75, 30);
-            this.buttonHorarySaveExtension.TabIndex = 7;
-            this.buttonHorarySaveExtension.Text = "Guardar";
-            this.buttonHorarySaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonHorarySaveExtension.UseVisualStyleBackColor = true;
-            this.buttonHorarySaveExtension.Click += new System.EventHandler(this.buttonSaveExtension_Click);
-            // 
-            // buttonHoraryEditExtension
-            // 
-            this.buttonHoraryEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
-            this.buttonHoraryEditExtension.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonHoraryEditExtension.Location = new System.Drawing.Point(10, 162);
-            this.buttonHoraryEditExtension.Name = "buttonHoraryEditExtension";
-            this.buttonHoraryEditExtension.Size = new System.Drawing.Size(75, 30);
-            this.buttonHoraryEditExtension.TabIndex = 6;
-            this.buttonHoraryEditExtension.Text = "Editar";
-            this.buttonHoraryEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonHoraryEditExtension.UseVisualStyleBackColor = true;
-            this.buttonHoraryEditExtension.Click += new System.EventHandler(this.buttonEditExtension_Click);
-            // 
             // UserControlHorary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,14 +235,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewHorary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHoraInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSoundTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTone;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnCheck;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExtension;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservations;
         private System.Windows.Forms.GroupBox groupBoxHoraryExtension;
         private System.Windows.Forms.Button buttonHorarySaveExtension;
         private System.Windows.Forms.Button buttonHoraryEditExtension;
@@ -248,5 +244,13 @@
         private System.Windows.Forms.TextBox textBoxHoraryExtExtension;
         private System.Windows.Forms.Label labelHoraryExtension;
         private System.Windows.Forms.TextBox textBoxHoraryIdExtension;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHoraInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSoundTime;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnTone;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnCheck;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExtension;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservations;
     }
 }

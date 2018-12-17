@@ -64,11 +64,14 @@ namespace TimbresIP
 
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
         {
-            string tabName = tabControlHorary.SelectedTab.Text;
-            if ((MessageBox.Show("Esta seguro que desea eliminar: " + tabName, "Eliminar Horario",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning))==DialogResult.OK)
+            if (tabControlHorary.TabPages.Count > 0)
             {
-                tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
+                string tabName = tabControlHorary.SelectedTab.Text;
+                if ((MessageBox.Show("Esta seguro que desea eliminar: " + tabName, "Eliminar Horario", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)) == DialogResult.OK)
+
+                    tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
             }
+            else { MessageBox.Show("No tiene horarios creados", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
         }
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
@@ -95,4 +98,6 @@ namespace TimbresIP
             this.groupBoxGeneralSound.Controls.Add(userControlGeneralSound);
         }
     }
-}
+
+    }
+

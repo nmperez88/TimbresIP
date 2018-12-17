@@ -132,6 +132,11 @@
     <None Include="Resources\Images\edit.png" />
     <None Include="Resources\Images\add.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Images\call20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\call16x16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

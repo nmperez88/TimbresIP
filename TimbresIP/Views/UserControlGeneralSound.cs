@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace TimbresIP
 {
@@ -18,39 +17,21 @@ namespace TimbresIP
             InitializeComponent();
         }
 
-        private void UserControlGeneralSound_Load(object sender, EventArgs e)
+        private void dataGridViewGeneralSound_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            listViewGeneralSound.View = View.Details;
-            listViewGeneralSound.Columns.Add("Tono", 200, HorizontalAlignment.Left);
-            listViewGeneralSound.Columns.Add("Extensión", 150, HorizontalAlignment.Left);
-            listViewGeneralSound.Columns.Add("Llamar", 150, HorizontalAlignment.Left);
-        }
+            if (e.ColumnIndex >= 0 && this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "ColumnCall" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-        private void buttonGeneralSoundEditExtension_Click(object sender, EventArgs e)
-        {
-            this.textBoxGeneralSoundExtExtension.Enabled = true;
-            this.textBoxGeneralSoundIdExtension.Enabled = true;
-            this.textBoxGeneralSoundPasswordExtension.Enabled = true;
-            this.buttonGeneralSoundSaveExtension.Enabled = true;
-            this.buttonGeneralSoundEditExtension.Enabled = false;
-        }
+                DataGridViewButtonCell celBoton = this.dataGridViewGeneralSound.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
+                Image image = Properties.Resources.call16x16;
+                e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
-        private void buttonGeneralSoundSaveExtension_Click(object sender, EventArgs e)
-        {
-            this.textBoxGeneralSoundExtExtension.Enabled = false;
-            this.textBoxGeneralSoundIdExtension.Enabled = false;
-            this.textBoxGeneralSoundPasswordExtension.Enabled = false;
-            this.buttonGeneralSoundSaveExtension.Enabled = false;
-            this.buttonGeneralSoundEditExtension.Enabled = true;
-        }
+                this.dataGridViewGeneralSound.Rows[e.RowIndex].Height = image.Height + 10;
+                this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Width = image.Width + 30;
 
-        private void buttonGeneralSoundAdd_Click(object sender, EventArgs e)
-        {
-            Button button = new Button();
-            TextBox textBox = new TextBox();
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-
+                e.Handled = true;
+            }
         }
     }
 }
