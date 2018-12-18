@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    class inputBox
+    class DialogInputBox
     {
         public DialogResult InputBox(string title, string promptText, ref string value)
         {

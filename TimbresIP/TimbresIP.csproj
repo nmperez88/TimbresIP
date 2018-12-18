@@ -37,10 +37,10 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InputBox, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Essy.Tools.InputBox.1.0.0\lib\net20\InputBox.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,11 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AutomaticRingSystem.cs" />
     <Compile Include="Model\Horary.cs" />
-    <Compile Include="Model\ServerExtension.cs" />
+    <Compile Include="Model\ConnectionCallServer.cs" />
     <Compile Include="Model\SoundFile.cs" />
-    <Compile Include="Model\ToneCall.cs" />
-    <Compile Include="Utils\File.cs" />
+    <Compile Include="Model\CallServer.cs" />
+    <Compile Include="Utils\FileHandler.cs" />
     <Compile Include="Utils\Json.cs" />
     <Compile Include="Views\UserControlGeneralSound.cs">
       <SubType>UserControl</SubType>
@@ -78,7 +79,7 @@
     <Compile Include="Views\FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\inputBox.cs" />
+    <Compile Include="Views\DialogInputBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Views\UserControlGeneralSound.resx">
@@ -100,7 +101,8 @@
     <EmbeddedResource Include="Views\UserControlHorary.resx">
       <DependentUpon>UserControlHorary.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Config\packages.config" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,9 +112,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Images\information24x24.png" />
