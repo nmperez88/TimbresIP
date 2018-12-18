@@ -41,7 +41,7 @@ namespace TimbresIP
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
-            inputBox input = new inputBox();
+            DialogInputBox input = new DialogInputBox();
             UserControlHorary userControlHorary = new UserControlHorary();
             userControlHorary.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
@@ -78,7 +78,7 @@ namespace TimbresIP
         {
             if (tabControlHorary.TabPages.Count > 0)
             {
-                inputBox input = new inputBox();
+                DialogInputBox input = new DialogInputBox();
                 string tabPageName = "";
                 if (input.InputBox("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
