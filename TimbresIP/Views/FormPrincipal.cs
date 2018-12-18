@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using InputKey;
 
 namespace TimbresIP
 {
@@ -52,14 +51,6 @@ namespace TimbresIP
                 horaryTabPage.ImageIndex = 0;
                 horaryTabPage.Controls.Add(userControlHorary);
             }
-            //string tabTitle = InputDialog.mostrar("Ingrese nombre del TabPage:", "Crear nuevo TabPage", InputDialog.ACEPTAR_CANCELAR_BOTON, InputDialog.MENSAJE_PREGUNTA);
-            //if (tabTitle != "")
-            //{
-            //    string title = tabTitle.ToString();
-            //    TabPage horaryTabPage = new TabPage(title);
-            //    tabControlHorary.TabPages.Add(horaryTabPage);
-            //    horaryTabPage.ImageIndex = 0;
-            //}
         }
 
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
@@ -86,13 +77,6 @@ namespace TimbresIP
                     tabControlHorary.SelectedTab.Text = tabPageName;
                 }
             }
-            //string tabTitle = InputDialog.mostrar("Ingrese nombre del Horario:", "Modificar nombre horario",InputDialog.ACEPTAR_CANCELAR_BOTON,InputDialog.MENSAJE_INFORMACION);
-            //if (tabTitle != "")
-            //{
-            //    string title = tabTitle.ToString();
-            //    TabPage horaryTabPage = new TabPage(title);
-            //    tabControlHorary.SelectedTab.Text = title;
-            //}
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)

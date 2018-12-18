@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxGeneralSoundExtension = new System.Windows.Forms.GroupBox();
             this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
             this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
@@ -76,6 +76,7 @@
             this.buttonGeneralSoundSaveExtension.Text = "Guardar";
             this.buttonGeneralSoundSaveExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonGeneralSoundSaveExtension.UseVisualStyleBackColor = true;
+            this.buttonGeneralSoundSaveExtension.Click += new System.EventHandler(this.buttonGeneralSoundSaveExtension_Click);
             // 
             // buttonGeneralSoundEditExtension
             // 
@@ -88,6 +89,7 @@
             this.buttonGeneralSoundEditExtension.Text = "Editar";
             this.buttonGeneralSoundEditExtension.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonGeneralSoundEditExtension.UseVisualStyleBackColor = true;
+            this.buttonGeneralSoundEditExtension.Click += new System.EventHandler(this.buttonGeneralSoundEditExtension_Click);
             // 
             // labelGeneralSoundPassword
             // 
@@ -168,8 +170,8 @@
             // 
             // ColumnExtension
             // 
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnExtension.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColumnExtension.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnExtension.HeaderText = "Extesión";
             this.ColumnExtension.Name = "ColumnExtension";
             this.ColumnExtension.Resizable = System.Windows.Forms.DataGridViewTriState.True;

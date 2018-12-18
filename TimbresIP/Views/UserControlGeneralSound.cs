@@ -34,5 +34,23 @@ namespace TimbresIP
             }
 
         }
+
+        private void buttonGeneralSoundEditExtension_Click(object sender, EventArgs e)
+        {
+            this.textBoxGeneralSoundExtExtension.Enabled = true;
+            this.textBoxGeneralSoundIdExtension.Enabled = true;
+            this.textBoxGeneralSoundPasswordExtension.Enabled = true;
+            this.buttonGeneralSoundSaveExtension.Enabled = true;
+            this.buttonGeneralSoundEditExtension.Enabled = false;
+        }
+
+        private void buttonGeneralSoundSaveExtension_Click(object sender, EventArgs e)
+        {
+            this.textBoxGeneralSoundExtExtension.Enabled = false;
+            this.textBoxGeneralSoundIdExtension.Enabled = false;
+            this.textBoxGeneralSoundPasswordExtension.Enabled = false;
+            this.buttonGeneralSoundSaveExtension.Enabled = false;
+            this.buttonGeneralSoundEditExtension.Enabled = true;
+        }
     }
 }
