@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AutomaticRingSystem.cs" />
     <Compile Include="Model\Horary.cs" />
     <Compile Include="Model\ServerExtension.cs" />
     <Compile Include="Model\SoundFile.cs" />
