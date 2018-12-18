@@ -62,7 +62,7 @@ namespace TimbresIP
 
                     tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
             }
-            else { MessageBox.Show("No tiene horarios creados", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+            else { MessageBox.Show("No tiene horarios creados", "Error",MessageBoxButtons.OK,MessageBoxIcon.Stop); }
         }
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
@@ -77,6 +77,7 @@ namespace TimbresIP
                     tabControlHorary.SelectedTab.Text = tabPageName;
                 }
             }
+            else { MessageBox.Show("Debe crear horarios primeramente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
