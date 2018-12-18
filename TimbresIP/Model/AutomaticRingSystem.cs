@@ -12,14 +12,23 @@ namespace TimbresIP.Model
      */
     class AutomaticRingSystem
     {
+        /*
+         * Es requerido registrarse
+         * 
+         */
         static Boolean registrationRequired = true;
-        static String displayName = "1230";
-        static String userName = "1230";
-        static String registerName = "1230";//authenticationId
-        static String registerPassword = "1230IA";
+
+        /*
+         * Servidor
+         * 
+         */
         static String domainHost = "100.50.40.3";
+
+        /*
+         * Puerto del servidor
+         * 
+         */
         static Int32 domainPort = 5060;
-        static String numberToDial = "1300";
 
     }
 }

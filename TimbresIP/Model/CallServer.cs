@@ -7,12 +7,46 @@ namespace TimbresIP.Model
      */
     class CallServer
     {
+        /*
+         * Número en la lista
+         * 
+         */
         private String number;
+
+        /*
+         * Hora de inicio
+         * 
+         */
         private String startAt;
-        private String soundTime;
+
+        /*
+         * Tiempo que debe durar la llamada
+         * 
+         */
+        private String callTime;
+
+        /*
+         * Archivo de sonido
+         * 
+         */
         private SoundFile soundFile;
+
+        /*
+         * Habilitado
+         * 
+         */
         private Boolean enabled;
-        private String registerName;// extensión a llamar
+
+        /*
+         * Extensión a llamar. Generalmente es la extensión telefónica. numberToDial
+         * 
+         */
+        private String registerName;
+
+        /*
+         * Observaciones
+         * 
+         */
         private String observations;
 
     }
