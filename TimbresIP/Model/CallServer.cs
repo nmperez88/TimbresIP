@@ -3,16 +3,16 @@
 namespace TimbresIP.Model
 {
     /*
-     * Tono de llamada para horario
+     * Llamada al servidor para horario
      */
-    class ToneCall
+    class CallServer
     {
         private String number;
         private String startAt;
         private String soundTime;
         private SoundFile soundFile;
         private Boolean enabled;
-        private String call;
+        private String registerName;// extensión a llamar
         private String observations;
 
     }

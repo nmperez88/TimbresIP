@@ -12,7 +12,7 @@ namespace TimbresIP.Model
     class SoundFile
     {
         private String name;
-        private String randomId;//nombre de archivo en el directorio destino
+        private String randomId;//nombre de archivo en el directorio destino. Valor: horary.randomId+"t"+pos(En: CallServerList)+".extensionDeArchivo(Ej: .mp3, .wav)". Ej: h1t1.mp3
         private String sourcePath;
         private String targetPath;
     }

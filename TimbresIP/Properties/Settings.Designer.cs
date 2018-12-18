@@ -31,5 +31,17 @@ namespace TimbresIP.Properties {
                 return ((string)(this["jsonExtension"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string startId {
+            get {
+                return ((string)(this["startId"]));
+            }
+            set {
+                this["startId"] = value;
+            }
+        }
     }
 }

@@ -56,9 +56,9 @@
   <ItemGroup>
     <Compile Include="Model\AutomaticRingSystem.cs" />
     <Compile Include="Model\Horary.cs" />
-    <Compile Include="Model\ServerExtension.cs" />
+    <Compile Include="Model\ConnectionCallServer.cs" />
     <Compile Include="Model\SoundFile.cs" />
-    <Compile Include="Model\ToneCall.cs" />
+    <Compile Include="Model\CallServer.cs" />
     <Compile Include="Utils\FileHandler.cs" />
     <Compile Include="Utils\Json.cs" />
     <Compile Include="Views\UserControlGeneralSound.cs">
