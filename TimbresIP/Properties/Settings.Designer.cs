@@ -32,15 +32,30 @@ namespace TimbresIP.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string startId {
             get {
                 return ((string)(this["startId"]));
             }
-            set {
-                this["startId"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data")]
+        public string jsonFileName {
+            get {
+                return ((string)(this["jsonFileName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string jsonFolderDirectory {
+            get {
+                return ((string)(this["jsonFolderDirectory"]));
             }
         }
     }

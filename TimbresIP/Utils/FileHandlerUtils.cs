@@ -2,7 +2,7 @@
 
 namespace TimbresIP.Utils
 {
-    class FileHandlerUtils
+    class FileHandlerUtils : Base.Base
     {
 
         /*
@@ -65,5 +65,7 @@ namespace TimbresIP.Utils
                 throw;
             }
         }
+
+
     }
 }

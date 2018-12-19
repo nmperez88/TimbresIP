@@ -37,6 +37,9 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -54,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Base.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Model\AutomaticRingSystemModel.cs" />
     <Compile Include="Model\HoraryModel.cs" />
@@ -61,7 +65,7 @@
     <Compile Include="Model\SoundFileModel.cs" />
     <Compile Include="Model\CallServerModel.cs" />
     <Compile Include="Utils\FileHandlerUtils.cs" />
-    <Compile Include="Utils\JsonUtils.cs" />
+    <Compile Include="Utils\JsonHandlerUtils.cs" />
     <Compile Include="Views\GeneralRingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,5 +142,6 @@
   <ItemGroup>
     <None Include="Resources\Images\remove16x16.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
