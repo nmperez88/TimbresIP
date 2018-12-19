@@ -2,7 +2,7 @@
 
 namespace TimbresIP.Utils
 {
-    class FileHandler
+    class FileHandlerUtils
     {
 
         /*

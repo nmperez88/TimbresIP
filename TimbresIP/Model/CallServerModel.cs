@@ -5,7 +5,7 @@ namespace TimbresIP.Model
     /*
      * Llamada al servidor para horario
      */
-    class CallServer
+    class CallServerModel
     {
         /*
          * Número en la lista
@@ -29,7 +29,7 @@ namespace TimbresIP.Model
          * Archivo de sonido
          * 
          */
-        private SoundFile soundFile;
+        private SoundFileModel soundFile;
 
         /*
          * Habilitado

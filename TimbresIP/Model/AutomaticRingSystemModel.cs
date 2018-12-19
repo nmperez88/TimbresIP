@@ -10,7 +10,7 @@ namespace TimbresIP.Model
      * Sistema de Timbres Automáticos
      * 
      */
-    class AutomaticRingSystem
+    class AutomaticRingSystemModel
     {
         /*
          * Es requerido registrarse
@@ -34,13 +34,13 @@ namespace TimbresIP.Model
          * Lista de horarios
          * 
          */
-        private List<Horary> horaryList = new List<Horary>();
+        private List<HoraryModel> horaryList = new List<HoraryModel>();
 
         /*
          * Lista de timbres generales
          * 
          */
-        private List<Horary> generalRingList = new List<Horary>();
+        private List<HoraryModel> generalRingList = new List<HoraryModel>();
 
     }
 }

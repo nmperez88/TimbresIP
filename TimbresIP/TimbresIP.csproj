@@ -54,39 +54,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\AutomaticRingSystem.cs" />
-    <Compile Include="Model\Horary.cs" />
-    <Compile Include="Model\ConnectionCallServer.cs" />
-    <Compile Include="Model\SoundFile.cs" />
-    <Compile Include="Model\CallServer.cs" />
-    <Compile Include="Utils\FileHandler.cs" />
-    <Compile Include="Utils\Json.cs" />
-    <Compile Include="Views\UserControlGeneralRing.cs">
+    <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Model\AutomaticRingSystemModel.cs" />
+    <Compile Include="Model\HoraryModel.cs" />
+    <Compile Include="Model\ConnectionCallServerModel.cs" />
+    <Compile Include="Model\SoundFileModel.cs" />
+    <Compile Include="Model\CallServerModel.cs" />
+    <Compile Include="Utils\FileHandlerUtils.cs" />
+    <Compile Include="Utils\JsonUtils.cs" />
+    <Compile Include="Views\GeneralRingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControlGeneralRing.Designer.cs">
-      <DependentUpon>UserControlGeneralRing.cs</DependentUpon>
+    <Compile Include="Views\GeneralRingUserControl.Designer.cs">
+      <DependentUpon>GeneralRingUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControlHorary.cs">
+    <Compile Include="Views\HoraryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControlHorary.Designer.cs">
-      <DependentUpon>UserControlHorary.cs</DependentUpon>
+    <Compile Include="Views\HoraryUserControl.Designer.cs">
+      <DependentUpon>HoraryUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormPrincipal.cs">
+    <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FormPrincipal.Designer.cs">
-      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    <Compile Include="Views\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DialogInputBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\UserControlGeneralRing.resx">
-      <DependentUpon>UserControlGeneralRing.cs</DependentUpon>
+    <EmbeddedResource Include="Views\GeneralRingUserControl.resx">
+      <DependentUpon>GeneralRingUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormPrincipal.resx">
-      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,8 +99,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\UserControlHorary.resx">
-      <DependentUpon>UserControlHorary.cs</DependentUpon>
+    <EmbeddedResource Include="Views\HoraryUserControl.resx">
+      <DependentUpon>HoraryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

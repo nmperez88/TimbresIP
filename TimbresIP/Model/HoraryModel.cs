@@ -6,12 +6,12 @@ namespace TimbresIP.Model
     /*
      * Horario
      */
-    class Horary
+    class HoraryModel
     {
         private String name { get; set; }
         private String randomId;//"h"+startId. A startId debe asignarse 1 previamente
-        private List<CallServer> callServerList = new List<CallServer>();
-        private ConnectionCallServer connectionCallServer;
+        private List<CallServerModel> callServerList = new List<CallServerModel>();
+        private ConnectionCallServerModel connectionCallServer;
 
 
         /*

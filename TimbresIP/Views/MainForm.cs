@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    public partial class FormPrincipal : Form
+    public partial class MainForm : Form
     {
-        public FormPrincipal()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace TimbresIP
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
             DialogInputBox input = new DialogInputBox();
-            UserControlHorary userControlHorary = new UserControlHorary();
+            HoraryUserControl userControlHorary = new HoraryUserControl();
             userControlHorary.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
             if (input.InputBox("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
@@ -82,7 +82,7 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            UserControlGeneralRing userControlGeneralRing = new UserControlGeneralRing();
+            GeneralRingUserControl userControlGeneralRing = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(userControlGeneralRing);
         }
     }

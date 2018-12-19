@@ -8,14 +8,14 @@ namespace TimbresIP.Utils
      * Crear y actualizar archivo JSON
      * 
      */
-    class Json
+    class JsonUtils
     {
         private String path;
         private String name;
         private String fullPath;
         private Object contentObject;
 
-        public Json(string path, string name, object contentObject)
+        public JsonUtils(string path, string name, object contentObject)
         {
             this.path = path;
             this.name = name;
@@ -24,7 +24,7 @@ namespace TimbresIP.Utils
             this.contentObject = contentObject;
         }
 
-        public Json(string fullPath, object contentObject)
+        public JsonUtils(string fullPath, object contentObject)
         {
 
             this.fullPath = fullPath;

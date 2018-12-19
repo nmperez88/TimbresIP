@@ -5,7 +5,7 @@ namespace TimbresIP.Model
     /*
      * Llamada al servidor
      */
-    class ConnectionCallServer
+    class ConnectionCallServerModel
     {
 
         /*
