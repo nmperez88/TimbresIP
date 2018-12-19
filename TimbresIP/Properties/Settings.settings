@@ -2,16 +2,16 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TimbresIP.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="jsonExtension" Type="System.String" Scope="Application">
+    <Setting Name="jsonExtension" Type="System.String" Scope="User">
       <Value Profile="(Default)">.json</Value>
     </Setting>
-    <Setting Name="startId" Type="System.String" Scope="Application">
+    <Setting Name="startId" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="jsonFileName" Type="System.String" Scope="Application">
+    <Setting Name="jsonFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">data</Value>
     </Setting>
-    <Setting Name="jsonFolderDirectory" Type="System.String" Scope="Application">
+    <Setting Name="jsonFolderDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

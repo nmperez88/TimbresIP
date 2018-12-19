@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Base.cs" />
+    <Compile Include="Utils\BaseUtils.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Model\AutomaticRingSystemModel.cs" />
     <Compile Include="Model\HoraryModel.cs" />

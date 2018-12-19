@@ -23,39 +23,51 @@ namespace TimbresIP.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(".json")]
         public string jsonExtension {
             get {
                 return ((string)(this["jsonExtension"]));
             }
+            set {
+                this["jsonExtension"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string startId {
             get {
                 return ((string)(this["startId"]));
             }
+            set {
+                this["startId"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("data")]
         public string jsonFileName {
             get {
                 return ((string)(this["jsonFileName"]));
             }
+            set {
+                this["jsonFileName"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string jsonFolderDirectory {
             get {
                 return ((string)(this["jsonFolderDirectory"]));
+            }
+            set {
+                this["jsonFolderDirectory"] = value;
             }
         }
     }

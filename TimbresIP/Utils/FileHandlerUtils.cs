@@ -2,7 +2,7 @@
 
 namespace TimbresIP.Utils
 {
-    class FileHandlerUtils : Base.Base
+    class FileHandlerUtils : BaseUtils
     {
 
         /*
@@ -13,7 +13,14 @@ namespace TimbresIP.Utils
         {
             if (!System.IO.Directory.Exists(fullPath))
             {
-                System.IO.Directory.CreateDirectory(fullPath);
+                try
+                {
+                    System.IO.Directory.CreateDirectory(fullPath);
+                }
+                catch (Exception e)
+                {
+                    log.Error(e);
+                }
             }
         }
 
@@ -25,9 +32,17 @@ namespace TimbresIP.Utils
         {
             if (System.IO.File.Exists(fullPath))
             {
-                System.IO.FileInfo info = new System.IO.FileInfo(fullPath);
-                info.Attributes = System.IO.FileAttributes.Normal;
-                System.IO.File.Delete(fullPath);
+                try
+                {
+                    System.IO.FileInfo info = new System.IO.FileInfo(fullPath);
+                    info.Attributes = System.IO.FileAttributes.Normal;
+                    System.IO.File.Delete(fullPath);
+                }
+                catch (Exception e)
+                {
+                    log.Error(e);
+                }
+
             }
         }
 
@@ -60,9 +75,9 @@ namespace TimbresIP.Utils
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                log.Error(e);
             }
         }
 
