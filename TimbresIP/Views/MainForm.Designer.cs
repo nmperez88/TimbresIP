@@ -117,6 +117,7 @@
             this.textBoxPort.Size = new System.Drawing.Size(65, 20);
             this.textBoxPort.TabIndex = 1;
             this.textBoxPort.Text = "5060";
+            this.textBoxPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPort_KeyPress);
             // 
             // textBoxServer
             // 
@@ -208,7 +209,7 @@
             this.toolTipFormPrincipal.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipFormPrincipal.ToolTipTitle = "Información";
             // 
-            // FormPrincipal
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -221,7 +222,7 @@
             this.Controls.Add(this.groupBoxMainControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "FormPrincipal";
+            this.Name = "MainForm";
             this.Text = "Administrador de Horarios";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.groupBoxMainControl.ResumeLayout(false);
