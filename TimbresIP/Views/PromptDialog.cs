@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    class DialogInputBox
+    class PromptDialog
     {
         public DialogResult InputBox(string title, string promptText, ref string value)
         {

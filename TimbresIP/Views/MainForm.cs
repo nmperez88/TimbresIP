@@ -41,15 +41,15 @@ namespace TimbresIP
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
             DialogInputBox input = new DialogInputBox();
-            HoraryUserControl userControlHorary = new HoraryUserControl();
-            userControlHorary.Dock = DockStyle.Fill;
+            HoraryUserControl horaryUserControl = new HoraryUserControl();
+            horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
             if (input.InputBox("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
                 TabPage horaryTabPage = new TabPage(tabPageName);
                 tabControlHorary.TabPages.Add(horaryTabPage);
                 horaryTabPage.ImageIndex = 0;
-                horaryTabPage.Controls.Add(userControlHorary);
+                horaryTabPage.Controls.Add(horaryUserControl);
             }
         }
 
@@ -82,8 +82,8 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            GeneralRingUserControl userControlGeneralRing = new GeneralRingUserControl();
-            this.groupBoxGeneralSound.Controls.Add(userControlGeneralRing);
+            GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
+            this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
         }
     }
 
