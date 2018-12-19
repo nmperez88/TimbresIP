@@ -1,6 +1,6 @@
 ﻿namespace TimbresIP
 {
-    partial class UserControlHorary
+    partial class HoraryUserControl
     {
         /// <summary> 
         /// Required designer variable.

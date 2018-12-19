@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    public partial class UserControlHorary : UserControl
+    public partial class HoraryUserControl : UserControl
     {
-        public UserControlHorary()
+        public HoraryUserControl()
         {
             InitializeComponent();
         }

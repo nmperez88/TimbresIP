@@ -1,6 +1,6 @@
 ﻿namespace TimbresIP
 {
-    partial class FormPrincipal
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBoxMainControl = new System.Windows.Forms.GroupBox();
             this.buttonEditServer = new System.Windows.Forms.Button();
             this.buttonSaveServer = new System.Windows.Forms.Button();

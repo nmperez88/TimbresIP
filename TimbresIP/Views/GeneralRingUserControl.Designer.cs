@@ -1,6 +1,6 @@
 ﻿namespace TimbresIP
 {
-    partial class UserControlGeneralSound
+    partial class GeneralRingUserControl
     {
         /// <summary> 
         /// Required designer variable.

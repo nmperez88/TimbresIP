@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    public partial class UserControlGeneralSound : UserControl
+    public partial class GeneralRingUserControl : UserControl
     {
-        public UserControlGeneralSound()
+        public GeneralRingUserControl()
         {
             InitializeComponent();
         }

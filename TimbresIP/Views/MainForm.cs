@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    public partial class FormPrincipal : Form
+    public partial class MainForm : Form
     {
-        public FormPrincipal()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -40,16 +40,15 @@ namespace TimbresIP
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
-            DialogInputBox input = new DialogInputBox();
-            UserControlHorary userControlHorary = new UserControlHorary();
-            userControlHorary.Dock = DockStyle.Fill;
+            HoraryUserControl horaryUserControl = new HoraryUserControl();
+            horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
-            if (input.InputBox("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
+            if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
                 TabPage horaryTabPage = new TabPage(tabPageName);
                 tabControlHorary.TabPages.Add(horaryTabPage);
                 horaryTabPage.ImageIndex = 0;
-                horaryTabPage.Controls.Add(userControlHorary);
+                horaryTabPage.Controls.Add(horaryUserControl);
             }
         }
 
@@ -69,9 +68,8 @@ namespace TimbresIP
         {
             if (tabControlHorary.TabPages.Count > 0)
             {
-                DialogInputBox input = new DialogInputBox();
                 string tabPageName = "";
-                if (input.InputBox("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
+                if (Dialog.Prompt("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
                     TabPage horaryTabPage = new TabPage(tabPageName);
                     tabControlHorary.SelectedTab.Text = tabPageName;
@@ -82,33 +80,8 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            UserControlGeneralSound userControlGeneralSound = new UserControlGeneralSound();
-            this.groupBoxGeneralSound.Controls.Add(userControlGeneralSound);
-        }
-
-        private void textBoxPort_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBoxServer_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+            GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
+            this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
         }
     }
 

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    class DialogInputBox
+    class Dialog
     {
-        public DialogResult InputBox(string title, string promptText, ref string value)
+        static public DialogResult Prompt(string title, string promptText, ref string value)
         {
             Form form = new Form();
             Label label = new Label();
