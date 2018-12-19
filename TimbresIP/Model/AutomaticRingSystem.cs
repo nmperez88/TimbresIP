@@ -37,10 +37,10 @@ namespace TimbresIP.Model
         private List<Horary> horaryList = new List<Horary>();
 
         /*
-         * Lista de tonos generales
+         * Lista de timbres generales
          * 
          */
-        private List<Horary> generalSoundList = new List<Horary>();
+        private List<Horary> generalRingList = new List<Horary>();
 
     }
 }
