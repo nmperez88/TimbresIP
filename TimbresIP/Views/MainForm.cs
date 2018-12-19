@@ -40,11 +40,11 @@ namespace TimbresIP
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
-            DialogInputBox input = new DialogInputBox();
+            Dialog dialog = new Dialog();
             HoraryUserControl horaryUserControl = new HoraryUserControl();
             horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
-            if (input.InputBox("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
+            if (dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
             {
                 TabPage horaryTabPage = new TabPage(tabPageName);
                 tabControlHorary.TabPages.Add(horaryTabPage);
@@ -69,9 +69,9 @@ namespace TimbresIP
         {
             if (tabControlHorary.TabPages.Count > 0)
             {
-                DialogInputBox input = new DialogInputBox();
+                Dialog dialog = new Dialog();
                 string tabPageName = "";
-                if (input.InputBox("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
+                if (dialog.Prompt("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
                     TabPage horaryTabPage = new TabPage(tabPageName);
                     tabControlHorary.SelectedTab.Text = tabPageName;
