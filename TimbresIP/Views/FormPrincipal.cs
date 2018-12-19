@@ -82,8 +82,8 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            UserControlGeneralSound userControlGeneralSound = new UserControlGeneralSound();
-            this.groupBoxGeneralSound.Controls.Add(userControlGeneralSound);
+            UserControlGeneralRing userControlGeneralRing = new UserControlGeneralRing();
+            this.groupBoxGeneralSound.Controls.Add(userControlGeneralRing);
         }
     }
 

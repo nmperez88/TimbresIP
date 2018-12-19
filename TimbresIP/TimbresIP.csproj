@@ -61,11 +61,11 @@
     <Compile Include="Model\CallServer.cs" />
     <Compile Include="Utils\FileHandler.cs" />
     <Compile Include="Utils\Json.cs" />
-    <Compile Include="Views\UserControlGeneralSound.cs">
+    <Compile Include="Views\UserControlGeneralRing.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControlGeneralSound.Designer.cs">
-      <DependentUpon>UserControlGeneralSound.cs</DependentUpon>
+    <Compile Include="Views\UserControlGeneralRing.Designer.cs">
+      <DependentUpon>UserControlGeneralRing.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControlHorary.cs">
       <SubType>UserControl</SubType>
@@ -82,8 +82,8 @@
     <Compile Include="Views\DialogInputBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\UserControlGeneralSound.resx">
-      <DependentUpon>UserControlGeneralSound.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserControlGeneralRing.resx">
+      <DependentUpon>UserControlGeneralRing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>

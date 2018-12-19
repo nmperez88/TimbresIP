@@ -16,19 +16,31 @@ namespace TimbresIP.Model
          * Es requerido registrarse
          * 
          */
-        static Boolean registrationRequired = true;
+        private Boolean registrationRequired = true;
 
         /*
          * Servidor
          * 
          */
-        static String domainHost = "100.50.40.3";
+        private String domainHost = "100.50.40.3";
 
         /*
          * Puerto del servidor
          * 
          */
-        static Int32 domainPort = 5060;
+        private Int32 domainPort = 5060;
+
+        /*
+         * Lista de horarios
+         * 
+         */
+        private List<Horary> horaryList = new List<Horary>();
+
+        /*
+         * Lista de tonos generales
+         * 
+         */
+        private List<Horary> generalSoundList = new List<Horary>();
 
     }
 }
