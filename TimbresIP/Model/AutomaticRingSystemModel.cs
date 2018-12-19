@@ -16,31 +16,31 @@ namespace TimbresIP.Model
          * Es requerido registrarse
          * 
          */
-        private Boolean registrationRequired = true;
+        public Boolean registrationRequired { get; set; } = true;
 
         /*
          * Servidor
          * 
          */
-        private String domainHost = "100.50.40.3";
+        public String domainHost { get; set; } //= "";//"100.50.40.3";
 
         /*
          * Puerto del servidor
          * 
          */
-        private Int32 domainPort = 5060;
+        public Int32 domainPort { get; set; } //= 5060;
 
         /*
          * Lista de horarios
          * 
          */
-        private List<HoraryModel> horaryList = new List<HoraryModel>();
+        public List<HoraryModel> horaryList { get; set; } = new List<HoraryModel>();
 
         /*
          * Lista de timbres generales
          * 
          */
-        private List<HoraryModel> generalRingList = new List<HoraryModel>();
+        public List<HoraryModel> generalRingList { get; set; } = new List<HoraryModel>();
 
     }
 }

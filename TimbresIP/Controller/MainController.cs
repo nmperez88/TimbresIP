@@ -8,7 +8,7 @@ using TimbresIP.Utils;
 
 namespace TimbresIP.Controller
 {
-    class MainController
+    class MainController : BaseUtils
     {
         /*
          * AutomaticRingSystemModel
@@ -40,18 +40,36 @@ namespace TimbresIP.Controller
         //Existe(No)=> new AutomaticRingSystem()
         //      (Sí)=> (AutomaticRingSystem)JsonUtils.deserialize() 
 
+        /*
+         * Inicializar datos de la aplicación
+         * 
+         */
         public void init()
         {
             jsonFileFullPath = Properties.Settings.Default.jsonFolderDirectory + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
 
             if (System.IO.File.Exists(jsonFileFullPath))
             {
-
+                jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath);
+                automaticRingSystemModel = (AutomaticRingSystemModel)jsonHandlerUtils.deserialize();
             }
-            jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath, null);
+            else
+            {
+                log.Info("El archivo JSON no existe. Debe ser creado antes de guardar.");
+                automaticRingSystemModel = new AutomaticRingSystemModel();
+            }
+
+            //Están los parámetros de conexión al servidor.
+            //Hay horarios configurados.
+            //  Está habilitado.
+            //  Existe archivo de sonido. Deshabilitar horario en caso de no existir archivo de sonido.
+            //  Tiene los parámetros de conexión al servidor.
+
+            //Construir lista de timbres a ejecutar.
+            //Lanzar hilo(thread) que verifica si debe ejecutarse algún timbre
+
         }
 
-        //Lanzar hilo que verifica si debe ejecutarse algún timbre
     }
 
 }
