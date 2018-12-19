@@ -34,12 +34,6 @@ namespace TimbresIP.Controller
          */
         private List<String> plannedHours;
 
-
-
-        //Inicializar automaticRingSystemLeer archivo JSON. 
-        //Existe(No)=> new AutomaticRingSystem()
-        //      (Sí)=> (AutomaticRingSystem)JsonUtils.deserialize() 
-
         /*
          * Inicializar datos de la aplicación
          * 
@@ -60,6 +54,10 @@ namespace TimbresIP.Controller
             }
 
             //Están los parámetros de conexión al servidor.
+            if (hasServerParams())
+            {
+
+            }
             //Hay horarios configurados.
             //  Está habilitado.
             //  Existe archivo de sonido. Deshabilitar horario en caso de no existir archivo de sonido.
@@ -70,6 +68,10 @@ namespace TimbresIP.Controller
 
         }
 
+        private bool hasServerParams()
+        {
+            return !automaticRingSystemModel.domainHost.Equals("") && automaticRingSystemModel.domainPort != null;
+        }
     }
 
 }
