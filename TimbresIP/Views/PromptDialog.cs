@@ -6,7 +6,7 @@ namespace TimbresIP
 {
     class PromptDialog
     {
-        public DialogResult InputBox(string title, string promptText, ref string value)
+        public DialogResult Prompt(string title, string promptText, ref string value)
         {
             Form form = new Form();
             Label label = new Label();
