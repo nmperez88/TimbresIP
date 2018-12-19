@@ -62,7 +62,7 @@ namespace TimbresIP
 
                     tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
             }
-            else { MessageBox.Show("No tiene horarios creados", "Error",MessageBoxButtons.OK,MessageBoxIcon.Stop); }
+            else { MessageBox.Show("No tiene horarios creados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); }
         }
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
@@ -85,7 +85,32 @@ namespace TimbresIP
             UserControlGeneralSound userControlGeneralSound = new UserControlGeneralSound();
             this.groupBoxGeneralSound.Controls.Add(userControlGeneralSound);
         }
+
+        private void textBoxPort_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxServer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 
-    }
+}
 

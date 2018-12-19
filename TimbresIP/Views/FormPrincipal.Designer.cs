@@ -117,6 +117,7 @@
             this.textBoxPort.Size = new System.Drawing.Size(65, 20);
             this.textBoxPort.TabIndex = 1;
             this.textBoxPort.Text = "5060";
+            this.textBoxPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPort_KeyPress);
             // 
             // textBoxServer
             // 
@@ -126,6 +127,7 @@
             this.textBoxServer.Size = new System.Drawing.Size(128, 20);
             this.textBoxServer.TabIndex = 0;
             this.textBoxServer.Text = "100.50.40.3";
+            this.textBoxServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxServer_KeyPress);
             // 
             // groupBoxHorary
             // 
