@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TimbresIP.Model;
 using TimbresIP.Utils;
+using Ozeki.Media;
+using Ozeki.VoIP;
 
 namespace TimbresIP.Controller
 {
@@ -13,10 +15,23 @@ namespace TimbresIP.Controller
     /// </summary>
     class MainController : BaseUtils
     {
+
+        static ISoftPhone softphone;
+        static IPhoneLine phoneLine;
+        static IPhoneCall call;
+        static MediaConnector connector;
+        static PhoneCallAudioSender mediaSender;
+        static MP3StreamPlayback mp3Player;
+
         /// <summary>
         /// Sistema de Timbres Automáticos.
         /// </summary>
         private AutomaticRingSystemModel automaticRingSystem;
+
+        /// <summary>
+        /// Lista de timbres a ejecutar.
+        /// </summary>
+        private AutomaticRingSystemModel automaticRingSystemToExecute = new AutomaticRingSystemModel();
 
         /// <summary>
         /// Ruta de archivo Json.
@@ -61,8 +76,6 @@ namespace TimbresIP.Controller
                 //Hay horarios configurados?.
                 if (automaticRingSystem.horaryList.Any())
                 {
-                    //Lista de timbres a ejecutar.
-                    AutomaticRingSystemModel automaticRingSystemToExecute = new AutomaticRingSystemModel();
                     automaticRingSystem.horaryList.ForEach(h =>
                     {
                         //Tiene el horario definidos los parámetros para llamar al servidor?.
@@ -97,19 +110,22 @@ namespace TimbresIP.Controller
                                 horary = h;
                                 horary.callServerList = callServerList;
                                 automaticRingSystemToExecute.horaryList.Add(horary);
-
                             }
                         }
-
-
-
                     });
-
-
                 }
             }
 
             //TODO Lanzar hilo(thread) que verifica si debe ejecutarse algún timbre
+            runThread();
+
+        }
+
+        /// <summary>
+        /// Ejecutar hilo que ejecuta llamadas al servidor en hora determinada.
+        /// </summary>
+        private void runThread()
+        {
 
         }
 
