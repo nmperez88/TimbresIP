@@ -8,6 +8,7 @@ using TimbresIP.Utils;
 using Ozeki.Media;
 using Ozeki.VoIP;
 
+
 namespace TimbresIP.Controller
 {
     /// <summary>
@@ -116,7 +117,7 @@ namespace TimbresIP.Controller
                 }
             }
 
-            //TODO Lanzar hilo(thread) que verifica si debe ejecutarse algún timbre
+            //TODO Ejecutar hilo que ejecuta llamadas al servidor en hora determinada.
             runThread();
 
         }
@@ -126,7 +127,7 @@ namespace TimbresIP.Controller
         /// </summary>
         private void runThread()
         {
-
+            //Ejecutar un hilo para cada horario
         }
 
         /// <summary>
@@ -158,5 +159,4 @@ namespace TimbresIP.Controller
             Properties.Settings.Default.Reload();
         }
     }
-
 }
