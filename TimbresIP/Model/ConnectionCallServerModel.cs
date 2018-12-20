@@ -2,35 +2,31 @@
 
 namespace TimbresIP.Model
 {
-    /*
-     * Llamada al servidor
-     */
+    /// <summary>
+    /// Llamada al servidor.
+    /// </summary>
     class ConnectionCallServerModel
     {
 
-        /*
-         * NNombre a mostrar. Generalmente es la extensión telefónica
-         * 
-         */
-        private String displayName;
+        /// <summary>
+        /// Nombre a mostrar. Generalmente es la extensión telefónica.
+        /// </summary>
+        public String displayName { get; set; }
 
-        /*
-         * Nombre de usuario. Generalmente es la extensión telefónica
-         * 
-         */
-        private String userName;
+        /// <summary>
+        /// Nombre de usuario. Generalmente es la extensión telefónica.
+        /// </summary>
+        public String userName { get; set; }
 
-        /*
-         * Extensión a llamar. authenticationId
-         * 
-         */
-        private String registerName;
+        ///<summary>
+        ///Extensión a llamar(authenticationId).
+        ///</summary>
+        public String registerName { get; set; }
 
-        /*
-         * Clave, contraseña
-         * 
-         */
-        private String registerPassword;
+        /// <summary>
+        /// Clave, contraseña.
+        /// </summary>
+        public String registerPassword { get; set; }
 
     }
 }

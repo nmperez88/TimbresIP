@@ -6,40 +6,34 @@ using System.Threading.Tasks;
 
 namespace TimbresIP.Model
 {
-    /*
-     * Sistema de Timbres Automáticos
-     * 
-     */
+    /// <summary>
+    /// Sistema de Timbres Automáticos.
+    /// </summary>
     class AutomaticRingSystemModel
     {
-        /*
-         * Es requerido registrarse
-         * 
-         */
+        /// <summary>
+        /// Es requerido registrarse.
+        /// </summary>
         public Boolean registrationRequired { get; set; } = true;
 
-        /*
-         * Servidor
-         * 
-         */
-        public String domainHost { get; set; } //= "";//"100.50.40.3";
+        /// <summary>
+        /// Servidor.
+        /// </summary>
+        public String domainHost { get; set; } = "";//"100.50.40.3";
 
-        /*
-         * Puerto del servidor
-         * 
-         */
-        public Int32 domainPort { get; set; } //= 5060;
+        /// <summary>
+        /// Puerto del servidor.
+        /// </summary>
+        public Int32 domainPort { get; set; } = 0;//= 5060;
 
-        /*
-         * Lista de horarios
-         * 
-         */
+        /// <summary>
+        /// Lista de horarios.
+        /// </summary>
         public List<HoraryModel> horaryList { get; set; } = new List<HoraryModel>();
 
-        /*
-         * Lista de timbres generales
-         * 
-         */
+        /// <summary>
+        /// Lista de timbres generales.
+        /// </summary>
         public List<HoraryModel> generalRingList { get; set; } = new List<HoraryModel>();
 
     }
