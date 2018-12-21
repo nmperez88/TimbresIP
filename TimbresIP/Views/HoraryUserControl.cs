@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TimbresIP
 {
     public partial class HoraryUserControl : UserControl
     {
+        ValidateEntries validationEntries = new ValidateEntries();
+
         public HoraryUserControl()
         {
             InitializeComponent();
@@ -54,43 +57,65 @@ namespace TimbresIP
 
         private void textBoxHoraryIdExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            validationEntries.validateNumericEntries(e);
         }
 
         private void textBoxHoraryExtExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            validationEntries.validateNumericEntries(e);
+        }
+
+        private void dataGridViewHorary_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
             {
-                e.Handled = false;
+                case "ColumnTone":
+                    if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                    {
+                        DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample");
+                        FileInfo[] files = dir.GetFiles();
+                        comboBox.DataSource = files;
+                        comboBox.DisplayMember = nameof(FileInfo.Name);
+                    }
+                    break;
+                case "ColumnCall":
+                    MessageBox.Show("ColumnCall");
+                    break;
             }
-            else if (Char.IsControl(e.KeyChar))
+        }
+
+        private void dataGridViewHorary_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            switch (dataGridViewHorary.Columns[e.ColumnIndex].Name)
             {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
+                case "ColumnExtension":
+                    //Validamos si no es una fila nueva
+                    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
+                    {
+                        if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()))
+                        {
+                            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                            e.Cancel = true;
+                        }
+                    }
+                    break;
+                case "ColumnNo":
+                    //Validamos si no es una fila nueva
+                    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
+                    {
+                        if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()))
+                        {
+                            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                            e.Cancel = true;
+                        }
+                    }
+                    break;
             }
         }
     }
-    }
+}
+
 

@@ -161,7 +161,10 @@
             this.dataGridViewGeneralSound.RowHeadersWidth = 30;
             this.dataGridViewGeneralSound.Size = new System.Drawing.Size(515, 156);
             this.dataGridViewGeneralSound.TabIndex = 4;
+            this.dataGridViewGeneralSound.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneralSound_CellClick);
+            this.dataGridViewGeneralSound.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneralSound_CellEndEdit);
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
+            this.dataGridViewGeneralSound.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewGeneralSound_CellValidating);
             // 
             // ColumnTone
             // 
@@ -194,14 +197,14 @@
             this.ColumnObservation.Name = "ColumnObservation";
             this.ColumnObservation.Width = 262;
             // 
-            // UserControlGeneralSound
+            // GeneralRingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.dataGridViewGeneralSound);
             this.Controls.Add(this.groupBoxGeneralSoundExtension);
-            this.Name = "UserControlGeneralSound";
+            this.Name = "GeneralRingUserControl";
             this.Size = new System.Drawing.Size(869, 162);
             this.groupBoxGeneralSoundExtension.ResumeLayout(false);
             this.groupBoxGeneralSoundExtension.PerformLayout();

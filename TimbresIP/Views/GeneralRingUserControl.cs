@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TimbresIP
 {
     public partial class GeneralRingUserControl : UserControl
     {
+        ValidateEntries validationEntries = new ValidateEntries();
+
         public GeneralRingUserControl()
         {
             InitializeComponent();
@@ -55,42 +58,52 @@ namespace TimbresIP
 
         private void textBoxGeneralSoundIdExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            validationEntries.validateNumericEntries(e);
         }
 
         private void textBoxGeneralSoundExtExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            validationEntries.validateNumericEntries(e);
+        }
+
+        private void dataGridViewGeneralSound_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
             {
-                e.Handled = false;
+                case "ColumnTone":
+                    if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                    {
+                        DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample");
+                        FileInfo[] files = dir.GetFiles();
+                        comboBox.DataSource = files;
+                        comboBox.DisplayMember = nameof(FileInfo.Name);
+                    }
+                    break;
+                case "ColumnCall":
+                    MessageBox.Show("ColumnCall");
+                    break;
             }
-            else if (Char.IsControl(e.KeyChar))
+        }
+
+        private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            //Validamos si no es una fila nueva
+            if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
             {
-                e.Handled = false;
+                if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()) && dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "ColumnExtension")
+                {
+                    MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo fecha";
+                    e.Cancel = true;
+                }
             }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+        }
+
+        private void dataGridViewGeneralSound_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //Elimina el mensaje de error de la cabecera de la fila
+            dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = String.Empty;
         }
     }
 }
