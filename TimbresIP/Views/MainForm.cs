@@ -12,7 +12,7 @@ namespace TimbresIP
 {
     public partial class MainForm : Form
     {
-        ValidateEntries validationEntries = new ValidateEntries();
+        ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
 
         public MainForm()
         {
@@ -82,11 +82,13 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            PCFeatures pc = new PCFeatures();
-            foreach (string item in pc.pcFeatures())
-            {
-                MessageBox.Show(item);
-            }
+            //Mostrar las caracteristicas de interes del ordenador donde se ejecuta el Soft
+            //FeaturesUtils pc = new FeaturesUtils();
+            //foreach (string item in pc.PcFeatures)
+            //{
+            //    MessageBox.Show(item);
+            //}
+
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
         }

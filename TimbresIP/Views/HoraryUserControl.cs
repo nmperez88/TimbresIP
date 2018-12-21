@@ -13,7 +13,7 @@ namespace TimbresIP
 {
     public partial class HoraryUserControl : UserControl
     {
-        ValidateEntries validationEntries = new ValidateEntries();
+        ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
 
         public HoraryUserControl()
         {

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TimbresIP
 {
-    class ValidateEntries
+    class ValidateEntriesUtils
     {
         public bool validateNumericEntries(KeyPressEventArgs e)
         {
@@ -29,6 +29,7 @@ namespace TimbresIP
             }
             return e.Handled;
         }
+
         public bool validateLetterEntries(KeyPressEventArgs e)
         {
             if (Char.IsLetter(e.KeyChar))
@@ -50,11 +51,11 @@ namespace TimbresIP
             return e.Handled;
         }
 
-        public bool validateEnteredText(string text)
+        public bool validateEnteredText(string Text)
         {
-            int valorNumerico = 0;
+            int ValorNumerico = 0;
 
-            if (int.TryParse(text, out valorNumerico))
+            if (int.TryParse(Text, out ValorNumerico))
             {
                 return true;
             }
