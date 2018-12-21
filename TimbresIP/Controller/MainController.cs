@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TimbresIP.Model;
 using TimbresIP.Utils;
-using Ozeki.Media;
-using Ozeki.VoIP;
+//using Ozeki.Media;
+//using Ozeki.VoIP;
 
 
 namespace TimbresIP.Controller
@@ -16,13 +16,12 @@ namespace TimbresIP.Controller
     /// </summary>
     class MainController : BaseUtils
     {
-
-        static ISoftPhone softphone;
-        static IPhoneLine phoneLine;
-        static IPhoneCall call;
-        static MediaConnector connector;
-        static PhoneCallAudioSender mediaSender;
-        static MP3StreamPlayback mp3Player;
+        //static ISoftPhone softphone;
+        //static IPhoneLine phoneLine;
+        //static IPhoneCall call;
+        //static MediaConnector connector;
+        //static PhoneCallAudioSender mediaSender;
+        //static MP3StreamPlayback mp3Player;
 
         /// <summary>
         /// Sistema de Timbres Automáticos.

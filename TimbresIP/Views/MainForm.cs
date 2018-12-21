@@ -82,6 +82,11 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
+            PCFeatures pc = new PCFeatures();
+            foreach (string item in pc.pcFeatures())
+            {
+                MessageBox.Show(item);
+            }
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
         }

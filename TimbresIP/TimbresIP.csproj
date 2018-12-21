@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\PCFeatures.cs" />
     <Compile Include="Utils\BaseUtils.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Model\AutomaticRingSystemModel.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Utils\FileHandlerUtils.cs" />
     <Compile Include="Utils\JsonHandlerUtils.cs" />
     <Compile Include="Utils\RingJob.cs" />
+    <Compile Include="Utils\ValidateEntries.cs" />
     <Compile Include="Views\GeneralRingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
