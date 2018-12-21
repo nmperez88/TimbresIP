@@ -67,21 +67,24 @@ namespace TimbresIP
 
         private void dataGridViewHorary_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
-                case "ColumnTone":
-                    if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-                    {
-                        DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
-                        DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample");
-                        FileInfo[] files = dir.GetFiles();
-                        comboBox.DataSource = files;
-                        comboBox.DisplayMember = nameof(FileInfo.Name);
-                    }
-                    break;
-                case "ColumnCall":
-                    MessageBox.Show("ColumnCall");
-                    break;
+                switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
+                {
+                    case "ColumnTone":
+                        if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                        {
+                            DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                            DirectoryInfo dirInfo = new DirectoryInfo(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample");
+                            FileInfo[] files = dirInfo.GetFiles();
+                            comboBox.DataSource = files;
+                            comboBox.DisplayMember = nameof(FileInfo.Name);
+                        }
+                        break;
+                    case "ColumnCall":
+                        MessageBox.Show("ColumnCall");
+                        break;
+                }
             }
         }
 
@@ -113,6 +116,19 @@ namespace TimbresIP
                         }
                     }
                     break;
+            }
+        }
+
+        private void dataGridViewHorary_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dataGridViewHorary.Rows.Count == Properties.Settings.Default.numberHoursSchedule+1)
+            {
+                this.dataGridViewHorary.AllowUserToAddRows = false;
+                MessageBox.Show("No se puede crear más horas, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                this.dataGridViewHorary.AllowUserToAddRows = true;
             }
         }
     }

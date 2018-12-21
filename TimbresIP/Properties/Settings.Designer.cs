@@ -83,5 +83,41 @@ namespace TimbresIP.Properties {
                 this["dnsExternalConsult"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string catidad {
+            get {
+                return ((string)(this["catidad"]));
+            }
+            set {
+                this["catidad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int numberSchedulesTab {
+            get {
+                return ((int)(this["numberSchedulesTab"]));
+            }
+            set {
+                this["numberSchedulesTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int numberHoursSchedule {
+            get {
+                return ((int)(this["numberHoursSchedule"]));
+            }
+            set {
+                this["numberHoursSchedule"] = value;
+            }
+        }
     }
 }
