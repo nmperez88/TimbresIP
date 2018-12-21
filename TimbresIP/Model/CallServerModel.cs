@@ -2,52 +2,45 @@
 
 namespace TimbresIP.Model
 {
-    /*
-     * Llamada al servidor para horario
-     */
+    /// <summary>
+    /// Llamada al servidor para horario.
+    /// </summary>
     class CallServerModel
     {
-        /*
-         * Número en la lista
-         * 
-         */
-        private String number;
+        /// <summary>
+        /// Número en la lista.
+        /// </summary>
+        public String number { get; set; }
 
-        /*
-         * Hora de inicio
-         * 
-         */
-        private String startAt;
+        /// <summary>
+        /// Hora de inicio.
+        /// </summary>
+        public String startAt { get; set; }
 
-        /*
-         * Tiempo que debe durar la llamada
-         * 
-         */
-        private String callTime;
+        /// <summary>
+        /// Tiempo que debe durar la llamada.
+        /// </summary>
+        private String callTime { get; set; }
 
-        /*
-         * Archivo de sonido
-         * 
-         */
-        private SoundFileModel soundFile;
+        /// <summary>
+        /// Archivo de sonido.
+        /// </summary>
+        public SoundFileModel soundFile { get; set; }
 
-        /*
-         * Habilitado
-         * 
-         */
-        private Boolean enabled;
+        /// <summary>
+        /// Habilitado.
+        /// </summary>
+        public Boolean enabled { get; set; }
 
-        /*
-         * Extensión a llamar. Generalmente es la extensión telefónica. numberToDial
-         * 
-         */
-        private String registerName;
+        /// <summary>
+        /// Extensión a llamar. Generalmente es la extensión telefónica. numberToDial.
+        /// </summary>
+        public String registerName { get; set; }
 
-        /*
-         * Observaciones
-         * 
-         */
-        private String observations;
+        /// <summary>
+        /// Observaciones.
+        /// </summary>
+        public String observations { get; set; }
 
     }
 }

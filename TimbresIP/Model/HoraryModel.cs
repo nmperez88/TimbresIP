@@ -3,26 +3,33 @@ using System.Collections.Generic;
 
 namespace TimbresIP.Model
 {
-    /*
-     * Horario
-     */
+    /// <summary>
+    /// Horario.
+    /// </summary>
     class HoraryModel
     {
-        private String name { get; set; }
-        private String randomId;//"h"+startId. A startId debe asignarse 1 previamente
-        private List<CallServerModel> callServerList = new List<CallServerModel>();
-        private ConnectionCallServerModel connectionCallServer;
+        /// <summary>
+        /// Nombre.
+        /// </summary>
+        public String name { get; set; }
 
+        /// <summary>
+        /// Identificador.
+        /// </summary>
+        /// <remarks>
+        /// Sintaxis: "h"+startId.A startId debe asignarse 1 previamente.
+        /// </remarks>
+        public String randomId { get; set; }
 
-        /*
-         * Incrementar propiedad de configuración startId
-         * 
-         */
-        public void increaseStartId()
-        {
-            Properties.Settings.Default.startId = Properties.Settings.Default.startId + 1;
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Reload();
-        }
+        /// <summary>
+        /// Lista de llamadas al servidor.
+        /// </summary>
+        public List<CallServerModel> callServerList { get; set; } = new List<CallServerModel>();
+
+        /// <summary>
+        /// Conexión al servidor.
+        /// </summary>
+        public ConnectionCallServerModel connectionCallServer { get; set; }
+
     }
 }

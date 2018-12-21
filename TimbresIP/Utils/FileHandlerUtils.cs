@@ -2,20 +2,23 @@
 
 namespace TimbresIP.Utils
 {
+    /// <summary>
+    /// Gestionar archivos.
+    /// </summary>
     class FileHandlerUtils : BaseUtils
     {
 
-        /*
-         * Crear directorio vacío
-         * 
-         */
-        public static void CreateEmptyDirectory(string fullPath)
+        /// <summary>
+        /// Crear directorio vacío.
+        /// </summary>
+        /// <param name="dirPath"></param>
+        public static void CreateEmptyDirectory(string dirPath)
         {
-            if (!System.IO.Directory.Exists(fullPath))
+            if (!System.IO.Directory.Exists(dirPath))
             {
                 try
                 {
-                    System.IO.Directory.CreateDirectory(fullPath);
+                    System.IO.Directory.CreateDirectory(dirPath);
                 }
                 catch (Exception e)
                 {
@@ -24,10 +27,10 @@ namespace TimbresIP.Utils
             }
         }
 
-        /*
-         * Borrar un archivo
-         * 
-         */
+        /// <summary>
+        /// Borrar un archivo.
+        /// </summary>
+        /// <param name="fullPath"></param>
         public static void DeleteFile(string fullPath)
         {
             if (System.IO.File.Exists(fullPath))
@@ -46,10 +49,12 @@ namespace TimbresIP.Utils
             }
         }
 
-        /*
-         * Copiar archivo
-         * 
-         */
+        /// <summary>
+        /// Copiar archivo.
+        /// </summary>
+        /// <param name="origPath"></param>
+        /// <param name="destPath"></param>
+        /// <param name="overwrite"></param>
         public static void CopyFile(string origPath, string destPath, bool overwrite)
         {
             try

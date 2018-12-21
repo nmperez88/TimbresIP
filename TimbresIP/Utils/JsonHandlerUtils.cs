@@ -4,34 +4,57 @@ using System.IO;
 
 namespace TimbresIP.Utils
 {
-    /*
-     * Crear y actualizar archivo JSON
-     * 
-     */
+    /// <summary>
+    /// Crear y actualizar archivo JSON.
+    /// </summary>
     class JsonHandlerUtils : BaseUtils
     {
-        private String path;
-        private String name;
-        private String fullPath;
-        private Object contentObject;
+        /// <summary>
+        /// Ruta a directorio.
+        /// </summary>
+        /// <remarks>
+        /// Hasta carpeta que contiene el archivo.
+        /// </remarks>
+        private String dirPath;
 
-        //public JsonHandlerUtils(string path, string name, object contentObject)
+        /// <summary>
+        /// Nombre.
+        /// </summary>
+        private String name;
+
+        /// <summary>
+        /// Ruta completa.
+        /// </summary>
+        private String fullPath;
+
+        /// <summary>
+        /// Contenido.
+        /// </summary>
+        private Object content;
+
+        //public JsonHandlerUtils(string dirPath, string name, object content)
         //{
-        //    this.path = path;
+        //    this.dirPath = dirPath;
         //    this.name = name;
-        //    this.fullPath = path + "/" + name;
+        //    this.fullPath = dirPath + "/" + name;
         //    checkExtension();
-        //    this.contentObject = contentObject;
+        //    this.content = content;
         //}
 
-        //public JsonHandlerUtils(string fullPath, object contentObject)
+        //public JsonHandlerUtils(string fullPath, object content)
         //{
 
         //    this.fullPath = fullPath;
         //    checkExtension();
-        //    this.contentObject = contentObject;
+        //    this.content = content;
         //}
 
+        /// <summary>
+        /// Contructor.
+        /// </summary>
+        /// <param name="fullPath">
+        /// Ruta completa.
+        /// </param>
         public JsonHandlerUtils(string fullPath)
         {
 
@@ -39,15 +62,15 @@ namespace TimbresIP.Utils
             checkExtension();
         }
 
-        ///*
-        // * Crear o actualizar
-        // * 
-        // */
+        ///// <summary>
+        ///// Crear o actualizar.
+        ///// </summary>
+
         //public void serialize()
         //{
         //    try
         //    {
-        //        string outputJSON = JsonConvert.SerializeObject(contentObject);
+        //        string outputJSON = JsonConvert.SerializeObject(content);
         //        File.WriteAllText(fullPath, outputJSON);
         //    }
         //    catch (Exception e)
@@ -56,18 +79,20 @@ namespace TimbresIP.Utils
         //    }
         //}
 
-        /*
-         * Crear o actualizar
-         * 
-         */
-        public void serialize(Object contentObject)
+        /// <summary>
+        /// Crear o actualizar.
+        /// </summary>
+        /// <param name="content">
+        /// Contenido del archivo.
+        /// </param>
+        public void serialize(Object content)
         {
 
             try
             {
-                string outputJSON = JsonConvert.SerializeObject(contentObject);
+                string outputJSON = JsonConvert.SerializeObject(content);
                 File.WriteAllText(fullPath, outputJSON);
-                this.contentObject = contentObject;
+                this.content = content;
             }
             catch (Exception e)
             {
@@ -75,10 +100,10 @@ namespace TimbresIP.Utils
             }
         }
 
-        /*
-         * Obtener contenido
-         * 
-         */
+        /// <summary>
+        /// Obtener contenido.
+        /// </summary>
+        /// <returns></returns>
         public Object deserialize()
         {
             Object obj = new Object();
@@ -95,10 +120,9 @@ namespace TimbresIP.Utils
             return obj;
         }
 
-        /*
-         * Chequear tenga extensión, agregarla en caso de no tenerla
-         * 
-         */
+        /// <summary>
+        /// Chequear tenga extensión, agregarla en caso de no tenerla.
+        /// </summary>
         public void checkExtension()
         {
             if (!fullPath.EndsWith(Properties.Settings.Default.jsonExtension))
