@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,10 @@ using TimbresIP.Model;
 using TimbresIP.Utils;
 using Ozeki.Media;
 using Ozeki.VoIP;
-
+using Quartz;
+using Quartz.Impl;
+using Quartz.Impl.Calendar;
+using Quartz.Impl.Matchers;
 
 namespace TimbresIP.Controller
 {
@@ -16,12 +20,20 @@ namespace TimbresIP.Controller
     /// </summary>
     class MainController : BaseUtils
     {
+        /// <summary>
+        /// 
+        /// </summary>
         static ISoftPhone softphone;
         static IPhoneLine phoneLine;
         static IPhoneCall call;
         static MediaConnector connector;
         static PhoneCallAudioSender mediaSender;
         static MP3StreamPlayback mp3Player;
+
+        /// <summary>
+        /// Programador de trabajos para ejecutar las llamadas
+        /// </summary>
+        private IScheduler scheduler;
 
         /// <summary>
         /// Sistema de Timbres Automáticos.
@@ -117,16 +129,40 @@ namespace TimbresIP.Controller
             }
 
             //TODO Ejecutar hilo que ejecuta llamadas al servidor en hora determinada.
-            runThread();
+            runJobs();
 
         }
 
         /// <summary>
         /// Ejecutar hilo que ejecuta llamadas al servidor en hora determinada.
         /// </summary>
-        private void runThread()
+        private void runJobs()
         {
             //Ejecutar un hilo para cada horario
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async void initAndStartScheduler()
+        {
+            // construct a scheduler factory
+            NameValueCollection prop = new NameValueCollection
+            {
+                { "quartz.serializer.type", "binary" }
+            };
+            StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory(prop);
+
+            //// get a scheduler
+            //scheduler = await stdSchedulerFactory.GetScheduler();
+
+            //// create a fake holiday
+            //HolidayCalendar holidayCalendar = new HolidayCalendar();
+            //holidayCalendar.AddExcludedDate(DateTime.Today); //not a valid holiday - just for demo 
+            //await scheduler.AddCalendar("myHolidays", holidayCalendar, false, false);
+
+            //// start the scheduler
+            //await scheduler.Start();
         }
 
         /// <summary>

@@ -10,15 +10,18 @@ namespace TimbresIP.Utils
     /// <summary>
     /// Tareas para timbres de llamadas.
     /// </summary>
-    class RingJob : IJob
+    class RingJobUtils : IJob
     {
         /// <summary>
         /// Tareas para timbres, sonidos generales y otros.
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public async Task Execute(IJobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
+            JobDataMap dataMap = context.MergedJobDataMap;
+            //string auto = dataMap.GetObjectData();
+
             switch (context.JobDetail.Key.ToString())
             {
                 case "app.rings":
@@ -33,6 +36,8 @@ namespace TimbresIP.Utils
                     Console.WriteLine(string.Format("[{0}]: Otros sonidos!.", DateTime.Now));
                     break;
             }
+
+            return Task.CompletedTask;
         }
     }
 }
