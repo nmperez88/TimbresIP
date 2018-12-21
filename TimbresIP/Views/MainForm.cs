@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,13 +46,17 @@ namespace TimbresIP
             HoraryUserControl horaryUserControl = new HoraryUserControl();
             horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
-            if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
+            if (tabControlHorary.TabPages.Count < Properties.Settings.Default.numberSchedulesTab)
             {
-                TabPage horaryTabPage = new TabPage(tabPageName);
-                tabControlHorary.TabPages.Add(horaryTabPage);
-                horaryTabPage.ImageIndex = 0;
-                horaryTabPage.Controls.Add(horaryUserControl);
+                if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
+                {
+                    TabPage horaryTabPage = new TabPage(tabPageName);
+                    tabControlHorary.TabPages.Add(horaryTabPage);
+                    horaryTabPage.ImageIndex = 0;
+                    horaryTabPage.Controls.Add(horaryUserControl);
+                }
             }
+            else { MessageBox.Show("No se puede crear más horarios, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void buttonDeleteHorary_Click(object sender, EventArgs e)
@@ -67,7 +72,7 @@ namespace TimbresIP
         }
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
-        {
+        {     
             if (tabControlHorary.TabPages.Count > 0)
             {
                 string tabPageName = "";
@@ -83,12 +88,18 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             //Mostrar las caracteristicas de interes del ordenador donde se ejecuta el Soft
-            //FeaturesUtils pc = new FeaturesUtils();
+            //FeaturesUtils pcFeatures = new FeaturesUtils();
             //foreach (string item in pc.PcFeatures)
             //{
             //    MessageBox.Show(item);
             //}
-
+            //using (StreamWriter outPutFile = new StreamWriter("C:\\Users\\Noslen Martinez\\Documents\\Visual Studio 2017\\Projects\\TimbresIP\\TimbresIP\\Resources\\ComboDataExample\\pcFeatures.txt"))
+            //{
+            //    foreach (string pcFeature in pcFeatures.pcFeatures)
+            //    {
+            //        outPutFile.WriteLine(pcFeature);
+            //    }
+            //}
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
         }

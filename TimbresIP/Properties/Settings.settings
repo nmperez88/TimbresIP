@@ -17,5 +17,14 @@
     <Setting Name="dnsExternalConsult" Type="(Web Service URL)" Scope="User">
       <Value Profile="(Default)">http://icanhazip.com</Value>
     </Setting>
+    <Setting Name="catidad" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="numberSchedulesTab" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="numberHoursSchedule" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
