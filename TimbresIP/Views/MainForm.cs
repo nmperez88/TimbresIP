@@ -87,19 +87,9 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            //Mostrar las caracteristicas de interes del ordenador donde se ejecuta el Soft
-            //FeaturesUtils pcFeatures = new FeaturesUtils();
-            //foreach (string item in pc.PcFeatures)
-            //{
-            //    MessageBox.Show(item);
-            //}
-            //using (StreamWriter outPutFile = new StreamWriter("C:\\Users\\Noslen Martinez\\Documents\\Visual Studio 2017\\Projects\\TimbresIP\\TimbresIP\\Resources\\ComboDataExample\\pcFeatures.txt"))
-            //{
-            //    foreach (string pcFeature in pcFeatures.pcFeatures)
-            //    {
-            //        outPutFile.WriteLine(pcFeature);
-            //    }
-            //}
+            //SendMailUtils sendMailUtils = new SendMailUtils();
+            //sendMailUtils.sendMail();
+
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
         }

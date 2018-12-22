@@ -7,12 +7,17 @@ using System.Management;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Sockets;
+using TimbresIP.Model;
+using Newtonsoft.Json;
 
 namespace TimbresIP
 {
     class FeaturesUtils
     {
-        //Metodo para obtener la MACADDR del cliente
+        /// <summary>
+        /// Metodo para obtener la MACADDR del cliente
+        /// </summary>
+        /// <returns>Direccion MAC del PC</returns>
         public static PhysicalAddress getMacAddress()
         {
             foreach (NetworkInterface nicInterface in NetworkInterface.GetAllNetworkInterfaces())
@@ -26,7 +31,10 @@ namespace TimbresIP
             return null;
         }
 
-        //Metodo para obtener la IPADDR interna del cliente
+        /// <summary>
+        /// Metodo para obtener la IPADDR interna del cliente
+        /// </summary>
+        /// <returns>Direccion IP Local</returns>
         public static string getLocalIPAddress()
         {
             var hostName = Dns.GetHostEntry(Dns.GetHostName());
@@ -40,23 +48,33 @@ namespace TimbresIP
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
-        //Metodo para obtener la IPADDR externa del cliente
+        /// <summary>
+        /// Metodo para obtener la IPADDR externa del cliente
+        /// </summary>
+        /// <returns>Direccion IP externa</returns>
         public static string getExternalIP()
         {
             string externalIp = new WebClient().DownloadString(Properties.Settings.Default.dnsExternalConsult);
             return externalIp;
         }
-
-        //Devuelve todas las caracteristicas de interes del PC
-        public string[] pcFeatures { get; set; } = new string[]
-        {      "The OSVersion is: " + Environment.OSVersion.ToString(),
-               "The ServicePack is: " +Environment.OSVersion.ServicePack,
-               "The Machine Name is: " +Environment.MachineName,
-               "The User Domain is: " +Environment.UserDomainName,
-               "The Local User Name is: " +Environment.UserName,
-               "The MAC Address is: " +getMacAddress().ToString(),
-               "The Local IP Address is: " +getLocalIPAddress(),
-               "The External IP Address is: " +getExternalIP()
+        /// <summary>
+        /// Se capturan las caracteristicas del PC y se asignan a jsonObject
+        /// </summary>
+        FeaturesModel jsonFeatures = new FeaturesModel()
+        {
+            osVersion = Environment.OSVersion.ToString(),
+            servicePack = Environment.OSVersion.ServicePack,
+            machineName = Environment.MachineName,
+            userDomain = Environment.UserDomainName,
+            localUserName = Environment.UserName,
+            macAddr = getMacAddress().ToString(),
+            localIPAddr = getLocalIPAddress().ToString(),
+            externalIPAddr = getExternalIP().ToString()
         };
+
+        public string getFeatures()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(jsonFeatures, Formatting.Indented);
+        }
     }
 }

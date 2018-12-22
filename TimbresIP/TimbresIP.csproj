@@ -86,9 +86,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utils\FileDriveUploadUtils.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Model\FeaturesModel.cs" />
+    <Compile Include="Utils\SendMailUtils.cs" />
     <Compile Include="Utils\FeaturesUtils.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Utils\BaseUtils.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Model\AutomaticRingSystemModel.cs" />
