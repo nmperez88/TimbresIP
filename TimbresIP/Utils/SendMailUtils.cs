@@ -43,7 +43,7 @@ namespace TimbresIP
 
             toMail = "noslendecub@gmail.com";
             subjectMail = "Nueva instalación de AdminHorarios";
-            bodyMail = "Estimado usuario se ha realizado una nueva instalacion del sistema en un cliente con las siguietes características: "+featuresUtils.getFeatures();
+            bodyMail = "Estimado usuario se ha realizado una nueva instalacion del sistema en un cliente con las siguietes características: "+ featuresUtils.getFeatures();
 
             eMail = new MailMessage();
             eMail.To.Add(new MailAddress(toMail));

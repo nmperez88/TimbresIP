@@ -87,8 +87,8 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            //SendMailUtils sendMailUtils = new SendMailUtils();
-            //sendMailUtils.sendMail();
+            SendMailUtils sendMailUtils = new SendMailUtils();
+            sendMailUtils.sendMail();
 
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
