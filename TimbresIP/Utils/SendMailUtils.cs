@@ -7,11 +7,11 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Windows.Forms;
 
-namespace TimbresIP
+namespace TimbresIP.Utils
 {   /// <summary>
     /// Envio de correo electrónico    
     /// </summary>
-    class SendMailUtils
+    class SendMailUtils : BaseUtils
     {
         /// <summary>
         /// Campo hacia quien va dirigido el mail
@@ -55,9 +55,17 @@ namespace TimbresIP
             SmtpClient client = new SmtpClient("smtp.live.com", 587);
             using (client)
             {
-                client.Credentials = new System.Net.NetworkCredential("nmperez88@outlook.com", "@divinala");
-                client.EnableSsl = true;
-                client.Send(eMail);
+                try
+                {
+                    client.Credentials = new System.Net.NetworkCredential("nmperez88@outlook.com", "@divinala");
+                    client.EnableSsl = true;
+                    client.Send(eMail);
+                }
+                catch (Exception e)
+                {
+                    log.Error(e);
+                }
+
             }
 
             sendedMail = true;

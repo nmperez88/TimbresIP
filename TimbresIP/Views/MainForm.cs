@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TimbresIP.Utils;
 
 namespace TimbresIP
 {
@@ -72,7 +73,7 @@ namespace TimbresIP
         }
 
         private void buttonEditHorary_Click(object sender, EventArgs e)
-        {     
+        {
             if (tabControlHorary.TabPages.Count > 0)
             {
                 string tabPageName = "";

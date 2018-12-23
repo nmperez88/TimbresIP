@@ -10,9 +10,9 @@ using System.Net.Sockets;
 using TimbresIP.Model;
 using Newtonsoft.Json;
 
-namespace TimbresIP
+namespace TimbresIP.Utils
 {
-    class FeaturesUtils
+    class FeaturesUtils : BaseUtils
     {
         /// <summary>
         /// Metodo para obtener la MACADDR del cliente
@@ -60,20 +60,44 @@ namespace TimbresIP
         /// <summary>
         /// Se capturan las caracteristicas del PC y se asignan a jsonObject
         /// </summary>
-        FeaturesModel jsonFeatures = new FeaturesModel()
+        FeaturesModel jsonFeatures = new FeaturesModel();
+        //{
+        //    osVersion = Environment.OSVersion.ToString(),
+        //    servicePack = Environment.OSVersion.ServicePack,
+        //    machineName = Environment.MachineName,
+        //    userDomain = Environment.UserDomainName,
+        //    localUserName = Environment.UserName,
+        //    macAddr = getMacAddress().ToString(),
+        //    localIPAddr = getLocalIPAddress().ToString(),
+        //    externalIPAddr = getExternalIP().ToString()
+        //};
+
+        public void getJsonFeatures()
         {
-            osVersion = Environment.OSVersion.ToString(),
-            servicePack = Environment.OSVersion.ServicePack,
-            machineName = Environment.MachineName,
-            userDomain = Environment.UserDomainName,
-            localUserName = Environment.UserName,
-            macAddr = getMacAddress().ToString(),
-            localIPAddr = getLocalIPAddress().ToString(),
-            externalIPAddr = getExternalIP().ToString()
-        };
+            try
+            {
+                jsonFeatures = new FeaturesModel()
+                {
+                    osVersion = Environment.OSVersion.ToString(),
+                    servicePack = Environment.OSVersion.ServicePack,
+                    machineName = Environment.MachineName,
+                    userDomain = Environment.UserDomainName,
+                    localUserName = Environment.UserName,
+                    macAddr = getMacAddress().ToString(),
+                    localIPAddr = getLocalIPAddress().ToString(),
+                    externalIPAddr = getExternalIP().ToString()
+                };
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
+            }
+
+        }
 
         public string getFeatures()
         {
+            getJsonFeatures();
             return Newtonsoft.Json.JsonConvert.SerializeObject(jsonFeatures, Formatting.Indented);
         }
     }

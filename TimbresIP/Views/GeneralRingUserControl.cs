@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using TimbresIP.Utils;
 
 namespace TimbresIP
 {
@@ -93,7 +94,7 @@ namespace TimbresIP
             {
                 if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()) && dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "ColumnExtension")
                 {
-                    MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo fecha";
                     e.Cancel = true;
                 }
