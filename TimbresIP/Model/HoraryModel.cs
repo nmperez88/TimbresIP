@@ -6,7 +6,7 @@ namespace TimbresIP.Model
     /// <summary>
     /// Horario.
     /// </summary>
-    class HoraryModel
+    class HoraryModel : BaseModel
     {
         /// <summary>
         /// Nombre.
@@ -14,10 +14,15 @@ namespace TimbresIP.Model
         public String name { get; set; }
 
         /// <summary>
+        /// Identificador para el grupo horario.
+        /// </summary>
+        private String idGroup { get; set; }
+
+        /// <summary>
         /// Identificador.
         /// </summary>
         /// <remarks>
-        /// Sintaxis: "h"+startId.A startId debe asignarse 1 previamente.
+        /// Sintaxis: "h"+startId. A startId debe autoincrementarse previamente.
         /// </remarks>
         public String randomId { get; set; }
 
@@ -31,5 +36,17 @@ namespace TimbresIP.Model
         /// </summary>
         public ConnectionCallServerModel connectionCallServer { get; set; }
 
+        public HoraryModel()
+        {
+
+        }
+
+        public HoraryModel(string name, List<CallServerModel> callServerList, ConnectionCallServerModel connectionCallServer)
+        {
+            this.name = name;
+            this.randomId = idGroup + getStartId();
+            this.callServerList = callServerList;
+            this.connectionCallServer = connectionCallServer;
+        }
     }
 }

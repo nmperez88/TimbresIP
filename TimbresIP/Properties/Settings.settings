@@ -26,5 +26,8 @@
     <Setting Name="numberHoursSchedule" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
+    <Setting Name="groupJobs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sta</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

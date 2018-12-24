@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Quartz;
+using TimbresIP.Model;
+using Newtonsoft.Json;
 
 namespace TimbresIP.Utils
 {
     /// <summary>
     /// Tareas para timbres de llamadas.
     /// </summary>
+
+    //[DisallowConcurrentExecution, PersistJobDataAfterExecution]
     class RingJobUtils : IJob
     {
+
         /// <summary>
         /// Tareas para timbres, sonidos generales y otros.
         /// </summary>
@@ -20,22 +25,29 @@ namespace TimbresIP.Utils
         public Task Execute(IJobExecutionContext context)
         {
             JobDataMap dataMap = context.MergedJobDataMap;
-            //string auto = dataMap.GetObjectData();
+            String domaHost = dataMap.GetString("domainHost");
+            String domainPort = dataMap.GetString("domainPort");
+            ConnectionCallServerModel connectionCallServer = (ConnectionCallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("connectionCallServer"));
+            CallServerModel callServer = (CallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("callServer"));
 
-            switch (context.JobDetail.Key.ToString())
-            {
-                case "app.rings":
-                    Console.WriteLine(string.Format("[{0}]: Timbres de aplicación!", DateTime.Now));
-                    break;
+            Console.WriteLine(string.Format("[{0}]: domaHost: {1}", DateTime.Now, domaHost));
 
-                case "app.generalSound":
-                    Console.WriteLine(string.Format("[{0}]: Sonidos generales!", DateTime.Now));
-                    break;
+            //string groupJob = dataMap.GetString("groupJob");
 
-                case "app.others":
-                    Console.WriteLine(string.Format("[{0}]: Otros sonidos!.", DateTime.Now));
-                    break;
-            }
+            //switch (context.JobDetail.Key.ToString())
+            //{
+            //    case "app.rings":
+            //        Console.WriteLine(string.Format("[{0}]: Timbres de aplicación!", DateTime.Now));
+            //        break;
+
+            //    case "app.generalSound":
+            //        Console.WriteLine(string.Format("[{0}]: Sonidos generales!", DateTime.Now));
+            //        break;
+
+            //    case "app.others":
+            //        Console.WriteLine(string.Format("[{0}]: Otros sonidos!.", DateTime.Now));
+            //        break;
+            //}
 
             return Task.CompletedTask;
         }

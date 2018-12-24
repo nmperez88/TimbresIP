@@ -17,12 +17,11 @@ namespace TimbresIP.Model
         public String name { get; set; }
 
         /// <summary>
-
         /// Identificador
         /// Nombre de archivo en el directorio destino.
         /// </summary>
         /// <remarks>
-        /// Valor: horary.randomId+"t"+pos(En: CallServerList)+".extensionDeArchivo(Ej: .mp3, .wav)". 
+        /// Valor: horary.randomId+"t"+callServer.randomId+".extensionDeArchivo(Ej: .mp3, .wav)". 
         /// Ej: h1t1.mp3.
         /// </remarks>
 
