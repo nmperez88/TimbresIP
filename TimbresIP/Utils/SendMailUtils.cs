@@ -57,14 +57,16 @@ namespace TimbresIP.Utils
                     client.Credentials = new System.Net.NetworkCredential("nmperez88@outlook.com", "@divinala");
                     client.EnableSsl = true;
                     client.Send(eMail);
+
+                    configurationParametersModel.sendedEMail = true;
                 }
                 catch (Exception e)
                 {
                     log.Error(e);
                 }
             }
-            configurationParametersModel.sendedEMail = true;
-            //MessageBox.Show("Mensaje enviado Exitosamente");
         }
+
+
     }
 }

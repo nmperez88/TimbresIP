@@ -21,9 +21,9 @@ namespace TimbresIP
             {
                 jsonconfigurationParameters = new ConfigurationParametersModel()
                 {
-                    numberHours = 25,
-                    numberschedules=5,
-                    sendedEMail= jsonconfigurationParameters.sendedEMail
+                    numberHours = 3,
+                    numberschedules = 3,
+                    sendedEMail = jsonconfigurationParameters.sendedEMail
                 };
             }
             catch (Exception e)

@@ -150,7 +150,7 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.dataGridViewHorary.Rows.Count == 5 + 1)
+            if (this.dataGridViewHorary.Rows.Count == 3 + 1)
             {
                 this.dataGridViewHorary.AllowUserToAddRows = false;
                 MessageBox.Show("No se puede crear más horas, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);

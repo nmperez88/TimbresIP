@@ -17,5 +17,8 @@
     <Setting Name="dnsExternalConsult" Type="(Web Service URL)" Scope="User">
       <Value Profile="(Default)">http://icanhazip.com</Value>
     </Setting>
+    <Setting Name="groupJobs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sta</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

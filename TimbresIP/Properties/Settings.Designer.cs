@@ -83,5 +83,17 @@ namespace TimbresIP.Properties {
                 this["dnsExternalConsult"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sta")]
+        public string groupJobs {
+            get {
+                return ((string)(this["groupJobs"]));
+            }
+            set {
+                this["groupJobs"] = value;
+            }
+        }
     }
 }

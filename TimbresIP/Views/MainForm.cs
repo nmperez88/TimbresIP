@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,9 @@ namespace TimbresIP
     public partial class MainForm : Form 
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
+        ConfigurationParametersUtils configurationParametersUtils = new ConfigurationParametersUtils();
+        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
 
         public MainForm()
         {
@@ -89,13 +93,9 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
-            ConfigurationParametersUtils configurationParametersUtils = new ConfigurationParametersUtils();
-            ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-            JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
-
-            sendMailUtils.sendMail();
-            MessageBox.Show(configurationParametersModel.sendedEMail.ToString());
+            //sendMailUtils.sendMail();
             jsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
+
             //if (!configurationParametersModel.sendedEMail)
             //{
             //    int diasRestantes = 30;
