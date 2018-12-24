@@ -38,6 +38,9 @@
     <ApplicationIcon>
     </ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
@@ -68,8 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utils\ConfigurationParametersUtils.cs" />
-    <Compile Include="Model\ConfigurationParametersModel.cs" />
     <Compile Include="Model\FeaturesModel.cs" />
     <Compile Include="Utils\SendMailUtils.cs" />
     <Compile Include="Utils\FeaturesUtils.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Utils\FileHandlerUtils.cs" />
     <Compile Include="Utils\JsonHandlerUtils.cs" />
     <Compile Include="Utils\RingJobUtils.cs" />
+    <Compile Include="Utils\SoftPhoneUtils.cs" />
     <Compile Include="Utils\ValidateEntriesUtils.cs" />
     <Compile Include="Views\GeneralRingUserControl.cs">
       <SubType>UserControl</SubType>

@@ -5,12 +5,21 @@ namespace TimbresIP.Model
     /// <summary>
     /// Llamada al servidor para horario.
     /// </summary>
-    class CallServerModel
+    class CallServerModel : BaseModel
     {
+
         /// <summary>
-        /// Número en la lista.
+        /// Identificador para el grupo para llamadas al servidor.
         /// </summary>
-        public String number { get; set; }
+        private String idGroup { get; set; }
+
+        /// <summary>
+        /// Identificador.
+        /// </summary>
+        /// <remarks>
+        /// Sintaxis: "cs"+startId. A startId debe autoincrementarse previamente.
+        /// </remarks>
+        public String randomId { get; set; }
 
         /// <summary>
         /// Hora de inicio.
@@ -42,5 +51,15 @@ namespace TimbresIP.Model
         /// </summary>
         public String observations { get; set; }
 
+        public CallServerModel(string startAt, string callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
+        {
+            this.randomId = idGroup + getStartId();
+            this.startAt = startAt;
+            this.callTime = callTime;
+            this.soundFile = soundFile;
+            this.enabled = enabled;
+            this.registerName = registerName;
+            this.observations = observations;
+        }
     }
 }

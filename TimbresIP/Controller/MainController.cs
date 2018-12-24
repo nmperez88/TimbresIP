@@ -6,12 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TimbresIP.Model;
 using TimbresIP.Utils;
-using Ozeki.Media;
-using Ozeki.VoIP;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Calendar;
 using Quartz.Impl.Matchers;
+using Newtonsoft.Json;
 
 namespace TimbresIP.Controller
 {
@@ -21,20 +20,10 @@ namespace TimbresIP.Controller
     class MainController : BaseUtils
     {
         /// <summary>
-        /// 
-        /// </summary>
-        static ISoftPhone softphone;
-        static IPhoneLine phoneLine;
-        static IPhoneCall call;
-        static MediaConnector connector;
-        static PhoneCallAudioSender mediaSender;
-        static MP3StreamPlayback mp3Player;
-
-        /// <summary>
         /// Programador de trabajos para ejecutar las llamadas
         /// </summary>
         private IScheduler scheduler;
-
+        private String groupJobs = Properties.Settings.Default.groupJobs != null ? Properties.Settings.Default.groupJobs : "sta";
         /// <summary>
         /// Sistema de Timbres Automáticos.
         /// </summary>
@@ -128,41 +117,123 @@ namespace TimbresIP.Controller
                 }
             }
 
-            //TODO Ejecutar hilo que ejecuta llamadas al servidor en hora determinada.
             runJobs();
 
         }
 
         /// <summary>
-        /// Ejecutar hilo que ejecuta llamadas al servidor en hora determinada.
+        /// Ejecutar hilo que lanza llamadas al servidor en hora determinada.
         /// </summary>
         private void runJobs()
         {
-            //Ejecutar un hilo para cada horario
+            initScheduler();
+            startScheduler();
+            startJobs();
+        }
+
+        /// <summary>
+        /// Inicializar programador de llamadas.
+        /// </summary>
+        private async void initScheduler()
+        {
+            //Variables de configuración.
+            NameValueCollection prop = new NameValueCollection
+            {
+                { "quartz.serializer.type", "binary" }
+            };
+
+            //Inicializar.
+            StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory(prop);
+            scheduler = await stdSchedulerFactory.GetScheduler();
+        }
+
+        /// <summary>
+        /// Iniciar programador de llamadas.
+        /// </summary>
+        private async void startScheduler()
+        {
+            await scheduler.Start();
+        }
+
+        /// <summary>
+        /// Detener programador de llamadas.
+        /// </summary>
+        public async void stopScheduler()
+        {
+            await scheduler.Shutdown();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private async void initAndStartScheduler()
+        private async void startJobs()
         {
-            // construct a scheduler factory
-            NameValueCollection prop = new NameValueCollection
+            foreach (var h in automaticRingSystemToExecute.horaryList)
             {
-                { "quartz.serializer.type", "binary" }
-            };
-            StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory(prop);
+                foreach (var cs in h.callServerList)
+                {
+                    String idJob = h.randomId + cs.randomId;
+                    String hour = cs.startAt.Substring(0, 2);
+                    String min = cs.startAt.Substring(2);
+                    JobDataMap jobDataMap = new JobDataMap();
+                    jobDataMap.Put("domaHost", automaticRingSystemToExecute.domainHost);
+                    jobDataMap.Put("domainPort", automaticRingSystemToExecute.domainPort);
+                    jobDataMap.Put("connectionCallServer", JsonConvert.SerializeObject(h.connectionCallServer));
+                    jobDataMap.Put("callServer", JsonConvert.SerializeObject(cs));
 
-            //// get a scheduler
-            //scheduler = await stdSchedulerFactory.GetScheduler();
+                    //Definir job.
+                    IJobDetail job = JobBuilder.Create<RingJobUtils>()
+                        .WithIdentity(idJob, groupJobs)
+                        //.UsingJobData("horary", JsonConvert.SerializeObject(h))
+                        .SetJobData(jobDataMap)
+                        .Build();
 
-            //// create a fake holiday
-            //HolidayCalendar holidayCalendar = new HolidayCalendar();
-            //holidayCalendar.AddExcludedDate(DateTime.Today); //not a valid holiday - just for demo 
-            //await scheduler.AddCalendar("myHolidays", holidayCalendar, false, false);
+                    //// Trigger the job to run now, and then repeat every 10 seconds
+                    //ITrigger trigger = TriggerBuilder.Create()
+                    //    .WithIdentity(idJob, groupJobs)
+                    //    .StartNow()
+                    //    .WithSimpleSchedule(x => x
+                    //        .WithIntervalInSeconds(2)
+                    //        //.RepeatForever()
+                    //        .WithRepeatCount(2)
+                    //        )
+                    //    .Build();
 
-            //// start the scheduler
-            //await scheduler.Start();
+                    //DayOfWeek[] triggerParam = new DayOfWeek[]{
+                    //    DayOfWeek.Monday,
+                    //    DayOfWeek.Tuesday,
+                    //    DayOfWeek.Wednesday,
+                    //    DayOfWeek.Thursday,
+                    //    DayOfWeek.Friday,
+                    //    DayOfWeek.Sunday};// excluir Domingo(0). L-V 12345
+
+                    //ITrigger trigger2 = TriggerBuilder.Create()
+                    //    .WithIdentity("rings", "app")
+                    //    //.ForJob("rings", groupJobs)
+                    //    .WithSchedule(CronScheduleBuilder.AtHourAndMinuteOnGivenDaysOfWeek(hour, min, triggerParam))
+                    //    //.ModifiedByCalendar("myHolidays") // but not on holidays
+                    //    .Build();
+
+                    //Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
+                    ITrigger trigger = TriggerBuilder.Create()
+                        .WithIdentity(idJob, groupJobs)
+                        //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
+                        .StartNow()
+                        .ForJob(idJob, groupJobs)
+                        .Build();
+
+                    //Eliminar trabajo si existe
+                    if (await scheduler.CheckExists(new JobKey(idJob, groupJobs)))
+                    {
+                        await scheduler.DeleteJob(new JobKey(idJob, groupJobs));
+                    }
+
+                    //Asignar trigger a job en el programador de llamadas(scheduler)
+                    await scheduler.ScheduleJob(job, trigger);
+                    //Sintaxis para asignarle varios triggers a un treabajo.
+                    //await scheduler.ScheduleJob(objJob, new[] { trigger, trigger1, trigger2, trigger3 }, true);
+                }
+            }
         }
 
         /// <summary>
@@ -182,16 +253,6 @@ namespace TimbresIP.Controller
         private bool hasHoraryConnectionCallServerParams(HoraryModel horary)
         {
             return !horary.connectionCallServer.registerName.Equals("") && !horary.connectionCallServer.registerPassword.Equals("");
-        }
-
-        /// <summary>
-        /// Incrementar propiedad de configuración startId.
-        /// </summary>
-        public void increaseStartId()
-        {
-            Properties.Settings.Default.startId = Properties.Settings.Default.startId + 1;
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Reload();
         }
     }
 }
