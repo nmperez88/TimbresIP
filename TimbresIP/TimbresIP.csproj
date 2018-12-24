@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C51085EC-37CA-4392-9C40-33DE2C19E081}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>TimbresIP</RootNamespace>
     <AssemblyName>TimbresIP</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
@@ -86,6 +86,7 @@
     <Compile Include="Utils\FileHandlerUtils.cs" />
     <Compile Include="Utils\JsonHandlerUtils.cs" />
     <Compile Include="Utils\RingJobUtils.cs" />
+    <Compile Include="Utils\SoftPhoneUtils.cs" />
     <Compile Include="Utils\ValidateEntriesUtils.cs" />
     <Compile Include="Views\GeneralRingUserControl.cs">
       <SubType>UserControl</SubType>

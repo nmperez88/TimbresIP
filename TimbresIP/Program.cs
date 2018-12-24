@@ -15,13 +15,13 @@ namespace TimbresIP
         static void Main()
         {
             log.Info("App started!");
-            MainController mainController = new MainController();
-            mainController.init();
-            Console.ReadKey();
+            //MainController mainController = new MainController();
+            //mainController.init();
+            //Console.ReadKey();
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
 
         }
     }
