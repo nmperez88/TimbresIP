@@ -127,6 +127,7 @@
             this.textBoxServer.Size = new System.Drawing.Size(128, 20);
             this.textBoxServer.TabIndex = 0;
             this.textBoxServer.Text = "100.50.40.3";
+            this.textBoxServer.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxServer_Validating);
             // 
             // groupBoxHorary
             // 

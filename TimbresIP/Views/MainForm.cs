@@ -12,7 +12,7 @@ using TimbresIP.Utils;
 
 namespace TimbresIP
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form 
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
 
@@ -47,7 +47,7 @@ namespace TimbresIP
             HoraryUserControl horaryUserControl = new HoraryUserControl();
             horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
-            if (tabControlHorary.TabPages.Count < Properties.Settings.Default.numberSchedulesTab)
+            if (tabControlHorary.TabPages.Count < 5)
             {
                 if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
@@ -89,7 +89,19 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
+            ConfigurationParametersUtils configurationParametersUtils = new ConfigurationParametersUtils();
+            ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+            JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
+
             sendMailUtils.sendMail();
+            MessageBox.Show(configurationParametersModel.sendedEMail.ToString());
+            jsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
+            //if (!configurationParametersModel.sendedEMail)
+            //{
+            //    int diasRestantes = 30;
+
+            //    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + diasRestantes.ToString() + "días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
 
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
@@ -98,6 +110,14 @@ namespace TimbresIP
         private void textBoxPort_KeyPress(object sender, KeyPressEventArgs e)
         {
             validationEntries.validateNumericEntries(e);
+        }
+
+        private void textBoxServer_Validating(object sender, CancelEventArgs e)
+        {
+            if (!validationEntries.validateIPAddr(textBoxServer.Text))
+            {
+                MessageBox.Show("La dirección IP del servidor no es correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

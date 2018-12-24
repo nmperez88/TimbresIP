@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using TimbresIP.Utils;
+using System.Text.RegularExpressions;
 
 namespace TimbresIP
 {
@@ -97,7 +98,8 @@ namespace TimbresIP
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()))
+                        Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
@@ -109,10 +111,36 @@ namespace TimbresIP
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()))
+                        Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                            e.Cancel = true;
+                        }
+                    }
+                    break;
+
+                case "ColumnHoraInicio":
+                    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
+                    {
+                        Regex regularExpression = new Regex(validationEntries.TimeRegularExpression);
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        {
+                            MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo horario";
+                            e.Cancel = true;
+                        }
+                    }
+                    break;
+                case "ColumnSoundTime":
+                    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
+                    {
+                        Regex regularExpression = new Regex(validationEntries.TimeRegularExpression);
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        {
+                            MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo horario";
                             e.Cancel = true;
                         }
                     }
@@ -122,7 +150,7 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.dataGridViewHorary.Rows.Count == Properties.Settings.Default.numberHoursSchedule + 1)
+            if (this.dataGridViewHorary.Rows.Count == 5 + 1)
             {
                 this.dataGridViewHorary.AllowUserToAddRows = false;
                 MessageBox.Show("No se puede crear más horas, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);

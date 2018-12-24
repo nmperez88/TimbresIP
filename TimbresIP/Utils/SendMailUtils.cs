@@ -16,7 +16,7 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Campo hacia quien va dirigido el mail
         /// </summary>
-        public string toMail { get; set; }
+        private string toMail { get; set; }
         /// <summary>
         /// Campo con el asunto del mensaje de correo
         /// </summary>
@@ -29,10 +29,6 @@ namespace TimbresIP.Utils
         /// Instancia de la clase System.Net.Mail
         /// </summary>
         private MailMessage eMail { get; set; }
-        /// <summary>
-        /// Variable de control de envio
-        /// </summary>
-        private bool sendedMail { get; set; }
 
         /// <summary>
         /// Enviar Mail con parametros establecidos
@@ -40,6 +36,7 @@ namespace TimbresIP.Utils
         public void sendMail()
         {
             FeaturesUtils featuresUtils = new FeaturesUtils();
+            ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
 
             toMail = "noslendecub@gmail.com";
             subjectMail = "Nueva instalación de AdminHorarios";
@@ -65,10 +62,8 @@ namespace TimbresIP.Utils
                 {
                     log.Error(e);
                 }
-
             }
-
-            sendedMail = true;
+            configurationParametersModel.sendedEMail = true;
             //MessageBox.Show("Mensaje enviado Exitosamente");
         }
     }

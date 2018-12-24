@@ -62,6 +62,8 @@ namespace TimbresIP.Utils
             checkExtension();
         }
 
+        public JsonHandlerUtils(){}
+
         ///// <summary>
         ///// Crear o actualizar.
         ///// </summary>
@@ -87,7 +89,6 @@ namespace TimbresIP.Utils
         /// </param>
         public void serialize(Object content)
         {
-
             try
             {
                 string outputJSON = JsonConvert.SerializeObject(content);

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using TimbresIP.Utils;
+using System.Text.RegularExpressions;
 
 namespace TimbresIP
 {
@@ -92,10 +93,11 @@ namespace TimbresIP
             //Validamos si no es una fila nueva
             if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
             {
-                if (!validationEntries.validateEnteredText(e.FormattedValue.ToString()) && dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "ColumnExtension")
+                Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
+                if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                 {
                     MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo fecha";
+                    dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
                     e.Cancel = true;
                 }
             }

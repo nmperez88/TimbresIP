@@ -14,6 +14,8 @@ namespace TimbresIP.Utils
 {
     class FeaturesUtils : BaseUtils
     {
+        FeaturesModel jsonFeatures = new FeaturesModel();
+
         /// <summary>
         /// Metodo para obtener la MACADDR del cliente
         /// </summary>
@@ -60,18 +62,6 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Se capturan las caracteristicas del PC y se asignan a jsonObject
         /// </summary>
-        FeaturesModel jsonFeatures = new FeaturesModel();
-        //{
-        //    osVersion = Environment.OSVersion.ToString(),
-        //    servicePack = Environment.OSVersion.ServicePack,
-        //    machineName = Environment.MachineName,
-        //    userDomain = Environment.UserDomainName,
-        //    localUserName = Environment.UserName,
-        //    macAddr = getMacAddress().ToString(),
-        //    localIPAddr = getLocalIPAddress().ToString(),
-        //    externalIPAddr = getExternalIP().ToString()
-        //};
-
         public void getJsonFeatures()
         {
             try
@@ -98,7 +88,7 @@ namespace TimbresIP.Utils
         public string getFeatures()
         {
             getJsonFeatures();
-            return Newtonsoft.Json.JsonConvert.SerializeObject(jsonFeatures, Formatting.Indented);
+            return JsonConvert.SerializeObject(jsonFeatures, Formatting.Indented);
         }
     }
 }
