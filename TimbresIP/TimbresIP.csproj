@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\ConfigurationParametersModel.cs" />
     <Compile Include="Model\FeaturesModel.cs" />
     <Compile Include="Utils\ConfigurationParametersUtils.cs" />
