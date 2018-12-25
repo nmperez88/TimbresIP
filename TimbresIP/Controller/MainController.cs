@@ -20,10 +20,15 @@ namespace TimbresIP.Controller
     class MainController : BaseUtils
     {
         /// <summary>
-        /// Programador de trabajos para ejecutar las llamadas
+        /// Programador de trabajos para ejecutar las llamadas.
         /// </summary>
         private IScheduler scheduler;
+
+        /// <summary>
+        /// Variable que agrupa los trabajos en un grupo.
+        /// </summary>
         private String groupJobs = Properties.Settings.Default.groupJobs != null ? Properties.Settings.Default.groupJobs : "sta";
+
         /// <summary>
         /// Sistema de Timbres Automáticos.
         /// </summary>
@@ -43,6 +48,11 @@ namespace TimbresIP.Controller
         /// Gestiona contenido de archivo JSON.
         /// </summary>
         private JsonHandlerUtils jsonHandlerUtils;
+
+        /// <summary>
+        /// SoftPhone.
+        /// </summary>
+        private SoftPhoneUtils softPhoneUtils;
 
         /// <summary>
         /// Lista de horas en las que debe ejecutarse un timbre.
@@ -132,6 +142,26 @@ namespace TimbresIP.Controller
         }
 
         /// <summary>
+        /// Inicializar softPhone.
+        /// </summary>
+        private void initSoftPhone()
+        {
+            instanceSoftPhone();
+        }
+
+        /// <summary>
+        /// Instanciar softPhone.
+        /// </summary>
+        private void instanceSoftPhone()
+        {
+            if (softPhoneUtils == null)
+            {
+                softPhoneUtils = new SoftPhoneUtils();
+            }
+
+        }
+
+        /// <summary>
         /// Inicializar programador de llamadas.
         /// </summary>
         private async void initScheduler()
@@ -168,18 +198,22 @@ namespace TimbresIP.Controller
         /// </summary>
         private async void startJobs()
         {
+            initSoftPhone();
+
             foreach (var h in automaticRingSystemToExecute.horaryList)
             {
                 foreach (var cs in h.callServerList)
                 {
                     String idJob = h.randomId + cs.randomId;
-                    String hour = cs.startAt.Substring(0, 2);
+                    String hour = cs.startAt.Substring(0, 2);//start:"12:30"
                     String min = cs.startAt.Substring(2);
                     JobDataMap jobDataMap = new JobDataMap();
-                    jobDataMap.Put("domaHost", automaticRingSystemToExecute.domainHost);
+                    jobDataMap.Put("registrationRequired", automaticRingSystemToExecute.registrationRequired);
+                    jobDataMap.Put("domainHost", automaticRingSystemToExecute.domainHost);
                     jobDataMap.Put("domainPort", automaticRingSystemToExecute.domainPort);
                     jobDataMap.Put("connectionCallServer", JsonConvert.SerializeObject(h.connectionCallServer));
                     jobDataMap.Put("callServer", JsonConvert.SerializeObject(cs));
+                    jobDataMap.Put("softPhone", softPhoneUtils);
 
                     //Definir job.
                     IJobDetail job = JobBuilder.Create<RingJobUtils>()

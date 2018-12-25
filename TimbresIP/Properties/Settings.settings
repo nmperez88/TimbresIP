@@ -20,5 +20,11 @@
     <Setting Name="groupJobs" Type="System.String" Scope="User">
       <Value Profile="(Default)">sta</Value>
     </Setting>
+    <Setting Name="softPhoneRangeMin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5000</Value>
+    </Setting>
+    <Setting Name="softPhoneRangeMax" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

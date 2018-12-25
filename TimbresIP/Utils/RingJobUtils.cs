@@ -25,12 +25,16 @@ namespace TimbresIP.Utils
         public Task Execute(IJobExecutionContext context)
         {
             JobDataMap dataMap = context.MergedJobDataMap;
-            String domaHost = dataMap.GetString("domainHost");
+            Boolean registrationRequired = dataMap.GetBoolean("registrationRequired");
+            String domainHost = dataMap.GetString("domainHost");
             String domainPort = dataMap.GetString("domainPort");
             ConnectionCallServerModel connectionCallServer = (ConnectionCallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("connectionCallServer"));
             CallServerModel callServer = (CallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("callServer"));
+            SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"));
 
-            Console.WriteLine(string.Format("[{0}]: domaHost: {1}", DateTime.Now, domaHost));
+            softPhoneUtils.start(registrationRequired, domainHost, domainPort, connectionCallServer, callServer);
+
+            Console.WriteLine(string.Format("[{0}]: domainHost: {1}", DateTime.Now, domainHost));
 
             //string groupJob = dataMap.GetString("groupJob");
 
