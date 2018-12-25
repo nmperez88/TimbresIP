@@ -75,6 +75,7 @@
     <Compile Include="Model\ConfigurationParametersModel.cs" />
     <Compile Include="Model\FeaturesModel.cs" />
     <Compile Include="Utils\ConfigurationParametersUtils.cs" />
+    <Compile Include="Utils\ConfigurationParametersJsonHandlerUtils.cs" />
     <Compile Include="Utils\SendMailUtils.cs" />
     <Compile Include="Utils\FeaturesUtils.cs" />
     <Compile Include="Settings.cs" />

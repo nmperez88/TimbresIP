@@ -8,47 +8,13 @@ namespace TimbresIP.Utils
     /// <summary>
     /// Crear y actualizar archivo JSON.
     /// </summary>
-    class JsonHandlerUtils : BaseUtils
+    class ConfigurationParametersJsonHandlerUtils : JsonHandlerUtils
     {
-        /// <summary>
-        /// Ruta a directorio.
-        /// </summary>
-        /// <remarks>
-        /// Hasta carpeta que contiene el archivo.
-        /// </remarks>
-        protected String dirPath;
-
-        /// <summary>
-        /// Nombre.
-        /// </summary>
-        protected String name;
-
-        /// <summary>
-        /// Ruta completa.
-        /// </summary>
-        protected String fullPath;
-
         /// <summary>
         /// Contenido.
         /// </summary>
-        private Object content;
+        private ConfigurationParametersModel content;
 
-        //public JsonHandlerUtils(string dirPath, string name, object content)
-        //{
-        //    this.dirPath = dirPath;
-        //    this.name = name;
-        //    this.fullPath = dirPath + "/" + name;
-        //    checkExtension();
-        //    this.content = content;
-        //}
-
-        //public JsonHandlerUtils(string fullPath, object content)
-        //{
-
-        //    this.fullPath = fullPath;
-        //    checkExtension();
-        //    this.content = content;
-        //}
 
         /// <summary>
         /// Contructor.
@@ -56,31 +22,14 @@ namespace TimbresIP.Utils
         /// <param name="fullPath">
         /// Ruta completa.
         /// </param>
-        public JsonHandlerUtils(string fullPath)
+        public ConfigurationParametersJsonHandlerUtils(string fullPath)
         {
 
             this.fullPath = fullPath;
             checkExtension();
         }
 
-        public JsonHandlerUtils(){}
-
-        ///// <summary>
-        ///// Crear o actualizar.
-        ///// </summary>
-
-        //public void serialize()
-        //{
-        //    try
-        //    {
-        //        string outputJSON = JsonConvert.SerializeObject(content);
-        //        File.WriteAllText(fullPath, outputJSON);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        log.Error(e);
-        //    }
-        //}
+        public ConfigurationParametersJsonHandlerUtils(){}
 
         /// <summary>
         /// Crear o actualizar.
@@ -88,7 +37,7 @@ namespace TimbresIP.Utils
         /// <param name="content">
         /// Contenido del archivo.
         /// </param>
-        public void serialize(Object content)
+        public void serialize(ConfigurationParametersModel content)
         {
             try
             {
@@ -106,13 +55,13 @@ namespace TimbresIP.Utils
         /// Obtener contenido.
         /// </summary>
         /// <returns></returns>
-        public Object deserialize()
+        public ConfigurationParametersModel deserialize()
         {
-            Object obj = new Object();
+            ConfigurationParametersModel obj = new ConfigurationParametersModel();
             try
             {
                 string outputJSON = File.ReadAllText(fullPath);
-                obj = JsonConvert.DeserializeObject(outputJSON);
+                obj = (ConfigurationParametersModel)JsonConvert.DeserializeObject(outputJSON);
             }
             catch (Exception e)
             {

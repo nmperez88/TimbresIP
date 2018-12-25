@@ -19,7 +19,11 @@ namespace TimbresIP
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
         ConfigurationParametersUtils configurationParametersUtils = new ConfigurationParametersUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
+        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
+        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
+        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters","ConfigurationParametersModel");
+        ConfigurationParametersJsonHandlerUtils configurationParametersJsonHandlerUtils = new ConfigurationParametersJsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
+        //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
 
         public MainForm()
         {
@@ -98,7 +102,9 @@ namespace TimbresIP
             try
             {
 
-                ConfigurationParametersModel param = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+                ConfigurationParametersModel param = configurationParametersJsonHandlerUtils.deserialize();
+                //string outputJSON = File.ReadAllText(configParamsFullPath);
+                //ConfigurationParametersModel param = JsonConvert.DeserializeObject(outputJSON);
                 MessageBox.Show(param.sendedEMail.ToString());
             }
             catch (Exception er)
@@ -110,7 +116,7 @@ namespace TimbresIP
             if (sendMailUtils.sendMail())
             {
                 configurationParametersUtils.getJsonConfigurationParameters(true);
-                jsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
+                configurationParametersJsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
             }
 
             if (!configurationParametersModel.sendedEMail)
