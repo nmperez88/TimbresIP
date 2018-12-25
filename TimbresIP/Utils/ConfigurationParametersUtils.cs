@@ -15,7 +15,7 @@ namespace TimbresIP
         /// <summary>
         /// Se establecen los parametros de configuracion del sistema y se asignan a jsonObject
         /// </summary>
-        public void getJsonConfigurationParameters()
+        public void getJsonConfigurationParameters(bool flag)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace TimbresIP
                 {
                     numberHours = 3,
                     numberschedules = 3,
-                    sendedEMail = jsonconfigurationParameters.sendedEMail
+                    sendedEMail = flag
                 };
             }
             catch (Exception e)
@@ -35,7 +35,7 @@ namespace TimbresIP
 
         public string getConfigurationParameters()
         {
-            getJsonConfigurationParameters();
+            //getJsonConfigurationParameters(false);
             return JsonConvert.SerializeObject(jsonconfigurationParameters, Formatting.Indented);
         }
     }

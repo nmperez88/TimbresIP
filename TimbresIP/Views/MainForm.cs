@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimbresIP.Utils;
+using utils;
 
 namespace TimbresIP
 {
@@ -93,15 +94,31 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
-            //sendMailUtils.sendMail();
-            jsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
 
-            //if (!configurationParametersModel.sendedEMail)
-            //{
-            //    int diasRestantes = 30;
+            try
+            {
 
-            //    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + diasRestantes.ToString() + "días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+                ConfigurationParametersModel param = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+                MessageBox.Show(param.sendedEMail.ToString());
+            }
+            catch (Exception er)
+            {
+
+                log.WriteError(er);
+            }
+
+            if (sendMailUtils.sendMail())
+            {
+                configurationParametersUtils.getJsonConfigurationParameters(true);
+                jsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
+            }
+
+            if (!configurationParametersModel.sendedEMail)
+            {
+                int diasRestantes = 30;
+
+                MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + diasRestantes.ToString() + " días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);

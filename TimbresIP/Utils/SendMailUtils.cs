@@ -33,7 +33,7 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Enviar Mail con parametros establecidos
         /// </summary>
-        public void sendMail()
+        public bool sendMail()
         {
             FeaturesUtils featuresUtils = new FeaturesUtils();
             ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
@@ -58,11 +58,13 @@ namespace TimbresIP.Utils
                     client.EnableSsl = true;
                     client.Send(eMail);
 
-                    configurationParametersModel.sendedEMail = true;
+
+                    return true;
                 }
                 catch (Exception e)
                 {
                     log.Error(e);
+                    return false;
                 }
             }
         }
