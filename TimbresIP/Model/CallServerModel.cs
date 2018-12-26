@@ -11,7 +11,7 @@ namespace TimbresIP.Model
         /// <summary>
         /// Identificador para el grupo para llamadas al servidor.
         /// </summary>
-        private String idGroup { get; set; }
+        private String idGroup { get; set; } = "cs";
 
         /// <summary>
         /// Identificador.
@@ -42,7 +42,7 @@ namespace TimbresIP.Model
         public Boolean enabled { get; set; }
 
         /// <summary>
-        /// Extensión a llamar. Generalmente es la extensión telefónica. numberToDial.
+        /// Extensión a llamar. numberToDial.
         /// </summary>
         public String registerName { get; set; }
 
@@ -50,6 +50,11 @@ namespace TimbresIP.Model
         /// Observaciones.
         /// </summary>
         public String observations { get; set; }
+
+        public CallServerModel()
+        {
+
+        }
 
         public CallServerModel(string startAt, string callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
         {

@@ -47,5 +47,9 @@ namespace TimbresIP.Model
         /// Ruta a directorio destino.
         /// </summary>
         public String targetDirPath { get; set; }
+
+        public SoundFileModel()
+        {
+        }
     }
 }

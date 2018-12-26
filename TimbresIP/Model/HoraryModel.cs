@@ -16,7 +16,7 @@ namespace TimbresIP.Model
         /// <summary>
         /// Identificador para el grupo horario.
         /// </summary>
-        private String idGroup { get; set; }
+        private String idGroup { get; set; } = "h";
 
         /// <summary>
         /// Identificador.
@@ -24,7 +24,7 @@ namespace TimbresIP.Model
         /// <remarks>
         /// Sintaxis: "h"+startId. A startId debe autoincrementarse previamente.
         /// </remarks>
-        public String randomId { get; set; }
+        public String randomId { get; private set; }
 
         /// <summary>
         /// Lista de llamadas al servidor.
@@ -41,12 +41,20 @@ namespace TimbresIP.Model
 
         }
 
-        public HoraryModel(string name, List<CallServerModel> callServerList, ConnectionCallServerModel connectionCallServer)
+        public HoraryModel(string name, ConnectionCallServerModel connectionCallServer)
         {
             this.name = name;
             this.randomId = idGroup + getStartId();
-            this.callServerList = callServerList;
             this.connectionCallServer = connectionCallServer;
+        }
+        public HoraryModel(string name, List<CallServerModel> callServerList)
+        {
+            this.callServerList = callServerList;
+        }
+
+        public HoraryModel(List<CallServerModel> callServerList)
+        {
+            this.callServerList = callServerList;
         }
     }
 }

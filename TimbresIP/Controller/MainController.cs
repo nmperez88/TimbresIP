@@ -71,7 +71,8 @@ namespace TimbresIP.Controller
 
             if (System.IO.File.Exists(jsonFileFullPath))
             {
-                jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath);
+                //jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath,);
+                jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath, "TimbresIP.Model.AutomaticRingSystemModel");
                 automaticRingSystem = (AutomaticRingSystemModel)jsonHandlerUtils.deserialize();
             }
             else
@@ -87,6 +88,9 @@ namespace TimbresIP.Controller
                 //Hay horarios configurados?.
                 if (automaticRingSystem.horaryList.Any())
                 {
+                    automaticRingSystemToExecute.domainHost = automaticRingSystem.domainHost;
+                    automaticRingSystemToExecute.domainPort = automaticRingSystem.domainPort;
+
                     automaticRingSystem.horaryList.ForEach(h =>
                     {
                         //Tiene el horario definidos los parámetros para llamar al servidor?.
@@ -117,7 +121,7 @@ namespace TimbresIP.Controller
                             if (callServerList.Any())
                             {
                                 //Agregar horario.
-                                HoraryModel horary = new HoraryModel();
+                                HoraryModel horary = new HoraryModel(callServerList);
                                 horary = h;
                                 horary.callServerList = callServerList;
                                 automaticRingSystemToExecute.horaryList.Add(horary);
@@ -127,8 +131,14 @@ namespace TimbresIP.Controller
                 }
             }
 
-            runJobs();
+        }
 
+        /// <summary>
+        /// Iniciar.
+        /// </summary>
+        public void start()
+        {
+            runJobs();
         }
 
         /// <summary>
@@ -136,9 +146,12 @@ namespace TimbresIP.Controller
         /// </summary>
         private void runJobs()
         {
-            initScheduler();
-            startScheduler();
-            startJobs();
+            if (automaticRingSystemToExecute.horaryList.Any())
+            {
+                initScheduler();
+                startScheduler();
+                startJobs();
+            }
         }
 
         /// <summary>
@@ -213,7 +226,7 @@ namespace TimbresIP.Controller
                     jobDataMap.Put("domainPort", automaticRingSystemToExecute.domainPort);
                     jobDataMap.Put("connectionCallServer", JsonConvert.SerializeObject(h.connectionCallServer));
                     jobDataMap.Put("callServer", JsonConvert.SerializeObject(cs));
-                    jobDataMap.Put("softPhone", softPhoneUtils);
+                    jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
 
                     //Definir job.
                     IJobDetail job = JobBuilder.Create<RingJobUtils>()

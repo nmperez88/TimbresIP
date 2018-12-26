@@ -79,15 +79,18 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Iniciar lamada.
         /// </summary>
-        public void start(Boolean registrationRequired, String domainHost, String domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
+        public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
         {
             //var account = new SIPAccount(registrationRequired, displayName, userName, authenticationId, registerPassword, domainHost, domainPort);
             var account = new SIPAccount(registrationRequired, connectionCallServer.displayName, connectionCallServer.userName, connectionCallServer.registerName, connectionCallServer.registerPassword, domainHost, domainPort);
 
+            //Extensión a llamar.
+            registerName = callServer.registerName;
+
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
             registerAccount(account);
 
-            mp3Player = new MP3StreamPlayback(callServer.soundFile.targetDirPath);
+            mp3Player = new MP3StreamPlayback(callServer.soundFile.targetPath);
         }
 
         /// <summary>
