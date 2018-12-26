@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimbresIP.Utils;
 
-namespace TimbresIP
+namespace TimbresIP.Model
 {
     /// <summary>
     /// Caracteristicas de la PC cliente

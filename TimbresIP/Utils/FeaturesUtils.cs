@@ -7,11 +7,8 @@ using System.Management;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Sockets;
-using TimbresIP.Model;
-using Newtonsoft.Json;
-using TimbresIP.Utils;
 
-namespace TimbresIP
+namespace TimbresIP.Utils
 {
     class FeaturesUtils : BaseUtils
     {

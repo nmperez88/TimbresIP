@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimbresIP
+namespace TimbresIP.Model
 {
     class ConfigurationParametersModel
     {
@@ -24,6 +24,10 @@ namespace TimbresIP
         /// Fecha en la que se inicio el software por primera vez
         /// </summary>
         public DateTime instaledDate { get; set; }
+        /// <summary>
+        /// Construnctor de la clase vacio
+        /// </summary>
+        public ConfigurationParametersModel() { }
         /// <summary>
         /// Constructor de la clase con parametros
         /// </summary>

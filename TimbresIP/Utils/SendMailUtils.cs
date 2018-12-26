@@ -7,9 +7,9 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using TimbresIP.Utils;
+using TimbresIP.Model;
 
-namespace TimbresIP
+namespace TimbresIP.Utils
 {   /// <summary>
     /// Envio de correo electrónico    
     /// </summary>

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimbresIP.Utils;
-using utils;
+using TimbresIP.Model;
 
 namespace TimbresIP
 {
@@ -18,7 +18,8 @@ namespace TimbresIP
     {
         //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
-        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
+        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters", "ConfigurationParametersModel");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters","ConfigurationParametersModel");
         //ConfigurationParametersJsonHandlerUtils configurationParametersJsonHandlerUtils = new ConfigurationParametersJsonHandlerUtils(@"ComboDataExample\\ConfigurationParameters");
@@ -98,21 +99,16 @@ namespace TimbresIP
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
 
-            if (File.Exists(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters.json"))
+            if (jsonHandlerUtils.deserialize()!=null)
             {
-                //string outputJSON = File.ReadAllText(configParamsFullPath);
-                //ConfigurationParametersModel param = JsonConvert.DeserializeObject(outputJSON);
-                //MessageBox.Show(param.sendedEMail.ToString());
+                ConfigurationParametersModel configurationParameters = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+                configurationParametersModel.sendedEMail = configurationParameters.sendedEMail;
             }
-            else
-            {
-                if (sendMailUtils.sendMail())
+            else if (sendMailUtils.sendMail())
                 {
                 ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
                 jsonHandlerUtils.serialize(configurationParametersModel);
                 }
-
-            }
 
             //if (!configurationParametersModel.sendedEMail)
             //{
