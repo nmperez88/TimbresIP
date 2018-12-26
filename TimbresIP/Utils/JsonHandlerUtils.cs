@@ -2,8 +2,9 @@
 using System;
 using System.IO;
 using Newtonsoft.Json;
+using TimbresIP.Utils;
 
-namespace TimbresIP.Utils
+namespace TimbresIP
 {
     /// <summary>
     /// Crear y actualizar archivo JSON.

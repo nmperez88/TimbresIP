@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimbresIP.Model
+namespace TimbresIP
 {
     /// <summary>
     /// Caracteristicas de la PC cliente
@@ -34,7 +34,7 @@ namespace TimbresIP.Model
         /// <summary>
         /// Direccion MAC del pc cliente
         /// </summary>
-        public String macAddr { get; set; } 
+        public String macAddr { get; set; }
         /// <summary>
         /// Direccion IP local del pc cliente
         /// </summary>
@@ -43,6 +43,23 @@ namespace TimbresIP.Model
         /// Direccion IP publica del pc cliente
         /// </summary>
         public String externalIPAddr { get; set; }
-
+        /// <summary>
+        /// Instancia de la clase FeaturesUtils
+        /// </summary>
+        FeaturesUtils featuresUtils = new FeaturesUtils();
+        /// <summary>
+        /// Constructor de la clase features
+        /// </summary>
+        public FeaturesModel()
+        {
+            osVersion = Environment.OSVersion.ToString();
+            servicePack = Environment.OSVersion.ServicePack;
+            machineName = Environment.MachineName;
+            userDomain = Environment.UserDomainName;
+            localUserName = Environment.UserName;
+            macAddr = featuresUtils.getMacAddress().ToString();
+            localIPAddr = featuresUtils.getLocalIPAddress().ToString();
+            externalIPAddr = featuresUtils.getExternalIP().ToString();
+        }
     }
 }

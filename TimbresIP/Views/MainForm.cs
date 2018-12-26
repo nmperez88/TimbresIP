@@ -16,14 +16,13 @@ namespace TimbresIP
 {
     public partial class MainForm : Form 
     {
+        //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
-        ConfigurationParametersUtils configurationParametersUtils = new ConfigurationParametersUtils();
-        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters","ConfigurationParametersModel");
-        ConfigurationParametersJsonHandlerUtils configurationParametersJsonHandlerUtils = new ConfigurationParametersJsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
-        //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
+        //ConfigurationParametersJsonHandlerUtils configurationParametersJsonHandlerUtils = new ConfigurationParametersJsonHandlerUtils(@"ComboDataExample\\ConfigurationParameters");
+
 
         public MainForm()
         {
@@ -99,32 +98,28 @@ namespace TimbresIP
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
 
-            try
+            if (File.Exists(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters.json"))
             {
-
-                ConfigurationParametersModel param = configurationParametersJsonHandlerUtils.deserialize();
                 //string outputJSON = File.ReadAllText(configParamsFullPath);
                 //ConfigurationParametersModel param = JsonConvert.DeserializeObject(outputJSON);
-                MessageBox.Show(param.sendedEMail.ToString());
+                //MessageBox.Show(param.sendedEMail.ToString());
             }
-            catch (Exception er)
+            else
             {
+                if (sendMailUtils.sendMail())
+                {
+                ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
+                jsonHandlerUtils.serialize(configurationParametersModel);
+                }
 
-                log.WriteError(er);
             }
 
-            if (sendMailUtils.sendMail())
-            {
-                configurationParametersUtils.getJsonConfigurationParameters(true);
-                configurationParametersJsonHandlerUtils.serialize(configurationParametersUtils.getConfigurationParameters());
-            }
+            //if (!configurationParametersModel.sendedEMail)
+            //{
+            //    int diasRestantes = 30;
 
-            if (!configurationParametersModel.sendedEMail)
-            {
-                int diasRestantes = 30;
-
-                MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + diasRestantes.ToString() + " días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + diasRestantes.ToString() + " días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
 
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);

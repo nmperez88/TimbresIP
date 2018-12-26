@@ -9,18 +9,17 @@ using System.Net;
 using System.Net.Sockets;
 using TimbresIP.Model;
 using Newtonsoft.Json;
+using TimbresIP.Utils;
 
-namespace TimbresIP.Utils
+namespace TimbresIP
 {
     class FeaturesUtils : BaseUtils
     {
-        FeaturesModel jsonFeatures = new FeaturesModel();
-
         /// <summary>
         /// Metodo para obtener la MACADDR del cliente
         /// </summary>
         /// <returns>Direccion MAC del PC</returns>
-        public static PhysicalAddress getMacAddress()
+        public PhysicalAddress getMacAddress()
         {
             foreach (NetworkInterface nicInterface in NetworkInterface.GetAllNetworkInterfaces())
             {
@@ -37,7 +36,7 @@ namespace TimbresIP.Utils
         /// Metodo para obtener la IPADDR interna del cliente
         /// </summary>
         /// <returns>Direccion IP Local</returns>
-        public static string getLocalIPAddress()
+        public string getLocalIPAddress()
         {
             var hostName = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ipAddr in hostName.AddressList)
@@ -54,41 +53,10 @@ namespace TimbresIP.Utils
         /// Metodo para obtener la IPADDR externa del cliente
         /// </summary>
         /// <returns>Direccion IP externa</returns>
-        public static string getExternalIP()
+        public string getExternalIP()
         {
             string externalIp = new WebClient().DownloadString(Properties.Settings.Default.dnsExternalConsult);
             return externalIp;
-        }
-        /// <summary>
-        /// Se capturan las caracteristicas del PC y se asignan a jsonObject
-        /// </summary>
-        public void getJsonFeatures()
-        {
-            try
-            {
-                jsonFeatures = new FeaturesModel()
-                {
-                    osVersion = Environment.OSVersion.ToString(),
-                    servicePack = Environment.OSVersion.ServicePack,
-                    machineName = Environment.MachineName,
-                    userDomain = Environment.UserDomainName,
-                    localUserName = Environment.UserName,
-                    macAddr = getMacAddress().ToString(),
-                    localIPAddr = getLocalIPAddress().ToString(),
-                    externalIPAddr = getExternalIP().ToString()
-                };
-            }
-            catch (Exception e)
-            {
-                log.Error(e);
-            }
-
-        }
-
-        public string getFeatures()
-        {
-            getJsonFeatures();
-            return JsonConvert.SerializeObject(jsonFeatures, Formatting.Indented);
         }
     }
 }

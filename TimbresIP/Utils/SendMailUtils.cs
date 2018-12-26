@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using TimbresIP.Utils;
 
-namespace TimbresIP.Utils
+namespace TimbresIP
 {   /// <summary>
     /// Envio de correo electrónico    
     /// </summary>
@@ -36,11 +38,12 @@ namespace TimbresIP.Utils
         public bool sendMail()
         {
             FeaturesUtils featuresUtils = new FeaturesUtils();
-            ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+            FeaturesModel featuresModel = new FeaturesModel();
+            var jsonfeaturesModel = JsonConvert.SerializeObject(featuresModel, Formatting.Indented);
 
             toMail = "noslendecub@gmail.com";
             subjectMail = "Nueva instalación de AdminHorarios";
-            bodyMail = "Estimado usuario se ha realizado una nueva instalacion del sistema en un cliente con las siguietes características: " + featuresUtils.getFeatures();
+            bodyMail = "Estimado usuario se ha realizado una nueva instalacion del sistema en un cliente con las siguietes características: " + jsonfeaturesModel;
 
             eMail = new MailMessage();
             eMail.To.Add(new MailAddress(toMail));

@@ -20,5 +20,21 @@ namespace TimbresIP
         /// Variable de control de envio de correo con registro
         /// </summary>
         public bool sendedEMail { get; set; }
+        /// <summary>
+        /// Fecha en la que se inicio el software por primera vez
+        /// </summary>
+        public DateTime instaledDate { get; set; }
+        /// <summary>
+        /// Constructor de la clase con parametros
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <param name="dateTime"></param>
+        public ConfigurationParametersModel(bool flag, DateTime dateTime)
+        {
+            this.numberHours = 5;
+            this.numberschedules = 3;
+            this.sendedEMail = flag;
+            this.instaledDate = dateTime;
+        }
     }
 }
