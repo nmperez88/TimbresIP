@@ -27,10 +27,10 @@ namespace TimbresIP.Utils
             JobDataMap dataMap = context.MergedJobDataMap;
             Boolean registrationRequired = dataMap.GetBoolean("registrationRequired");
             String domainHost = dataMap.GetString("domainHost");
-            String domainPort = dataMap.GetString("domainPort");
-            ConnectionCallServerModel connectionCallServer = (ConnectionCallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("connectionCallServer"));
-            CallServerModel callServer = (CallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("callServer"));
-            SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"));
+            int domainPort = dataMap.GetInt("domainPort");
+            ConnectionCallServerModel connectionCallServer = (ConnectionCallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("connectionCallServer"), Type.GetType("TimbresIP.Model.ConnectionCallServerModel"));
+            CallServerModel callServer = (CallServerModel)JsonConvert.DeserializeObject(dataMap.GetString("callServer"), Type.GetType("TimbresIP.Model.CallServerModel"));
+            SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"), Type.GetType("TimbresIP.Utils.SoftPhoneUtils"));
 
             softPhoneUtils.start(registrationRequired, domainHost, domainPort, connectionCallServer, callServer);
 

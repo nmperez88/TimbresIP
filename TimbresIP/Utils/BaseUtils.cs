@@ -10,16 +10,17 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Generador de logs.
         /// </summary>
-        protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Incrementar propiedad de configuración startId.
         /// </summary>
         public void increaseStartId()
         {
-            Properties.Settings.Default.startId = Properties.Settings.Default.startId + 1;
+            Int32 int32 = Int32.Parse(Properties.Settings.Default.startId) + 1;
+            Properties.Settings.Default.startId = int32.ToString();
             Properties.Settings.Default.Save();
-            Properties.Settings.Default.Reload();
+            //Properties.Settings.Default.Reload();
         }
         /// <summary>
         /// Obtener startId.

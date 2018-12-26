@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using Newtonsoft.Json;
-using TimbresIP.Utils;
+using TimbresIP.Model;
 
-namespace TimbresIP
+namespace TimbresIP.Utils
 {
     /// <summary>
     /// Crear y actualizar archivo JSON.
@@ -34,6 +34,11 @@ namespace TimbresIP
         /// </summary>
         private Object content;
 
+        /// <summary>
+        /// Nombre de clase a deserializar.
+        /// </summary>
+        private String className;
+
         //public JsonHandlerUtils(string dirPath, string name, object content)
         //{
         //    this.dirPath = dirPath;
@@ -57,31 +62,17 @@ namespace TimbresIP
         /// <param name="fullPath">
         /// Ruta completa.
         /// </param>
-        public JsonHandlerUtils(string fullPath)
+        /// <param name="className">
+        /// Nombre de clase.
+        /// </param>
+        public JsonHandlerUtils(string fullPath, String className)
         {
-
             this.fullPath = fullPath;
+            this.className = className;
             checkExtension();
         }
 
-        public JsonHandlerUtils(){}
-
-        ///// <summary>
-        ///// Crear o actualizar.
-        ///// </summary>
-
-        //public void serialize()
-        //{
-        //    try
-        //    {
-        //        string outputJSON = JsonConvert.SerializeObject(content);
-        //        File.WriteAllText(fullPath, outputJSON);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        log.Error(e);
-        //    }
-        //}
+        public JsonHandlerUtils() { }
 
         /// <summary>
         /// Crear o actualizar.
@@ -109,11 +100,12 @@ namespace TimbresIP
         /// <returns></returns>
         public Object deserialize()
         {
-            Object obj = new Object();
+            //AutomaticRingSystemModel obj = new AutomaticRingSystemModel();
+            Object obj = System.Reflection.Assembly.GetExecutingAssembly().CreateInstance(className);
             try
             {
                 string outputJSON = File.ReadAllText(fullPath);
-                obj = JsonConvert.DeserializeObject(outputJSON);
+                obj = JsonConvert.DeserializeObject(outputJSON, obj.GetType());
             }
             catch (Exception e)
             {

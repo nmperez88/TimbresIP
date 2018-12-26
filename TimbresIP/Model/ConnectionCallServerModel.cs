@@ -28,5 +28,8 @@ namespace TimbresIP.Model
         /// </summary>
         public String registerPassword { get; set; }
 
+        public ConnectionCallServerModel()
+        {
+        }
     }
 }
