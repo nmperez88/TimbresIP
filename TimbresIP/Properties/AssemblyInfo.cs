@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TimbresIP")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Aplicación para automatizar los timbres de cambios de hora sobre protocolo SIP")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("BITDATA")]
 [assembly: AssemblyProduct("TimbresIP")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]

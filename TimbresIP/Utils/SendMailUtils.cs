@@ -39,6 +39,7 @@ namespace TimbresIP.Utils
         {
             FeaturesUtils featuresUtils = new FeaturesUtils();
             FeaturesModel featuresModel = new FeaturesModel();
+            ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
             var jsonfeaturesModel = JsonConvert.SerializeObject(featuresModel, Formatting.Indented);
 
             toMail = "noslendecub@gmail.com";
@@ -61,7 +62,7 @@ namespace TimbresIP.Utils
                     client.EnableSsl = true;
                     client.Send(eMail);
 
-
+                    configurationParametersModel.sendedEMail = true;
                     return true;
                 }
                 catch (Exception e)

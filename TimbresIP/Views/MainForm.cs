@@ -19,7 +19,8 @@ namespace TimbresIP
         //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample\ConfigurationParameters", "ConfigurationParametersModel");
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel", "ConfigurationParametersModel");
+        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Properties.Settings.Default.jsonConfigurationParametersPath, "ConfigurationParametersModel");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters","ConfigurationParametersModel");
         //ConfigurationParametersJsonHandlerUtils configurationParametersJsonHandlerUtils = new ConfigurationParametersJsonHandlerUtils(@"ComboDataExample\\ConfigurationParameters");
@@ -98,24 +99,38 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
+            //MessageBox.Show(CompanyName);
 
-            if (jsonHandlerUtils.deserialize()!=null)
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel.json"))
+            //if (File.Exists(Properties.Settings.Default.jsonConfigurationParametersPath+ ".json"))
             {
-                ConfigurationParametersModel configurationParameters = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+                var jsonConfigurationParameters = File.ReadAllText(Properties.Settings.Default.jsonConfigurationParametersPath.ToString());
+                ConfigurationParametersModel configurationParameters = JsonConvert.DeserializeObject<ConfigurationParametersModel>(jsonConfigurationParameters);
                 configurationParametersModel.sendedEMail = configurationParameters.sendedEMail;
+                configurationParametersModel.instaledDate = configurationParameters.instaledDate;
             }
             else if (sendMailUtils.sendMail())
-                {
+            {
                 ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
                 jsonHandlerUtils.serialize(configurationParametersModel);
+            }
+
+            if (!configurationParametersModel.sendedEMail)
+            {
+                DateTime fechaActual = DateTime.Now;
+                TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.instaledDate;
+                int diasRestantes = diferenciaDiasFechas.Days;
+                if (diasRestantes == 30)
+                {
+                    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30-diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Application.Exit();
                 }
-
-            //if (!configurationParametersModel.sendedEMail)
-            //{
-            //    int diasRestantes = 30;
-
-            //    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + diasRestantes.ToString() + " días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+                else
+                {
+                    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
 
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);

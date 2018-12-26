@@ -119,5 +119,18 @@ namespace TimbresIP.Properties {
                 this["softPhoneRangeMax"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Noslen Martinez\\Documents\\Visual Studio 2017\\Projects\\TimbresIP\\TimbresI" +
+            "P\\Resources\\ComboDataExample\\ConfigurationParameters")]
+        public string jsonConfigurationParametersPath {
+            get {
+                return ((string)(this["jsonConfigurationParametersPath"]));
+            }
+            set {
+                this["jsonConfigurationParametersPath"] = value;
+            }
+        }
     }
 }
