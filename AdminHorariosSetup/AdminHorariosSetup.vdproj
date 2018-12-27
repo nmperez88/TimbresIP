@@ -422,9 +422,9 @@
             }
             "{994432C3-9487-495D-8656-3E829A8DBDDE}:_55AF9937258D4FFB86180FBF63444998"
             {
-            "DefaultLocation" = "8:[Personal]"
-            "Name" = "8:AdminHorariosSounds"
-            "AlwaysCreate" = "11:TRUE"
+            "DefaultLocation" = "8:[PersonalFolder]"
+            "Name" = "8:MyDocuments"
+            "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:MYDOCUMENTS"
@@ -495,7 +495,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AdminHorariosSetup"
         "ProductCode" = "8:{EC7FF8E9-B84C-4A60-A453-C2CF37AD6A33}"
-        "PackageCode" = "8:{4617F467-66D1-4E6A-AE10-005B3AE256DE}"
+        "PackageCode" = "8:{AB958DB5-1FAA-4FDF-A5A0-2709E7FA29BF}"
         "UpgradeCode" = "8:{F653024B-693F-4ABD-A07E-F4E0AAE76F1D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

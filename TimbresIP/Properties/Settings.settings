@@ -29,5 +29,8 @@
     <Setting Name="jsonConfigurationParametersName" Type="System.String" Scope="User">
       <Value Profile="(Default)">ConfigurationParameters</Value>
     </Setting>
+    <Setting Name="adminHorariosSoundFolderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AdminHorariosSounds</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

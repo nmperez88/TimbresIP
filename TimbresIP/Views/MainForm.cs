@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimbresIP.Utils;
 using TimbresIP.Model;
+using log4net.Util;
+using utils;
 
 namespace TimbresIP
 {
@@ -93,34 +95,41 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
-            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getJsonConfigurationParametersFilePath(), "TimbresIP.Model.ConfigurationParametersModel");
-            //MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+            try
+            {
+                jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
 
-            if (File.Exists(validationEntries.getJsonConfigurationParametersFilePath()))
-            {
-                configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
-            }
-            else if (sendMailUtils.sendMail())
-            {
-                configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
-                jsonHandlerUtils.serialize(configurationParametersModel);
-            }
+                if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension))
+                {
+                    configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+                }
+                else if (sendMailUtils.sendMail())
+                {
+                    configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
+                    jsonHandlerUtils.serialize(configurationParametersModel);
+                }
 
-            if (!configurationParametersModel.sendedEMail)
+                if (!configurationParametersModel.sendedEMail)
+                {
+                    DateTime fechaActual = DateTime.Now;
+                    TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
+                    int diasRestantes = diferenciaDiasFechas.Days;
+                    if (diasRestantes == 30)
+                    {
+                        MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+            }
+            catch (Exception er)
             {
-                DateTime fechaActual = DateTime.Now;
-                TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
-                int diasRestantes = diferenciaDiasFechas.Days;
-                if (diasRestantes == 30)
-                {
-                    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30-diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Application.Exit();
-                }
-                else
-                {
-                    MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                
+                log.WriteError(er);
+
             }
 
             GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();

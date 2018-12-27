@@ -131,5 +131,17 @@ namespace TimbresIP.Properties {
                 this["jsonConfigurationParametersName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AdminHorariosSounds")]
+        public string adminHorariosSoundFolderName {
+            get {
+                return ((string)(this["adminHorariosSoundFolderName"]));
+            }
+            set {
+                this["adminHorariosSoundFolderName"] = value;
+            }
+        }
     }
 }

@@ -93,10 +93,21 @@ namespace TimbresIP.Utils
 
             return true;
         }
-
-        public String getJsonConfigurationParametersFilePath()
+        /// <summary>
+        /// Metodo para capturar la direccion hacia C:\ProgramData
+        /// </summary>
+        /// <returns>Path</returns>
+        public String getProgramDataPath()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension;
+            return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName;
+        }
+        /// <summary>
+        /// Metodo para capturar la direccion hacia My Documentos
+        /// </summary>
+        /// <returns></returns>
+        public String getMyDocumentsPath()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         }
     }
 }

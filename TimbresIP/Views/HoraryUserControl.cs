@@ -80,7 +80,7 @@ namespace TimbresIP
                         if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                         {
                             DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
-                            DirectoryInfo dirInfo = new DirectoryInfo(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample");
+                            DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath()+ "\\" + Properties.Settings.Default.adminHorariosSoundFolderName);
                             FileInfo[] files = dirInfo.GetFiles();
                             comboBox.DataSource = files;
                             comboBox.DisplayMember = nameof(FileInfo.Name);
@@ -166,7 +166,7 @@ namespace TimbresIP
 
         private void HoraryUserControl_Load(object sender, EventArgs e)
         {
-            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getJsonConfigurationParametersFilePath(), "TimbresIP.Model.ConfigurationParametersModel");
+            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath(), "TimbresIP.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
         }
     }

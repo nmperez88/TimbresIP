@@ -76,7 +76,7 @@ namespace TimbresIP
                     if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                     {
                         DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
-                        DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\Resources\ComboDataExample");
+                        DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName);
                         FileInfo[] files = dir.GetFiles();
                         comboBox.DataSource = files;
                         comboBox.DisplayMember = nameof(FileInfo.Name);
@@ -94,11 +94,15 @@ namespace TimbresIP
             if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
             {
                 Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
-                if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+
+                if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name== "ColumnExtension")
                 {
-                    MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
-                    e.Cancel = true;
+                    if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                    {
+                        MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                        e.Cancel = true;
+                    }
                 }
             }
         }
