@@ -93,5 +93,10 @@ namespace TimbresIP.Utils
 
             return true;
         }
+
+        public String getJsonConfigurationParametersFilePath()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension;
+        }
     }
 }

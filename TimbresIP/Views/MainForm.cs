@@ -14,17 +14,11 @@ using TimbresIP.Model;
 
 namespace TimbresIP
 {
-    public partial class MainForm : Form 
+    public partial class MainForm : Form
     {
-        //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel", "TimbresIP.Model.ConfigurationParametersModel");
-        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Properties.Settings.Default.jsonConfigurationParametersPath, "ConfigurationParametersModel");
-        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
-        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters","ConfigurationParametersModel");
-        //ConfigurationParametersJsonHandlerUtils configurationParametersJsonHandlerUtils = new ConfigurationParametersJsonHandlerUtils(@"ComboDataExample\\ConfigurationParameters");
-
 
         public MainForm()
         {
@@ -57,7 +51,7 @@ namespace TimbresIP
             HoraryUserControl horaryUserControl = new HoraryUserControl();
             horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
-            if (tabControlHorary.TabPages.Count < 5)
+            if (tabControlHorary.TabPages.Count < configurationParametersModel.numberschedules)
             {
                 if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
@@ -99,15 +93,12 @@ namespace TimbresIP
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SendMailUtils sendMailUtils = new SendMailUtils();
-            //MessageBox.Show(CompanyName);
+            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getJsonConfigurationParametersFilePath(), "TimbresIP.Model.ConfigurationParametersModel");
+            //MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel.json"))
-            //if (File.Exists(Properties.Settings.Default.jsonConfigurationParametersPath+ ".json"))
+            if (File.Exists(validationEntries.getJsonConfigurationParametersFilePath()))
             {
-                var jsonConfigurationParameters = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel.json");
-                ConfigurationParametersModel configurationParameters = JsonConvert.DeserializeObject<ConfigurationParametersModel>(jsonConfigurationParameters);
-                configurationParametersModel.sendedEMail = configurationParameters.sendedEMail;
-                configurationParametersModel.installedDate = configurationParameters.installedDate;
+                configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
             }
             else if (sendMailUtils.sendMail())
             {

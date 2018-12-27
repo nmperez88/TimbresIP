@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using TimbresIP.Utils;
+using TimbresIP.Model;
 using System.Text.RegularExpressions;
 
 namespace TimbresIP
@@ -16,6 +17,8 @@ namespace TimbresIP
     public partial class HoraryUserControl : UserControl
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
+        ConfigurationParametersModel configurationParametersModel= new ConfigurationParametersModel();
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
 
         public HoraryUserControl()
         {
@@ -150,7 +153,7 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.dataGridViewHorary.Rows.Count == 3 + 1)
+            if (this.dataGridViewHorary.Rows.Count == configurationParametersModel.numberHours + 1)
             {
                 this.dataGridViewHorary.AllowUserToAddRows = false;
                 MessageBox.Show("No se puede crear más horas, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -159,6 +162,12 @@ namespace TimbresIP
             {
                 this.dataGridViewHorary.AllowUserToAddRows = true;
             }
+        }
+
+        private void HoraryUserControl_Load(object sender, EventArgs e)
+        {
+            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getJsonConfigurationParametersFilePath(), "TimbresIP.Model.ConfigurationParametersModel");
+            configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
         }
     }
 }

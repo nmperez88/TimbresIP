@@ -248,6 +248,7 @@
             this.Controls.Add(this.groupBoxHoraryExtension);
             this.Name = "HoraryUserControl";
             this.Size = new System.Drawing.Size(863, 248);
+            this.Load += new System.EventHandler(this.HoraryUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorary)).EndInit();
             this.groupBoxHoraryExtension.ResumeLayout(false);
             this.groupBoxHoraryExtension.PerformLayout();

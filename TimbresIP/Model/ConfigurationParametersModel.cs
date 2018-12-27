@@ -35,7 +35,7 @@ namespace TimbresIP.Model
         /// <param name="dateTime"></param>
         public ConfigurationParametersModel(bool flag, DateTime dateTime)
         {
-            this.numberHours = 5;
+            this.numberHours = 3;
             this.numberschedules = 3;
             this.sendedEMail = flag;
             this.installedDate = dateTime;

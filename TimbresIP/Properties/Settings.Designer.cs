@@ -122,14 +122,13 @@ namespace TimbresIP.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Noslen Martinez\\Documents\\Visual Studio 2017\\Projects\\TimbresIP\\TimbresI" +
-            "P\\Resources\\ComboDataExample\\ConfigurationParameters")]
-        public string jsonConfigurationParametersPath {
+        [global::System.Configuration.DefaultSettingValueAttribute("ConfigurationParameters")]
+        public string jsonConfigurationParametersName {
             get {
-                return ((string)(this["jsonConfigurationParametersPath"]));
+                return ((string)(this["jsonConfigurationParametersName"]));
             }
             set {
-                this["jsonConfigurationParametersPath"] = value;
+                this["jsonConfigurationParametersName"] = value;
             }
         }
     }
