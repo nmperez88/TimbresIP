@@ -27,9 +27,9 @@ namespace TimbresIP.Model
         public String startAt { get; set; }
 
         /// <summary>
-        /// Tiempo que debe durar la llamada.
+        /// Tiempo que debe durar la llamada. En segundos.
         /// </summary>
-        private String callTime { get; set; }
+        public int callTime { get; set; }
 
         /// <summary>
         /// Archivo de sonido.
@@ -68,7 +68,7 @@ namespace TimbresIP.Model
         /// <param name="enabled"></param>
         /// <param name="registerName"></param>
         /// <param name="observations"></param>
-        public CallServerModel(string startAt, string callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
+        public CallServerModel(string startAt, int callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
         {
             this.randomId = idGroup + getStartId();
             this.startAt = startAt;

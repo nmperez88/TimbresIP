@@ -87,9 +87,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BaseCommon.cs" />
     <Compile Include="Model\ConfigurationParametersModel.cs" />
     <Compile Include="Model\FeaturesModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Common\JobDataCommon.cs" />
     <Compile Include="Utils\SendMailUtils.cs" />
     <Compile Include="Utils\FeaturesUtils.cs" />
     <Compile Include="Settings.cs" />

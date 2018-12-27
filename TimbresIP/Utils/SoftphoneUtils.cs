@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ozeki.Media;
+﻿using Ozeki.Media;
 using Ozeki.VoIP;
-using TimbresIP.Model;
+using System;
 using TimbresIP.Common;
 
 namespace TimbresIP.Utils
@@ -51,6 +46,11 @@ namespace TimbresIP.Utils
         static String registerName { get; set; }
 
         /// <summary>
+        /// Tiempo de duración de la llamada. Utilizado para colgar(hangUp).
+        /// </summary>
+        static int callTime { get; set; } = !Properties.Settings.Default.callTime.Equals(0) ? Properties.Settings.Default.callTime : 30;
+
+        /// <summary>
         /// Ruta a archivo de sonido.
         /// </summary>
         static String audioFilePath { get; set; }
@@ -93,6 +93,12 @@ namespace TimbresIP.Utils
 
             //Extensión a llamar. numberToDial.
             registerName = jobDataCommon.callServer.registerName;
+
+            //Tiempo de duración de la llamada. En segundos.
+            if (!callTime.Equals(0))
+            {
+                callTime = jobDataCommon.callServer.callTime;
+            }
 
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
             registerAccount(account);
@@ -159,6 +165,7 @@ namespace TimbresIP.Utils
             mp3Player.Start();
 
             log.Info("Reproduciendo mp3 player!.");
+            callHangUp();
         }
 
         /// <summary>
@@ -173,6 +180,26 @@ namespace TimbresIP.Utils
             {
                 startMp3Player();
             }
+        }
+
+        /// <summary>
+        /// Colgar llamada.
+        /// </summary>
+        static void callHangUp()
+        {
+            int milliseconds = (int)TimeSpan.FromSeconds(callTime).TotalMilliseconds;
+
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(milliseconds);
+                call.HangUp();
+                log.Info("Colgando llamada!");
+            });
+
+            ////Alternativa 2
+            //System.Threading.Tasks.Task.Delay(milliseconds);
+            //call.HangUp();
+            //log.Info("Colgando llamada!");
         }
     }
 }

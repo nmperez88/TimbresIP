@@ -3,7 +3,7 @@
 namespace TimbresIP.Model
 {
     /// <summary>
-    /// Llamada al servidor.
+    /// Datos de conexión para hacer llamadas.
     /// </summary>
     class ConnectionCallServerModel
     {

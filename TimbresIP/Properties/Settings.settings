@@ -29,5 +29,8 @@
     <Setting Name="jsonConfigurationParametersName" Type="System.String" Scope="User">
       <Value Profile="(Default)">ConfigurationParameters</Value>
     </Setting>
+    <Setting Name="callTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

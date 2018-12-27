@@ -143,6 +143,14 @@ namespace TimbresIP.Controller
         }
 
         /// <summary>
+        /// Detener programador de llamadas.
+        /// </summary>
+        public async void stop()
+        {
+            stopScheduler();
+        }
+
+        /// <summary>
         /// Ejecutar hilo que lanza llamadas al servidor en hora determinada.
         /// </summary>
         private void runJobs()
@@ -272,6 +280,24 @@ namespace TimbresIP.Controller
         private bool hasHoraryConnectionCallServerParams(HoraryModel horary)
         {
             return !horary.connectionCallServer.registerName.Equals("") && !horary.connectionCallServer.registerPassword.Equals("");
+        }
+
+        public AutomaticRingSystemModel getAutomaticRingSystem()
+        {
+            return automaticRingSystem;
+        }
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
+        public MainController()
+        {
+            init();
+            //Descomentar para probar. Este método debe llamarse luego de visualizar el formulario.
+            //start();
+
+            //Debería existir una opción, visual o bien utilizarlo en cada modificación del horario, para detener el programador de llamadas.
+            //stop();
         }
     }
 }
