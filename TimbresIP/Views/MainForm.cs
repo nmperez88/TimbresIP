@@ -19,7 +19,7 @@ namespace TimbresIP
         //String configParamsFullPath = @"ComboDataExample\ConfigurationParameters";
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel", "ConfigurationParametersModel");
+        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel", "TimbresIP.Model.ConfigurationParametersModel");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(Properties.Settings.Default.jsonConfigurationParametersPath, "ConfigurationParametersModel");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters");
         //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils(@"ComboDataExample\ConfigurationParameters","ConfigurationParametersModel");
@@ -104,21 +104,21 @@ namespace TimbresIP
             if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel.json"))
             //if (File.Exists(Properties.Settings.Default.jsonConfigurationParametersPath+ ".json"))
             {
-                var jsonConfigurationParameters = File.ReadAllText(Properties.Settings.Default.jsonConfigurationParametersPath.ToString());
+                var jsonConfigurationParameters = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName + "\\ConfigurationParametersModel.json");
                 ConfigurationParametersModel configurationParameters = JsonConvert.DeserializeObject<ConfigurationParametersModel>(jsonConfigurationParameters);
                 configurationParametersModel.sendedEMail = configurationParameters.sendedEMail;
-                configurationParametersModel.instaledDate = configurationParameters.instaledDate;
+                configurationParametersModel.installedDate = configurationParameters.installedDate;
             }
             else if (sendMailUtils.sendMail())
             {
-                ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
+                configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
                 jsonHandlerUtils.serialize(configurationParametersModel);
             }
 
             if (!configurationParametersModel.sendedEMail)
             {
                 DateTime fechaActual = DateTime.Now;
-                TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.instaledDate;
+                TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
                 int diasRestantes = diferenciaDiasFechas.Days;
                 if (diasRestantes == 30)
                 {

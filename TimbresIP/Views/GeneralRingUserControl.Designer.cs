@@ -107,7 +107,7 @@
             this.textBoxGeneralSoundPasswordExtension.Name = "textBoxGeneralSoundPasswordExtension";
             this.textBoxGeneralSoundPasswordExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundPasswordExtension.TabIndex = 12;
-            this.textBoxGeneralSoundPasswordExtension.Text = "Caeunagota";
+            this.textBoxGeneralSoundPasswordExtension.Text = "1230IA";
             this.textBoxGeneralSoundPasswordExtension.UseSystemPasswordChar = true;
             // 
             // labelGeneralSoundID
@@ -126,7 +126,7 @@
             this.textBoxGeneralSoundExtExtension.Name = "textBoxGeneralSoundExtExtension";
             this.textBoxGeneralSoundExtExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundExtExtension.TabIndex = 10;
-            this.textBoxGeneralSoundExtExtension.Text = "1111";
+            this.textBoxGeneralSoundExtExtension.Text = "1230";
             this.textBoxGeneralSoundExtExtension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGeneralSoundExtExtension_KeyPress);
             // 
             // labelGeneralSoundExtension
@@ -145,7 +145,7 @@
             this.textBoxGeneralSoundIdExtension.Name = "textBoxGeneralSoundIdExtension";
             this.textBoxGeneralSoundIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundIdExtension.TabIndex = 8;
-            this.textBoxGeneralSoundIdExtension.Text = "1111";
+            this.textBoxGeneralSoundIdExtension.Text = "1230";
             this.textBoxGeneralSoundIdExtension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGeneralSoundIdExtension_KeyPress);
             // 
             // dataGridViewGeneralSound

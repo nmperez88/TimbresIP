@@ -84,7 +84,7 @@ namespace TimbresIP.Utils
             //var account = new SIPAccount(registrationRequired, displayName, userName, authenticationId, registerPassword, domainHost, domainPort);
             var account = new SIPAccount(registrationRequired, connectionCallServer.displayName, connectionCallServer.userName, connectionCallServer.registerName, connectionCallServer.registerPassword, domainHost, domainPort);
 
-            //Extensión a llamar.
+            //Extensión a llamar. numberToDial.
             registerName = callServer.registerName;
 
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.

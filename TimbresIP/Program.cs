@@ -24,10 +24,10 @@ namespace TimbresIP
             //for (int i = 0; i < 1; i++)
             //{
             //    ConnectionCallServerModel connectionCallServer = new ConnectionCallServerModel();
-            //    connectionCallServer.displayName = "1300";
-            //    connectionCallServer.userName = "1300";
-            //    connectionCallServer.registerName = "1300";
-            //    connectionCallServer.registerPassword = "1300IA";
+            //    connectionCallServer.displayName = "1230";
+            //    connectionCallServer.userName = "1230";
+            //    connectionCallServer.registerName = "1230";
+            //    connectionCallServer.registerPassword = "1230IA";
 
             //    HoraryModel horary = new HoraryModel("h" + i, connectionCallServer);
             //    for (int a = 0; a < 2; a++)
@@ -36,13 +36,15 @@ namespace TimbresIP
             //        String filename = "helloworld" + a + ".mp3";
             //        soundFile.name = filename;
             //        soundFile.targetPath = filename;
-            //        CallServerModel callServer = new CallServerModel("23:54", "5", soundFile, true, "", "llamada " + a);
+            //        CallServerModel callServer = new CallServerModel("23:54", "5", soundFile, true, "1300", "llamada " + a);
             //        horary.callServerList.Add(callServer);
             //    }
             //    automaticRingSystem.horaryList.Add(horary);
             //}
 
-            ////TODO callTime
+            //TODO callTime
+            //Archivos mp3 en mis documentos 
+            //Sendmail: programData\BITDATA
 
             //string outputJSON = JsonConvert.SerializeObject(automaticRingSystem);
             //String jsonFileFullPath = Properties.Settings.Default.jsonFolderDirectory + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
@@ -52,7 +54,7 @@ namespace TimbresIP
             //MainController mainController = new MainController();
             //mainController.init();
             //mainController.start();
-            //Console.ReadKey();
+            //Console.ReadLine();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

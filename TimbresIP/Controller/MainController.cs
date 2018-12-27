@@ -219,7 +219,7 @@ namespace TimbresIP.Controller
                 {
                     String idJob = h.randomId + cs.randomId;
                     String hour = cs.startAt.Substring(0, 2);//start:"12:30"
-                    String min = cs.startAt.Substring(2);
+                    String min = cs.startAt.Substring(3);
                     JobDataMap jobDataMap = new JobDataMap();
                     jobDataMap.Put("registrationRequired", automaticRingSystemToExecute.registrationRequired);
                     jobDataMap.Put("domainHost", automaticRingSystemToExecute.domainHost);
@@ -265,7 +265,8 @@ namespace TimbresIP.Controller
                     ITrigger trigger = TriggerBuilder.Create()
                         .WithIdentity(idJob, groupJobs)
                         //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
-                        .StartNow()
+                        .WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
+                        //.StartNow()
                         .ForJob(idJob, groupJobs)
                         .Build();
 

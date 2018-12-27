@@ -23,7 +23,7 @@ namespace TimbresIP.Model
         /// <summary>
         /// Fecha en la que se inicio el software por primera vez
         /// </summary>
-        public DateTime instaledDate { get; set; }
+        public DateTime installedDate { get; set; }
         /// <summary>
         /// Construnctor de la clase vacio
         /// </summary>
@@ -38,7 +38,7 @@ namespace TimbresIP.Model
             this.numberHours = 5;
             this.numberschedules = 3;
             this.sendedEMail = flag;
-            this.instaledDate = dateTime;
+            this.installedDate = dateTime;
         }
     }
 }
