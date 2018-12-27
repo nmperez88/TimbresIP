@@ -1,9 +1,7 @@
 ﻿
+using Newtonsoft.Json;
 using System;
 using System.IO;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using TimbresIP.Model;
 
 namespace TimbresIP.Utils
 {
@@ -64,7 +62,10 @@ namespace TimbresIP.Utils
         /// Ruta completa.
         /// </param>
         /// <param name="className">
-        /// Nombre de clase.
+        /// Nombre de clase. Incluir espacio de nombres.
+        /// Ej: 
+        ///     Clase: BaseUtils 
+        /// className: TimbresIP.Utils.BaseUtils
         /// </param>
         public JsonHandlerUtils(string fullPath, String className)
         {
@@ -101,7 +102,6 @@ namespace TimbresIP.Utils
         /// <returns></returns>
         public Object deserialize()
         {
-            //AutomaticRingSystemModel obj = new AutomaticRingSystemModel();
             Object obj = System.Reflection.Assembly.GetExecutingAssembly().CreateInstance(className);
             try
             {

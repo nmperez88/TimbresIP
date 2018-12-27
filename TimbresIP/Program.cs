@@ -42,7 +42,7 @@ namespace TimbresIP
             //    automaticRingSystem.horaryList.Add(horary);
             //}
 
-            //TODO callTime
+            //TODO callTime => ToTest!
             //Archivos mp3 en mis documentos 
             //Sendmail: programData\BITDATA
 

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Management;
-using System.Net.NetworkInformation;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 namespace TimbresIP.Utils
@@ -52,7 +47,16 @@ namespace TimbresIP.Utils
         /// <returns>Direccion IP externa</returns>
         public string getExternalIP()
         {
-            string externalIp = new WebClient().DownloadString(Properties.Settings.Default.dnsExternalConsult);
+            string externalIp = "";
+            try
+            {
+                externalIp = new WebClient().DownloadString(Properties.Settings.Default.dnsExternalConsult);
+            }
+            catch (Exception e)
+            {
+
+                log.Error(e);
+            }
             return externalIp;
         }
     }

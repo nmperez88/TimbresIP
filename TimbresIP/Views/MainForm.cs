@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimbresIP.Utils;
 using TimbresIP.Model;
+using TimbresIP.Controller;
 using log4net.Util;
 using utils;
 
@@ -22,11 +23,62 @@ namespace TimbresIP
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
 
+        /// <summary>
+        /// Controlador principal.
+        /// </summary>
+        MainController mainController;
+
+        /// <summary>
+        /// Control de usuario para sonidos generales.
+        /// </summary>
+        GeneralRingUserControl generalRingUserControl;
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
+        #region Métodos
+        /// <summary>
+        /// Cargar datos en interfaz.
+        /// </summary>
+        private void loadData()
+        {
+            mainController = new MainController();
+            //Datos del servidor.
+            textBoxServer.Text = mainController.getAutomaticRingSystem().domainHost;
+            textBoxPort.Text = mainController.getAutomaticRingSystem().domainPort.ToString();
+
+            //Horarios.
+            mainController.getAutomaticRingSystem().horaryList.ForEach(h =>
+            {
+                if (tabControlHorary.TabPages.Count < configurationParametersModel.numberschedules)
+                {
+                    HoraryUserControl horaryUserControl = new HoraryUserControl(h);
+                    horaryUserControl.Dock = DockStyle.Fill;
+                    TabPage horaryTabPage = new TabPage(h.name);
+                    tabControlHorary.TabPages.Add(horaryTabPage);
+                    horaryTabPage.ImageIndex = 0;
+                    horaryTabPage.Controls.Add(horaryUserControl);
+                }
+            });
+
+            //Sonidos generales.
+            if (mainController.getAutomaticRingSystem().generalRingList.Any())
+            {
+                HoraryModel horary = mainController.getAutomaticRingSystem().generalRingList[0];
+                generalRingUserControl.horary = horary;
+                generalRingUserControl.loadData();
+            }
+ 
+
+        }
+        #endregion
+
+        #region Eventos
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -132,8 +184,10 @@ namespace TimbresIP
 
             }
 
-            GeneralRingUserControl generalRingUserControl = new GeneralRingUserControl();
+            generalRingUserControl = new GeneralRingUserControl();
             this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
+
+            loadData();
         }
 
         private void textBoxPort_KeyPress(object sender, KeyPressEventArgs e)
@@ -148,6 +202,8 @@ namespace TimbresIP
                 MessageBox.Show("La dirección IP del servidor no es correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
     }
 
 }

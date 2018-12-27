@@ -1,27 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Drawing;
 using System.IO;
-using TimbresIP.Utils;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using TimbresIP.Model;
+using TimbresIP.Utils;
 
 namespace TimbresIP
 {
-    public partial class GeneralRingUserControl : UserControl
+    partial class GeneralRingUserControl : UserControl
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
 
+
+        /// <summary>
+        /// Horario.
+        /// </summary>
+        public HoraryModel horary { get; set; }
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public GeneralRingUserControl()
         {
             InitializeComponent();
         }
 
+        #region Métodos
+        /// <summary>
+        /// Cargar datos en interfaz.
+        /// </summary>
+        public void loadData()
+        {
+            //Datos de conexión al servidor.
+            textBoxGeneralSoundIdExtension.Text = horary.connectionCallServer.displayName;
+            textBoxGeneralSoundExtExtension.Text = horary.connectionCallServer.registerName;
+            textBoxGeneralSoundPasswordExtension.Text = horary.connectionCallServer.registerPassword;
+
+            //Llamadas.
+            horary.callServerList.ForEach(cs =>
+            {
+                DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
+                DataRow dataRowToAdd = dataTable.NewRow();
+
+                dataRowToAdd["ColumnTone"] = cs.soundFile.targetPath;
+                dataRowToAdd["ColumnExtension"] = cs.registerName;
+                dataRowToAdd["ColumnObservation"] = cs.observations;
+
+                dataTable.Rows.Add(dataRowToAdd);
+                dataTable.AcceptChanges();
+            });
+
+        }
+        #endregion
+
+        #region Eventos
         private void dataGridViewGeneralSound_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "ColumnCall" && e.RowIndex >= 0)
@@ -112,5 +146,6 @@ namespace TimbresIP
             //Elimina el mensaje de error de la cabecera de la fila
             dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = String.Empty;
         }
+        #endregion
     }
 }

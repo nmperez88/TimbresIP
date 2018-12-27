@@ -1,30 +1,77 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Drawing;
 using System.IO;
-using TimbresIP.Utils;
-using TimbresIP.Model;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using TimbresIP.Model;
+using TimbresIP.Utils;
 
 namespace TimbresIP
 {
-    public partial class HoraryUserControl : UserControl
+    partial class HoraryUserControl : UserControl
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
-        ConfigurationParametersModel configurationParametersModel= new ConfigurationParametersModel();
+        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
 
+        /// <summary>
+        /// Horario.
+        /// </summary>
+        HoraryModel horary;
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public HoraryUserControl()
         {
             InitializeComponent();
+
         }
 
+        /// <summary>
+        /// Constructor. Para cargar datos en interfaz.
+        /// </summary>
+        /// <param name="horary"></param>
+        public HoraryUserControl(HoraryModel horary)
+        {
+            this.horary = horary;
+            InitializeComponent();
+        }
+
+        #region Métodos
+        /// <summary>
+        /// Cargar datos en interfaz.
+        /// </summary>
+        private void loadData()
+        {
+            //Datos de conexión al servidor.
+            textBoxHoraryIdExtension.Text = horary.connectionCallServer.displayName;
+            textBoxHoraryExtExtension.Text = horary.connectionCallServer.registerName;
+            textBoxHoraryPasswordExtension.Text = horary.connectionCallServer.registerPassword;
+
+            //Llamadas.
+            horary.callServerList.ForEach(cs =>
+            {
+                DataTable dataTable = (DataTable)dataGridViewHorary.DataSource;
+                DataRow dataRowToAdd = dataTable.NewRow();
+
+                dataRowToAdd["ColumnNo"] = cs.randomId;
+                dataRowToAdd["ColumnHoraInicio"] = cs.startAt;
+                dataRowToAdd["ColumnSoundTime"] = cs.callTime;
+                dataRowToAdd["ColumnTone"] = cs.soundFile.targetPath;
+                dataRowToAdd["ColumnCheck"] = cs.enabled;
+                dataRowToAdd["ColumnExtension"] = cs.registerName;
+                dataRowToAdd["ColumnObservations"] = cs.observations;
+
+                dataTable.Rows.Add(dataRowToAdd);
+                dataTable.AcceptChanges();
+            });
+
+        }
+        #endregion
+
+        #region Eventos
         private void buttonEditExtension_Click(object sender, EventArgs e)
         {
             this.textBoxHoraryExtExtension.Enabled = true;
@@ -168,7 +215,9 @@ namespace TimbresIP
         {
             jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath(), "TimbresIP.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+            loadData();
         }
+        #endregion
     }
 }
 

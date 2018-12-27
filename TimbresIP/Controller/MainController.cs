@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimbresIP.Model;
 using TimbresIP.Utils;
+using TimbresIP.Common;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Calendar;
@@ -142,6 +143,14 @@ namespace TimbresIP.Controller
         }
 
         /// <summary>
+        /// Detener programador de llamadas.
+        /// </summary>
+        public async void stop()
+        {
+            stopScheduler();
+        }
+
+        /// <summary>
         /// Ejecutar hilo que lanza llamadas al servidor en hora determinada.
         /// </summary>
         private void runJobs()
@@ -207,7 +216,7 @@ namespace TimbresIP.Controller
         }
 
         /// <summary>
-        /// 
+        /// Iniciar trabajos.
         /// </summary>
         private async void startJobs()
         {
@@ -221,11 +230,7 @@ namespace TimbresIP.Controller
                     String hour = cs.startAt.Substring(0, 2);//start:"12:30"
                     String min = cs.startAt.Substring(3);
                     JobDataMap jobDataMap = new JobDataMap();
-                    jobDataMap.Put("registrationRequired", automaticRingSystemToExecute.registrationRequired);
-                    jobDataMap.Put("domainHost", automaticRingSystemToExecute.domainHost);
-                    jobDataMap.Put("domainPort", automaticRingSystemToExecute.domainPort);
-                    jobDataMap.Put("connectionCallServer", JsonConvert.SerializeObject(h.connectionCallServer));
-                    jobDataMap.Put("callServer", JsonConvert.SerializeObject(cs));
+                    softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystemToExecute.registrationRequired, automaticRingSystemToExecute.domainHost, automaticRingSystemToExecute.domainPort, h.connectionCallServer, cs);
                     jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
 
                     //Definir job.
@@ -234,32 +239,6 @@ namespace TimbresIP.Controller
                         //.UsingJobData("horary", JsonConvert.SerializeObject(h))
                         .SetJobData(jobDataMap)
                         .Build();
-
-                    //// Trigger the job to run now, and then repeat every 10 seconds
-                    //ITrigger trigger = TriggerBuilder.Create()
-                    //    .WithIdentity(idJob, groupJobs)
-                    //    .StartNow()
-                    //    .WithSimpleSchedule(x => x
-                    //        .WithIntervalInSeconds(2)
-                    //        //.RepeatForever()
-                    //        .WithRepeatCount(2)
-                    //        )
-                    //    .Build();
-
-                    //DayOfWeek[] triggerParam = new DayOfWeek[]{
-                    //    DayOfWeek.Monday,
-                    //    DayOfWeek.Tuesday,
-                    //    DayOfWeek.Wednesday,
-                    //    DayOfWeek.Thursday,
-                    //    DayOfWeek.Friday,
-                    //    DayOfWeek.Sunday};// excluir Domingo(0). L-V 12345
-
-                    //ITrigger trigger2 = TriggerBuilder.Create()
-                    //    .WithIdentity("rings", "app")
-                    //    //.ForJob("rings", groupJobs)
-                    //    .WithSchedule(CronScheduleBuilder.AtHourAndMinuteOnGivenDaysOfWeek(hour, min, triggerParam))
-                    //    //.ModifiedByCalendar("myHolidays") // but not on holidays
-                    //    .Build();
 
                     //Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
                     ITrigger trigger = TriggerBuilder.Create()
@@ -301,6 +280,24 @@ namespace TimbresIP.Controller
         private bool hasHoraryConnectionCallServerParams(HoraryModel horary)
         {
             return !horary.connectionCallServer.registerName.Equals("") && !horary.connectionCallServer.registerPassword.Equals("");
+        }
+
+        public AutomaticRingSystemModel getAutomaticRingSystem()
+        {
+            return automaticRingSystem;
+        }
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
+        public MainController()
+        {
+            init();
+            //Descomentar para probar. Este método debe llamarse luego de visualizar el formulario.
+            //start();
+
+            //Debería existir una opción, visual o bien utilizarlo en cada modificación del horario, para detener el programador de llamadas.
+            //stop();
         }
     }
 }

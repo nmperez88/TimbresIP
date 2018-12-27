@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ozeki.Media;
+﻿using Ozeki.Media;
 using Ozeki.VoIP;
-using TimbresIP.Model;
+using System;
+using TimbresIP.Common;
 
 namespace TimbresIP.Utils
 {
@@ -50,6 +46,11 @@ namespace TimbresIP.Utils
         static String registerName { get; set; }
 
         /// <summary>
+        /// Tiempo de duración de la llamada. Utilizado para colgar(hangUp).
+        /// </summary>
+        static int callTime { get; set; } = !Properties.Settings.Default.callTime.Equals(0) ? Properties.Settings.Default.callTime : 30;
+
+        /// <summary>
         /// Ruta a archivo de sonido.
         /// </summary>
         static String audioFilePath { get; set; }
@@ -63,6 +64,11 @@ namespace TimbresIP.Utils
         /// Variable que define el máximo del rango.
         /// </summary>
         private int softPhoneRangeMax = !Properties.Settings.Default.softPhoneRangeMax.Equals(0) ? Properties.Settings.Default.softPhoneRangeMax : 10000;
+
+        /// <summary>
+        /// Parámetros(datos) para el trabajador.
+        /// </summary>
+        public JobDataCommon jobDataCommon { get; set; }
 
         /// <summary>
         /// Contructor.
@@ -79,18 +85,25 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Iniciar lamada.
         /// </summary>
-        public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
+        //public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
+        public void start()
         {
             //var account = new SIPAccount(registrationRequired, displayName, userName, authenticationId, registerPassword, domainHost, domainPort);
-            var account = new SIPAccount(registrationRequired, connectionCallServer.displayName, connectionCallServer.userName, connectionCallServer.registerName, connectionCallServer.registerPassword, domainHost, domainPort);
+            var account = new SIPAccount(jobDataCommon.registrationRequired, jobDataCommon.connectionCallServer.displayName, jobDataCommon.connectionCallServer.userName, jobDataCommon.connectionCallServer.registerName, jobDataCommon.connectionCallServer.registerPassword, jobDataCommon.domainHost, jobDataCommon.domainPort);
 
             //Extensión a llamar. numberToDial.
-            registerName = callServer.registerName;
+            registerName = jobDataCommon.callServer.registerName;
+
+            //Tiempo de duración de la llamada. En segundos.
+            if (!callTime.Equals(0))
+            {
+                callTime = jobDataCommon.callServer.callTime;
+            }
 
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
             registerAccount(account);
 
-            mp3Player = new MP3StreamPlayback(callServer.soundFile.targetPath);
+            mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
         }
 
         /// <summary>
@@ -152,6 +165,7 @@ namespace TimbresIP.Utils
             mp3Player.Start();
 
             log.Info("Reproduciendo mp3 player!.");
+            callHangUp();
         }
 
         /// <summary>
@@ -166,6 +180,26 @@ namespace TimbresIP.Utils
             {
                 startMp3Player();
             }
+        }
+
+        /// <summary>
+        /// Colgar llamada.
+        /// </summary>
+        static void callHangUp()
+        {
+            int milliseconds = (int)TimeSpan.FromSeconds(callTime).TotalMilliseconds;
+
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(milliseconds);
+                call.HangUp();
+                log.Info("Colgando llamada!");
+            });
+
+            ////Alternativa 2
+            //System.Threading.Tasks.Task.Delay(milliseconds);
+            //call.HangUp();
+            //log.Info("Colgando llamada!");
         }
     }
 }
