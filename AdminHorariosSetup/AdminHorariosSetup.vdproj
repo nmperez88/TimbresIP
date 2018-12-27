@@ -57,6 +57,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E9C17550ED40428CB330685EDEAECC08"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EDC5B2EF54ED1BD736F62407C70BB1EA"
         "OwnerKey" = "8:_CE534DCD6E614E518F2524B20FC09A21"
         "MsmSig" = "8:_UNDEFINED"
@@ -361,6 +367,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E9C17550ED40428CB330685EDEAECC08"
+            {
+            "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
+            "TargetName" = "8:msiexec.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_62DE97A0B7AC4F9CACE7BF512A8E19FE"
+            "Condition" = "8:Not Installed"
+            "Transitive" = "11:TRUE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:TRUE"
+            "Permanent" = "11:TRUE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EDC5B2EF54ED1BD736F62407C70BB1EA"
             {
             "AssemblyRegister" = "3:1"
@@ -441,6 +467,17 @@
                         {
                         }
                     }
+                }
+            }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_62DE97A0B7AC4F9CACE7BF512A8E19FE"
+            {
+            "Name" = "8:#1914"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:SystemFolder"
+                "Folders"
+                {
                 }
             }
             "{994432C3-9487-495D-8656-3E829A8DBDDE}:_6D28D0C251BD43C0860BC6CEAAB7D682"
@@ -615,6 +652,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0D9FAC558DD34CA8898C445B7A1C191A"
+            {
+            "Name" = "8:Uninstall AdminHorarios"
+            "Arguments" = "8:/x{space}[ProductCode]."
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_E9C17550ED40428CB330685EDEAECC08"
+            "Folder" = "8:_3CE485CD7B5D4444BFFB967982B9097D"
+            "WorkingFolder" = "8:_62DE97A0B7AC4F9CACE7BF512A8E19FE"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_596B5DAC933C480999B7ED3B8D8EF758"
             {
             "Name" = "8:AdminHorarios"
