@@ -35,5 +35,11 @@
     <Setting Name="callTime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
+    <Setting Name="GeneralSounds" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GeneralSounds</Value>
+    </Setting>
+    <Setting Name="HorarySounds" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HorarySounds</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

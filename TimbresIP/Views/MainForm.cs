@@ -21,6 +21,7 @@ namespace TimbresIP
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
+        SendMailUtils sendMailUtils = new SendMailUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace TimbresIP
                 generalRingUserControl.horary = horary;
                 generalRingUserControl.loadData();
             }
- 
+
 
         }
         #endregion
@@ -146,7 +147,6 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            SendMailUtils sendMailUtils = new SendMailUtils();
             try
             {
                 jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
@@ -154,15 +154,53 @@ namespace TimbresIP
                 if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension))
                 {
                     configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+
+                    if (!configurationParametersModel.sendedEMail)
+                    {
+                        if (sendMailUtils.sendMail())
+                        {
+                            configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
+                            jsonHandlerUtils.serialize(configurationParametersModel);
+                        }
+                        else
+                        {
+                            DateTime fechaActual = DateTime.Now;
+                            TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
+                            int diasRestantes = diferenciaDiasFechas.Days;
+                            if (diasRestantes == 30)
+                            {
+                                MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        generalRingUserControl = new GeneralRingUserControl();
+                        this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
+                        loadData();
+                    }
+                    else
+                    {
+                        generalRingUserControl = new GeneralRingUserControl();
+                        this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
+                        loadData();
+                    }
+
                 }
                 else if (sendMailUtils.sendMail())
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
                     jsonHandlerUtils.serialize(configurationParametersModel);
+                    generalRingUserControl = new GeneralRingUserControl();
+                    this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
+                    loadData();
                 }
-
-                if (!configurationParametersModel.sendedEMail)
+                else
                 {
+                    configurationParametersModel = new ConfigurationParametersModel(false, DateTime.Now);
+                    jsonHandlerUtils.serialize(configurationParametersModel);
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
                     int diasRestantes = diferenciaDiasFechas.Days;
@@ -175,19 +213,14 @@ namespace TimbresIP
                     {
                         MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                 }
+
             }
             catch (Exception er)
             {
                 log.WriteError(er);
 
             }
-
-            generalRingUserControl = new GeneralRingUserControl();
-            this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
-
-            loadData();
         }
 
         private void textBoxPort_KeyPress(object sender, KeyPressEventArgs e)

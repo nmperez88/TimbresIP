@@ -127,7 +127,7 @@ namespace TimbresIP
                         if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                         {
                             DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
-                            DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath()+ "\\" + Properties.Settings.Default.adminHorariosSoundFolderName);
+                            DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
                             FileInfo[] files = dirInfo.GetFiles();
                             comboBox.DataSource = files;
                             comboBox.DisplayMember = nameof(FileInfo.Name);
