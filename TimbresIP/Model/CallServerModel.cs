@@ -51,11 +51,23 @@ namespace TimbresIP.Model
         /// </summary>
         public String observations { get; set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public CallServerModel()
         {
 
         }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="startAt"></param>
+        /// <param name="callTime"></param>
+        /// <param name="soundFile"></param>
+        /// <param name="enabled"></param>
+        /// <param name="registerName"></param>
+        /// <param name="observations"></param>
         public CallServerModel(string startAt, string callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
         {
             this.randomId = idGroup + getStartId();

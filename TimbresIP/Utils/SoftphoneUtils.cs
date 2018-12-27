@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ozeki.Media;
 using Ozeki.VoIP;
 using TimbresIP.Model;
+using TimbresIP.Common;
 
 namespace TimbresIP.Utils
 {
@@ -65,6 +66,11 @@ namespace TimbresIP.Utils
         private int softPhoneRangeMax = !Properties.Settings.Default.softPhoneRangeMax.Equals(0) ? Properties.Settings.Default.softPhoneRangeMax : 10000;
 
         /// <summary>
+        /// Parámetros(datos) para el trabajador.
+        /// </summary>
+        public JobDataCommon jobDataCommon { get; set; }
+
+        /// <summary>
         /// Contructor.
         /// </summary>
         public SoftPhoneUtils()
@@ -79,18 +85,19 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Iniciar lamada.
         /// </summary>
-        public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
+        //public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
+        public void start()
         {
             //var account = new SIPAccount(registrationRequired, displayName, userName, authenticationId, registerPassword, domainHost, domainPort);
-            var account = new SIPAccount(registrationRequired, connectionCallServer.displayName, connectionCallServer.userName, connectionCallServer.registerName, connectionCallServer.registerPassword, domainHost, domainPort);
+            var account = new SIPAccount(jobDataCommon.registrationRequired, jobDataCommon.connectionCallServer.displayName, jobDataCommon.connectionCallServer.userName, jobDataCommon.connectionCallServer.registerName, jobDataCommon.connectionCallServer.registerPassword, jobDataCommon.domainHost, jobDataCommon.domainPort);
 
             //Extensión a llamar. numberToDial.
-            registerName = callServer.registerName;
+            registerName = jobDataCommon.callServer.registerName;
 
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
             registerAccount(account);
 
-            mp3Player = new MP3StreamPlayback(callServer.soundFile.targetPath);
+            mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
         }
 
         /// <summary>

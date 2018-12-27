@@ -17,7 +17,7 @@ namespace TimbresIP
     public partial class HoraryUserControl : UserControl
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
-        ConfigurationParametersModel configurationParametersModel= new ConfigurationParametersModel();
+        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
 
         public HoraryUserControl()
