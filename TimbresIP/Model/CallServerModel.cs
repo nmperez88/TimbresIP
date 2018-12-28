@@ -22,6 +22,11 @@ namespace TimbresIP.Model
         public String randomId { get; set; }
 
         /// <summary>
+        /// Número.
+        /// </summary>
+        public int no { get; set; }
+
+        /// <summary>
         /// Hora de inicio.
         /// </summary>
         public String startAt { get; set; }

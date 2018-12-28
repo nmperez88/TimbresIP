@@ -159,7 +159,7 @@ namespace TimbresIP
                     {
                         if (sendMailUtils.sendMail())
                         {
-                            configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
+                            configurationParametersModel = new ConfigurationParametersModel(true);
                             jsonHandlerUtils.serialize(configurationParametersModel);
                         }
                         else
@@ -191,7 +191,7 @@ namespace TimbresIP
                 }
                 else if (sendMailUtils.sendMail())
                 {
-                    configurationParametersModel = new ConfigurationParametersModel(true, DateTime.Now);
+                    configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
                     generalRingUserControl = new GeneralRingUserControl();
                     this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
@@ -199,7 +199,7 @@ namespace TimbresIP
                 }
                 else
                 {
-                    configurationParametersModel = new ConfigurationParametersModel(false, DateTime.Now);
+                    configurationParametersModel = new ConfigurationParametersModel(false);
                     jsonHandlerUtils.serialize(configurationParametersModel);
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;

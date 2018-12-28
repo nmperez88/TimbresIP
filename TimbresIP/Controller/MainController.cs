@@ -20,6 +20,7 @@ namespace TimbresIP.Controller
     /// </summary>
     class MainController : BaseUtils
     {
+        ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
         /// <summary>
         /// Programador de trabajos para ejecutar las llamadas.
         /// </summary>
@@ -68,7 +69,7 @@ namespace TimbresIP.Controller
         /// </summary>
         public void init()
         {
-            jsonFileFullPath = Properties.Settings.Default.jsonFolderDirectory + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
+            jsonFileFullPath = validateEntriesUtils.getProgramDataPath() +"\\"+ Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
 
             if (System.IO.File.Exists(jsonFileFullPath))
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxGeneralSoundExtension = new System.Windows.Forms.GroupBox();
             this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
@@ -39,12 +40,14 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
+            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ColumnTone = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnObservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGeneralSoundExtension
@@ -150,12 +153,14 @@
             // 
             // dataGridViewGeneralSound
             // 
+            this.dataGridViewGeneralSound.AutoGenerateColumns = false;
             this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTone,
             this.ColumnExtension,
             this.ColumnCall,
             this.ColumnObservation});
+            this.dataGridViewGeneralSound.DataSource = this.callServerModelBindingSource;
             this.dataGridViewGeneralSound.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewGeneralSound.Name = "dataGridViewGeneralSound";
             this.dataGridViewGeneralSound.RowHeadersWidth = 30;
@@ -166,6 +171,10 @@
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             this.dataGridViewGeneralSound.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewGeneralSound_CellValidating);
             // 
+            // callServerModelBindingSource
+            // 
+            this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
+            // 
             // ColumnTone
             // 
             this.ColumnTone.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
@@ -175,6 +184,7 @@
             // 
             // ColumnExtension
             // 
+            this.ColumnExtension.DataPropertyName = "registerName";
             dataGridViewCellStyle1.NullValue = null;
             this.ColumnExtension.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnExtension.HeaderText = "Extesión";
@@ -193,6 +203,7 @@
             // 
             // ColumnObservation
             // 
+            this.ColumnObservation.DataPropertyName = "observations";
             this.ColumnObservation.HeaderText = "Observaciones";
             this.ColumnObservation.Name = "ColumnObservation";
             this.ColumnObservation.Width = 262;
@@ -209,6 +220,7 @@
             this.groupBoxGeneralSoundExtension.ResumeLayout(false);
             this.groupBoxGeneralSoundExtension.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,5 +241,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExtension;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservation;
+        private System.Windows.Forms.BindingSource callServerModelBindingSource;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -53,24 +54,31 @@ namespace TimbresIP
             textBoxHoraryPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
             //Llamadas.
+            List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
+            int allowedRows = 0;
             horary.callServerList.ForEach(cs =>
             {
-                if(configurationParametersModel.numberHours + 1)
-                { }
-                DataTable dataTable = (DataTable)dataGridViewHorary.DataSource;
-                DataRow dataRowToAdd = dataTable.NewRow();
+                if (allowedRows < configurationParametersModel.numberHours + 1)
+                {
+                    callServerListToAdded.Add(cs);
+                    //DataTable dataTable = (DataTable)dataGridViewHorary.DataSource;
+                    //DataRow dataRowToAdd = dataTable.NewRow();
 
-                dataRowToAdd["ColumnNo"] = cs.randomId;
-                dataRowToAdd["ColumnHoraInicio"] = cs.startAt;
-                dataRowToAdd["ColumnSoundTime"] = cs.callTime;
-                dataRowToAdd["ColumnTone"] = cs.soundFile.targetPath;
-                dataRowToAdd["ColumnCheck"] = cs.enabled;
-                dataRowToAdd["ColumnExtension"] = cs.registerName;
-                dataRowToAdd["ColumnObservations"] = cs.observations;
+                    //dataRowToAdd["ColumnNo"] = cs.randomId;
+                    //dataRowToAdd["ColumnHoraInicio"] = cs.startAt;
+                    //dataRowToAdd["ColumnSoundTime"] = cs.callTime;
+                    //dataRowToAdd["ColumnTone"] = cs.soundFile.targetPath;
+                    //dataRowToAdd["ColumnCheck"] = cs.enabled;
+                    //dataRowToAdd["ColumnExtension"] = cs.registerName;
+                    //dataRowToAdd["ColumnObservations"] = cs.observations;
 
-                dataTable.Rows.Add(dataRowToAdd);
-                dataTable.AcceptChanges();
+                    //dataTable.Rows.Add(dataRowToAdd);
+                    //dataTable.AcceptChanges();
+                }
+                allowedRows++;
             });
+
+            dataGridViewHorary.DataSource = callServerListToAdded;
 
         }
         #endregion
@@ -149,7 +157,7 @@ namespace TimbresIP
 
                     log.WriteError(er);
                 }
-                
+
             }
         }
 
@@ -226,7 +234,7 @@ namespace TimbresIP
 
         private void HoraryUserControl_Load(object sender, EventArgs e)
         {
-            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath(), "TimbresIP.Model.ConfigurationParametersModel");
+            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
             loadData();
         }

@@ -27,18 +27,21 @@ namespace TimbresIP.Model
         /// <summary>
         /// Construnctor de la clase vacio
         /// </summary>
-        public ConfigurationParametersModel() { }
+        public ConfigurationParametersModel()
+        {
+            this.numberHours = 3;
+            this.numberschedules = 3;
+        }
         /// <summary>
         /// Constructor de la clase con parametros
         /// </summary>
         /// <param name="flag"></param>
-        /// <param name="dateTime"></param>
-        public ConfigurationParametersModel(bool flag, DateTime dateTime)
+        public ConfigurationParametersModel(bool flag)
         {
             this.numberHours = 3;
             this.numberschedules = 3;
             this.sendedEMail = flag;
-            this.installedDate = dateTime;
+            this.installedDate = DateTime.Now;
         }
     }
 }

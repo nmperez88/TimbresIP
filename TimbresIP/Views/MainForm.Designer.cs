@@ -235,7 +235,7 @@
             // buttonSaveAll
             // 
             this.buttonSaveAll.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonSaveAll.Location = new System.Drawing.Point(6, 17);
+            this.buttonSaveAll.Location = new System.Drawing.Point(25, 19);
             this.buttonSaveAll.Name = "buttonSaveAll";
             this.buttonSaveAll.Size = new System.Drawing.Size(33, 30);
             this.buttonSaveAll.TabIndex = 0;
