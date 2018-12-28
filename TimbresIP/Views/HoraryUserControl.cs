@@ -55,6 +55,8 @@ namespace TimbresIP
             //Llamadas.
             horary.callServerList.ForEach(cs =>
             {
+                if(configurationParametersModel.numberHours + 1)
+                { }
                 DataTable dataTable = (DataTable)dataGridViewHorary.DataSource;
                 DataRow dataRowToAdd = dataTable.NewRow();
 
