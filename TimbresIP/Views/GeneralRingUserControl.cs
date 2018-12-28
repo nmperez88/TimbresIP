@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TimbresIP.Model;
 using TimbresIP.Utils;
+using utils;
 
 namespace TimbresIP
 {
@@ -104,22 +105,31 @@ namespace TimbresIP
 
         private void dataGridViewGeneralSound_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
+            try
             {
-                case "ColumnTone":
-                    if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-                    {
-                        DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
-                        DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
-                        FileInfo[] files = dir.GetFiles();
-                        comboBox.DataSource = files;
-                        comboBox.DisplayMember = nameof(FileInfo.Name);
-                    }
-                    break;
-                case "ColumnCall":
-                    MessageBox.Show("ColumnCall");
-                    break;
+                switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
+                {
+                    case "ColumnTone":
+                        if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                        {
+                            DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                            DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
+                            FileInfo[] files = dir.GetFiles();
+                            comboBox.DataSource = files;
+                            comboBox.DisplayMember = nameof(FileInfo.Name);
+                        }
+                        break;
+                    case "ColumnCall":
+                        MessageBox.Show("ColumnCall");
+                        break;
+                }
             }
+            catch (Exception er)
+            {
+
+                log.WriteError(er);
+            }
+            
         }
 
         private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)

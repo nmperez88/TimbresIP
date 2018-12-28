@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimbresIP", "TimbresIP\TimbresIP.csproj", "{C51085EC-37CA-4392-9C40-33DE2C19E081}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AdminHorariosSetup", "AdminHorariosSetup\AdminHorariosSetup.vdproj", "{7379DFD6-2652-4130-A167-628168F0B0EE}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AdminHorariosSetup", "AdminHorariosSetup\AdminHorariosSetup.vdproj", "{9BA71433-000D-4E0B-B67D-3A960D1BB655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{C51085EC-37CA-4392-9C40-33DE2C19E081}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51085EC-37CA-4392-9C40-33DE2C19E081}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51085EC-37CA-4392-9C40-33DE2C19E081}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7379DFD6-2652-4130-A167-628168F0B0EE}.Debug|Any CPU.ActiveCfg = Debug
-		{7379DFD6-2652-4130-A167-628168F0B0EE}.Release|Any CPU.ActiveCfg = Release
+		{9BA71433-000D-4E0B-B67D-3A960D1BB655}.Debug|Any CPU.ActiveCfg = Debug
+		{9BA71433-000D-4E0B-B67D-3A960D1BB655}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TimbresIP.Model;
 using TimbresIP.Utils;
+using utils;
 
 namespace TimbresIP
 {
@@ -122,22 +123,31 @@ namespace TimbresIP
         {
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
-                switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
+                try
                 {
-                    case "ColumnTone":
-                        if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-                        {
-                            DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
-                            DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
-                            FileInfo[] files = dirInfo.GetFiles();
-                            comboBox.DataSource = files;
-                            comboBox.DisplayMember = nameof(FileInfo.Name);
-                        }
-                        break;
-                    case "ColumnCall":
-                        MessageBox.Show("ColumnCall");
-                        break;
+                    switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
+                    {
+                        case "ColumnTone":
+                            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                            {
+                                DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                                DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
+                                FileInfo[] files = dirInfo.GetFiles();
+                                comboBox.DataSource = files;
+                                comboBox.DisplayMember = nameof(FileInfo.Name);
+                            }
+                            break;
+                        case "ColumnCall":
+                            MessageBox.Show("ColumnCall");
+                            break;
+                    }
                 }
+                catch (Exception er)
+                {
+
+                    log.WriteError(er);
+                }
+                
             }
         }
 
