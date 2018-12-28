@@ -31,12 +31,6 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_E9C17550ED40428CB330685EDEAECC08"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -177,26 +171,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E9C17550ED40428CB330685EDEAECC08"
-            {
-            "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
-            "TargetName" = "8:msiexec.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_62DE97A0B7AC4F9CACE7BF512A8E19FE"
-            "Condition" = "8:Not Installed"
-            "Transitive" = "11:TRUE"
-            "Vital" = "11:FALSE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:TRUE"
-            "Permanent" = "11:TRUE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -270,17 +244,6 @@
                     }
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_62DE97A0B7AC4F9CACE7BF512A8E19FE"
-            {
-            "Name" = "8:#1914"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:SystemFolder"
-                "Folders"
-                {
-                }
-            }
             "{994432C3-9487-495D-8656-3E829A8DBDDE}:_6D28D0C251BD43C0860BC6CEAAB7D682"
             {
             "DefaultLocation" = "8:[CommonAppDataFolder]"
@@ -350,7 +313,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_439697D40CC040F49A75352A9F51AF08"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -461,9 +424,9 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_E9C17550ED40428CB330685EDEAECC08"
+            "Target" = "8:"
             "Folder" = "8:_3CE485CD7B5D4444BFFB967982B9097D"
-            "WorkingFolder" = "8:_62DE97A0B7AC4F9CACE7BF512A8E19FE"
+            "WorkingFolder" = "8:"
             "Icon" = "8:"
             "Feature" = "8:"
             }
