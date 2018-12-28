@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using TimbresIP.Utils;
 
 namespace TimbresIP.Model
@@ -41,6 +42,10 @@ namespace TimbresIP.Model
         /// </summary>
         public String externalIPAddr { get; set; }
         /// <summary>
+        /// Version de la aplicacion
+        /// </summary>
+        public String appVersion { get; set; }
+        /// <summary>
         /// Instancia de la clase FeaturesUtils
         /// </summary>
         FeaturesUtils featuresUtils = new FeaturesUtils();
@@ -57,6 +62,7 @@ namespace TimbresIP.Model
             macAddr = featuresUtils.getMacAddress() == null ? "" : featuresUtils.getMacAddress().ToString();
             localIPAddr = featuresUtils.getLocalIPAddress().ToString();
             externalIPAddr = featuresUtils.getExternalIP().ToString();
+            appVersion = Application.ProductVersion;
         }
     }
 }
