@@ -54,7 +54,7 @@ namespace TimbresIP.Model
             machineName = Environment.MachineName;
             userDomain = Environment.UserDomainName;
             localUserName = Environment.UserName;
-            macAddr = featuresUtils.getMacAddress().ToString();
+            macAddr = featuresUtils.getMacAddress() == null ? "" : featuresUtils.getMacAddress().ToString();
             localIPAddr = featuresUtils.getLocalIPAddress().ToString();
             externalIPAddr = featuresUtils.getExternalIP().ToString();
         }

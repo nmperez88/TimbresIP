@@ -13,14 +13,23 @@ namespace TimbresIP.Utils
         /// <returns>Direccion MAC del PC</returns>
         public PhysicalAddress getMacAddress()
         {
-            foreach (NetworkInterface nicInterface in NetworkInterface.GetAllNetworkInterfaces())
+            try
             {
-                // Only consider Ethernet network interfaces
-                if (nicInterface.NetworkInterfaceType == NetworkInterfaceType.Ethernet && nicInterface.OperationalStatus == OperationalStatus.Up)
+                foreach (NetworkInterface nicInterface in NetworkInterface.GetAllNetworkInterfaces())
                 {
-                    return nicInterface.GetPhysicalAddress();
+                    // Only consider Ethernet network interfaces
+                    if (nicInterface.NetworkInterfaceType == NetworkInterfaceType.Ethernet && nicInterface.OperationalStatus == OperationalStatus.Up)
+                    {
+                        return nicInterface.GetPhysicalAddress();
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                log.Error(e);
+            }
+
             return null;
         }
 
@@ -31,14 +40,24 @@ namespace TimbresIP.Utils
         public string getLocalIPAddress()
         {
             var hostName = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ipAddr in hostName.AddressList)
+
+            try
             {
-                if (ipAddr.AddressFamily == AddressFamily.InterNetwork)
+                foreach (var ipAddr in hostName.AddressList)
                 {
-                    return ipAddr.ToString();
+                    if (ipAddr.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return ipAddr.ToString();
+                    }
                 }
+                throw new Exception("No network adapters with an IPv4 address in the system!");
             }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
+            catch (Exception e)
+            {
+
+                log.Error(e);
+            }
+            return "";
         }
 
         /// <summary>
