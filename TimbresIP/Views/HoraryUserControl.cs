@@ -25,6 +25,7 @@ namespace TimbresIP
         /// </summary>
         public HoraryUserControl()
         {
+            horary = new HoraryModel();
             InitializeComponent();
 
         }
