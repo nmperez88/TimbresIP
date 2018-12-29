@@ -17,7 +17,7 @@ using utils;
 
 namespace TimbresIP
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MaterialSkin.Controls.MaterialForm
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
@@ -147,6 +147,8 @@ namespace TimbresIP
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
+            generalRingUserControl = new GeneralRingUserControl();
+            generalRingUserControl.Dock = DockStyle.Fill;
             try
             {
                 jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
@@ -177,13 +179,11 @@ namespace TimbresIP
                                 MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
-                        generalRingUserControl = new GeneralRingUserControl();
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                         loadData();
                     }
                     else
                     {
-                        generalRingUserControl = new GeneralRingUserControl();
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                         loadData();
                     }
@@ -193,7 +193,6 @@ namespace TimbresIP
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    generalRingUserControl = new GeneralRingUserControl();
                     this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                     loadData();
                 }

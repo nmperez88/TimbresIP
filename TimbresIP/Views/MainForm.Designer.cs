@@ -50,22 +50,25 @@
             this.buttonSaveAll = new System.Windows.Forms.Button();
             this.groupBoxCallTails = new System.Windows.Forms.GroupBox();
             this.labelCallTails = new System.Windows.Forms.Label();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.groupBoxMainControl.SuspendLayout();
             this.groupBoxHorary.SuspendLayout();
             this.groupBoxManageHorary.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
             this.groupBoxCallTails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMainControl
             // 
+            this.groupBoxMainControl.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxMainControl.Controls.Add(this.buttonEditServer);
             this.groupBoxMainControl.Controls.Add(this.buttonSaveServer);
             this.groupBoxMainControl.Controls.Add(this.labelPort);
             this.groupBoxMainControl.Controls.Add(this.labelServer);
             this.groupBoxMainControl.Controls.Add(this.textBoxPort);
             this.groupBoxMainControl.Controls.Add(this.textBoxServer);
-            this.groupBoxMainControl.Location = new System.Drawing.Point(12, 8);
+            this.groupBoxMainControl.Location = new System.Drawing.Point(12, 71);
             this.groupBoxMainControl.Name = "groupBoxMainControl";
             this.groupBoxMainControl.Size = new System.Drawing.Size(440, 61);
             this.groupBoxMainControl.TabIndex = 0;
@@ -74,6 +77,11 @@
             // 
             // buttonEditServer
             // 
+            this.buttonEditServer.BackColor = System.Drawing.Color.Transparent;
+            this.buttonEditServer.FlatAppearance.BorderSize = 0;
+            this.buttonEditServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonEditServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonEditServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditServer.Image = global::TimbresIP.Properties.Resources.editc20x20;
             this.buttonEditServer.Location = new System.Drawing.Point(347, 18);
             this.buttonEditServer.Name = "buttonEditServer";
@@ -81,12 +89,16 @@
             this.buttonEditServer.TabIndex = 5;
             this.buttonEditServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTipFormPrincipal.SetToolTip(this.buttonEditServer, "Editar ");
-            this.buttonEditServer.UseVisualStyleBackColor = true;
+            this.buttonEditServer.UseVisualStyleBackColor = false;
             this.buttonEditServer.Click += new System.EventHandler(this.buttonEditServer_Click);
             // 
             // buttonSaveServer
             // 
             this.buttonSaveServer.Enabled = false;
+            this.buttonSaveServer.FlatAppearance.BorderSize = 0;
+            this.buttonSaveServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonSaveServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonSaveServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSaveServer.Image = global::TimbresIP.Properties.Resources.savec20x20;
             this.buttonSaveServer.Location = new System.Drawing.Point(388, 18);
             this.buttonSaveServer.Name = "buttonSaveServer";
@@ -137,8 +149,9 @@
             // 
             // groupBoxHorary
             // 
+            this.groupBoxHorary.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxHorary.Controls.Add(this.tabControlHorary);
-            this.groupBoxHorary.Location = new System.Drawing.Point(10, 74);
+            this.groupBoxHorary.Location = new System.Drawing.Point(10, 137);
             this.groupBoxHorary.Name = "groupBoxHorary";
             this.groupBoxHorary.Size = new System.Drawing.Size(877, 298);
             this.groupBoxHorary.TabIndex = 1;
@@ -163,15 +176,20 @@
             // 
             // groupBoxGeneralSound
             // 
-            this.groupBoxGeneralSound.Location = new System.Drawing.Point(10, 378);
+            this.groupBoxGeneralSound.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxGeneralSound.Location = new System.Drawing.Point(10, 441);
             this.groupBoxGeneralSound.Name = "groupBoxGeneralSound";
-            this.groupBoxGeneralSound.Size = new System.Drawing.Size(877, 170);
+            this.groupBoxGeneralSound.Size = new System.Drawing.Size(877, 188);
             this.groupBoxGeneralSound.TabIndex = 2;
             this.groupBoxGeneralSound.TabStop = false;
             this.groupBoxGeneralSound.Text = "Sonidos generales";
             // 
             // buttonDeleteHorary
             // 
+            this.buttonDeleteHorary.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteHorary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonDeleteHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonDeleteHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteHorary.Image = global::TimbresIP.Properties.Resources.removec20x20;
             this.buttonDeleteHorary.Location = new System.Drawing.Point(84, 23);
             this.buttonDeleteHorary.Name = "buttonDeleteHorary";
@@ -183,6 +201,10 @@
             // 
             // buttonEditHorary
             // 
+            this.buttonEditHorary.FlatAppearance.BorderSize = 0;
+            this.buttonEditHorary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonEditHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonEditHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditHorary.Image = global::TimbresIP.Properties.Resources.editc20x20;
             this.buttonEditHorary.Location = new System.Drawing.Point(45, 23);
             this.buttonEditHorary.Name = "buttonEditHorary";
@@ -195,6 +217,10 @@
             // 
             // buttonAddHorary
             // 
+            this.buttonAddHorary.FlatAppearance.BorderSize = 0;
+            this.buttonAddHorary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonAddHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonAddHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddHorary.Image = global::TimbresIP.Properties.Resources.addc20x20;
             this.buttonAddHorary.Location = new System.Drawing.Point(6, 23);
             this.buttonAddHorary.Name = "buttonAddHorary";
@@ -212,10 +238,11 @@
             // 
             // groupBoxManageHorary
             // 
+            this.groupBoxManageHorary.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxManageHorary.Controls.Add(this.buttonAddHorary);
             this.groupBoxManageHorary.Controls.Add(this.buttonDeleteHorary);
             this.groupBoxManageHorary.Controls.Add(this.buttonEditHorary);
-            this.groupBoxManageHorary.Location = new System.Drawing.Point(472, 8);
+            this.groupBoxManageHorary.Location = new System.Drawing.Point(472, 71);
             this.groupBoxManageHorary.Name = "groupBoxManageHorary";
             this.groupBoxManageHorary.Size = new System.Drawing.Size(129, 61);
             this.groupBoxManageHorary.TabIndex = 6;
@@ -224,8 +251,9 @@
             // 
             // groupBoxActions
             // 
+            this.groupBoxActions.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxActions.Controls.Add(this.buttonSaveAll);
-            this.groupBoxActions.Location = new System.Drawing.Point(621, 8);
+            this.groupBoxActions.Location = new System.Drawing.Point(621, 71);
             this.groupBoxActions.Name = "groupBoxActions";
             this.groupBoxActions.Size = new System.Drawing.Size(79, 61);
             this.groupBoxActions.TabIndex = 7;
@@ -234,8 +262,12 @@
             // 
             // buttonSaveAll
             // 
+            this.buttonSaveAll.FlatAppearance.BorderSize = 0;
+            this.buttonSaveAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSaveAll.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonSaveAll.Location = new System.Drawing.Point(25, 19);
+            this.buttonSaveAll.Location = new System.Drawing.Point(22, 23);
             this.buttonSaveAll.Name = "buttonSaveAll";
             this.buttonSaveAll.Size = new System.Drawing.Size(33, 30);
             this.buttonSaveAll.TabIndex = 0;
@@ -243,8 +275,9 @@
             // 
             // groupBoxCallTails
             // 
+            this.groupBoxCallTails.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxCallTails.Controls.Add(this.labelCallTails);
-            this.groupBoxCallTails.Location = new System.Drawing.Point(717, 8);
+            this.groupBoxCallTails.Location = new System.Drawing.Point(717, 71);
             this.groupBoxCallTails.Name = "groupBoxCallTails";
             this.groupBoxCallTails.Size = new System.Drawing.Size(170, 61);
             this.groupBoxCallTails.TabIndex = 8;
@@ -260,18 +293,29 @@
             this.labelCallTails.TabIndex = 0;
             this.labelCallTails.Text = "label1";
             // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxLogo.Image = global::TimbresIP.Properties.Resources.soundwhite32x32;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(222, 28);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxLogo.TabIndex = 9;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 561);
+            this.ClientSize = new System.Drawing.Size(901, 640);
+            this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.groupBoxCallTails);
             this.Controls.Add(this.groupBoxActions);
             this.Controls.Add(this.groupBoxManageHorary);
             this.Controls.Add(this.groupBoxGeneralSound);
             this.Controls.Add(this.groupBoxHorary);
             this.Controls.Add(this.groupBoxMainControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -284,7 +328,9 @@
             this.groupBoxActions.ResumeLayout(false);
             this.groupBoxCallTails.ResumeLayout(false);
             this.groupBoxCallTails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -310,6 +356,7 @@
         private System.Windows.Forms.Button buttonSaveAll;
         private System.Windows.Forms.GroupBox groupBoxCallTails;
         private System.Windows.Forms.Label labelCallTails;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
     }
 }
 

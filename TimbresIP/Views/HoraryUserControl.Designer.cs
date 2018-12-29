@@ -177,6 +177,10 @@
             // buttonHorarySaveExtension
             // 
             this.buttonHorarySaveExtension.Enabled = false;
+            this.buttonHorarySaveExtension.FlatAppearance.BorderSize = 0;
+            this.buttonHorarySaveExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonHorarySaveExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonHorarySaveExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHorarySaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
             this.buttonHorarySaveExtension.Location = new System.Drawing.Point(134, 162);
             this.buttonHorarySaveExtension.Name = "buttonHorarySaveExtension";
@@ -189,6 +193,10 @@
             // 
             // buttonHoraryEditExtension
             // 
+            this.buttonHoraryEditExtension.FlatAppearance.BorderSize = 0;
+            this.buttonHoraryEditExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonHoraryEditExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonHoraryEditExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHoraryEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
             this.buttonHoraryEditExtension.Location = new System.Drawing.Point(91, 162);
             this.buttonHoraryEditExtension.Name = "buttonHoraryEditExtension";
@@ -215,7 +223,6 @@
             this.textBoxHoraryPasswordExtension.Name = "textBoxHoraryPasswordExtension";
             this.textBoxHoraryPasswordExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryPasswordExtension.TabIndex = 4;
-            this.textBoxHoraryPasswordExtension.Text = "Caeunagota";
             this.textBoxHoraryPasswordExtension.UseSystemPasswordChar = true;
             // 
             // labelHoraryID
@@ -234,7 +241,6 @@
             this.textBoxHoraryExtExtension.Name = "textBoxHoraryExtExtension";
             this.textBoxHoraryExtExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryExtExtension.TabIndex = 2;
-            this.textBoxHoraryExtExtension.Text = "4578";
             this.textBoxHoraryExtExtension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHoraryExtExtension_KeyPress);
             // 
             // labelHoraryExtension
@@ -253,7 +259,6 @@
             this.textBoxHoraryIdExtension.Name = "textBoxHoraryIdExtension";
             this.textBoxHoraryIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraryIdExtension.TabIndex = 0;
-            this.textBoxHoraryIdExtension.Text = "4578";
             this.textBoxHoraryIdExtension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHoraryIdExtension_KeyPress);
             // 
             // toolTipHorary
@@ -327,6 +332,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.dataGridViewHorary);
             this.Controls.Add(this.groupBoxHoraryExtension);
             this.Name = "HoraryUserControl";

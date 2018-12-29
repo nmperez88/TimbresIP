@@ -69,9 +69,10 @@
             this.groupBoxGeneralSoundExtension.Controls.Add(this.textBoxGeneralSoundExtExtension);
             this.groupBoxGeneralSoundExtension.Controls.Add(this.labelGeneralSoundExtension);
             this.groupBoxGeneralSoundExtension.Controls.Add(this.textBoxGeneralSoundIdExtension);
-            this.groupBoxGeneralSoundExtension.Location = new System.Drawing.Point(633, 3);
+            this.groupBoxGeneralSoundExtension.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBoxGeneralSoundExtension.Location = new System.Drawing.Point(634, 0);
             this.groupBoxGeneralSoundExtension.Name = "groupBoxGeneralSoundExtension";
-            this.groupBoxGeneralSoundExtension.Size = new System.Drawing.Size(237, 156);
+            this.groupBoxGeneralSoundExtension.Size = new System.Drawing.Size(237, 162);
             this.groupBoxGeneralSoundExtension.TabIndex = 0;
             this.groupBoxGeneralSoundExtension.TabStop = false;
             this.groupBoxGeneralSoundExtension.Text = "Extensión";
@@ -79,6 +80,10 @@
             // buttonGeneralSoundSaveExtension
             // 
             this.buttonGeneralSoundSaveExtension.Enabled = false;
+            this.buttonGeneralSoundSaveExtension.FlatAppearance.BorderSize = 0;
+            this.buttonGeneralSoundSaveExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralSoundSaveExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralSoundSaveExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGeneralSoundSaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
             this.buttonGeneralSoundSaveExtension.Location = new System.Drawing.Point(132, 115);
             this.buttonGeneralSoundSaveExtension.Name = "buttonGeneralSoundSaveExtension";
@@ -91,6 +96,10 @@
             // 
             // buttonGeneralSoundEditExtension
             // 
+            this.buttonGeneralSoundEditExtension.FlatAppearance.BorderSize = 0;
+            this.buttonGeneralSoundEditExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralSoundEditExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralSoundEditExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGeneralSoundEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
             this.buttonGeneralSoundEditExtension.Location = new System.Drawing.Point(89, 115);
             this.buttonGeneralSoundEditExtension.Name = "buttonGeneralSoundEditExtension";
@@ -117,7 +126,6 @@
             this.textBoxGeneralSoundPasswordExtension.Name = "textBoxGeneralSoundPasswordExtension";
             this.textBoxGeneralSoundPasswordExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundPasswordExtension.TabIndex = 12;
-            this.textBoxGeneralSoundPasswordExtension.Text = "1230IA";
             this.textBoxGeneralSoundPasswordExtension.UseSystemPasswordChar = true;
             // 
             // labelGeneralSoundID
@@ -136,7 +144,6 @@
             this.textBoxGeneralSoundExtExtension.Name = "textBoxGeneralSoundExtExtension";
             this.textBoxGeneralSoundExtExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundExtExtension.TabIndex = 10;
-            this.textBoxGeneralSoundExtExtension.Text = "1230";
             this.textBoxGeneralSoundExtExtension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGeneralSoundExtExtension_KeyPress);
             // 
             // labelGeneralSoundExtension
@@ -155,7 +162,6 @@
             this.textBoxGeneralSoundIdExtension.Name = "textBoxGeneralSoundIdExtension";
             this.textBoxGeneralSoundIdExtension.Size = new System.Drawing.Size(100, 20);
             this.textBoxGeneralSoundIdExtension.TabIndex = 8;
-            this.textBoxGeneralSoundIdExtension.Text = "1230";
             this.textBoxGeneralSoundIdExtension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGeneralSoundIdExtension_KeyPress);
             // 
             // dataGridViewGeneralSound
@@ -176,10 +182,11 @@
             this.registerNameDataGridViewTextBoxColumn,
             this.observationsDataGridViewTextBoxColumn});
             this.dataGridViewGeneralSound.DataSource = this.callServerModelBindingSource;
-            this.dataGridViewGeneralSound.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewGeneralSound.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridViewGeneralSound.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewGeneralSound.Name = "dataGridViewGeneralSound";
             this.dataGridViewGeneralSound.RowHeadersWidth = 30;
-            this.dataGridViewGeneralSound.Size = new System.Drawing.Size(515, 156);
+            this.dataGridViewGeneralSound.Size = new System.Drawing.Size(515, 162);
             this.dataGridViewGeneralSound.TabIndex = 4;
             this.dataGridViewGeneralSound.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneralSound_CellClick);
             this.dataGridViewGeneralSound.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneralSound_CellEndEdit);
@@ -280,11 +287,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.dataGridViewGeneralSound);
             this.Controls.Add(this.groupBoxGeneralSoundExtension);
             this.Name = "GeneralRingUserControl";
-            this.Size = new System.Drawing.Size(869, 162);
+            this.Size = new System.Drawing.Size(871, 162);
             this.groupBoxGeneralSoundExtension.ResumeLayout(false);
             this.groupBoxGeneralSoundExtension.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).EndInit();
