@@ -134,7 +134,6 @@
             this.textBoxPort.Name = "textBoxPort";
             this.textBoxPort.Size = new System.Drawing.Size(65, 20);
             this.textBoxPort.TabIndex = 1;
-            this.textBoxPort.Text = "5060";
             this.textBoxPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPort_KeyPress);
             // 
             // textBoxServer
@@ -144,7 +143,6 @@
             this.textBoxServer.Name = "textBoxServer";
             this.textBoxServer.Size = new System.Drawing.Size(128, 20);
             this.textBoxServer.TabIndex = 0;
-            this.textBoxServer.Text = "100.50.40.3";
             this.textBoxServer.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxServer_Validating);
             // 
             // groupBoxHorary
@@ -191,7 +189,7 @@
             this.buttonDeleteHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonDeleteHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteHorary.Image = global::TimbresIP.Properties.Resources.removec20x20;
-            this.buttonDeleteHorary.Location = new System.Drawing.Point(84, 23);
+            this.buttonDeleteHorary.Location = new System.Drawing.Point(84, 18);
             this.buttonDeleteHorary.Name = "buttonDeleteHorary";
             this.buttonDeleteHorary.Size = new System.Drawing.Size(33, 30);
             this.buttonDeleteHorary.TabIndex = 5;
@@ -206,7 +204,7 @@
             this.buttonEditHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonEditHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditHorary.Image = global::TimbresIP.Properties.Resources.editc20x20;
-            this.buttonEditHorary.Location = new System.Drawing.Point(45, 23);
+            this.buttonEditHorary.Location = new System.Drawing.Point(45, 18);
             this.buttonEditHorary.Name = "buttonEditHorary";
             this.buttonEditHorary.Size = new System.Drawing.Size(33, 30);
             this.buttonEditHorary.TabIndex = 4;
@@ -222,7 +220,7 @@
             this.buttonAddHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonAddHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddHorary.Image = global::TimbresIP.Properties.Resources.addc20x20;
-            this.buttonAddHorary.Location = new System.Drawing.Point(6, 23);
+            this.buttonAddHorary.Location = new System.Drawing.Point(6, 18);
             this.buttonAddHorary.Name = "buttonAddHorary";
             this.buttonAddHorary.Size = new System.Drawing.Size(33, 30);
             this.buttonAddHorary.TabIndex = 3;
@@ -266,8 +264,8 @@
             this.buttonSaveAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveAll.Image = global::TimbresIP.Properties.Resources.savec20x20;
-            this.buttonSaveAll.Location = new System.Drawing.Point(22, 23);
+            this.buttonSaveAll.Image = global::TimbresIP.Properties.Resources.savec24x24;
+            this.buttonSaveAll.Location = new System.Drawing.Point(22, 18);
             this.buttonSaveAll.Name = "buttonSaveAll";
             this.buttonSaveAll.Size = new System.Drawing.Size(33, 30);
             this.buttonSaveAll.TabIndex = 0;
@@ -319,6 +317,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Horarios";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.groupBoxMainControl.ResumeLayout(false);

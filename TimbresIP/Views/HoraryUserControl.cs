@@ -140,7 +140,7 @@ namespace TimbresIP
                         case "ColumnTone":
                             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
-                                DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                                DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
                                 DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
                                 FileInfo[] files = dirInfo.GetFiles();
                                 comboBox.DataSource = files;
@@ -165,7 +165,7 @@ namespace TimbresIP
         {
             switch (dataGridViewHorary.Columns[e.ColumnIndex].Name)
             {
-                case "ColumnExtension":
+                case "registerNameDataGridViewTextBoxColumn":
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
@@ -178,7 +178,7 @@ namespace TimbresIP
                         }
                     }
                     break;
-                case "ColumnNo":
+                case "noDataGridViewTextBoxColumn":
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
@@ -192,7 +192,7 @@ namespace TimbresIP
                     }
                     break;
 
-                case "ColumnHoraInicio":
+                case "startAtDataGridViewTextBoxColumn":
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validationEntries.TimeRegularExpression);
@@ -204,7 +204,7 @@ namespace TimbresIP
                         }
                     }
                     break;
-                case "ColumnSoundTime":
+                case "callTimeDataGridViewTextBoxColumn":
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validationEntries.TimeRegularExpression);

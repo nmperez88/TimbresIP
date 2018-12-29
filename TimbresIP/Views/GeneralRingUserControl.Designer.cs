@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxGeneralSoundExtension = new System.Windows.Forms.GroupBox();
             this.buttonGeneralSoundSaveExtension = new System.Windows.Forms.Button();
             this.buttonGeneralSoundEditExtension = new System.Windows.Forms.Button();
@@ -40,20 +39,17 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
-            this.ColumnTone = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnObservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
+            this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.observationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.callTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
@@ -169,18 +165,15 @@
             this.dataGridViewGeneralSound.AutoGenerateColumns = false;
             this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnTone,
-            this.ColumnExtension,
+            this.soundFileDataGridViewTextBoxColumn,
+            this.registerNameDataGridViewTextBoxColumn,
             this.ColumnCall,
-            this.ColumnObservation,
+            this.observationsDataGridViewTextBoxColumn,
             this.randomIdDataGridViewTextBoxColumn,
             this.noDataGridViewTextBoxColumn,
             this.startAtDataGridViewTextBoxColumn,
             this.callTimeDataGridViewTextBoxColumn,
-            this.soundFileDataGridViewTextBoxColumn,
-            this.enabledDataGridViewCheckBoxColumn,
-            this.registerNameDataGridViewTextBoxColumn,
-            this.observationsDataGridViewTextBoxColumn});
+            this.enabledDataGridViewCheckBoxColumn});
             this.dataGridViewGeneralSound.DataSource = this.callServerModelBindingSource;
             this.dataGridViewGeneralSound.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridViewGeneralSound.Location = new System.Drawing.Point(0, 0);
@@ -193,23 +186,31 @@
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             this.dataGridViewGeneralSound.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewGeneralSound_CellValidating);
             // 
-            // ColumnTone
+            // callServerModelBindingSource
             // 
-            this.ColumnTone.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.ColumnTone.HeaderText = "Tono";
-            this.ColumnTone.Name = "ColumnTone";
-            this.ColumnTone.Width = 121;
+            this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
             // 
-            // ColumnExtension
+            // toolTipGeneralRings
             // 
-            this.ColumnExtension.DataPropertyName = "registerName";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnExtension.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnExtension.HeaderText = "Extesión";
-            this.ColumnExtension.Name = "ColumnExtension";
-            this.ColumnExtension.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnExtension.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnExtension.Width = 50;
+            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipGeneralRings.ToolTipTitle = "Información";
+            // 
+            // soundFileDataGridViewTextBoxColumn
+            // 
+            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
+            this.soundFileDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.soundFileDataGridViewTextBoxColumn.HeaderText = "Tono";
+            this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
+            this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.soundFileDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // registerNameDataGridViewTextBoxColumn
+            // 
+            this.registerNameDataGridViewTextBoxColumn.DataPropertyName = "registerName";
+            this.registerNameDataGridViewTextBoxColumn.HeaderText = "Extesión";
+            this.registerNameDataGridViewTextBoxColumn.Name = "registerNameDataGridViewTextBoxColumn";
+            this.registerNameDataGridViewTextBoxColumn.Width = 50;
             // 
             // ColumnCall
             // 
@@ -219,69 +220,47 @@
             this.ColumnCall.Text = "Llamar";
             this.ColumnCall.Width = 50;
             // 
-            // ColumnObservation
+            // observationsDataGridViewTextBoxColumn
             // 
-            this.ColumnObservation.DataPropertyName = "observations";
-            this.ColumnObservation.HeaderText = "Observaciones";
-            this.ColumnObservation.Name = "ColumnObservation";
-            this.ColumnObservation.Width = 262;
-            // 
-            // toolTipGeneralRings
-            // 
-            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipGeneralRings.ToolTipTitle = "Información";
+            this.observationsDataGridViewTextBoxColumn.DataPropertyName = "observations";
+            this.observationsDataGridViewTextBoxColumn.HeaderText = "Observaciones";
+            this.observationsDataGridViewTextBoxColumn.Name = "observationsDataGridViewTextBoxColumn";
+            this.observationsDataGridViewTextBoxColumn.Width = 262;
             // 
             // randomIdDataGridViewTextBoxColumn
             // 
             this.randomIdDataGridViewTextBoxColumn.DataPropertyName = "randomId";
             this.randomIdDataGridViewTextBoxColumn.HeaderText = "randomId";
             this.randomIdDataGridViewTextBoxColumn.Name = "randomIdDataGridViewTextBoxColumn";
+            this.randomIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // noDataGridViewTextBoxColumn
             // 
             this.noDataGridViewTextBoxColumn.DataPropertyName = "no";
             this.noDataGridViewTextBoxColumn.HeaderText = "no";
             this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.Visible = false;
             // 
             // startAtDataGridViewTextBoxColumn
             // 
             this.startAtDataGridViewTextBoxColumn.DataPropertyName = "startAt";
             this.startAtDataGridViewTextBoxColumn.HeaderText = "startAt";
             this.startAtDataGridViewTextBoxColumn.Name = "startAtDataGridViewTextBoxColumn";
+            this.startAtDataGridViewTextBoxColumn.Visible = false;
             // 
             // callTimeDataGridViewTextBoxColumn
             // 
             this.callTimeDataGridViewTextBoxColumn.DataPropertyName = "callTime";
             this.callTimeDataGridViewTextBoxColumn.HeaderText = "callTime";
             this.callTimeDataGridViewTextBoxColumn.Name = "callTimeDataGridViewTextBoxColumn";
-            // 
-            // soundFileDataGridViewTextBoxColumn
-            // 
-            this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
-            this.soundFileDataGridViewTextBoxColumn.HeaderText = "soundFile";
-            this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
+            this.callTimeDataGridViewTextBoxColumn.Visible = false;
             // 
             // enabledDataGridViewCheckBoxColumn
             // 
             this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "enabled";
             this.enabledDataGridViewCheckBoxColumn.HeaderText = "enabled";
             this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
-            // 
-            // registerNameDataGridViewTextBoxColumn
-            // 
-            this.registerNameDataGridViewTextBoxColumn.DataPropertyName = "registerName";
-            this.registerNameDataGridViewTextBoxColumn.HeaderText = "registerName";
-            this.registerNameDataGridViewTextBoxColumn.Name = "registerNameDataGridViewTextBoxColumn";
-            // 
-            // observationsDataGridViewTextBoxColumn
-            // 
-            this.observationsDataGridViewTextBoxColumn.DataPropertyName = "observations";
-            this.observationsDataGridViewTextBoxColumn.HeaderText = "observations";
-            this.observationsDataGridViewTextBoxColumn.Name = "observationsDataGridViewTextBoxColumn";
-            // 
-            // callServerModelBindingSource
-            // 
-            this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
+            this.enabledDataGridViewCheckBoxColumn.Visible = false;
             // 
             // GeneralRingUserControl
             // 
@@ -312,19 +291,16 @@
         private System.Windows.Forms.Label labelGeneralSoundExtension;
         private System.Windows.Forms.TextBox textBoxGeneralSoundIdExtension;
         private System.Windows.Forms.DataGridView dataGridViewGeneralSound;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnTone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExtension;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnObservation;
         private System.Windows.Forms.BindingSource callServerModelBindingSource;
         private System.Windows.Forms.ToolTip toolTipGeneralRings;
+        private System.Windows.Forms.DataGridViewComboBoxColumn soundFileDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn registerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observationsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn randomIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn callTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soundFileDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn registerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observationsDataGridViewTextBoxColumn;
     }
 }

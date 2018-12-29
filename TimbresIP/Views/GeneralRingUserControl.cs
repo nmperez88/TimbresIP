@@ -45,9 +45,9 @@ namespace TimbresIP
                 DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
                 DataRow dataRowToAdd = dataTable.NewRow();
 
-                dataRowToAdd["ColumnTone"] = cs.soundFile.targetPath;
-                dataRowToAdd["ColumnExtension"] = cs.registerName;
-                dataRowToAdd["ColumnObservation"] = cs.observations;
+                dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile.targetPath;
+                dataRowToAdd["registerNameDataGridViewTextBoxColumn"] = cs.registerName;
+                dataRowToAdd["observationsDataGridViewTextBoxColumn"] = cs.observations;
 
                 dataTable.Rows.Add(dataRowToAdd);
                 dataTable.AcceptChanges();
@@ -112,7 +112,7 @@ namespace TimbresIP
                     case "ColumnTone":
                         if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                         {
-                            DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["ColumnTone"] as DataGridViewComboBoxColumn;
+                            DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
                             DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
                             FileInfo[] files = dir.GetFiles();
                             comboBox.DataSource = files;
@@ -139,7 +139,7 @@ namespace TimbresIP
             {
                 Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
 
-                if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name== "ColumnExtension")
+                if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name== "registerNameDataGridViewTextBoxColumn")
                 {
                     if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                     {

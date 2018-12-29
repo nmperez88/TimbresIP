@@ -207,5 +207,8 @@
   <ItemGroup>
     <None Include="Resources\Images\soundwhite32x32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\savec24x24.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

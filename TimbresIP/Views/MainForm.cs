@@ -135,7 +135,7 @@ namespace TimbresIP
         {
             if (tabControlHorary.TabPages.Count > 0)
             {
-                string tabPageName = "";
+                string tabPageName = tabControlHorary.SelectedTab.Text;
                 if (Dialog.Prompt("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
                     TabPage horaryTabPage = new TabPage(tabPageName);
