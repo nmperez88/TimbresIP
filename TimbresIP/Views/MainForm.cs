@@ -155,6 +155,7 @@ namespace TimbresIP
 
                 if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension))
                 {
+                    File.Decrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
 
                     if (!configurationParametersModel.sendedEMail)
@@ -163,6 +164,7 @@ namespace TimbresIP
                         {
                             configurationParametersModel = new ConfigurationParametersModel(true);
                             jsonHandlerUtils.serialize(configurationParametersModel);
+                            File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                             MessageBox.Show("Estimado usuario, hemos regisrado la instalación de su producto satisfactoriamente con fecha: "+DateTime.Now+". Esperamos sea de su agrado y utilidad. Equipo BITDATA","Bienvenido",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         else
@@ -194,6 +196,7 @@ namespace TimbresIP
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
+                    File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                     MessageBox.Show("Estimado usuario, hemos regisrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadData();
@@ -202,6 +205,7 @@ namespace TimbresIP
                 {
                     configurationParametersModel = new ConfigurationParametersModel(false);
                     jsonHandlerUtils.serialize(configurationParametersModel);
+                    File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
                     int diasRestantes = diferenciaDiasFechas.Days;
@@ -238,6 +242,11 @@ namespace TimbresIP
         }
 
         #endregion
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+        }
     }
 
 }

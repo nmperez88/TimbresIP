@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<iasettings>
+  <projectproperties>
+    <manufacturer>BITDATA</manufacturer>
+    <productname>AdminHorarios</productname>
+    <productversion>1.0.0.0</productversion>
+    <productcode>{2364eaab-3332-41e1-b5d1-ea349b5bbf62}</productcode>
+    <upgradecode>{369aa1f7-c606-4c1e-b0be-2d83db7b808e}</upgradecode>
+    <language>0</language>
+    <languagename>English</languagename>
+  </projectproperties>
+  <summary>
+    <title>AdminHorarios</title>
+    <subject>Administrador de Horarios</subject>
+    <author>BITDATA</author>
+    <summarycomments />
+    <revisioncode>{0058cb59-0a1c-41c3-b3cf-8b322d46a283}</revisioncode>
+    <uacelevation>requireAdministrator</uacelevation>
+  </summary>
+  <addremove>
+    <publishername>BITDATA</publishername>
+    <contactname>Noslen Martinez</contactname>
+    <helplink />
+    <productupdatelink />
+    <addremovecomments>All Rights Reserved</addremovecomments>
+    <iconfile />
+  </addremove>
+  <codegen>
+    <generateincludefiles>0</generateincludefiles>
+    <generatefeatures>1</generatefeatures>
+    <refreshscript>0</refreshscript>
+  </codegen>
+  <compilervariables>
+    <variables />
+  </compilervariables>
+  <build>
+    <buildtype>0</buildtype>
+    <buildasmsi>False</buildasmsi>
+    <cachesources>1</cachesources>
+  </build>
+  <targetfolders />
+  <files>
+    <filedetails filename="C:\Users\Noslen Martinez\Documents\Visual Studio 2017\Projects\TimbresIP\TimbresIP\bin\Debug\TimbresIP.exe" targetlocation="$TARGETDIR$" type="1" generatenativeimage="0" registerassembly="0" runinstallerclass="0" createshortcut="1" runprogram="0" installfilecommand="0" />
+  </files>
+  <dependencies />
+  <registry />
+  <dialogtheme>
+    <themename>Official</themename>
+  </dialogtheme>
+  <authenticode>
+    <sign>0</sign>
+    <mode>0</mode>
+    <certificatefile />
+    <keyfile />
+    <pfxfile />
+    <productinfourl />
+    <authpassword />
+    <timestampurl />
+    <signall>0</signall>
+  </authenticode>
+  <compression>
+    <compressiontype>8</compressiontype>
+    <encrypt>0</encrypt>
+    <compressionpassword />
+  </compression>
+  <output>
+    <outputtype>0</outputtype>
+    <location />
+    <filename />
+    <calculatefilehash>0</calculatefilehash>
+    <refreshrevisioncode>1</refreshrevisioncode>
+  </output>
+</iasettings>
