@@ -25,8 +25,13 @@ namespace TimbresIP.Model
         /// </summary>
         public DateTime installedDate { get; set; }
         /// <summary>
+        /// Tiempo de validez del sistema segun licencia contratada
+        /// </summary>
+        public int lisenceTime { get; set; }
+        /// <summary>
         /// Construnctor de la clase vacio
         /// </summary>
+        ///        
         public ConfigurationParametersModel()
         {
             this.numberHours = 60;
@@ -42,6 +47,7 @@ namespace TimbresIP.Model
             this.numberschedules = 50;
             this.sendedEMail = flag;
             this.installedDate = DateTime.Now;
+            this.lisenceTime = 365;
         }
     }
 }

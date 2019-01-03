@@ -160,6 +160,16 @@ namespace TimbresIP
                     configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
                     File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
 
+                    DateTime fechaActual = DateTime.Now;
+                    TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
+                    int diasRestantes = diferenciaDiasFechas.Days;
+
+                    if (configurationParametersModel.lisenceTime == diasRestantes)
+                    {
+                        MessageBox.Show("Estimado usuario su periodo de licencia caducó, por favor comuniquese con el proveedor del sistema para renovar.","Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+                        Application.Exit();
+                    }
+
                     if (!configurationParametersModel.sendedEMail)
                     {
                         if (sendMailUtils.sendMail())
@@ -170,9 +180,6 @@ namespace TimbresIP
                         }
                         else
                         {
-                            DateTime fechaActual = DateTime.Now;
-                            TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
-                            int diasRestantes = diferenciaDiasFechas.Days;
                             if (diasRestantes == 30)
                             {
                                 MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor. Muchas gracias y disculpe las molestias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -188,6 +195,7 @@ namespace TimbresIP
                     }
                     else
                     {
+
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                         loadData();
                     }

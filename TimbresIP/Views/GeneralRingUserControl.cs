@@ -109,7 +109,7 @@ namespace TimbresIP
             {
                 switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
                 {
-                    case "ColumnTone":
+                    case "soundFileDataGridViewTextBoxColumn":
                         if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                         {
                             DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
