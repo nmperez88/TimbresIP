@@ -169,8 +169,13 @@
                 {
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 y x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    {
+                    "Name" = "8:.NET Framework 3.5 SP1"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
                     }
                 }
             }
@@ -534,7 +539,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AdminHorariosSetup"
         "ProductCode" = "8:{09558A91-2837-46E1-9354-7037A7B1579F}"
-        "PackageCode" = "8:{FB710348-5061-4913-A77C-3C3F72A92ED4}"
+        "PackageCode" = "8:{A0D561D2-F11C-4766-986E-033C145D3854}"
         "UpgradeCode" = "8:{00245A52-581A-410B-9491-ED7942E1BCFA}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -1083,7 +1088,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C72169769FBF4601BE3E7212E4A68280"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\TimbresIP\\obj\\Debug\\TimbresIP.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7546F1D29FA14525B5ACB690BBF54E2A"

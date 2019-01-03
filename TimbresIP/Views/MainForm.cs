@@ -23,6 +23,7 @@ namespace TimbresIP
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
         SendMailUtils sendMailUtils = new SendMailUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+        CypherUtils cypherUtils = new CypherUtils();
 
         /// <summary>
         /// Controlador principal.
@@ -153,10 +154,11 @@ namespace TimbresIP
             {
                 jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
 
-                if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension))
+                if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes"))
                 {
-                    File.Decrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+                    cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
                     configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
 
                     if (!configurationParametersModel.sendedEMail)
                     {
@@ -164,8 +166,7 @@ namespace TimbresIP
                         {
                             configurationParametersModel = new ConfigurationParametersModel(true);
                             jsonHandlerUtils.serialize(configurationParametersModel);
-                            File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
-                            MessageBox.Show("Estimado usuario, hemos regisrado la instalación de su producto satisfactoriamente con fecha: "+DateTime.Now+". Esperamos sea de su agrado y utilidad. Equipo BITDATA","Bienvenido",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: "+DateTime.Now+". Esperamos sea de su agrado y utilidad. Equipo BITDATA","Bienvenido",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -174,12 +175,12 @@ namespace TimbresIP
                             int diasRestantes = diferenciaDiasFechas.Days;
                             if (diasRestantes == 30)
                             {
-                                MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor. Muchas gracias y disculpe las molestias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 Application.Exit();
                             }
                             else
                             {
-                                MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
@@ -196,27 +197,29 @@ namespace TimbresIP
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+                    cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
-                    MessageBox.Show("Estimado usuario, hemos regisrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadData();
                 }
                 else
                 {
                     configurationParametersModel = new ConfigurationParametersModel(false);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+                    cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
                     int diasRestantes = diferenciaDiasFechas.Days;
                     if (diasRestantes == 30)
                     {
-                        MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         Application.Exit();
                     }
                     else
                     {
-                        MessageBox.Show("Estimado usuario no hemos podido registar la instalción de su software por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor del sistema. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
 
@@ -237,16 +240,11 @@ namespace TimbresIP
         {
             if (!validationEntries.validateIPAddr(textBoxServer.Text))
             {
-                MessageBox.Show("La dirección IP del servidor no es correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La dirección IP indicada no es correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         #endregion
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            File.Encrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
-        }
     }
 
 }

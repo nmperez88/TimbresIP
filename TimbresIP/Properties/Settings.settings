@@ -38,5 +38,8 @@
     <Setting Name="HorarySounds" Type="System.String" Scope="User">
       <Value Profile="(Default)">HorarySounds</Value>
     </Setting>
+    <Setting Name="cypherPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">,]~8??m2^Q3@f.pz</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

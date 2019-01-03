@@ -167,5 +167,17 @@ namespace TimbresIP.Properties {
                 this["HorarySounds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(",]~8??m2^Q3@f.pz")]
+        public string cypherPassword {
+            get {
+                return ((string)(this["cypherPassword"]));
+            }
+            set {
+                this["cypherPassword"] = value;
+            }
+        }
     }
 }

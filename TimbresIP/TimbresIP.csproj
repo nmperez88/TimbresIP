@@ -50,8 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>sound.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -91,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseCommon.cs" />
+    <Compile Include="CypherUtils.cs" />
     <Compile Include="Model\ConfigurationParametersModel.cs" />
     <Compile Include="Model\FeaturesModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
@@ -209,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Images\savec24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sound.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
