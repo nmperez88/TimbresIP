@@ -18,6 +18,7 @@ namespace TimbresIP
         {
             MainController.log.Info("App started!");
 
+            ////crear archivo JSON
             //ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
 
             //AutomaticRingSystemModel automaticRingSystem = new AutomaticRingSystemModel();
@@ -46,23 +47,25 @@ namespace TimbresIP
             //    automaticRingSystem.horaryList.Add(horary);
             //}
 
-            ////TODO callTime => ToTest!
-            ////Archivos mp3 en mis documentos
-            ////Sendmail: programData\BITDATA
-            ///encrypt
-            ///cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+            //string outputJSON = JsonConvert.SerializeObject(automaticRingSystem);
+            //String jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
+            //File.WriteAllText(jsonFileFullPath, outputJSON);
+            ////crear archivo JSON FIN
+
+            //TODO callTime => ToTest!
+            //Archivos mp3 en mis documentos
+            //Sendmail: programData\BITDATA
+
+            //Encrypt
+            //cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
             //File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+
             //Decrypt
             //cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
             //configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
             //File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
 
             //guardar
-
-            //string outputJSON = JsonConvert.SerializeObject(automaticRingSystem);
-            //String jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
-            //File.WriteAllText(jsonFileFullPath, outputJSON);
-
 
             //MainController mainController = new MainController();
             //mainController.init();

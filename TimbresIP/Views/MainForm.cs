@@ -178,7 +178,7 @@ namespace TimbresIP
                         {
                             configurationParametersModel = new ConfigurationParametersModel(true);
                             jsonHandlerUtils.serialize(configurationParametersModel);
-                            MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA.", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -189,7 +189,7 @@ namespace TimbresIP
                             }
                             else
                             {
-                                MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor. Muchas gracias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + "/30 días de servicio, por favor contáctese con el proveedor. Muchas gracias.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
