@@ -179,5 +179,17 @@ namespace TimbresIP.Properties {
                 this["cypherPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".aes")]
+        public string encryptedExtension {
+            get {
+                return ((string)(this["encryptedExtension"]));
+            }
+            set {
+                this["encryptedExtension"] = value;
+            }
+        }
     }
 }

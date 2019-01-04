@@ -23,7 +23,7 @@ namespace TimbresIP
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
         SendMailUtils sendMailUtils = new SendMailUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        CypherUtils cypherUtils = new CypherUtils();
+        //CypherUtils cypherUtils = new CypherUtils();
 
         /// <summary>
         /// Controlador principal.
@@ -158,7 +158,7 @@ namespace TimbresIP
 
                 if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes"))
                 {
-                    cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    BaseUtils.cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
                     configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
                     File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
 
@@ -207,7 +207,7 @@ namespace TimbresIP
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    BaseUtils.cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
                     File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                     MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -217,7 +217,7 @@ namespace TimbresIP
                 {
                     configurationParametersModel = new ConfigurationParametersModel(false);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    BaseUtils.cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
                     File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
@@ -255,6 +255,11 @@ namespace TimbresIP
         }
 
         #endregion
+
+        private void buttonSaveAll_Click(object sender, EventArgs e)
+        {
+            mainController.save();
+        }
     }
 
 }

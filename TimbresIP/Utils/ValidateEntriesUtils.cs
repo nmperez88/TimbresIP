@@ -101,6 +101,7 @@ namespace TimbresIP.Utils
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + Application.CompanyName;
         }
+
         /// <summary>
         /// Metodo para capturar la direccion hacia My Documentos
         /// </summary>

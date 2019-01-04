@@ -13,7 +13,7 @@ namespace TimbresIP
 {
     partial class GeneralRingUserControl : UserControl
     {
-        ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
+        ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
 
 
         /// <summary>
@@ -102,12 +102,12 @@ namespace TimbresIP
 
         private void textBoxGeneralSoundIdExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            validationEntries.validateNumericEntries(e);
+            validateEntriesUtils.validateNumericEntries(e);
         }
 
         private void textBoxGeneralSoundExtExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            validationEntries.validateNumericEntries(e);
+            validateEntriesUtils.validateNumericEntries(e);
         }
 
         private void dataGridViewGeneralSound_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -122,7 +122,7 @@ namespace TimbresIP
                             try
                             {
                                 DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                                DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
+                                DirectoryInfo dir = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
                                 FileInfo[] files = dir.GetFiles();
                                 comboBox.DataSource = files;
                                 comboBox.DisplayMember = nameof(FileInfo.Name);
@@ -153,7 +153,7 @@ namespace TimbresIP
             //Validamos si no es una fila nueva
             if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
             {
-                Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
+                Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
 
                 if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "registerNameDataGridViewTextBoxColumn")
                 {

@@ -270,6 +270,7 @@
             this.buttonSaveAll.Size = new System.Drawing.Size(33, 30);
             this.buttonSaveAll.TabIndex = 0;
             this.buttonSaveAll.UseVisualStyleBackColor = true;
+            this.buttonSaveAll.Click += new System.EventHandler(this.buttonSaveAll_Click);
             // 
             // groupBoxCallTails
             // 

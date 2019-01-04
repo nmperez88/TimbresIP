@@ -40,7 +40,8 @@ namespace TimbresIP
             //        //        String filename = "helloworld" + a + ".mp3";
             //        //        soundFile.name = filename;
             //        //        soundFile.targetPath = filename;
-            //        String soundFile = "helloworld" + a + ".mp3";
+            //        //String soundFile = "helloworld" + a + ".mp3";
+            //        String soundFile = validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds + "\\" + "helloworld" + a + ".mp3";
             //        CallServerModel callServer = new CallServerModel(a + 1, "23:54", 5, soundFile, true, "1300", "llamada " + a);
             //        horary.callServerList.Add(callServer);
             //    }
@@ -50,22 +51,22 @@ namespace TimbresIP
             //string outputJSON = JsonConvert.SerializeObject(automaticRingSystem);
             //String jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
             //File.WriteAllText(jsonFileFullPath, outputJSON);
+
+            //try
+            //{
+            //    MainController.cypherUtils.FileEncrypt(jsonFileFullPath, Properties.Settings.Default.cypherPassword);
+            //    System.IO.File.Delete(jsonFileFullPath);
+            //}
+            //catch (Exception e)
+            //{
+
+            //    MainController.log.Error("Intentando guardar archivo json", e);
+            //}
             ////crear archivo JSON FIN
 
             //TODO callTime => ToTest!
-            //Archivos mp3 en mis documentos
-            //Sendmail: programData\BITDATA
-
-            //Encrypt
-            //cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
-            //File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
-
-            //Decrypt
-            //cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
-            //configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
-            //File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
-
-            //guardar
+            //TODO guardar => ToTest!
+            //TODO cargar combobox => BASOFIA!
 
             //MainController mainController = new MainController();
             //mainController.init();

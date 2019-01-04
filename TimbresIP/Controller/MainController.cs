@@ -20,7 +20,7 @@ namespace TimbresIP.Controller
     /// </summary>
     class MainController : BaseUtils
     {
-        ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
+
         /// <summary>
         /// Programador de trabajos para ejecutar las llamadas.
         /// </summary>
@@ -47,6 +47,11 @@ namespace TimbresIP.Controller
         private String jsonFileFullPath;
 
         /// <summary>
+        /// Ruta de archivo Json encriptado.
+        /// </summary>
+        private String jsonFileFullPathEncrypted;
+
+        /// <summary>
         /// Gestiona contenido de archivo JSON.
         /// </summary>
         private JsonHandlerUtils jsonHandlerUtils;
@@ -70,16 +75,25 @@ namespace TimbresIP.Controller
         public void init()
         {
             jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
+            jsonFileFullPathEncrypted = jsonFileFullPath + Properties.Settings.Default.encryptedExtension;
 
-            if (System.IO.File.Exists(jsonFileFullPath))
+            if (System.IO.File.Exists(jsonFileFullPathEncrypted))
             {
-                //jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath,);
+                cypherUtils.FileDecrypt(jsonFileFullPathEncrypted, jsonFileFullPath, Properties.Settings.Default.cypherPassword);
                 jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath, "TimbresIP.Model.AutomaticRingSystemModel");
                 automaticRingSystem = (AutomaticRingSystemModel)jsonHandlerUtils.deserialize();
+                try
+                {
+                    System.IO.File.Delete(jsonFileFullPath);
+                }
+                catch (Exception e)
+                {
+                    log.Error("Intentando eliminar archivo json", e);
+                }
             }
             else
             {
-                log.Info("El archivo JSON no existe. Debe ser creado antes de guardar.");
+                log.Info("El archivo JSON encriptado no existe.");
                 automaticRingSystem = new AutomaticRingSystemModel();
             }
 
@@ -384,6 +398,32 @@ namespace TimbresIP.Controller
 
             //Debería existir una opción, visual o bien utilizarlo en cada modificación del horario, para detener el programador de llamadas.
             //stop();
+        }
+
+        /// <summary>
+        /// Salvar.
+        /// </summary>
+        public void save()
+        {
+            try
+            {
+                System.IO.File.WriteAllText(jsonFileFullPath, JsonConvert.SerializeObject(automaticRingSystem));
+                cypherUtils.FileEncrypt(jsonFileFullPath, Properties.Settings.Default.cypherPassword);
+            }
+            catch (Exception e)
+            {
+
+                log.Error("Intentando guardar archivo json", e);
+            }
+
+            try
+            {
+                System.IO.File.Delete(jsonFileFullPath);
+            }
+            catch (Exception e)
+            {
+                log.Error("Intentando eliminar archivo json", e);
+            }
         }
     }
 }

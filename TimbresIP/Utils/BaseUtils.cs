@@ -30,5 +30,16 @@ namespace TimbresIP.Utils
             increaseStartId();
             return Properties.Settings.Default.startId;
         }
+
+        /// <summary>
+        /// Encriptador y desencriptador de archivos.
+        /// </summary>
+        public static CypherUtils cypherUtils = new CypherUtils();
+
+
+        /// <summary>
+        /// Validador de entradas.
+        /// </summary>
+        public static ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
     }
 }

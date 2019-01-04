@@ -14,7 +14,7 @@ namespace TimbresIP
 {
     partial class HoraryUserControl : UserControl
     {
-        ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
+        ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
 
@@ -74,6 +74,37 @@ namespace TimbresIP
             dataGridViewHorary.DataSource = callServerListToAdded;
 
         }
+
+        /// <summary>
+        /// Cargar datos del comboBox en interfaz.
+        /// </summary>
+        private void loadDataComboBoxCellSoundFile()
+        {
+            try
+            {
+                DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
+                DirectoryInfo dirInfo = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
+                FileInfo[] files = dirInfo.GetFiles();
+                comboBox.DataSource = files;
+                comboBox.DisplayMember = nameof(FileInfo.Name);
+
+                //DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
+                //DirectoryInfo dirInfo = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
+                //FileInfo[] files = dirInfo.GetFiles();
+                //List<String> dataSource = new List<string>();
+                //files.ForEach(f =>
+                //{
+                //    dataSource.Add(f.DirectoryName);
+                //});
+                //comboBox.DataSource = dataSource;
+
+            }
+            catch (Exception er)
+            {
+                BaseUtils.log.Error(er);
+            }
+
+        }
         #endregion
 
         #region Eventos
@@ -114,12 +145,12 @@ namespace TimbresIP
 
         private void textBoxHoraryIdExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            validationEntries.validateNumericEntries(e);
+            validateEntriesUtils.validateNumericEntries(e);
         }
 
         private void textBoxHoraryExtExtension_KeyPress(object sender, KeyPressEventArgs e)
         {
-            validationEntries.validateNumericEntries(e);
+            validateEntriesUtils.validateNumericEntries(e);
         }
 
         private void dataGridViewHorary_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,19 +164,7 @@ namespace TimbresIP
                         case "soundFileDataGridViewTextBoxColumn":
                             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
-                                try
-                                {
-                                    DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                                    DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
-                                    FileInfo[] files = dirInfo.GetFiles();
-                                    comboBox.DataSource = files;
-                                    comboBox.DisplayMember = nameof(FileInfo.Name);
-                                    //comboBox.dis
-                                }
-                                catch (Exception er)
-                                {
-                                    BaseUtils.log.Error(er);
-                                }
+
 
                             }
                             break;
@@ -159,7 +178,7 @@ namespace TimbresIP
                 catch (Exception er)
                 {
 
-                    log.WriteError(er);
+                    BaseUtils.log.Error(er);
                 }
 
             }
@@ -173,7 +192,7 @@ namespace TimbresIP
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
+                        Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -186,7 +205,7 @@ namespace TimbresIP
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
+                        Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -199,7 +218,7 @@ namespace TimbresIP
                 case "startAtDataGridViewTextBoxColumn":
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validationEntries.TimeRegularExpression);
+                        Regex regularExpression = new Regex(validateEntriesUtils.TimeRegularExpression);
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
                             MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -211,7 +230,7 @@ namespace TimbresIP
                 case "callTimeDataGridViewTextBoxColumn":
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validationEntries.TimeRegularExpression);
+                        Regex regularExpression = new Regex(validateEntriesUtils.TimeRegularExpression);
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
                             MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -238,11 +257,21 @@ namespace TimbresIP
 
         private void HoraryUserControl_Load(object sender, EventArgs e)
         {
-            jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
+            jsonHandlerUtils = new JsonHandlerUtils(validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
-            //loadData();
+
+            //loadDataComboBoxCellSoundFile();
+
+            loadData();
         }
         #endregion
+
+        private void dataGridViewHorary_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            BaseUtils.log.Error(e);
+        }
+
+
     }
 }
 

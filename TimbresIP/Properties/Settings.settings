@@ -41,5 +41,8 @@
     <Setting Name="cypherPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)">,]~8??m2^Q3@f.pz</Value>
     </Setting>
+    <Setting Name="encryptedExtension" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.aes</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
