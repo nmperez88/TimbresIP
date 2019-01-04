@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using TimbresIP.Controller;
 using TimbresIP.Model;
 using TimbresIP.Utils;
 using utils;
@@ -19,6 +20,11 @@ namespace TimbresIP
         /// Horario.
         /// </summary>
         public HoraryModel horary { get; set; }
+
+        /// <summary>
+        /// Controlador principal.
+        /// </summary>
+        public MainController mainController;
 
         /// <summary>
         /// Constructor por defecto.
@@ -45,7 +51,8 @@ namespace TimbresIP
                 DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
                 DataRow dataRowToAdd = dataTable.NewRow();
 
-                dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile.targetPath;
+                //dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile.targetPath;
+                dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile;
                 dataRowToAdd["registerNameDataGridViewTextBoxColumn"] = cs.registerName;
                 dataRowToAdd["observationsDataGridViewTextBoxColumn"] = cs.observations;
 
@@ -112,15 +119,24 @@ namespace TimbresIP
                     case "soundFileDataGridViewTextBoxColumn":
                         if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                         {
-                            DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                            DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
-                            FileInfo[] files = dir.GetFiles();
-                            comboBox.DataSource = files;
-                            comboBox.DisplayMember = nameof(FileInfo.Name);
+                            try
+                            {
+                                DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
+                                DirectoryInfo dir = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
+                                FileInfo[] files = dir.GetFiles();
+                                comboBox.DataSource = files;
+                                comboBox.DisplayMember = nameof(FileInfo.Name);
+                            }
+                            catch (Exception er)
+                            {
+                                BaseUtils.log.Error(er);
+                            }
                         }
                         break;
                     case "ColumnCall":
-                        MessageBox.Show("ColumnCall");
+                        DataGridViewRow selectedRow = dataGridViewGeneralSound.CurrentRow;
+                        CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
+                        mainController.startJobNow(horary, callServer);
                         break;
                 }
             }
@@ -129,7 +145,7 @@ namespace TimbresIP
 
                 log.WriteError(er);
             }
-            
+
         }
 
         private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -139,7 +155,7 @@ namespace TimbresIP
             {
                 Regex regularExpression = new Regex(validationEntries.NumbersRegularExpression);
 
-                if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name== "registerNameDataGridViewTextBoxColumn")
+                if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "registerNameDataGridViewTextBoxColumn")
                 {
                     if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                     {

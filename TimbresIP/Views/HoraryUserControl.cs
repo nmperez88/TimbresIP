@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using TimbresIP.Controller;
 using TimbresIP.Model;
 using TimbresIP.Utils;
 using utils;
@@ -21,6 +22,11 @@ namespace TimbresIP
         /// Horario.
         /// </summary>
         HoraryModel horary;
+
+        /// <summary>
+        /// Controlador principal.
+        /// </summary>
+        public MainController mainController;
 
         /// <summary>
         /// Constructor por defecto.
@@ -61,19 +67,6 @@ namespace TimbresIP
                 if (allowedRows < configurationParametersModel.numberHours + 1)
                 {
                     callServerListToAdded.Add(cs);
-                    //DataTable dataTable = (DataTable)dataGridViewHorary.DataSource;
-                    //DataRow dataRowToAdd = dataTable.NewRow();
-
-                    //dataRowToAdd["ColumnNo"] = cs.randomId;
-                    //dataRowToAdd["ColumnHoraInicio"] = cs.startAt;
-                    //dataRowToAdd["ColumnSoundTime"] = cs.callTime;
-                    //dataRowToAdd["ColumnTone"] = cs.soundFile.targetPath;
-                    //dataRowToAdd["ColumnCheck"] = cs.enabled;
-                    //dataRowToAdd["ColumnExtension"] = cs.registerName;
-                    //dataRowToAdd["ColumnObservations"] = cs.observations;
-
-                    //dataTable.Rows.Add(dataRowToAdd);
-                    //dataTable.AcceptChanges();
                 }
                 allowedRows++;
             });
@@ -140,15 +133,26 @@ namespace TimbresIP
                         case "soundFileDataGridViewTextBoxColumn":
                             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
-                                DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                                DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
-                                FileInfo[] files = dirInfo.GetFiles();
-                                comboBox.DataSource = files;
-                                comboBox.DisplayMember = nameof(FileInfo.Name);
+                                try
+                                {
+                                    DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
+                                    DirectoryInfo dirInfo = new DirectoryInfo(validationEntries.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
+                                    FileInfo[] files = dirInfo.GetFiles();
+                                    comboBox.DataSource = files;
+                                    comboBox.DisplayMember = nameof(FileInfo.Name);
+                                    //comboBox.dis
+                                }
+                                catch (Exception er)
+                                {
+                                    BaseUtils.log.Error(er);
+                                }
+
                             }
                             break;
                         case "ColumnCall":
-                            MessageBox.Show("ColumnCall");
+                            DataGridViewRow selectedRow = dataGridViewHorary.CurrentRow;
+                            CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
+                            mainController.startJobNow(horary, callServer);
                             break;
                     }
                 }

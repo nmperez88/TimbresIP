@@ -39,7 +39,8 @@ namespace TimbresIP.Model
         /// <summary>
         /// Archivo de sonido.
         /// </summary>
-        public SoundFileModel soundFile { get; set; }
+        //public SoundFileModel soundFile { get; set; }
+        public String soundFile { get; set; }
 
         /// <summary>
         /// Habilitado.
@@ -67,14 +68,17 @@ namespace TimbresIP.Model
         /// <summary>
         /// Constructor.
         /// </summary>
+        /// <param name="no"></param>
         /// <param name="startAt"></param>
         /// <param name="callTime"></param>
         /// <param name="soundFile"></param>
         /// <param name="enabled"></param>
         /// <param name="registerName"></param>
         /// <param name="observations"></param>
-        public CallServerModel(string startAt, int callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
+        //public CallServerModel(string startAt, int callTime, SoundFileModel soundFile, bool enabled, string registerName, string observations)
+        public CallServerModel(int no, string startAt, int callTime, String soundFile, bool enabled, string registerName, string observations)
         {
+            this.no = no;
             this.randomId = idGroup + getStartId();
             this.startAt = startAt;
             this.callTime = callTime;

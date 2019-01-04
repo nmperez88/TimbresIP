@@ -69,7 +69,7 @@ namespace TimbresIP.Controller
         /// </summary>
         public void init()
         {
-            jsonFileFullPath = validateEntriesUtils.getProgramDataPath() +"\\"+ Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
+            jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
 
             if (System.IO.File.Exists(jsonFileFullPath))
             {
@@ -90,8 +90,9 @@ namespace TimbresIP.Controller
                 //Hay horarios configurados?.
                 if (automaticRingSystem.horaryList.Any())
                 {
-                    automaticRingSystemToExecute.domainHost = automaticRingSystem.domainHost;
-                    automaticRingSystemToExecute.domainPort = automaticRingSystem.domainPort;
+                    //automaticRingSystemToExecute.registrationRequired = automaticRingSystem.registrationRequired;
+                    //automaticRingSystemToExecute.domainHost = automaticRingSystem.domainHost;
+                    //automaticRingSystemToExecute.domainPort = automaticRingSystem.domainPort;
 
                     automaticRingSystem.horaryList.ForEach(h =>
                     {
@@ -105,7 +106,8 @@ namespace TimbresIP.Controller
                                 if (cs.enabled)
                                 {
                                     //Existe archivo de sonido.
-                                    Boolean existSoundFile = System.IO.File.Exists(cs.soundFile.targetPath);
+                                    //Boolean existSoundFile = System.IO.File.Exists(cs.soundFile.targetPath);
+                                    Boolean existSoundFile = System.IO.File.Exists(cs.soundFile);
 
                                     //Deshabilitar horario en caso de no existir archivo de sonido.
                                     if (!existSoundFile)
@@ -211,7 +213,7 @@ namespace TimbresIP.Controller
         /// <summary>
         /// Detener programador de llamadas.
         /// </summary>
-        public async void stopScheduler()
+        private async void stopScheduler()
         {
             await scheduler.Shutdown();
         }
@@ -227,41 +229,124 @@ namespace TimbresIP.Controller
             {
                 foreach (var cs in h.callServerList)
                 {
-                    String idJob = h.randomId + cs.randomId;
-                    String hour = cs.startAt.Substring(0, 2);//start:"12:30"
-                    String min = cs.startAt.Substring(3);
-                    JobDataMap jobDataMap = new JobDataMap();
-                    softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystemToExecute.registrationRequired, automaticRingSystemToExecute.domainHost, automaticRingSystemToExecute.domainPort, h.connectionCallServer, cs);
-                    jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
+                    startJobs(h, cs, false);
+                    //String idJob = h.randomId + cs.randomId;
+                    //String hour = cs.startAt.Substring(0, 2);//start:"12:30"
+                    //String min = cs.startAt.Substring(3);
+                    //JobDataMap jobDataMap = new JobDataMap();
+                    //softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystemToExecute.registrationRequired, automaticRingSystemToExecute.domainHost, automaticRingSystemToExecute.domainPort, h.connectionCallServer, cs);
+                    //jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
 
-                    //Definir job.
-                    IJobDetail job = JobBuilder.Create<RingJobUtils>()
-                        .WithIdentity(idJob, groupJobs)
-                        //.UsingJobData("horary", JsonConvert.SerializeObject(h))
-                        .SetJobData(jobDataMap)
-                        .Build();
+                    ////Definir job.
+                    //IJobDetail job = JobBuilder.Create<RingJobUtils>()
+                    //    .WithIdentity(idJob, groupJobs)
+                    //    //.UsingJobData("horary", JsonConvert.SerializeObject(h))
+                    //    .SetJobData(jobDataMap)
+                    //    .Build();
 
-                    //Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
-                    ITrigger trigger = TriggerBuilder.Create()
-                        .WithIdentity(idJob, groupJobs)
-                        //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
-                        .WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
-                        //.StartNow()
-                        .ForJob(idJob, groupJobs)
-                        .Build();
+                    ////Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
+                    //ITrigger trigger = TriggerBuilder.Create()
+                    //    .WithIdentity(idJob, groupJobs)
+                    //    //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
+                    //    .WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
+                    //    //.StartNow()
+                    //    .ForJob(idJob, groupJobs)
+                    //    .Build();
 
-                    //Eliminar trabajo si existe
-                    if (await scheduler.CheckExists(new JobKey(idJob, groupJobs)))
-                    {
-                        await scheduler.DeleteJob(new JobKey(idJob, groupJobs));
-                    }
+                    ////Eliminar trabajo si existe
+                    //if (await scheduler.CheckExists(new JobKey(idJob, groupJobs)))
+                    //{
+                    //    await scheduler.DeleteJob(new JobKey(idJob, groupJobs));
+                    //}
 
-                    //Asignar trigger a job en el programador de llamadas(scheduler)
-                    await scheduler.ScheduleJob(job, trigger);
-                    //Sintaxis para asignarle varios triggers a un treabajo.
-                    //await scheduler.ScheduleJob(objJob, new[] { trigger, trigger1, trigger2, trigger3 }, true);
+                    ////Asignar trigger a job en el programador de llamadas(scheduler)
+                    //await scheduler.ScheduleJob(job, trigger);
+                    ////Sintaxis para asignarle varios triggers a un treabajo.
+                    ////await scheduler.ScheduleJob(objJob, new[] { trigger, trigger1, trigger2, trigger3 }, true);
                 }
             }
+        }
+
+        /// <summary>
+        /// Iniciar trabajo ahora.
+        /// </summary>
+        /// <param name="horary">
+        /// Horario.
+        /// </param>
+        /// <param name="callServer">
+        /// Llamada al servidor.
+        /// </param>
+        /// <param name="startNow">
+        /// Iniciar ahora. Por defecto falso.
+        /// </param>
+        private async void startJobs(HoraryModel horary, CallServerModel callServer, Boolean startNow = false)
+        {
+            if (startNow)
+            {
+                initSoftPhone();
+            }
+
+            String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
+            String hour = callServer.startAt.Substring(0, 2);//start:"12:30"
+            String min = callServer.startAt.Substring(3);
+            JobDataMap jobDataMap = new JobDataMap();
+            softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer);
+            jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
+
+            //Definir job.
+            IJobDetail job = JobBuilder.Create<RingJobUtils>()
+                .WithIdentity(idJob, groupJobs)
+                .SetJobData(jobDataMap)
+                .Build();
+
+            //Disparador de trabajos.
+            ITrigger trigger;
+            if (startNow)
+            {
+                //Disparador de trabajos ahora.
+                trigger = TriggerBuilder.Create()
+                                .WithIdentity(idJob, groupJobs)
+                                .StartNow()
+                                .ForJob(idJob, groupJobs)
+                                .Build();
+            }
+            else
+            {
+                //Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
+                trigger = TriggerBuilder.Create()
+                    .WithIdentity(idJob, groupJobs)
+                    //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
+                    .WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
+                    //.StartNow()
+                    .ForJob(idJob, groupJobs)
+                    .Build();
+            }
+
+            //Eliminar trabajo si existe
+            if (await scheduler.CheckExists(new JobKey(idJob, groupJobs)))
+            {
+                await scheduler.DeleteJob(new JobKey(idJob, groupJobs));
+            }
+
+            //Asignar trigger a job en el programador de llamadas(scheduler)
+            await scheduler.ScheduleJob(job, trigger);
+            //Sintaxis para asignarle varios triggers a un treabajo.
+            //await scheduler.ScheduleJob(objJob, new[] { trigger, trigger1, trigger2, trigger3 }, true);
+
+        }
+
+        /// <summary>
+        /// Iniciar trabajo ahora.
+        /// </summary>
+        /// <param name="horary"></param>
+        /// <param name="callServer"></param>
+        public void startJobNow(HoraryModel horary, CallServerModel callServer)
+        {
+            if (hasServerParams())
+            {
+                //startJobs(horary, callServer, true);
+            }
+
         }
 
         /// <summary>

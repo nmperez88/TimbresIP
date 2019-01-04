@@ -60,6 +60,7 @@ namespace TimbresIP
                 if (tabControlHorary.TabPages.Count < configurationParametersModel.numberschedules)
                 {
                     HoraryUserControl horaryUserControl = new HoraryUserControl(h);
+                    horaryUserControl.mainController = mainController;
                     horaryUserControl.Dock = DockStyle.Fill;
                     TabPage horaryTabPage = new TabPage(h.name);
                     tabControlHorary.TabPages.Add(horaryTabPage);
@@ -73,6 +74,7 @@ namespace TimbresIP
             {
                 HoraryModel horary = mainController.getAutomaticRingSystem().generalRingList[0];
                 generalRingUserControl.horary = horary;
+                generalRingUserControl.mainController = mainController;
                 generalRingUserControl.loadData();
             }
 
@@ -166,7 +168,7 @@ namespace TimbresIP
 
                     if (configurationParametersModel.lisenceTime == diasRestantes)
                     {
-                        MessageBox.Show("Estimado usuario su periodo de licencia caducó, por favor comuniquese con el proveedor del sistema para renovar.","Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Estimado usuario su periodo de licencia caducó, por favor comuniquese con el proveedor del sistema para renovar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         Application.Exit();
                     }
 
@@ -176,7 +178,7 @@ namespace TimbresIP
                         {
                             configurationParametersModel = new ConfigurationParametersModel(true);
                             jsonHandlerUtils.serialize(configurationParametersModel);
-                            MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: "+DateTime.Now+". Esperamos sea de su agrado y utilidad. Equipo BITDATA","Bienvenido",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -191,13 +193,13 @@ namespace TimbresIP
                             }
                         }
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
-                        //loadData();
+                        loadData();
                     }
                     else
                     {
 
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
-                        //loadData();
+                        loadData();
                     }
 
                 }

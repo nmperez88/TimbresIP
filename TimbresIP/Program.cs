@@ -35,11 +35,12 @@ namespace TimbresIP
             //    HoraryModel horary = new HoraryModel("h" + i, connectionCallServer);
             //    for (int a = 0; a < 2; a++)
             //    {
-            //        SoundFileModel soundFile = new SoundFileModel();
-            //        String filename = "helloworld" + a + ".mp3";
-            //        soundFile.name = filename;
-            //        soundFile.targetPath = filename;
-            //        CallServerModel callServer = new CallServerModel("23:54", 5, soundFile, true, "1300", "llamada " + a);
+            //        //        SoundFileModel soundFile = new SoundFileModel();
+            //        //        String filename = "helloworld" + a + ".mp3";
+            //        //        soundFile.name = filename;
+            //        //        soundFile.targetPath = filename;
+            //        String soundFile = "helloworld" + a + ".mp3";
+            //        CallServerModel callServer = new CallServerModel(a + 1, "23:54", 5, soundFile, true, "1300", "llamada " + a);
             //        horary.callServerList.Add(callServer);
             //    }
             //    automaticRingSystem.horaryList.Add(horary);
@@ -48,6 +49,15 @@ namespace TimbresIP
             ////TODO callTime => ToTest!
             ////Archivos mp3 en mis documentos
             ////Sendmail: programData\BITDATA
+            ///encrypt
+            ///cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+            //File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+            //Decrypt
+            //cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+            //configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
+            //File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+
+            //guardar
 
             //string outputJSON = JsonConvert.SerializeObject(automaticRingSystem);
             //String jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
