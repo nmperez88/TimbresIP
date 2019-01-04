@@ -191,13 +191,13 @@ namespace TimbresIP
                             }
                         }
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
-                        loadData();
+                        //loadData();
                     }
                     else
                     {
 
                         this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
-                        loadData();
+                        //loadData();
                     }
 
                 }

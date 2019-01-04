@@ -197,14 +197,15 @@
             // 
             // soundFileDataGridViewTextBoxColumn
             // 
-            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
             this.soundFileDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.soundFileDataGridViewTextBoxColumn.DropDownWidth = 200;
+            this.soundFileDataGridViewTextBoxColumn.FillWeight = 30F;
             this.soundFileDataGridViewTextBoxColumn.HeaderText = "Tono";
             this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
             this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.soundFileDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.soundFileDataGridViewTextBoxColumn.Width = 39;
             // 
             // registerNameDataGridViewTextBoxColumn
             // 

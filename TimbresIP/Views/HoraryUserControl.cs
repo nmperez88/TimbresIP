@@ -137,7 +137,7 @@ namespace TimbresIP
                 {
                     switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
                     {
-                        case "ColumnTone":
+                        case "soundFileDataGridViewTextBoxColumn":
                             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
                                 DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
@@ -236,7 +236,7 @@ namespace TimbresIP
         {
             jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
-            loadData();
+            //loadData();
         }
         #endregion
     }
