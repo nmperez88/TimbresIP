@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TimbresIP.Controller;
@@ -72,7 +73,6 @@ namespace TimbresIP
             });
 
             dataGridViewHorary.DataSource = callServerListToAdded;
-
         }
 
         /// <summary>
@@ -264,14 +264,12 @@ namespace TimbresIP
 
             loadData();
         }
-        #endregion
 
         private void dataGridViewHorary_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             BaseUtils.log.Error(e);
         }
-
-
+        #endregion
     }
 }
 

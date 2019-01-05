@@ -12,9 +12,6 @@ using System.Windows.Forms;
 using TimbresIP.Utils;
 using TimbresIP.Model;
 using TimbresIP.Controller;
-using log4net.Util;
-using utils;
-
 namespace TimbresIP
 {
     public partial class MainForm : MaterialSkin.Controls.MaterialForm
@@ -236,7 +233,7 @@ namespace TimbresIP
             }
             catch (Exception er)
             {
-                log.WriteError(er);
+                BaseUtils.log.Error(er);
 
             }
         }
@@ -254,12 +251,13 @@ namespace TimbresIP
             }
         }
 
-        #endregion
-
         private void buttonSaveAll_Click(object sender, EventArgs e)
         {
             mainController.save();
         }
+
+        #endregion
+
     }
 
 }
