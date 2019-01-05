@@ -27,7 +27,7 @@ namespace TimbresIP.Utils
             catch (Exception e)
             {
 
-                log.Error(e);
+                BaseUtils.log.Error(e);
             }
 
             return null;
@@ -55,7 +55,7 @@ namespace TimbresIP.Utils
             catch (Exception e)
             {
 
-                log.Error(e);
+                BaseUtils.log.Error(e);
             }
             return "";
         }
@@ -74,7 +74,7 @@ namespace TimbresIP.Utils
             catch (Exception e)
             {
 
-                log.Error(e);
+                BaseUtils.log.Error(e);
             }
             return externalIp;
         }
