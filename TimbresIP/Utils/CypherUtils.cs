@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using utils;
+using TimbresIP.Utils;
 
 namespace TimbresIP
 {
@@ -90,7 +90,7 @@ namespace TimbresIP
             }
             catch (Exception ex)
             {
-                log.WriteError(ex);
+                BaseUtils.log.Error(ex);
             }
             finally
             {
@@ -139,11 +139,11 @@ namespace TimbresIP
             }
             catch (CryptographicException ex_CryptographicException)
             {
-                log.WriteError("CryptographicException error: " + ex_CryptographicException.Message);
+                BaseUtils.log.Error("CryptographicException error: " + ex_CryptographicException.Message);
             }
             catch (Exception ex)
             {
-                log.WriteError("Error: " + ex.Message);
+                BaseUtils.log.Error("Error: " + ex.Message);
             }
 
             try
@@ -152,7 +152,7 @@ namespace TimbresIP
             }
             catch (Exception ex)
             {
-                log.WriteError("Error by closing CryptoStream: " + ex.Message);
+                BaseUtils.log.Error("Error by closing CryptoStream: " + ex.Message);
             }
             finally
             {
