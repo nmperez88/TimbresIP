@@ -165,6 +165,7 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\TimbresIP.Model.CallServerModel.datasource" />
+    <None Include="Properties\DataSources\TimbresIP.Model.SoundFileModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

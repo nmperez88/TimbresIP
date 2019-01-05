@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TimbresIP.Model
 {
@@ -41,6 +42,12 @@ namespace TimbresIP.Model
         /// </summary>
         //public SoundFileModel soundFile { get; set; }
         public String soundFile { get; set; }
+
+        ///// <summary>
+        ///// Archivo de sonido.
+        ///// </summary>
+        ////public SoundFileModel soundFile { get; set; }
+        //public List<SoundFileModel> soundFile { get; set; }
 
         /// <summary>
         /// Habilitado.

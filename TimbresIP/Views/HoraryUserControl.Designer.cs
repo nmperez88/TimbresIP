@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHorary = new System.Windows.Forms.DataGridView();
             this.groupBoxHoraryExtension = new System.Windows.Forms.GroupBox();
             this.buttonHorarySaveExtension = new System.Windows.Forms.Button();
@@ -42,7 +42,6 @@
             this.textBoxHoraryIdExtension = new System.Windows.Forms.TextBox();
             this.toolTipHorary = new System.Windows.Forms.ToolTip(this.components);
             this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.callServerModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.callTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,20 +54,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHorary)).BeginInit();
             this.groupBoxHoraryExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewHorary
             // 
             this.dataGridViewHorary.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewHorary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHorary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewHorary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewHorary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.noDataGridViewTextBoxColumn,
@@ -205,10 +203,6 @@
             // 
             this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
             // 
-            // callServerModelBindingSource1
-            // 
-            this.callServerModelBindingSource1.DataSource = typeof(TimbresIP.Model.CallServerModel);
-            // 
             // noDataGridViewTextBoxColumn
             // 
             this.noDataGridViewTextBoxColumn.DataPropertyName = "no";
@@ -295,7 +289,6 @@
             this.groupBoxHoraryExtension.ResumeLayout(false);
             this.groupBoxHoraryExtension.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,7 +307,6 @@
         private System.Windows.Forms.TextBox textBoxHoraryIdExtension;
         private System.Windows.Forms.BindingSource callServerModelBindingSource;
         private System.Windows.Forms.ToolTip toolTipHorary;
-        private System.Windows.Forms.BindingSource callServerModelBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn callTimeDataGridViewTextBoxColumn;

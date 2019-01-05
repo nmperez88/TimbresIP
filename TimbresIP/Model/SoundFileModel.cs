@@ -5,7 +5,7 @@ namespace TimbresIP.Model
     /// <summary>
     /// Archivo de sonido utilizado en los tonos de llamada del horario.
     /// </summary>
-    [ObsoleteAttribute("Clase obsoleta.", false)]
+    //[ObsoleteAttribute("Clase obsoleta.", false)]
     class SoundFileModel
     {
         /// <summary>

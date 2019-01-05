@@ -164,8 +164,7 @@ namespace TimbresIP
                         case "soundFileDataGridViewTextBoxColumn":
                             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
-
-
+                                loadDataComboBoxCellSoundFile();
                             }
                             break;
                         case "ColumnCall":
