@@ -358,7 +358,7 @@ namespace TimbresIP.Controller
         {
             if (hasServerParams())
             {
-                //startJobs(horary, callServer, true);
+                startJobs(horary, callServer, true);
             }
 
         }
