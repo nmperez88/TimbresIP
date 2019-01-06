@@ -41,6 +41,7 @@
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
             this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
             this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -53,6 +54,7 @@
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundFileModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGeneralSoundExtension
@@ -195,10 +197,16 @@
             // 
             this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
             // 
+            // soundFileModelBindingSource
+            // 
+            this.soundFileModelBindingSource.DataSource = typeof(TimbresIP.Model.SoundFileModel);
+            // 
             // soundFileDataGridViewTextBoxColumn
             // 
             this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
+            this.soundFileDataGridViewTextBoxColumn.DataSource = this.soundFileModelBindingSource;
+            this.soundFileDataGridViewTextBoxColumn.DisplayMember = "name";
             this.soundFileDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.soundFileDataGridViewTextBoxColumn.DropDownWidth = 200;
             this.soundFileDataGridViewTextBoxColumn.FillWeight = 30F;
@@ -206,6 +214,7 @@
             this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
             this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.soundFileDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.soundFileDataGridViewTextBoxColumn.ValueMember = "targetPath";
             // 
             // registerNameDataGridViewTextBoxColumn
             // 
@@ -277,6 +286,7 @@
             this.groupBoxGeneralSoundExtension.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundFileModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,6 +306,7 @@
         private System.Windows.Forms.BindingSource callServerModelBindingSource;
         private System.Windows.Forms.ToolTip toolTipGeneralRings;
         private System.Windows.Forms.DataGridViewComboBoxColumn soundFileDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource soundFileModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn registerNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn observationsDataGridViewTextBoxColumn;

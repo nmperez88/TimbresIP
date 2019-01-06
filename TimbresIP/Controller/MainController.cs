@@ -296,6 +296,11 @@ namespace TimbresIP.Controller
         {
             if (startNow)
             {
+                if (scheduler == null)
+                {
+                    initScheduler();
+                    startScheduler();
+                }
                 initSoftPhone();
             }
 

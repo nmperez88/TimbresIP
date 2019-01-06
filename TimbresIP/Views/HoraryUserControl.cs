@@ -61,48 +61,35 @@ namespace TimbresIP
             textBoxHoraryPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
             //Llamadas.
-            List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
-            int allowedRows = 0;
-            horary.callServerList.ForEach(cs =>
+            if (horary.callServerList.Any())
             {
-                if (allowedRows < configurationParametersModel.numberHours + 1)
+                List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
+                int allowedRows = 0;
+                horary.callServerList.ForEach(cs =>
                 {
-                    callServerListToAdded.Add(cs);
-                }
-                allowedRows++;
-            });
+                    if (allowedRows < configurationParametersModel.numberHours + 1)
+                    {
+                        callServerListToAdded.Add(cs);
+                    }
+                    allowedRows++;
+                });
 
-            dataGridViewHorary.DataSource = callServerListToAdded;
+                dataGridViewHorary.DataSource = callServerListToAdded;
+            }
+
         }
 
         /// <summary>
         /// Cargar datos del comboBox en interfaz.
         /// </summary>
-        private void loadDataComboBoxCellSoundFile()
+        private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
         {
-            try
+            SoundFileModel soundFileRef = null;
+            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef) == DialogResult.OK)
             {
-                DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                DirectoryInfo dirInfo = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
-                FileInfo[] files = dirInfo.GetFiles();
-                comboBox.DataSource = files;
-                comboBox.DisplayMember = nameof(FileInfo.Name);
-
-                //DataGridViewComboBoxColumn comboBox = this.dataGridViewHorary.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                //DirectoryInfo dirInfo = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
-                //FileInfo[] files = dirInfo.GetFiles();
-                //List<String> dataSource = new List<string>();
-                //files.ForEach(f =>
-                //{
-                //    dataSource.Add(f.DirectoryName);
-                //});
-                //comboBox.DataSource = dataSource;
-
+                soundFile = soundFileRef;
             }
-            catch (Exception er)
-            {
-                BaseUtils.log.Error(er);
-            }
+            return soundFile;
 
         }
         #endregion
@@ -159,17 +146,17 @@ namespace TimbresIP
             {
                 try
                 {
+                    DataGridViewRow selectedRow = dataGridViewHorary.CurrentRow;
+                    CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
                     switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
                     {
                         case "soundFileDataGridViewTextBoxColumn":
                             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
-                                loadDataComboBoxCellSoundFile();
+                                callServer.soundFile = loadDataCellSoundFile(callServer.soundFile);
                             }
                             break;
                         case "ColumnCall":
-                            DataGridViewRow selectedRow = dataGridViewHorary.CurrentRow;
-                            CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
                             mainController.startJobNow(horary, callServer);
                             break;
                     }
@@ -246,6 +233,7 @@ namespace TimbresIP
                     }
                     break;
             }
+
         }
 
         private void dataGridViewHorary_RowLeave(object sender, DataGridViewCellEventArgs e)

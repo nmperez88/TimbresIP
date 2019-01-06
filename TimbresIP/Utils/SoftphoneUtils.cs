@@ -76,9 +76,20 @@ namespace TimbresIP.Utils
         /// </summary>
         public SoftPhoneUtils()
         {
-            var userName = "OZSDK-CALL-1234567-IWAREZ 2017";
-            var key = "UDoyMDMzLTEyLTI1LFVQOjIwMzMtMDEtMDEsTUNDOjUwMCxNUEw6NTAwLE1TTEM6NTAwLE1GQzo1MDAsRzcyOTp0cnVlLE1XUEM6NTAwLE1JUEM6NTAwfHFQZDBhQnhlaEFGaTlNMmV4cXZxaHUyVE5rMWh2S0FzaUZlVlowbFFseTZWZ3JKbmFMTXh3ZVV2elBGcEliTFpwNHZtZDArZlZwc2VkRGpjQWdKR3ZnPT0=";
-            LicenseManager.Instance.SetLicense(userName, key);
+            try
+            {
+                var userName = "OZSDK-CALL-1234567-IWAREZ 2017";
+                var key = "UDoyMDMzLTEyLTI1LFVQOjIwMzMtMDEtMDEsTUNDOjUwMCxNUEw6NTAwLE1TTEM6NTAwLE1GQzo1MDAsRzcyOTp0cnVlLE1XUEM6NTAwLE1JUEM6NTAwfHFQZDBhQnhlaEFGaTlNMmV4cXZxaHUyVE5rMWh2S0FzaUZlVlowbFFseTZWZ3JKbmFMTXh3ZVV2elBGcEliTFpwNHZtZDArZlZwc2VkRGpjQWdKR3ZnPT0=";
+                LicenseManager.Instance.SetLicense(userName, key);
+            }
+            catch (Exception e)
+            {
+
+                log.Error(e);
+            }
+
+
+
 
             //Crear instancia softPhone. Rango 5000-10000
             softphone = SoftPhoneFactory.CreateSoftPhone(softPhoneRangeMin, softPhoneRangeMax);

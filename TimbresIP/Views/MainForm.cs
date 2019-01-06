@@ -75,7 +75,6 @@ namespace TimbresIP
                 generalRingUserControl.loadData();
             }
 
-
         }
         #endregion
 
