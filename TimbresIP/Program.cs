@@ -36,12 +36,10 @@ namespace TimbresIP
             //    HoraryModel horary = new HoraryModel("h" + i, connectionCallServer);
             //    for (int a = 0; a < 2; a++)
             //    {
-            //        //        SoundFileModel soundFile = new SoundFileModel();
-            //        //        String filename = "helloworld" + a + ".mp3";
-            //        //        soundFile.name = filename;
-            //        //        soundFile.targetPath = filename;
-            //        //String soundFile = "helloworld" + a + ".mp3";
-            //        String soundFile = validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds + "\\" + "helloworld" + a + ".mp3";
+            //        SoundFileModel soundFile = new SoundFileModel();
+            //        String filename = "helloworld" + a + ".mp3";
+            //        soundFile.name = filename;
+            //        soundFile.targetPath = validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds + "\\" + filename;
             //        CallServerModel callServer = new CallServerModel(a + 1, "23:54", 5, soundFile, true, "1300", "llamada " + a);
             //        horary.callServerList.Add(callServer);
             //    }

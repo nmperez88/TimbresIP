@@ -229,13 +229,20 @@ namespace TimbresIP
                 case "callTimeDataGridViewTextBoxColumn":
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validateEntriesUtils.TimeRegularExpression);
+                        Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
                         {
-                            MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo horario";
+                            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
                             e.Cancel = true;
                         }
+                        //Regex regularExpression = new Regex(validateEntriesUtils.TimeRegularExpression);
+                        //if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        //{
+                        //    MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo horario";
+                        //    e.Cancel = true;
+                        //}
                     }
                     break;
             }

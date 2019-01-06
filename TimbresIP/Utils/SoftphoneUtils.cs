@@ -108,8 +108,7 @@ namespace TimbresIP.Utils
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
             registerAccount(account);
 
-            //mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
-            mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile);
+            mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
         }
 
         /// <summary>

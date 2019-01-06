@@ -120,8 +120,7 @@ namespace TimbresIP.Controller
                                 if (cs.enabled)
                                 {
                                     //Existe archivo de sonido.
-                                    //Boolean existSoundFile = System.IO.File.Exists(cs.soundFile.targetPath);
-                                    Boolean existSoundFile = System.IO.File.Exists(cs.soundFile);
+                                    Boolean existSoundFile = System.IO.File.Exists(cs.soundFile.targetPath);
 
                                     //Deshabilitar horario en caso de no existir archivo de sonido.
                                     if (!existSoundFile)

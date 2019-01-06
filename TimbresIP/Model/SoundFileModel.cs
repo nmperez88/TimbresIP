@@ -48,5 +48,10 @@ namespace TimbresIP.Model
         public SoundFileModel()
         {
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }
