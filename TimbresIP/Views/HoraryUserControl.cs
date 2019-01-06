@@ -22,7 +22,7 @@ namespace TimbresIP
         /// <summary>
         /// Horario.
         /// </summary>
-        HoraryModel horary;
+        public HoraryModel horary;
 
         /// <summary>
         /// Controlador principal.
@@ -73,8 +73,7 @@ namespace TimbresIP
                     }
                     allowedRows++;
                 });
-
-                dataGridViewHorary.DataSource = callServerListToAdded;
+                callServerModelBindingSource.DataSource = callServerListToAdded;
             }
 
         }
@@ -92,6 +91,12 @@ namespace TimbresIP
             return soundFile;
 
         }
+
+        public BindingSource bindingSource()
+        {
+            return callServerModelBindingSource;
+        }
+
         #endregion
 
         #region Eventos
@@ -179,7 +184,7 @@ namespace TimbresIP
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
-                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals("") )
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
@@ -192,7 +197,7 @@ namespace TimbresIP
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
-                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
@@ -205,7 +210,7 @@ namespace TimbresIP
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validateEntriesUtils.TimeRegularExpression);
-                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo horario";
@@ -217,7 +222,7 @@ namespace TimbresIP
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
-                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
@@ -238,6 +243,7 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
+
             if (this.dataGridViewHorary.Rows.Count == configurationParametersModel.numberHours + 1)
             {
                 this.dataGridViewHorary.AllowUserToAddRows = false;
@@ -264,6 +270,14 @@ namespace TimbresIP
             BaseUtils.log.Error(e);
         }
         #endregion
+
+        private void dataGridViewHorary_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+
+            //BaseUtils.log.Error(callServerModelBindingSource.DataSource);
+            //BaseUtils.log.Error("callServerModelBindingSource: " + ((List<CallServerModel>)callServerModelBindingSource.DataSource).Count);
+            //BaseUtils.log.Error("horary.callServerList.Count: "+horary.callServerList.Count);
+        }
     }
 }
 

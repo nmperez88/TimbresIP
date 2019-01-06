@@ -75,6 +75,16 @@ namespace TimbresIP.Model
         /// Constructor.
         /// </summary>
         /// <param name="no"></param>
+        public CallServerModel(int no)
+        {
+            this.no = no;
+            this.randomId = idGroup + getStartId();
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="no"></param>
         /// <param name="startAt"></param>
         /// <param name="callTime"></param>
         /// <param name="soundFile"></param>

@@ -139,6 +139,7 @@ namespace TimbresIP
                 {
                     TabPage horaryTabPage = new TabPage(tabPageName);
                     tabControlHorary.SelectedTab.Text = tabPageName;
+                    (tabControlHorary.SelectedTab.GetContainerControl() as HoraryUserControl).horary.name = tabPageName;
                 }
             }
             else { MessageBox.Show("Debe crear horarios primeramente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
@@ -252,7 +253,31 @@ namespace TimbresIP
 
         private void buttonSaveAll_Click(object sender, EventArgs e)
         {
-            mainController.save();
+            //bool existsCallServerWithRandomIdNull = false;
+            List<HoraryModel> horaryModels = new List<HoraryModel>();
+            for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
+            {
+                (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).bindingSource().DataSource.
+                // existsCallServerWithRandomIdNull = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).horary.callServerList.Exists(cs => cs.randomId == null);
+                //if (existsCallServerWithRandomIdNull)
+                //{
+                //    MessageBox.Show("Existen horas con datos incompletos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    break;
+                //}
+            }
+            mainController.getAutomaticRingSystem().horaryList = horaryModels;
+            //bool existsCallServerWithRandomIdNull = mainController.getAutomaticRingSystem().horaryList.Exists(h =>
+            //    h.callServerList.Exists(cs => cs.randomId == null));
+
+            if (!existsCallServerWithRandomIdNull)
+            {
+                //mainController.save();
+            }
+            else
+            {
+                MessageBox.Show("Existen horas con datos incompletos", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
         }
 
         #endregion
