@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TimbresIP.Controller;
@@ -14,6 +16,7 @@ namespace TimbresIP
     partial class GeneralRingUserControl : UserControl
     {
         ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
+        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
 
 
         /// <summary>
@@ -46,21 +49,50 @@ namespace TimbresIP
             textBoxGeneralSoundPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
             //Llamadas.
-            horary.callServerList.ForEach(cs =>
+            if (horary.callServerList.Any())
             {
-                DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
-                DataRow dataRowToAdd = dataTable.NewRow();
+                List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
+                int allowedRows = 0;
+                horary.callServerList.ForEach(cs =>
+                {
+                    if (allowedRows < configurationParametersModel.numberHours + 1)
+                    {
+                        callServerListToAdded.Add(cs);
+                    }
+                    allowedRows++;
+                });
+                callServerModelBindingSource.DataSource = callServerListToAdded;
+            }
+            //horary.callServerList.ForEach(cs =>
+            //{
+            //    DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
+            //    DataRow dataRowToAdd = dataTable.NewRow();
 
-                //dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile.targetPath;
-                dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile;
-                dataRowToAdd["registerNameDataGridViewTextBoxColumn"] = cs.registerName;
-                dataRowToAdd["observationsDataGridViewTextBoxColumn"] = cs.observations;
+            //    //dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile.targetPath;
+            //    dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile;
+            //    dataRowToAdd["registerNameDataGridViewTextBoxColumn"] = cs.registerName;
+            //    dataRowToAdd["observationsDataGridViewTextBoxColumn"] = cs.observations;
 
-                dataTable.Rows.Add(dataRowToAdd);
-                dataTable.AcceptChanges();
-            });
+            //    dataTable.Rows.Add(dataRowToAdd);
+            //    dataTable.AcceptChanges();
+            //});
 
         }
+
+        /// <summary>
+        /// Cargar datos del comboBox en interfaz.
+        /// </summary>
+        private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
+        {
+            SoundFileModel soundFileRef = null;
+            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef) == DialogResult.OK)
+            {
+                soundFile = soundFileRef;
+            }
+            return soundFile;
+
+        }
+
         #endregion
 
         #region Eventos
@@ -98,6 +130,10 @@ namespace TimbresIP
             this.textBoxGeneralSoundPasswordExtension.Enabled = false;
             this.buttonGeneralSoundSaveExtension.Enabled = false;
             this.buttonGeneralSoundEditExtension.Enabled = true;
+
+            horary.connectionCallServer.displayName = textBoxGeneralSoundIdExtension.Text;
+            horary.connectionCallServer.registerName = textBoxGeneralSoundExtExtension.Text;
+            horary.connectionCallServer.registerPassword = textBoxGeneralSoundPasswordExtension.Text;
         }
 
         private void textBoxGeneralSoundIdExtension_KeyPress(object sender, KeyPressEventArgs e)
@@ -112,59 +148,100 @@ namespace TimbresIP
 
         private void dataGridViewGeneralSound_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
-                switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
+                try
                 {
-                    case "soundFileDataGridViewTextBoxColumn":
-                        if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-                        {
-                            try
+                    DataGridViewRow selectedRow = dataGridViewGeneralSound.CurrentRow;
+                    CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
+                    switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
+                    {
+                        case "soundFileDataGridViewTextBoxColumn":
+                            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
                             {
-                                DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-                                DirectoryInfo dir = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
-                                FileInfo[] files = dir.GetFiles();
-                                comboBox.DataSource = files;
-                                comboBox.DisplayMember = nameof(FileInfo.Name);
+                                callServer.soundFile = loadDataCellSoundFile(callServer.soundFile);
                             }
-                            catch (Exception er)
-                            {
-                                BaseUtils.log.Error(er);
-                            }
-                        }
-                        break;
-                    case "ColumnCall":
-                        DataGridViewRow selectedRow = dataGridViewGeneralSound.CurrentRow;
-                        CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
-                        mainController.startJobNow(horary, callServer);
-                        break;
+                            break;
+                        case "ColumnCall":
+                            mainController.startJobNow(horary, callServer);
+                            break;
+                    }
                 }
-            }
-            catch (Exception er)
-            {
+                catch (Exception er)
+                {
 
-                log.WriteError(er);
+                    BaseUtils.log.Error(er);
+                }
+
             }
+
+            //try
+            //{
+            //    switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
+            //    {
+            //        case "soundFileDataGridViewTextBoxColumn":
+            //            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            //            {
+            //                try
+            //                {
+            //                    DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
+            //                    DirectoryInfo dir = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
+            //                    FileInfo[] files = dir.GetFiles();
+            //                    comboBox.DataSource = files;
+            //                    comboBox.DisplayMember = nameof(FileInfo.Name);
+            //                }
+            //                catch (Exception er)
+            //                {
+            //                    BaseUtils.log.Error(er);
+            //                }
+            //            }
+            //            break;
+            //        case "ColumnCall":
+            //            DataGridViewRow selectedRow = dataGridViewGeneralSound.CurrentRow;
+            //            CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
+            //            mainController.startJobNow(horary, callServer);
+            //            break;
+            //    }
+            //}
+            //catch (Exception er)
+            //{
+
+            //    log.WriteError(er);
+            //}
 
         }
 
         private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            //Validamos si no es una fila nueva
-            if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
+            Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
+            switch (dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
             {
-                Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
-
-                if (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name == "registerNameDataGridViewTextBoxColumn")
-                {
-                    if (!regularExpression.IsMatch(e.FormattedValue.ToString()))
+                case "registerNameDataGridViewTextBoxColumn":
+                    if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
                     {
-                        MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
-                        e.Cancel = true;
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
+                        {
+                            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                            e.Cancel = true;
+                        }
                     }
-                }
+
+                    break;
+                case "soundFileDataGridViewTextBoxColumn":
+                    //Validamos si no es una fila nueva
+                    if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
+                    {
+                        if (e.FormattedValue.ToString().Equals(""))
+                        {
+                            MessageBox.Show("Debe seleccionar un tono", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "La celda no puede ser vacia";
+                            e.Cancel = true;
+                        }
+                    }
+                    break;
             }
+
         }
 
         private void dataGridViewGeneralSound_CellEndEdit(object sender, DataGridViewCellEventArgs e)

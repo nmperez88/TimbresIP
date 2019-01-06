@@ -39,11 +39,11 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
-            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
             this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
             this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.observationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,8 +167,8 @@
             this.dataGridViewGeneralSound.AutoGenerateColumns = false;
             this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.soundFileDataGridViewTextBoxColumn,
             this.registerNameDataGridViewTextBoxColumn,
+            this.soundFileDataGridViewTextBoxColumn,
             this.ColumnCall,
             this.observationsDataGridViewTextBoxColumn,
             this.randomIdDataGridViewTextBoxColumn,
@@ -188,11 +188,6 @@
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             this.dataGridViewGeneralSound.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewGeneralSound_CellValidating);
             // 
-            // toolTipGeneralRings
-            // 
-            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipGeneralRings.ToolTipTitle = "Información";
-            // 
             // callServerModelBindingSource
             // 
             this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
@@ -201,20 +196,10 @@
             // 
             this.soundFileModelBindingSource.DataSource = typeof(TimbresIP.Model.SoundFileModel);
             // 
-            // soundFileDataGridViewTextBoxColumn
+            // toolTipGeneralRings
             // 
-            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
-            this.soundFileDataGridViewTextBoxColumn.DataSource = this.soundFileModelBindingSource;
-            this.soundFileDataGridViewTextBoxColumn.DisplayMember = "name";
-            this.soundFileDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.soundFileDataGridViewTextBoxColumn.DropDownWidth = 200;
-            this.soundFileDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.soundFileDataGridViewTextBoxColumn.HeaderText = "Tono";
-            this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
-            this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.soundFileDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.soundFileDataGridViewTextBoxColumn.ValueMember = "targetPath";
+            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipGeneralRings.ToolTipTitle = "Información";
             // 
             // registerNameDataGridViewTextBoxColumn
             // 
@@ -222,6 +207,16 @@
             this.registerNameDataGridViewTextBoxColumn.HeaderText = "Extesión";
             this.registerNameDataGridViewTextBoxColumn.Name = "registerNameDataGridViewTextBoxColumn";
             this.registerNameDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // soundFileDataGridViewTextBoxColumn
+            // 
+            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
+            this.soundFileDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.soundFileDataGridViewTextBoxColumn.HeaderText = "Tono";
+            this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
+            this.soundFileDataGridViewTextBoxColumn.ReadOnly = true;
+            this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // ColumnCall
             // 
@@ -305,9 +300,9 @@
         private System.Windows.Forms.DataGridView dataGridViewGeneralSound;
         private System.Windows.Forms.BindingSource callServerModelBindingSource;
         private System.Windows.Forms.ToolTip toolTipGeneralRings;
-        private System.Windows.Forms.DataGridViewComboBoxColumn soundFileDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource soundFileModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn registerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soundFileDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn observationsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn randomIdDataGridViewTextBoxColumn;

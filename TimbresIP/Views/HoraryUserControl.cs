@@ -75,7 +75,6 @@ namespace TimbresIP
                 });
                 callServerModelBindingSource.DataSource = callServerListToAdded;
             }
-
         }
 
         /// <summary>
@@ -116,6 +115,10 @@ namespace TimbresIP
             this.textBoxHoraryPasswordExtension.Enabled = false;
             this.buttonHorarySaveExtension.Enabled = false;
             this.buttonHoraryEditExtension.Enabled = true;
+
+            horary.connectionCallServer.displayName = textBoxHoraryIdExtension.Text;
+            horary.connectionCallServer.registerName = textBoxHoraryExtExtension.Text;
+            horary.connectionCallServer.registerPassword = textBoxHoraryPasswordExtension.Text;
         }
 
         private void dataGridViewHorary_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -124,7 +127,7 @@ namespace TimbresIP
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                DataGridViewButtonCell celBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
+                DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
                 Image image = Properties.Resources.call16x16;
                 e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
@@ -184,7 +187,7 @@ namespace TimbresIP
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
                         Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
-                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals("") )
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
@@ -192,15 +195,28 @@ namespace TimbresIP
                         }
                     }
                     break;
-                case "noDataGridViewTextBoxColumn":
+                //case "noDataGridViewTextBoxColumn":
+                //    //Validamos si no es una fila nueva
+                //    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
+                //    {
+                //        Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
+                //        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
+                //        {
+                //            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                //            e.Cancel = true;
+                //        }
+                //    }
+                //    break;
+
+                case "soundFileDataGridViewTextBoxColumn":
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
-                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
+                        if (e.FormattedValue.ToString().Equals(""))
                         {
-                            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                            MessageBox.Show("Debe seleccionar un tono", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewHorary.Rows[e.RowIndex].ErrorText = "La celda no puede ser vacia";
                             e.Cancel = true;
                         }
                     }

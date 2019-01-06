@@ -98,6 +98,9 @@ namespace TimbresIP
             this.textBoxPort.Enabled = false;
             this.buttonSaveServer.Enabled = false;
             this.buttonEditServer.Enabled = true;
+
+            mainController.getAutomaticRingSystem().domainHost = textBoxServer.Text;
+            mainController.getAutomaticRingSystem().domainPort = Convert.ToInt32(textBoxPort.Text);
         }
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
@@ -257,7 +260,7 @@ namespace TimbresIP
             List<HoraryModel> horaryModels = new List<HoraryModel>();
             for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
             {
-                (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).bindingSource().DataSource.
+                //(this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).bindingSource().DataSource.
                 // existsCallServerWithRandomIdNull = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).horary.callServerList.Exists(cs => cs.randomId == null);
                 //if (existsCallServerWithRandomIdNull)
                 //{
@@ -269,14 +272,14 @@ namespace TimbresIP
             //bool existsCallServerWithRandomIdNull = mainController.getAutomaticRingSystem().horaryList.Exists(h =>
             //    h.callServerList.Exists(cs => cs.randomId == null));
 
-            if (!existsCallServerWithRandomIdNull)
-            {
-                //mainController.save();
-            }
-            else
-            {
-                MessageBox.Show("Existen horas con datos incompletos", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            //if (!existsCallServerWithRandomIdNull)
+            //{
+            //    //mainController.save();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Existen horas con datos incompletos", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //}
 
         }
 
