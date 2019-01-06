@@ -48,14 +48,11 @@
             this.groupBoxManageHorary = new System.Windows.Forms.GroupBox();
             this.groupBoxActions = new System.Windows.Forms.GroupBox();
             this.buttonSaveAll = new System.Windows.Forms.Button();
-            this.groupBoxCallTails = new System.Windows.Forms.GroupBox();
-            this.labelCallTails = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.groupBoxMainControl.SuspendLayout();
             this.groupBoxHorary.SuspendLayout();
             this.groupBoxManageHorary.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
-            this.groupBoxCallTails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -272,26 +269,6 @@
             this.buttonSaveAll.UseVisualStyleBackColor = true;
             this.buttonSaveAll.Click += new System.EventHandler(this.buttonSaveAll_Click);
             // 
-            // groupBoxCallTails
-            // 
-            this.groupBoxCallTails.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxCallTails.Controls.Add(this.labelCallTails);
-            this.groupBoxCallTails.Location = new System.Drawing.Point(717, 71);
-            this.groupBoxCallTails.Name = "groupBoxCallTails";
-            this.groupBoxCallTails.Size = new System.Drawing.Size(170, 61);
-            this.groupBoxCallTails.TabIndex = 8;
-            this.groupBoxCallTails.TabStop = false;
-            this.groupBoxCallTails.Text = "Cola de Llamadas";
-            // 
-            // labelCallTails
-            // 
-            this.labelCallTails.AutoSize = true;
-            this.labelCallTails.Location = new System.Drawing.Point(7, 15);
-            this.labelCallTails.Name = "labelCallTails";
-            this.labelCallTails.Size = new System.Drawing.Size(35, 13);
-            this.labelCallTails.TabIndex = 0;
-            this.labelCallTails.Text = "label1";
-            // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
@@ -309,7 +286,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 640);
             this.Controls.Add(this.pictureBoxLogo);
-            this.Controls.Add(this.groupBoxCallTails);
             this.Controls.Add(this.groupBoxActions);
             this.Controls.Add(this.groupBoxManageHorary);
             this.Controls.Add(this.groupBoxGeneralSound);
@@ -326,8 +302,6 @@
             this.groupBoxHorary.ResumeLayout(false);
             this.groupBoxManageHorary.ResumeLayout(false);
             this.groupBoxActions.ResumeLayout(false);
-            this.groupBoxCallTails.ResumeLayout(false);
-            this.groupBoxCallTails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -354,8 +328,6 @@
         private System.Windows.Forms.GroupBox groupBoxManageHorary;
         private System.Windows.Forms.GroupBox groupBoxActions;
         private System.Windows.Forms.Button buttonSaveAll;
-        private System.Windows.Forms.GroupBox groupBoxCallTails;
-        private System.Windows.Forms.Label labelCallTails;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
     }
 }

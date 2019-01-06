@@ -538,15 +538,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AdminHorariosSetup"
-        "ProductCode" = "8:{09558A91-2837-46E1-9354-7037A7B1579F}"
-        "PackageCode" = "8:{A0D561D2-F11C-4766-986E-033C145D3854}"
+        "ProductCode" = "8:{C7AC9A19-BD25-4D54-8A67-5917C9EA811D}"
+        "PackageCode" = "8:{97E68212-52C6-4657-BCDC-27927B911D70}"
         "UpgradeCode" = "8:{00245A52-581A-410B-9491-ED7942E1BCFA}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0.0"
         "Manufacturer" = "8:BITDATA"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1088,7 +1088,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C72169769FBF4601BE3E7212E4A68280"
             {
-            "SourcePath" = "8:..\\TimbresIP\\obj\\Debug\\TimbresIP.exe"
+            "SourcePath" = "8:..\\TimbresIP\\obj\\Release\\TimbresIP.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7546F1D29FA14525B5ACB690BBF54E2A"
