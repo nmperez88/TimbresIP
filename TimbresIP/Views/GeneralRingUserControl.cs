@@ -235,10 +235,12 @@ namespace TimbresIP
 
         private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
+            Regex regularExpression = new Regex("");
+            
             switch (dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
             {
                 case "registerNameDataGridViewTextBoxColumn":
+                    regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                     if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
                     {
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
@@ -263,6 +265,7 @@ namespace TimbresIP
                     }
                     break;
                 case "callTimeDataGridViewTextBoxColumn":
+                    regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                     if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
                     {
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
