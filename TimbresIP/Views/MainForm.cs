@@ -316,7 +316,7 @@ namespace TimbresIP
         {
             if (!mainController.matchData())
             {
-                DialogResult dialogResult = MessageBox.Show("Estimado usuario existen cambios sin guardar, desea guardarlas antes de salir?", "Advertencias", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Estimado usuario existen cambios sin guardar, desea guardar antes de salir?", "Advertencias", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     if (!save())
