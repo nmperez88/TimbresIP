@@ -75,6 +75,12 @@ namespace TimbresIP
                 });
             }
             callServerModelBindingSource.DataSource = callServerListToAdded;
+
+            for (int i = 0; i < dataGridViewHorary.Rows.Count - 1; i++)
+            {
+                dataGridViewHorary.Rows[i].Cells["enabledDataGridViewCheckBoxColumn"].Value = true;
+            }
+
         }
 
         /// <summary>
@@ -120,7 +126,7 @@ namespace TimbresIP
             this.buttonHorarySaveExtension.Enabled = false;
             this.buttonHoraryEditExtension.Enabled = true;
 
-            horary.connectionCallServer.displayName = textBoxHoraryIdExtension.Text;
+            horary.connectionCallServer.displayName = horary.connectionCallServer.userName = textBoxHoraryIdExtension.Text;
             horary.connectionCallServer.registerName = textBoxHoraryExtExtension.Text;
             horary.connectionCallServer.registerPassword = textBoxHoraryPasswordExtension.Text;
         }

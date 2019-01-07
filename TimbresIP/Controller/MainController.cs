@@ -236,7 +236,10 @@ namespace TimbresIP.Controller
         /// </summary>
         private async void stopScheduler()
         {
-            await scheduler.Shutdown();
+            if (scheduler!=null)
+            {
+                await scheduler.Shutdown();
+            }
         }
 
         /// <summary>
@@ -411,7 +414,7 @@ namespace TimbresIP.Controller
         {
             init();
             //Descomentar para probar. Este método debe llamarse luego de visualizar el formulario.
-            //start();
+            start();
 
             //Debería existir una opción, visual o bien utilizarlo en cada modificación del horario, para detener el programador de llamadas.
             //stop();

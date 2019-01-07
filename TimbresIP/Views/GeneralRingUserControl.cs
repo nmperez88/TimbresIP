@@ -36,6 +36,7 @@ namespace TimbresIP
         {
             horary = new HoraryModel();
             InitializeComponent();
+            callServerModelBindingSource.DataSource = new List<CallServerModel>();
         }
 
         #region Métodos
@@ -141,7 +142,7 @@ namespace TimbresIP
             this.buttonGeneralSoundSaveExtension.Enabled = false;
             this.buttonGeneralSoundEditExtension.Enabled = true;
 
-            horary.connectionCallServer.displayName = textBoxGeneralSoundIdExtension.Text;
+            horary.connectionCallServer.displayName = horary.connectionCallServer.userName = textBoxGeneralSoundIdExtension.Text;
             horary.connectionCallServer.registerName = textBoxGeneralSoundExtExtension.Text;
             horary.connectionCallServer.registerPassword = textBoxGeneralSoundPasswordExtension.Text;
         }
@@ -264,7 +265,7 @@ namespace TimbresIP
 
         private void dataGridViewGeneralSound_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn" };
+            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "startAtDataGridViewTextBoxColumn" };
             Boolean isRowValid = true;
             dataGridViewGeneralSound.CurrentRow.Cells.ForEach(c =>
             {

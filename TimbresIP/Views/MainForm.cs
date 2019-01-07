@@ -93,7 +93,8 @@ namespace TimbresIP
                 //validar datos en horarios
                 for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
                 {
-                    HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl);
+                    //HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl);
+                    HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].Controls[0] as HoraryUserControl);
                     if (!horaryUserControl.horary.connectionCallServer.isValid())
                     {
                         validData = false;
