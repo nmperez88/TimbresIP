@@ -316,11 +316,11 @@ namespace TimbresIP
 
         private void dataGridViewHorary_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
-            if (callServerList != null && callServerList.Any())
-            {
-                callServerList[callServerList.Count - 1].no = callServerList.Count >= 2 ? callServerList[callServerList.Count - 2].no + 1 : 1;
-            }
+            //List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
+            //if (callServerList != null && callServerList.Any())
+            //{
+            //    callServerList[callServerList.Count - 1].no = callServerList.Count >= 2 ? callServerList[callServerList.Count - 2].no + 1 : 1;
+            //}
         }
 
         private void dataGridViewHorary_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
