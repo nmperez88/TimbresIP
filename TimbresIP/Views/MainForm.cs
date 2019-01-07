@@ -83,7 +83,7 @@ namespace TimbresIP
             if (!mainController.hasServerParams())
             {
                 validData = false;
-                MessageBox.Show("Establezca los parametros del servidor antes de guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Establezca los parámetros del servidor antes de guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -237,7 +237,7 @@ namespace TimbresIP
                         {
                             if (diasRestantes == 30)
                             {
-                                MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor. Muchas gracias y disculpe las molestias", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Estimado usuario, no hemos podido registrar la instalación de su producto, por lo que le quedan " + (30 - diasRestantes).ToString() + " días de servicio, por tanto se suspende el uso del sistema hasta que contácte con el proveedor. Muchas gracias y disculpe las molestias", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                                 Application.Exit();
                             }
                             else
