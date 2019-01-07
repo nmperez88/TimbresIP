@@ -219,13 +219,14 @@ namespace TimbresIP
 
         private void dataGridViewHorary_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
             switch (dataGridViewHorary.Columns[e.ColumnIndex].Name)
             {
                 case "registerNameDataGridViewTextBoxColumn":
                     //Validamos si no es una fila nueva
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
+
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -264,7 +265,6 @@ namespace TimbresIP
                 case "startAtDataGridViewTextBoxColumn":
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        Regex regularExpression = new Regex(validateEntriesUtils.TimeRegularExpression);
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);

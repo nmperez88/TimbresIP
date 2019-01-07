@@ -262,6 +262,18 @@ namespace TimbresIP
                         }
                     }
                     break;
+                case "callTimeDataGridViewTextBoxColumn":
+                    if (!dataGridViewGeneralSound.Rows[e.RowIndex].IsNewRow)
+                    {
+                        if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
+                        {
+                            MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo numérico";
+                            e.Cancel = true;
+                        }
+
+                    }
+                    break;
             }
 
         }
