@@ -17,8 +17,8 @@ namespace TimbresIP
         static void Main()
         {
             MainController.log.Info("App started!");
-            
-            if (2 < 2)
+            Boolean run = true;
+            if (!run)
             {
                 //crear archivo JSON
                 ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
@@ -55,7 +55,7 @@ namespace TimbresIP
                 try
                 {
                     MainController.cypherUtils.FileEncrypt(jsonFileFullPath, Properties.Settings.Default.cypherPassword);
-                    System.IO.File.Delete(jsonFileFullPath);
+                    //System.IO.File.Delete(jsonFileFullPath);
                 }
                 catch (Exception e)
                 {
@@ -75,9 +75,13 @@ namespace TimbresIP
             //mainController.start();
             //Console.ReadLine();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (run)
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
+
 
         }
     }
