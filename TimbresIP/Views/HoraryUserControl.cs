@@ -279,7 +279,7 @@ namespace TimbresIP
                     regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                        //regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
+                    
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
