@@ -259,14 +259,28 @@ namespace TimbresIP
             dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = String.Empty;
         }
 
-        private void dataGridViewGeneralSound_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        #endregion
+
+        private void dataGridViewGeneralSound_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
-            if (callServerList != null && callServerList.Any())
+            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn" };
+            Boolean isRowValid = true;
+            dataGridViewGeneralSound.CurrentRow.Cells.ForEach(c =>
             {
-                callServerList[callServerList.Count - 1].no = callServerList.Count >= 2 ? callServerList[callServerList.Count - 2].no + 1 : 1;
+                DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+                if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+                {
+                    isRowValid = false;
+
+                }
+            });
+
+            if (!isRowValid)
+            {
+                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                e.Cancel = true;
+                //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
         }
-        #endregion
     }
 }
