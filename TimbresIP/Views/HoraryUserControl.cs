@@ -61,9 +61,9 @@ namespace TimbresIP
             textBoxHoraryPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
             //Llamadas.
+            List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
             if (horary.callServerList.Any())
             {
-                List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
                 int allowedRows = 0;
                 horary.callServerList.ForEach(cs =>
                 {
@@ -73,8 +73,8 @@ namespace TimbresIP
                     }
                     allowedRows++;
                 });
-                callServerModelBindingSource.DataSource = callServerListToAdded;
             }
+            callServerModelBindingSource.DataSource = callServerListToAdded;
         }
 
         /// <summary>

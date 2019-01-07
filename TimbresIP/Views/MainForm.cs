@@ -164,6 +164,7 @@ namespace TimbresIP
                 if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
                     TabPage horaryTabPage = new TabPage(tabPageName);
+                    horaryUserControl.horary.name = tabPageName;
                     tabControlHorary.TabPages.Add(horaryTabPage);
                     horaryTabPage.ImageIndex = 0;
                     horaryTabPage.Controls.Add(horaryUserControl);

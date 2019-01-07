@@ -34,7 +34,8 @@ namespace TimbresIP.Model
 
         internal bool isValid()
         {
-            return userName != null && !userName.Equals("") && registerName != null && !registerName.Equals("") && registerPassword != null && !registerPassword.Equals("");
+            //return userName != null && !userName.Equals("") && registerName != null && !registerName.Equals("") && registerPassword != null && !registerPassword.Equals("");
+            return displayName != null && !displayName.Equals("") && userName != null && !userName.Equals("") && registerName != null && !registerName.Equals("") && registerPassword != null && !registerPassword.Equals("");
         }
     }
 }

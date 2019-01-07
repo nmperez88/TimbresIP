@@ -50,9 +50,10 @@ namespace TimbresIP
             textBoxGeneralSoundPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
             //Llamadas.
+            List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
             if (horary.callServerList.Any())
             {
-                List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
+
                 int allowedRows = 0;
                 horary.callServerList.ForEach(cs =>
                 {
@@ -62,8 +63,8 @@ namespace TimbresIP
                     }
                     allowedRows++;
                 });
-                callServerModelBindingSource.DataSource = callServerListToAdded;
             }
+            callServerModelBindingSource.DataSource = callServerListToAdded;
             //horary.callServerList.ForEach(cs =>
             //{
             //    DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
@@ -277,7 +278,7 @@ namespace TimbresIP
 
             if (!isRowValid)
             {
-                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
                 //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
