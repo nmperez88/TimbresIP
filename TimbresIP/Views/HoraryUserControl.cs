@@ -78,7 +78,7 @@ namespace TimbresIP
 
             for (int i = 0; i < dataGridViewHorary.Rows.Count - 1; i++)
             {
-                dataGridViewHorary.Rows[i].Cells["enabledDataGridViewCheckBoxColumn"].Value = true;
+                dataGridViewHorary.Rows[i].Cells["enabledDataGridViewCheckBoxColumn"].Value = callServerListToAdded[i].enabled;
             }
 
         }
