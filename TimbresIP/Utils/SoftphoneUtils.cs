@@ -111,7 +111,8 @@ namespace TimbresIP.Utils
             registerName = jobDataCommon.callServer.registerName;
 
             //Tiempo de duración de la llamada. En segundos.
-            if (!callTime.Equals(0))
+            resetCallTime();
+            if (!jobDataCommon.callServer.callTime.Equals(0))
             {
                 callTime = jobDataCommon.callServer.callTime;
             }
@@ -120,6 +121,14 @@ namespace TimbresIP.Utils
             registerAccount(account);
 
             mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
+        }
+
+        /// <summary>
+        /// Establecer valor por defecto a callTime.
+        /// </summary>
+        public void resetCallTime()
+        {
+            callTime = !Properties.Settings.Default.callTime.Equals(0) ? Properties.Settings.Default.callTime : 30;
         }
 
         /// <summary>

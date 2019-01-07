@@ -328,6 +328,8 @@ namespace TimbresIP
                 {
                     e.Cancel = true;
                 }
+
+                mainController.stop();
             }
         }
 

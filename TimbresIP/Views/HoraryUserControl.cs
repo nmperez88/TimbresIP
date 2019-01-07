@@ -192,8 +192,19 @@ namespace TimbresIP
                                 callServer.soundFile = loadDataCellSoundFile(callServer.soundFile);
                             }
                             break;
+
                         case "ColumnCall":
-                            mainController.startJobNow(horary, callServer);
+                            if (mainController.hasServerParams())
+                            {
+                                if (callServer != null)
+                                {
+                                    mainController.startJobNow(horary, callServer);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Establezca los parametros del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                             break;
                     }
                 }

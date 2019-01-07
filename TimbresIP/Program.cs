@@ -77,9 +77,17 @@ namespace TimbresIP
 
             if (run)
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainForm());
+                try
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new MainForm());
+                }
+                catch (Exception e)
+                {
+                    BaseUtils.log.Error(e);
+                }
+
             }
 
 

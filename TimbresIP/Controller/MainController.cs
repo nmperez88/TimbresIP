@@ -236,7 +236,7 @@ namespace TimbresIP.Controller
         /// </summary>
         private async void stopScheduler()
         {
-            if (scheduler!=null)
+            if (scheduler != null)
             {
                 await scheduler.Shutdown();
             }
@@ -316,8 +316,8 @@ namespace TimbresIP.Controller
             }
 
             String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
-            String hour = callServer.startAt.Substring(0, 2);//start:"12:30"
-            String min = callServer.startAt.Substring(3);
+            String hour = startNow ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30"
+            String min = startNow ? "00" : callServer.startAt.Substring(3);
             JobDataMap jobDataMap = new JobDataMap();
             softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer);
             jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
@@ -371,11 +371,7 @@ namespace TimbresIP.Controller
         /// <param name="callServer"></param>
         public void startJobNow(HoraryModel horary, CallServerModel callServer)
         {
-            if (hasServerParams())
-            {
-                startJobs(horary, callServer, true);
-            }
-
+            startJobs(horary, callServer, true);
         }
 
         /// <summary>
