@@ -76,6 +76,57 @@ namespace TimbresIP
             }
 
         }
+
+        private Boolean save()
+        {
+            Boolean validData = true;
+            if (!mainController.hasServerParams())
+            {
+                validData = false;
+                MessageBox.Show("Establezca los parametros del servidor antes de guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                List<HoraryModel> horaries = new List<HoraryModel>();
+                List<HoraryModel> generalRings = new List<HoraryModel>();
+
+                //validar datos en horarios
+                for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
+                {
+                    HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl);
+                    if (!horaryUserControl.horary.connectionCallServer.isValid())
+                    {
+                        validData = false;
+                        MessageBox.Show("Existen horarios con parámetros de la extensión IP incompletos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    }
+                    horaryUserControl.horary.callServerList = ((List<CallServerModel>)horaryUserControl.bindingSource().DataSource);
+                    horaries.Add(horaryUserControl.horary);
+
+                }
+                //validar datos en horarios FIN
+
+                //validar datos en sonidos generales
+                if (validData && !generalRingUserControl.horary.connectionCallServer.isValid())
+                {
+                    validData = false;
+                    MessageBox.Show("Existen sonidos generales con parámetros de la extensión IP incompletos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                generalRingUserControl.horary.callServerList = ((List<CallServerModel>)generalRingUserControl.bindingSource().DataSource);
+                generalRings.Add(generalRingUserControl.horary);
+                //validar datos en sonidos generales FIN
+
+                if (validData)
+                {
+                    mainController.getAutomaticRingSystem().horaryList = horaries;
+                    mainController.getAutomaticRingSystem().generalRingList = generalRings;
+                    mainController.saveAndRestart();
+                }
+
+            }
+
+            return validData;
+        }
         #endregion
 
         #region Eventos
@@ -256,35 +307,29 @@ namespace TimbresIP
 
         private void buttonSaveAll_Click(object sender, EventArgs e)
         {
-            //bool existsCallServerWithRandomIdNull = false;
-            List<HoraryModel> horaryModels = new List<HoraryModel>();
-            for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
+            save();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!mainController.matchData())
             {
-                //(this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).bindingSource().DataSource.
-                // existsCallServerWithRandomIdNull = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl).horary.callServerList.Exists(cs => cs.randomId == null);
-                //if (existsCallServerWithRandomIdNull)
-                //{
-                //    MessageBox.Show("Existen horas con datos incompletos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    break;
-                //}
+                DialogResult dialogResult = MessageBox.Show("Estimado usuario existen cambios sin guardar, desea guardarlas antes de salir?", "Advertencias", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (!save())
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
             }
-            mainController.getAutomaticRingSystem().horaryList = horaryModels;
-            //bool existsCallServerWithRandomIdNull = mainController.getAutomaticRingSystem().horaryList.Exists(h =>
-            //    h.callServerList.Exists(cs => cs.randomId == null));
-
-            //if (!existsCallServerWithRandomIdNull)
-            //{
-            //    //mainController.save();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Existen horas con datos incompletos", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            //}
-
         }
 
         #endregion
-
     }
 
 }

@@ -296,6 +296,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Horarios";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.groupBoxMainControl.ResumeLayout(false);
             this.groupBoxMainControl.PerformLayout();

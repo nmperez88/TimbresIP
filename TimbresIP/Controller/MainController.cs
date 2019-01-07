@@ -37,6 +37,11 @@ namespace TimbresIP.Controller
         private AutomaticRingSystemModel automaticRingSystem;
 
         /// <summary>
+        /// Sistema de Timbres Automáticos. Objeto para comparar.
+        /// </summary>
+        private AutomaticRingSystemModel automaticRingSystemToMatch;
+
+        /// <summary>
         /// Lista de timbres a ejecutar.
         /// </summary>
         private AutomaticRingSystemModel automaticRingSystemToExecute = new AutomaticRingSystemModel();
@@ -96,6 +101,9 @@ namespace TimbresIP.Controller
                 log.Info("El archivo JSON encriptado no existe.");
                 automaticRingSystem = new AutomaticRingSystemModel();
             }
+
+            //Asignar obeto para validar.
+            automaticRingSystemToMatch = automaticRingSystem;
 
             //Fueron asignados los parámetros de conexión al servidor.
             if (hasServerParams())
@@ -371,7 +379,7 @@ namespace TimbresIP.Controller
         /// Tiene la aplicación definidos los parámetros de conexión al servidor?.
         /// </summary>
         /// <returns></returns>
-        private bool hasServerParams()
+        public bool hasServerParams()
         {
             return !automaticRingSystem.domainHost.Equals("") && !automaticRingSystem.domainPort.Equals(0);
         }
@@ -390,6 +398,11 @@ namespace TimbresIP.Controller
         {
             return automaticRingSystem;
         }
+
+        //public AutomaticRingSystemModel getAutomaticRingSystemToMatch()
+        //{
+        //    return automaticRingSystemToMatch;
+        //}
 
         /// <summary>
         /// Constructor por defecto.
@@ -428,6 +441,22 @@ namespace TimbresIP.Controller
             {
                 log.Error("Intentando eliminar archivo json", e);
             }
+        }
+
+        /// <summary>
+        /// Salvar y reiniciar.
+        /// </summary>
+        public void saveAndRestart()
+        {
+            save();
+            stop();
+            init();
+            start();
+        }
+
+        public Boolean matchData()
+        {
+            return automaticRingSystem.Equals(automaticRingSystemToMatch);
         }
     }
 }

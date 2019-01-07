@@ -91,6 +91,10 @@ namespace TimbresIP
 
         }
 
+        /// <summary>
+        /// Binding.
+        /// </summary>
+        /// <returns></returns>
         public BindingSource bindingSource()
         {
             return callServerModelBindingSource;
@@ -123,18 +127,36 @@ namespace TimbresIP
 
         private void dataGridViewHorary_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && this.dataGridViewHorary.Columns[e.ColumnIndex].Name == "ColumnCall" && e.RowIndex >= 0)
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                switch (this.dataGridViewHorary.Columns[e.ColumnIndex].Name)
+                {
+                    case "ColumnCall":
+                        //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
-                Image image = Properties.Resources.call16x16;
-                e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
+                        //DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
+                        Image image = Properties.Resources.call16x16;
+                        e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
-                this.dataGridViewHorary.Rows[e.RowIndex].Height = image.Height + 10;
-                this.dataGridViewHorary.Columns[e.ColumnIndex].Width = image.Width + 30;
+                        this.dataGridViewHorary.Rows[e.RowIndex].Height = image.Height + 10;
+                        this.dataGridViewHorary.Columns[e.ColumnIndex].Width = image.Width + 30;
 
-                e.Handled = true;
+                        e.Handled = true;
+                        break;
+                        //case "noDataGridViewTextBoxColumn":
+                        //    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
+                        //    {
+                        //        List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
+                        //        int no = callServerList != null && callServerList.Any() ? callServerList[callServerList.Count - 1].no + 1 : 1;
+
+                        //        //e.Graphics.DrawString(no.ToString(), e.CellStyle.Font, Brushes.Black, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
+
+                        //        //e.Handled = true;
+                        //        (dataGridViewHorary.Rows[e.RowIndex].DataBoundItem as CallServerModel).no = no;
+                        //    }
+                        //    break;
+                }
             }
         }
 
@@ -276,8 +298,6 @@ namespace TimbresIP
             jsonHandlerUtils = new JsonHandlerUtils(validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "TimbresIP.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
 
-            //loadDataComboBoxCellSoundFile();
-
             loadData();
         }
 
@@ -289,10 +309,23 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-
             //BaseUtils.log.Error(callServerModelBindingSource.DataSource);
             //BaseUtils.log.Error("callServerModelBindingSource: " + ((List<CallServerModel>)callServerModelBindingSource.DataSource).Count);
             //BaseUtils.log.Error("horary.callServerList.Count: "+horary.callServerList.Count);
+        }
+
+        private void dataGridViewHorary_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
+            if (callServerList != null && callServerList.Any())
+            {
+                callServerList[callServerList.Count - 1].no = callServerList.Count >= 2 ? callServerList[callServerList.Count - 2].no + 1 : 1;
+            }
+        }
+
+        private void dataGridViewHorary_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //e.
         }
     }
 }

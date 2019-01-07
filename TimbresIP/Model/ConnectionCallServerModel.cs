@@ -31,5 +31,10 @@ namespace TimbresIP.Model
         public ConnectionCallServerModel()
         {
         }
+
+        internal bool isValid()
+        {
+            return userName != null && !userName.Equals("") && registerName != null && !registerName.Equals("") && registerPassword != null && !registerPassword.Equals("");
+        }
     }
 }

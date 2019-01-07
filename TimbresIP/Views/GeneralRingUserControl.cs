@@ -34,6 +34,7 @@ namespace TimbresIP
         /// </summary>
         public GeneralRingUserControl()
         {
+            horary = new HoraryModel();
             InitializeComponent();
         }
 
@@ -93,6 +94,14 @@ namespace TimbresIP
 
         }
 
+        /// <summary>
+        /// Binding.
+        /// </summary>
+        /// <returns></returns>
+        public BindingSource bindingSource()
+        {
+            return callServerModelBindingSource;
+        }
         #endregion
 
         #region Eventos
@@ -248,6 +257,15 @@ namespace TimbresIP
         {
             //Elimina el mensaje de error de la cabecera de la fila
             dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        private void dataGridViewGeneralSound_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
+            if (callServerList != null && callServerList.Any())
+            {
+                callServerList[callServerList.Count - 1].no = callServerList.Count >= 2 ? callServerList[callServerList.Count - 2].no + 1 : 1;
+            }
         }
         #endregion
     }
