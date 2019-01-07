@@ -55,7 +55,7 @@ namespace TimbresIP
                 try
                 {
                     MainController.cypherUtils.FileEncrypt(jsonFileFullPath, Properties.Settings.Default.cypherPassword);
-                    //System.IO.File.Delete(jsonFileFullPath);
+                    System.IO.File.Delete(jsonFileFullPath);
                 }
                 catch (Exception e)
                 {
