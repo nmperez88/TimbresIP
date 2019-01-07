@@ -146,9 +146,7 @@ namespace TimbresIP.Controller
                             if (callServerList.Any())
                             {
                                 //Agregar horario.
-                                HoraryModel horary = new HoraryModel(callServerList);
-                                horary = h;
-                                horary.callServerList = callServerList;
+                                HoraryModel horary = new HoraryModel(h.name, h.randomId, callServerList, h.connectionCallServer);
                                 automaticRingSystemToExecute.horaryList.Add(horary);
                             }
                         }

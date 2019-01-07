@@ -48,14 +48,19 @@ namespace TimbresIP.Model
             this.randomId = idGroup + getStartId();
             this.connectionCallServer = connectionCallServer;
         }
-        public HoraryModel(string name, List<CallServerModel> callServerList)
+
+        public HoraryModel(string name, String randomId, List<CallServerModel> callServerList, ConnectionCallServerModel connectionCallServer)
         {
+            this.name = name;
+            this.randomId = randomId;
             this.callServerList = callServerList;
+            this.connectionCallServer = connectionCallServer;
         }
 
         public HoraryModel(List<CallServerModel> callServerList)
         {
             this.callServerList = callServerList;
         }
+  
     }
 }
