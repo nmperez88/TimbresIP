@@ -325,7 +325,25 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            //e.
+
+            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn" };
+            Boolean isRowValid = true;
+            dataGridViewHorary.CurrentRow.Cells.ForEach(c =>
+            {
+                DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+                if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+                {
+                    isRowValid = false;
+
+                }
+            });
+
+            if (!isRowValid)
+            {
+                MessageBox.Show("Debe introducir todos los campos requeridos.");
+                e.Cancel = true;
+                //this.dataGridViewHorary.AllowUserToAddRows = false;
+            }
         }
     }
 }
