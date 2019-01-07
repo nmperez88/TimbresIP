@@ -349,7 +349,7 @@ namespace TimbresIP
 
             if (!isRowValid)
             {
-                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning));
+                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
                 //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
