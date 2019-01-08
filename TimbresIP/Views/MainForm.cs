@@ -67,11 +67,11 @@ namespace TimbresIP
             });
 
             //Sonidos generales.
+            generalRingUserControl.mainController = mainController;
             if (mainController.getAutomaticRingSystem().generalRingList.Any())
             {
                 HoraryModel horary = mainController.getAutomaticRingSystem().generalRingList[0];
                 generalRingUserControl.horary = horary;
-                generalRingUserControl.mainController = mainController;
                 generalRingUserControl.loadData();
             }
 
@@ -79,6 +79,7 @@ namespace TimbresIP
 
         private Boolean save()
         {
+            buttonSaveAll.Enabled = false;
             Boolean validData = true;
             if (!mainController.hasServerParams())
             {
@@ -125,7 +126,7 @@ namespace TimbresIP
                 }
 
             }
-
+            buttonSaveAll.Enabled = true;
             return validData;
         }
         #endregion
@@ -157,15 +158,16 @@ namespace TimbresIP
 
         private void buttonAddHorary_Click(object sender, EventArgs e)
         {
-            HoraryUserControl horaryUserControl = new HoraryUserControl();
-            horaryUserControl.Dock = DockStyle.Fill;
             string tabPageName = "Horario";
             if (tabControlHorary.TabPages.Count < configurationParametersModel.numberschedules)
             {
                 if (Dialog.Prompt("Crear nuevo Horario", "Ingrese el nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
                     TabPage horaryTabPage = new TabPage(tabPageName);
-                    horaryUserControl.horary.name = tabPageName;
+                    HoraryModel horary = new HoraryModel(tabPageName);
+                    HoraryUserControl horaryUserControl = new HoraryUserControl(horary);
+                    horaryUserControl.Dock = DockStyle.Fill;
+                    horaryUserControl.mainController = mainController;
                     tabControlHorary.TabPages.Add(horaryTabPage);
                     horaryTabPage.ImageIndex = 0;
                     horaryTabPage.Controls.Add(horaryUserControl);

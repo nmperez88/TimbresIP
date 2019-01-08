@@ -34,7 +34,7 @@ namespace TimbresIP
         /// </summary>
         public GeneralRingUserControl()
         {
-            horary = new HoraryModel();
+            horary = new HoraryModel("gs");
             InitializeComponent();
             callServerModelBindingSource.DataSource = new List<CallServerModel>();
         }
@@ -178,9 +178,16 @@ namespace TimbresIP
                         case "ColumnCall":
                             if (mainController.hasServerParams())
                             {
-                                if (callServer != null && File.Exists(callServer.soundFile.targetPath))
+                                if (horary.connectionCallServer.isValid())
                                 {
-                                    mainController.startJobNow(horary, callServer);
+                                    if (callServer != null && File.Exists(callServer.soundFile.targetPath))
+                                    {
+                                        mainController.startJobNow(horary, callServer);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Establezca los parámetros de la extensión IP.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                             else

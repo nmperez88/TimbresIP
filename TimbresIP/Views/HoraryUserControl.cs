@@ -29,15 +29,15 @@ namespace TimbresIP
         /// </summary>
         public MainController mainController;
 
-        /// <summary>
-        /// Constructor por defecto.
-        /// </summary>
-        public HoraryUserControl()
-        {
-            horary = new HoraryModel();
-            InitializeComponent();
+        ///// <summary>
+        ///// Constructor por defecto.
+        ///// </summary>
+        //public HoraryUserControl()
+        //{
+        //    horary = new HoraryModel();
+        //    InitializeComponent();
 
-        }
+        //}
 
         /// <summary>
         /// Constructor. Para cargar datos en interfaz.
@@ -197,10 +197,17 @@ namespace TimbresIP
                         case "ColumnCall":
                             if (mainController.hasServerParams())
                             {
-                                if (callServer != null && File.Exists(callServer.soundFile.targetPath))
+                                if (horary.connectionCallServer.isValid())
                                 {
-                                    mainController.startJobNow(horary, callServer);
+                                    if (callServer != null && File.Exists(callServer.soundFile.targetPath))
+                                    {
+                                        mainController.startJobNow(horary, callServer);
+                                    }
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Establezca los parámetros de la extensión IP.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }                                
                             }
                             else
                             {

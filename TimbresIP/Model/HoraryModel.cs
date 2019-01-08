@@ -36,8 +36,9 @@ namespace TimbresIP.Model
         /// </summary>
         public ConnectionCallServerModel connectionCallServer { get; set; }
 
-        public HoraryModel()
+        public HoraryModel(string name)
         {
+            this.name = name;
             this.randomId = idGroup + getStartId();
             connectionCallServer = new ConnectionCallServerModel();
         }
