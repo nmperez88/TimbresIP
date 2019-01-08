@@ -45,6 +45,9 @@ namespace TimbresIP.Model
         /// </summary>
         public String targetDirPath { get; set; }
 
+        /// <summary>
+        /// Constructor. Necesario para serialización.
+        /// </summary>
         public SoundFileModel()
         {
         }

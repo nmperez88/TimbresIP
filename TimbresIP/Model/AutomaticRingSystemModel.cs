@@ -34,6 +34,9 @@ namespace TimbresIP.Model
         /// </summary>
         public List<HoraryModel> generalRingList { get; set; } = new List<HoraryModel>();
 
+        /// <summary>
+        /// Constructor. Necesario para serialización.
+        /// </summary>
         public AutomaticRingSystemModel()
         {
         }

@@ -28,6 +28,9 @@ namespace TimbresIP.Model
         /// </summary>
         public String registerPassword { get; set; }
 
+        /// <summary>
+        /// Constructor. Necesario para serialización.
+        /// </summary>
         public ConnectionCallServerModel()
         {
         }

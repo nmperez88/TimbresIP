@@ -64,11 +64,10 @@ namespace TimbresIP.Model
         public String observations { get; set; }
 
         /// <summary>
-        /// Constructor.
+        /// Constructor. Necesario para serialización.
         /// </summary>
         public CallServerModel()
         {
-            this.randomId = idGroup + getStartId();
         }
 
         /// <summary>
