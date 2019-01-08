@@ -453,7 +453,7 @@ namespace TimbresIP.Controller
 
         public Boolean matchData()
         {
-            return automaticRingSystem.Equals(automaticRingSystemToMatch);
+            return automaticRingSystem.CompareTo(automaticRingSystemToMatch) == 0;
         }
     }
 }

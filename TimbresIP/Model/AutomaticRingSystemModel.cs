@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace TimbresIP.Model
@@ -6,7 +7,7 @@ namespace TimbresIP.Model
     /// <summary>
     /// Sistema de Timbres Automáticos.
     /// </summary>
-    class AutomaticRingSystemModel
+    class AutomaticRingSystemModel : IComparable<AutomaticRingSystemModel>
     {
         /// <summary>
         /// Es requerido registrarse.
@@ -35,6 +36,13 @@ namespace TimbresIP.Model
 
         public AutomaticRingSystemModel()
         {
+        }
+
+        public int CompareTo(AutomaticRingSystemModel automaticRingSystemModel)
+        {
+            var string1 = JsonConvert.SerializeObject(this);
+            var string2 = JsonConvert.SerializeObject(automaticRingSystemModel);
+            return string1.CompareTo(string2);
         }
     }
 }
