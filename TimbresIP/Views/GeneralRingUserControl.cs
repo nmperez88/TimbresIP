@@ -87,8 +87,9 @@ namespace TimbresIP
         /// </summary>
         private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
         {
+            string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds;
             SoundFileModel soundFileRef = null;
-            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef) == DialogResult.OK)
+            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef,soundDir) == DialogResult.OK)
             {
                 soundFile = soundFileRef;
             }

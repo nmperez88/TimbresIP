@@ -89,7 +89,7 @@ namespace TimbresIP.Controller
                 automaticRingSystem = (AutomaticRingSystemModel)jsonHandlerUtils.deserialize();
                 try
                 {
-                    System.IO.File.Delete(jsonFileFullPath);
+                    //System.IO.File.Delete(jsonFileFullPath);
                 }
                 catch (Exception e)
                 {
@@ -432,7 +432,7 @@ namespace TimbresIP.Controller
 
             try
             {
-                System.IO.File.Delete(jsonFileFullPath);
+                //System.IO.File.Delete(jsonFileFullPath);
             }
             catch (Exception e)
             {

@@ -60,7 +60,7 @@ namespace TimbresIP
             return dialogResult;
         }
 
-        static public DialogResult SelectSoundFile(string title, string promptText, ref SoundFileModel soundFile)
+        static public DialogResult SelectSoundFile(string title, string promptText, ref SoundFileModel soundFile, string soundDir)
         {
             Form form = new Form();
             Label label = new Label();
@@ -75,7 +75,7 @@ namespace TimbresIP
             try
             {
                List<SoundFileModel> soundFileList = new List<SoundFileModel>();
-                DirectoryInfo dirInfo = new DirectoryInfo(BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds);
+                DirectoryInfo dirInfo = new DirectoryInfo(soundDir);
 
                 dirInfo.GetFiles().ForEach(f =>
                 {
