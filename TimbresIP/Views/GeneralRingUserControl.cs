@@ -178,7 +178,7 @@ namespace TimbresIP
                         case "ColumnCall":
                             if (mainController.hasServerParams())
                             {
-                                if (callServer != null)
+                                if (callServer != null && File.Exists(callServer.soundFile.targetPath))
                                 {
                                     mainController.startJobNow(horary, callServer);
                                 }

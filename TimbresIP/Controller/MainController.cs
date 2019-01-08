@@ -39,7 +39,8 @@ namespace TimbresIP.Controller
         /// <summary>
         /// Sistema de Timbres Automáticos. Objeto para comparar.
         /// </summary>
-        private AutomaticRingSystemModel automaticRingSystemToMatch;
+        //private AutomaticRingSystemModel automaticRingSystemToMatch;
+        private String automaticRingSystemToMatchSerialized;
 
         /// <summary>
         /// Lista de timbres a ejecutar.
@@ -103,7 +104,8 @@ namespace TimbresIP.Controller
             }
 
             //Asignar obeto para validar.
-            automaticRingSystemToMatch = automaticRingSystem;
+            //automaticRingSystemToMatch = automaticRingSystem;
+            automaticRingSystemToMatchSerialized = JsonConvert.SerializeObject(automaticRingSystem);
 
             //Fueron asignados los parámetros de conexión al servidor.
             if (hasServerParams())
@@ -453,7 +455,8 @@ namespace TimbresIP.Controller
 
         public Boolean matchData()
         {
-            return automaticRingSystem.CompareTo(automaticRingSystemToMatch) == 0;
+            //return automaticRingSystem.CompareTo(automaticRingSystemToMatch) == 0;
+            return JsonConvert.SerializeObject(automaticRingSystem).CompareTo(automaticRingSystemToMatchSerialized) == 0;
         }
     }
 }

@@ -197,7 +197,7 @@ namespace TimbresIP
                         case "ColumnCall":
                             if (mainController.hasServerParams())
                             {
-                                if (callServer != null)
+                                if (callServer != null && File.Exists(callServer.soundFile.targetPath))
                                 {
                                     mainController.startJobNow(horary, callServer);
                                 }
@@ -326,7 +326,6 @@ namespace TimbresIP
         {
             BaseUtils.log.Error(e);
         }
-        #endregion
 
         private void dataGridViewHorary_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
@@ -375,6 +374,7 @@ namespace TimbresIP
                 //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
         }
+        #endregion
     }
 }
 
