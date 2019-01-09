@@ -94,7 +94,6 @@ namespace TimbresIP
                 //validar datos en horarios
                 for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
                 {
-                    //HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].GetContainerControl() as HoraryUserControl);
                     HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].Controls[0] as HoraryUserControl);
                     if (!horaryUserControl.horary.connectionCallServer.isValid())
                     {
@@ -182,8 +181,10 @@ namespace TimbresIP
             {
                 string tabName = tabControlHorary.SelectedTab.Text;
                 if ((MessageBox.Show("Esta seguro que desea eliminar: " + tabName, "Eliminar Horario", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)) == DialogResult.OK)
-
+                {
+                    mainController.getAutomaticRingSystem().horaryList.Remove((tabControlHorary.SelectedTab.Controls[0] as HoraryUserControl).horary);
                     tabControlHorary.TabPages.Remove(tabControlHorary.SelectedTab);
+                }
             }
             else { MessageBox.Show("No tiene horarios creados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); }
         }
@@ -195,9 +196,9 @@ namespace TimbresIP
                 string tabPageName = tabControlHorary.SelectedTab.Text;
                 if (Dialog.Prompt("Modificar Horario", "Ingrese el nuevo nombre del horario:", ref tabPageName) == DialogResult.OK)
                 {
-                    TabPage horaryTabPage = new TabPage(tabPageName);
+                    //TabPage horaryTabPage = new TabPage(tabPageName);
                     tabControlHorary.SelectedTab.Text = tabPageName;
-                    (tabControlHorary.SelectedTab.GetContainerControl() as HoraryUserControl).horary.name = tabPageName;
+                    (tabControlHorary.SelectedTab.Controls[0] as HoraryUserControl).horary.name = tabPageName;
                 }
             }
             else { MessageBox.Show("Debe crear horarios primeramente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
