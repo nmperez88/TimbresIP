@@ -68,6 +68,7 @@ namespace TimbresIP.Model
         /// </summary>
         public CallServerModel()
         {
+            this.randomId = idGroup + getStartId();
         }
 
         /// <summary>
