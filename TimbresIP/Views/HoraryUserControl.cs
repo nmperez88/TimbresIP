@@ -201,13 +201,16 @@ namespace TimbresIP
                                 {
                                     if (callServer != null && File.Exists(callServer.soundFile.targetPath))
                                     {
+                                        DataGridViewButtonCell callTimeButtonCell = (DataGridViewButtonCell)dataGridViewHorary.CurrentCell;
+                                        callTimeButtonCell.ReadOnly = true;
                                         mainController.startJobNow(horary, callServer);
+                                        callTimeButtonCell.ReadOnly = false;
                                     }
                                 }
                                 else
                                 {
                                     MessageBox.Show("Establezca los parámetros de la extensión IP.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }                                
+                                }
                             }
                             else
                             {
@@ -218,7 +221,6 @@ namespace TimbresIP
                 }
                 catch (Exception er)
                 {
-
                     BaseUtils.log.Error(er);
                 }
 
@@ -287,7 +289,7 @@ namespace TimbresIP
                     regularExpression = new Regex(validateEntriesUtils.NumbersRegularExpression);
                     if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
                     {
-                    
+
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
                             MessageBox.Show("El dato introducido no es de tipo numerico", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);

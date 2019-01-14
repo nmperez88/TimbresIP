@@ -89,7 +89,7 @@ namespace TimbresIP
         {
             string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds;
             SoundFileModel soundFileRef = null;
-            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef,soundDir) == DialogResult.OK)
+            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef, soundDir) == DialogResult.OK)
             {
                 soundFile = soundFileRef;
             }
@@ -182,7 +182,11 @@ namespace TimbresIP
                                 {
                                     if (callServer != null && File.Exists(callServer.soundFile.targetPath))
                                     {
+                                        DataGridViewButtonCell callTimeButtonCell = (DataGridViewButtonCell)dataGridViewGeneralSound.CurrentCell;
+                                        callTimeButtonCell.ReadOnly = true;
                                         mainController.startJobNow(horary, callServer);
+                                        callTimeButtonCell.ReadOnly = false;
+
                                     }
                                 }
                                 else
@@ -244,7 +248,7 @@ namespace TimbresIP
         private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             Regex regularExpression = new Regex("");
-            
+
             switch (dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
             {
                 case "registerNameDataGridViewTextBoxColumn":
@@ -295,8 +299,6 @@ namespace TimbresIP
             dataGridViewGeneralSound.Rows[e.RowIndex].ErrorText = String.Empty;
         }
 
-        #endregion
-
         private void dataGridViewGeneralSound_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "startAtDataGridViewTextBoxColumn" };
@@ -318,5 +320,6 @@ namespace TimbresIP
                 //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
         }
+        #endregion
     }
 }
