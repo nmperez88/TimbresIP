@@ -134,6 +134,7 @@ namespace TimbresIP
 
         private void dataGridViewHorary_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            Image image = null;
             e.Paint(e.CellBounds, DataGridViewPaintParts.All);
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
@@ -143,7 +144,7 @@ namespace TimbresIP
                         //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                         //DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
-                        Image image = Properties.Resources.call16x16;
+                        image = Properties.Resources.call16x16;
                         e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
                         this.dataGridViewHorary.Rows[e.RowIndex].Height = image.Height + 10;
@@ -151,18 +152,18 @@ namespace TimbresIP
 
                         e.Handled = true;
                         break;
-                        //case "noDataGridViewTextBoxColumn":
-                        //    if (!dataGridViewHorary.Rows[e.RowIndex].IsNewRow)
-                        //    {
-                        //        List<CallServerModel> callServerList = ((List<CallServerModel>)callServerModelBindingSource.DataSource);
-                        //        int no = callServerList != null && callServerList.Any() ? callServerList[callServerList.Count - 1].no + 1 : 1;
+                    case "ColumnEndCall":
+                        //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                        //        //e.Graphics.DrawString(no.ToString(), e.CellStyle.Font, Brushes.Black, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
+                        //DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
+                        image = Properties.Resources.endcall16x16;
+                        e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
-                        //        //e.Handled = true;
-                        //        (dataGridViewHorary.Rows[e.RowIndex].DataBoundItem as CallServerModel).no = no;
-                        //    }
-                        //    break;
+                        this.dataGridViewHorary.Rows[e.RowIndex].Height = image.Height + 10;
+                        this.dataGridViewHorary.Columns[e.ColumnIndex].Width = image.Width + 30;
+
+                        e.Handled = true;
+                        break;
                 }
             }
         }
