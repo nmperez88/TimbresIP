@@ -222,6 +222,7 @@
     <None Include="Resources\Images\savec24x24.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Images\endcall16x16.png" />
     <Content Include="sound.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
