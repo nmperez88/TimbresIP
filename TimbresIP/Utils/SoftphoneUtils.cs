@@ -217,14 +217,24 @@ namespace TimbresIP.Utils
             System.Threading.Tasks.Task.Run(() =>
             {
                 System.Threading.Thread.Sleep(milliseconds);
-                call.HangUp();
-                log.Info("Colgando llamada!");
+                //call.HangUp();
+                //log.Info("Colgando llamada!");
+                callHangUpNow();
             });
 
             ////Alternativa 2
             //System.Threading.Tasks.Task.Delay(milliseconds);
             //call.HangUp();
             //log.Info("Colgando llamada!");
+        }
+
+        /// <summary>
+        /// Colgar llamada ahora.
+        /// </summary>
+        static void callHangUpNow()
+        {
+            call.HangUp();
+            log.Info("Colgando llamada!");
         }
     }
 }
