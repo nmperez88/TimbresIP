@@ -47,6 +47,11 @@ namespace TimbresIP.Controller
         private AutomaticRingSystemModel automaticRingSystemToExecute = new AutomaticRingSystemModel();
 
         /// <summary>
+        /// Mapa de identificador de trabajo(idJob) y su llamada(SoftPhone) asociada que están ejecutandose por llamada iniciada ahora.
+        /// </summary>
+        private Dictionary<string, SoftPhoneUtils> idJobSoftPhoneRunningByCallNowMap = new Dictionary<string, SoftPhoneUtils>();
+
+        /// <summary>
         /// Ruta de archivo Json.
         /// </summary>
         private String jsonFileFullPath;
@@ -314,11 +319,25 @@ namespace TimbresIP.Controller
             }
 
             String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
-            String hour = startNow ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30"
-            String min = startNow ? "00" : callServer.startAt.Substring(3);
+            String hour = startNow ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
+            String min = startNow ? "00" : callServer.startAt.Substring(3, 2);
+            String sec = startNow ? "00" : callServer.startAt.Substring(6);
             JobDataMap jobDataMap = new JobDataMap();
             softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer);
             jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
+
+            if (startNow)
+            {
+                if (idJobSoftPhoneRunningByCallNowMap.ContainsKey(idJob))
+                {
+                    idJobSoftPhoneRunningByCallNowMap[idJob] = softPhoneUtils;
+                }
+                else
+                {
+                    idJobSoftPhoneRunningByCallNowMap.Add(idJob, softPhoneUtils);
+                }
+
+            }
 
             //Definir job.
             IJobDetail job = JobBuilder.Create<RingJobUtils>()
@@ -343,7 +362,8 @@ namespace TimbresIP.Controller
                 trigger = TriggerBuilder.Create()
                     .WithIdentity(idJob, groupJobs)
                     //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
-                    .WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
+                    //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
+                    .WithCronSchedule(sec + " " + min + " " + hour + " ? * MON-FRI")
                     //.StartNow()
                     .ForJob(idJob, groupJobs)
                     .Build();
@@ -373,6 +393,19 @@ namespace TimbresIP.Controller
         }
 
         /// <summary>
+        /// Colgar llamada ahora.
+        /// </summary>
+        public void hangUpNow(HoraryModel horary, CallServerModel callServer)
+        {
+            String idJob = horary.randomId + callServer.randomId + "now";
+            if (idJobSoftPhoneRunningByCallNowMap.ContainsKey(idJob))
+            {
+                SoftPhoneUtils softPhoneUtilsNow = idJobSoftPhoneRunningByCallNowMap[idJob];
+                softPhoneUtilsNow.hangUpNow();
+            }
+        }
+
+        /// <summary>
         /// Tiene la aplicación definidos los parámetros de conexión al servidor?.
         /// </summary>
         /// <returns></returns>
@@ -391,15 +424,14 @@ namespace TimbresIP.Controller
             return !horary.connectionCallServer.registerName.Equals("") && !horary.connectionCallServer.registerPassword.Equals("");
         }
 
+        /// <summary>
+        /// Obtener automaticRingSystem
+        /// </summary>
+        /// <returns></returns>
         public AutomaticRingSystemModel getAutomaticRingSystem()
         {
             return automaticRingSystem;
         }
-
-        //public AutomaticRingSystemModel getAutomaticRingSystemToMatch()
-        //{
-        //    return automaticRingSystemToMatch;
-        //}
 
         /// <summary>
         /// Constructor por defecto.
@@ -410,8 +442,6 @@ namespace TimbresIP.Controller
             //Descomentar para probar. Este método debe llamarse luego de visualizar el formulario.
             start();
 
-            //Debería existir una opción, visual o bien utilizarlo en cada modificación del horario, para detener el programador de llamadas.
-            //stop();
         }
 
         /// <summary>
@@ -453,7 +483,6 @@ namespace TimbresIP.Controller
 
         public Boolean matchData()
         {
-            //return automaticRingSystem.CompareTo(automaticRingSystemToMatch) == 0;
             return JsonConvert.SerializeObject(automaticRingSystem).CompareTo(automaticRingSystemToMatchSerialized) == 0;
         }
     }

@@ -218,6 +218,31 @@ namespace TimbresIP
                                 MessageBox.Show("Establezca los parametros del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             break;
+
+                        case "ColumnEndCall":
+                            if (mainController.hasServerParams())
+                            {
+                                if (horary.connectionCallServer.isValid())
+                                {
+                                    if (callServer != null && File.Exists(callServer.soundFile.targetPath))
+                                    {
+                                        DataGridViewButtonCell hangUpButtonCell = (DataGridViewButtonCell)dataGridViewHorary.CurrentCell;
+                                        hangUpButtonCell.ReadOnly = true;
+                                        mainController.hangUpNow(horary, callServer);
+                                        hangUpButtonCell.ReadOnly = false;
+
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Establezca los parámetros de la extensión IP.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Establezca los parametros del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            break;
                     }
                 }
                 catch (Exception er)
@@ -365,7 +390,7 @@ namespace TimbresIP
         private void dataGridViewHorary_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
 
-            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn" };
+            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn", "ColumnEndCall" };
             Boolean isRowValid = true;
             dataGridViewHorary.CurrentRow.Cells.ForEach(c =>
             {

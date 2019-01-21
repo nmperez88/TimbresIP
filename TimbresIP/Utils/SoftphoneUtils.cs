@@ -229,12 +229,27 @@ namespace TimbresIP.Utils
         }
 
         /// <summary>
-        /// Colgar llamada ahora.
+        /// Colgar llamada ahora. Estático
         /// </summary>
         static void callHangUpNow()
         {
-            call.HangUp();
-            log.Info("Colgando llamada!");
+            if (call != null)
+            {
+                call.HangUp();
+                log.Info("Colgando llamada!");
+            }
+            else
+            {
+                log.Info("Llamada no inicializada!");
+            }
+        }
+
+        /// <summary>
+        /// Colgar llamada ahora.
+        /// </summary>
+        public void hangUpNow()
+        {
+            callHangUpNow();
         }
     }
 }
