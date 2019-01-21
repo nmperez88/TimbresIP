@@ -13,7 +13,8 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Expresion regular para formatos Hora
         /// </summary>
-        private static string timeRegularExpression = "^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$";
+        //private static string timeRegularExpression = "^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$";
+        private static string timeRegularExpression = "^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$";
         /// <summary>
         /// Expresion regular para Numeros
         /// </summary>
