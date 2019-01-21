@@ -47,11 +47,6 @@ namespace TimbresIP.Controller
         private AutomaticRingSystemModel automaticRingSystemToExecute = new AutomaticRingSystemModel();
 
         /// <summary>
-        /// Mapa de identificador de trabajo(idJob) y su llamada(SoftPhone) asociada que están ejecutandose por llamada iniciada ahora.
-        /// </summary>
-        private Dictionary<string, SoftPhoneUtils> idJobSoftPhoneRunningByCallNowMap = new Dictionary<string, SoftPhoneUtils>();
-
-        /// <summary>
         /// Ruta de archivo Json.
         /// </summary>
         private String jsonFileFullPath;
@@ -66,10 +61,15 @@ namespace TimbresIP.Controller
         /// </summary>
         private JsonHandlerUtils jsonHandlerUtils;
 
+        ///// <summary>
+        ///// SoftPhone.
+        ///// </summary>
+        //private SoftPhoneUtils softPhoneUtils;
+
         /// <summary>
-        /// SoftPhone.
+        /// Mapa de llamadas. identificador de trabajo(idJob) y su llamada(SoftPhone) asociada.
         /// </summary>
-        private SoftPhoneUtils softPhoneUtils;
+        private Dictionary<string, SoftPhoneUtils> softPhoneUtilsMap = new Dictionary<string, SoftPhoneUtils>();
 
         /// <summary>
         /// Lista de horas en las que debe ejecutarse un timbre.
@@ -193,22 +193,22 @@ namespace TimbresIP.Controller
         /// <summary>
         /// Inicializar softPhone.
         /// </summary>
-        private void initSoftPhone()
-        {
-            instanceSoftPhone();
-        }
+        //private void initSoftPhone()
+        //{
+        //    instanceSoftPhone();
+        //}
 
         /// <summary>
         /// Instanciar softPhone.
         /// </summary>
-        private void instanceSoftPhone()
-        {
-            if (softPhoneUtils == null)
-            {
-                softPhoneUtils = new SoftPhoneUtils();
-            }
+        //private void instanceSoftPhone()
+        //{
+        //    if (softPhoneUtils == null)
+        //    {
+        //        softPhoneUtils = new SoftPhoneUtils();
+        //    }
 
-        }
+        //}
 
         /// <summary>
         /// Inicializar programador de llamadas.
@@ -250,7 +250,7 @@ namespace TimbresIP.Controller
         /// </summary>
         private async void startJobs()
         {
-            initSoftPhone();
+            //initSoftPhone();
 
             foreach (var h in automaticRingSystemToExecute.horaryList)
             {
@@ -315,8 +315,10 @@ namespace TimbresIP.Controller
                     initScheduler();
                     startScheduler();
                 }
-                initSoftPhone();
+                //initSoftPhone();
             }
+
+            SoftPhoneUtils softPhoneUtils = new SoftPhoneUtils();
 
             String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
             String hour = startNow ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
@@ -326,17 +328,26 @@ namespace TimbresIP.Controller
             softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer);
             jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
 
-            if (startNow)
-            {
-                if (idJobSoftPhoneRunningByCallNowMap.ContainsKey(idJob))
-                {
-                    idJobSoftPhoneRunningByCallNowMap[idJob] = softPhoneUtils;
-                }
-                else
-                {
-                    idJobSoftPhoneRunningByCallNowMap.Add(idJob, softPhoneUtils);
-                }
+            //if (startNow)
+            //{
+            //    if (softPhoneUtilsMap.ContainsKey(idJob))
+            //    {
+            //        idJobSoftPhoneRunningByCallNowMap[idJob] = softPhoneUtils;
+            //    }
+            //    else
+            //    {
+            //        idJobSoftPhoneRunningByCallNowMap.Add(idJob, softPhoneUtils);
+            //    }
 
+            //}
+
+            if (softPhoneUtilsMap.ContainsKey(idJob))
+            {
+                softPhoneUtilsMap[idJob] = softPhoneUtils;
+            }
+            else
+            {
+                softPhoneUtilsMap.Add(idJob, softPhoneUtils);
             }
 
             //Definir job.
@@ -398,10 +409,9 @@ namespace TimbresIP.Controller
         public void hangUpNow(HoraryModel horary, CallServerModel callServer)
         {
             String idJob = horary.randomId + callServer.randomId + "now";
-            if (idJobSoftPhoneRunningByCallNowMap.ContainsKey(idJob))
+            if (softPhoneUtilsMap.ContainsKey(idJob))
             {
-                SoftPhoneUtils softPhoneUtilsNow = idJobSoftPhoneRunningByCallNowMap[idJob];
-                softPhoneUtilsNow.hangUpNow();
+                softPhoneUtilsMap[idJob].hangUpNow();
             }
         }
 
