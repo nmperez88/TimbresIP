@@ -117,6 +117,59 @@ namespace TimbresIP
                 generalRings.Add(generalRingUserControl.horary);
                 //validar datos en sonidos generales FIN
 
+                //Validación cruces de horas de ejecución
+                //Dictionary<String, long[]> horaryTime = new Dictionary<string, long[]>();
+                List<HoraryCallServerUtils> horaryTime = new List<HoraryCallServerUtils>();
+                //
+                horaries.ForEach(h =>
+                {
+                    h.callServerList.ForEach(cs =>
+                    {
+                        var startAt = Convert.ToDateTime(cs.startAt);
+                        HoraryCallServerUtils horaryCallServerUtils = new HoraryCallServerUtils();
+                        horaryCallServerUtils.Id = h.randomId + cs.randomId;
+                        horaryCallServerUtils.NameHorary = h.name;
+                        horaryCallServerUtils.StartAt = startAt.Ticks;
+                        horaryCallServerUtils.EndAt = startAt.AddSeconds(cs.callTime).Ticks;
+                        horaryTime.Add(horaryCallServerUtils);
+                    });
+                });
+                if (horaryTime.Count > 0)
+                {
+                    HoraryCallServerUtils hcs = horaryTime[0];
+                    while (horaryTime.Count > 0)
+                    {
+                        var finded = horaryTime.Where(ht =>
+                        !ht.Id.Equals(hcs.Id) && (
+                        (hcs.StartAt <= ht.StartAt && hcs.EndAt >= ht.StartAt) ||
+                        (hcs.StartAt <= ht.EndAt && hcs.EndAt >= ht.StartAt) ||
+
+                        (hcs.StartAt >= ht.StartAt && hcs.StartAt <= ht.EndAt) ||
+                        (hcs.EndAt >= ht.StartAt && hcs.EndAt <= ht.EndAt))
+                        );
+                        if (finded.Count() > 0)
+                        {
+                            string horaryName =hcs.NameHorary;
+
+                            finded.ToList().ForEach(f => {
+                                if (!f.NameHorary.Equals(hcs.NameHorary))
+                                {
+                                    horaryName +=  ", " + f.NameHorary;
+                                }
+                            });
+
+                            MessageBox.Show("Existen horarios con horas coincidentes: " + horaryName, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            validData = false;
+                            break;
+                        }
+                        horaryTime.Remove(hcs);
+                        if (horaryTime.Count() > 0)
+                        {
+                            hcs = horaryTime[0];
+                        }
+                    }
+                }
+
                 if (validData)
                 {
                     mainController.getAutomaticRingSystem().horaryList = horaries;
