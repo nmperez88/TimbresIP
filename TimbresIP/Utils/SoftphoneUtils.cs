@@ -93,6 +93,10 @@ namespace TimbresIP.Utils
             //Crear instancia softPhone. Rango 5000-10000
             softphone = SoftPhoneFactory.CreateSoftPhone(softPhoneRangeMin, softPhoneRangeMax);
 
+            softphone.EnableCodec(0);
+            softphone.EnableCodec(8);//PCMU(G711U)=> 0, PCMA(G711A)=> 8
+            log.Info(softphone.Codecs);
+
             mediaSender = new PhoneCallAudioSender();
             connector = new MediaConnector();
         }
