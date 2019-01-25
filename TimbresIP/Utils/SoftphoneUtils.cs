@@ -173,9 +173,17 @@ namespace TimbresIP.Utils
         private static void startCall()
         {
             //var numberToDial = "853";
-            call = softphone.CreateCallObject(phoneLine, registerName);
-            call.CallStateChanged += callStateChanged;
-            call.Start();
+            try
+            {
+                call = softphone.CreateCallObject(phoneLine, registerName);
+                call.CallStateChanged += callStateChanged;
+                call.Start();
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
+            }
+
         }
 
         /// <summary>
