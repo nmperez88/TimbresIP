@@ -2,6 +2,7 @@
 using Ozeki.Media;
 using Ozeki.VoIP;
 using System;
+using System.Collections.Generic;
 using TimbresIP.Common;
 
 namespace TimbresIP.Utils
@@ -37,9 +38,29 @@ namespace TimbresIP.Utils
         static PhoneCallAudioSender mediaSender;
 
         /// <summary>
-        /// Reproductor multimedia.
+        /// Reproductor multimedia mp3.
         /// </summary>
         static MP3StreamPlayback mp3Player;
+
+        /// <summary>
+        /// Reproductor multimedia wav/wave.
+        /// </summary>
+        static WaveStreamPlayback wavPlayer;
+
+        ///// <summary>
+        ///// Tipo de archivo a reproducir. Por defecto wav/wave.
+        ///// </summary>
+        //static String mimeTypePlayer = "audio/x-wav";
+
+        /// <summary>
+        /// Tipo de extensión de archivo a reproducir. Por defecto wav.
+        /// </summary>
+        static String extTypePlayer = "wav";
+
+        /// <summary>
+        /// Tipo de extensión wav. 
+        /// </summary>
+        static List<String> extTypeWav = new List<string>() { "wav", "wave", ".wav", ".wave" };
 
         /// <summary>
         /// Extensión a llamar. Generalmente es la extensión telefónica. numberToDial.
@@ -123,7 +144,42 @@ namespace TimbresIP.Utils
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
             registerAccount(account);
 
-            mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
+            //Establecer tipo de archivo a reproducir.
+
+            if (System.IO.File.Exists(jobDataCommon.callServer.soundFile.targetPath))
+            {
+                try
+                {
+                    //mimeTypePlayer = HeyRed.Mime.MimeGuesser.GuessExtension(jobDataCommon.callServer.soundFile.targetPath);//QUITAR paquete nuget mime
+                    extTypePlayer = System.IO.Path.GetExtension(jobDataCommon.callServer.soundFile.targetPath).ToLower();
+                }
+                catch (Exception e)
+                {
+                    log.Error("No fue posible obtener la extensión del archivo de audio", e);
+                }
+            }
+            else
+            {
+                log.Error("El archivo de audio no existe");
+            }
+
+            //Inicializar reproductor.
+            initStreamPlayback();
+        }
+
+        /// <summary>
+        /// Inicializar reproductor.
+        /// </summary>
+        void initStreamPlayback()
+        {
+            if (extTypeWav.Contains(extTypePlayer))
+            {
+                wavPlayer = new WaveStreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
+            }
+            else
+            {
+                mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
+            }
         }
 
         /// <summary>
@@ -205,6 +261,36 @@ namespace TimbresIP.Utils
         }
 
         /// <summary>
+        /// Iniciar reproductor wav/wave.
+        /// </summary>
+        static void startWavPlayer()
+        {
+            connector.Connect(wavPlayer, mediaSender);
+            mediaSender.AttachToCall(call);
+
+            wavPlayer.Start();
+
+            log.Info("Reproduciendo wav player!.");
+            callHangUp();
+        }
+
+        /// <summary>
+        /// iniciar reproductor.
+        /// </summary>
+        static void startPlayer()
+        {
+            if (extTypeWav.Contains(extTypePlayer))
+            {
+                startWavPlayer();
+            }
+            else
+            {
+                startMp3Player();
+            }
+
+        }
+
+        /// <summary>
         /// Ggestionar cambio de estado al llamar.
         /// </summary>
         /// <param name="sender"></param>
@@ -214,7 +300,8 @@ namespace TimbresIP.Utils
             log.Info("Estado en la llamada: " + e.State);
             if (e.State == CallState.Answered)
             {
-                startMp3Player();
+                startPlayer();
+
             }
         }
 

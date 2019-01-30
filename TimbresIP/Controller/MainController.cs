@@ -71,13 +71,13 @@ namespace TimbresIP.Controller
         /// </summary>
         private Dictionary<string, SoftPhoneUtils> softPhoneUtilsMap = new Dictionary<string, SoftPhoneUtils>();
 
-        /// <summary>
-        /// Lista de horas en las que debe ejecutarse un timbre.
-        /// </summary>
-        /// <remarks>
-        ///  Construir estructura que permita chequear de forma rápida utilizando quartz.
-        /// </remarks>
-        private List<String> plannedHours;
+        ///// <summary>
+        ///// Lista de horas en las que debe ejecutarse un timbre.
+        ///// </summary>
+        ///// <remarks>
+        /////  Construir estructura que permita chequear de forma rápida utilizando quartz.
+        ///// </remarks>
+        //private List<String> plannedHours;
 
         /// <summary>
         /// Inicializar datos de la aplicación.
