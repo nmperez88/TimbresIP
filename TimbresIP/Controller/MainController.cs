@@ -310,7 +310,7 @@ namespace TimbresIP.Controller
         {
             if (startNow)
             {
-                if (scheduler == null)
+                if (scheduler == null || scheduler.IsShutdown)
                 {
                     initScheduler();
                     startScheduler();
