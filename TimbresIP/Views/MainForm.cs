@@ -223,6 +223,7 @@ namespace TimbresIP
                     tabControlHorary.TabPages.Add(horaryTabPage);
                     horaryTabPage.ImageIndex = 0;
                     horaryTabPage.Controls.Add(horaryUserControl);
+                    tabControlHorary.SelectTab(tabControlHorary.TabPages[tabControlHorary.TabCount - 1]);
                 }
             }
             else { MessageBox.Show("No se puede crear más horarios, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
