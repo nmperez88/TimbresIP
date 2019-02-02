@@ -101,7 +101,16 @@ namespace TimbresIP
                         MessageBox.Show("Existen horarios con parámetros de la extensión IP incompletos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     }
-                    horaryUserControl.horary.callServerList = ((List<CallServerModel>)horaryUserControl.bindingSource().DataSource);
+                    try
+                    {
+                        horaryUserControl.horary.callServerList = ((List<CallServerModel>)horaryUserControl.bindingSource().DataSource);
+                    }
+                    catch (Exception e)
+                    {
+
+                        BaseUtils.log.Error(e);
+                    }
+                    
                     horaries.Add(horaryUserControl.horary);
 
                 }
