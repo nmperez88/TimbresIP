@@ -300,12 +300,15 @@ namespace TimbresIP.Controller
             //{
             //    softPhoneUtilsList.Add(idJob);
             //}
-            getCallsRunningUtils();
-            if (!callsRunningUtils.idsList.Contains(idJob))
+            if (startNow)
             {
-                callsRunningUtils.idsList.Add(idJob);
+                getCallsRunningUtils();
+                if (!callsRunningUtils.idsList.Contains(idJob))
+                {
+                    callsRunningUtils.idsList.Add(idJob);
+                }
+                setCallsRunningUtils();
             }
-            setCallsRunningUtils();
 
             JobDataMap jobDataMap = new JobDataMap();
             //softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, softPhoneUtilsList, idJob);
