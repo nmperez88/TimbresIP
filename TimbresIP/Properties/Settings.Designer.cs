@@ -191,5 +191,17 @@ namespace TimbresIP.Properties {
                 this["encryptedExtension"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("callsRunning")]
+        public string callsRunning {
+            get {
+                return ((string)(this["callsRunning"]));
+            }
+            set {
+                this["callsRunning"] = value;
+            }
+        }
     }
 }

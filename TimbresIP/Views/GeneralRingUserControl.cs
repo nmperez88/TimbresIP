@@ -252,40 +252,6 @@ namespace TimbresIP
 
             }
 
-            //try
-            //{
-            //    switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
-            //    {
-            //        case "soundFileDataGridViewTextBoxColumn":
-            //            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-            //            {
-            //                try
-            //                {
-            //                    DataGridViewComboBoxColumn comboBox = this.dataGridViewGeneralSound.Columns["soundFileDataGridViewTextBoxColumn"] as DataGridViewComboBoxColumn;
-            //                    DirectoryInfo dir = new DirectoryInfo(validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds);
-            //                    FileInfo[] files = dir.GetFiles();
-            //                    comboBox.DataSource = files;
-            //                    comboBox.DisplayMember = nameof(FileInfo.Name);
-            //                }
-            //                catch (Exception er)
-            //                {
-            //                    BaseUtils.log.Error(er);
-            //                }
-            //            }
-            //            break;
-            //        case "ColumnCall":
-            //            DataGridViewRow selectedRow = dataGridViewGeneralSound.CurrentRow;
-            //            CallServerModel callServer = selectedRow.DataBoundItem as CallServerModel;
-            //            mainController.startJobNow(horary, callServer);
-            //            break;
-            //    }
-            //}
-            //catch (Exception er)
-            //{
-
-            //    log.WriteError(er);
-            //}
-
         }
 
         private void dataGridViewGeneralSound_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)

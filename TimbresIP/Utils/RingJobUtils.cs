@@ -25,8 +25,6 @@ namespace TimbresIP.Utils
 
             softPhoneUtils.start();
 
-            //BaseUtils.log.Info(string.Format("Iniciando llamada({0})", callServer.domainHost));
-
             return Task.CompletedTask;
         }
     }

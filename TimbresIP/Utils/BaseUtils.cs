@@ -41,5 +41,68 @@ namespace TimbresIP.Utils
         /// Validador de entradas.
         /// </summary>
         public static ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
+
+        /// <summary>
+        /// Ruta de archivo Json de llamadas en ejecución.
+        /// </summary>
+        public static String callsRunningJsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.callsRunning + Properties.Settings.Default.jsonExtension;
+
+        /// <summary>
+        /// Lista de llamadas en ejecución.
+        /// </summary>
+        public static CallsRunningUtils callsRunningUtils = new CallsRunningUtils();
+
+        /// <summary>
+        /// Gestiona contenido de archivo JSON.
+        /// </summary>
+        public static JsonHandlerUtils jsonHandlerUtils;
+
+        ///// <summary>
+        ///// Obtener lista de llamadas en ejecución.
+        ///// </summary>
+        ///// <returns></returns>
+        //public CallsRunningUtils getCallsRunningUtils()
+        //{
+        //    jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+        //    if (!System.IO.File.Exists(callsRunningJsonFileFullPath))
+        //    {
+        //        jsonHandlerUtils.serialize(callsRunningUtils);
+        //    }
+        //    else
+        //    {
+        //        callsRunningUtils = (CallsRunningUtils)jsonHandlerUtils.deserialize();
+        //    }
+
+        //    return callsRunningUtils;
+        //}
+
+        /// <summary>
+        /// Establecer lista de llamadas en ejecución.
+        /// </summary>
+        /// <returns></returns>
+        public static void setCallsRunningUtils()
+        {
+            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+            jsonHandlerUtils.serialize(callsRunningUtils);
+        }
+
+        /// <summary>
+        /// Obtener lista de llamadas en ejecución. Estático.
+        /// </summary>
+        /// <returns></returns>
+        public static CallsRunningUtils getCallsRunningUtils()
+        {
+            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+            if (!System.IO.File.Exists(callsRunningJsonFileFullPath))
+            {
+                jsonHandlerUtils.serialize(callsRunningUtils);
+            }
+            else
+            {
+                callsRunningUtils = (CallsRunningUtils)jsonHandlerUtils.deserialize();
+            }
+
+            return callsRunningUtils;
+        }
     }
 }

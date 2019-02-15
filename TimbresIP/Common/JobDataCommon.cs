@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using TimbresIP.Model;
+using TimbresIP.Utils;
 
 namespace TimbresIP.Common
 {
@@ -35,6 +37,16 @@ namespace TimbresIP.Common
         /// </summary>
         public CallServerModel callServer { get; set; }
 
+        ///// <summary>
+        ///// Mapa de llamadas. identificador de trabajo(idJob).
+        ///// </summary>
+        //public List<string> softPhoneUtilsList = new List<string>();
+
+        /// <summary>
+        /// Identificador del traajo.
+        /// </summary>
+        public String idJob { get; set; }
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -43,13 +55,18 @@ namespace TimbresIP.Common
         /// <param name="domainPort"></param>
         /// <param name="connectionCallServer"></param>
         /// <param name="callServer"></param>
-        public JobDataCommon(bool registrationRequired, string domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
+        /// <param name="softPhoneUtilsList"></param>
+        /// <param name="idJob"></param>
+        //public JobDataCommon(bool registrationRequired, string domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer, List<string> softPhoneUtilsList, String idJob)
+        public JobDataCommon(bool registrationRequired, string domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer, String idJob)
         {
             this.registrationRequired = registrationRequired;
             this.domainHost = domainHost;
             this.domainPort = domainPort;
             this.connectionCallServer = connectionCallServer;
             this.callServer = callServer;
+            //this.softPhoneUtilsList = softPhoneUtilsList;
+            this.idJob = idJob;
         }
     }
 }

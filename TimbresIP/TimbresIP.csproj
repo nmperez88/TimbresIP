@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseCommon.cs" />
+    <Compile Include="Utils\CallsRunningUtils.cs" />
     <Compile Include="Utils\CypherUtils.cs" />
     <Compile Include="Model\ConfigurationParametersModel.cs" />
     <Compile Include="Model\FeaturesModel.cs" />

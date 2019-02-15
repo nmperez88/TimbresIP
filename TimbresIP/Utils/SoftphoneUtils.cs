@@ -93,6 +93,11 @@ namespace TimbresIP.Utils
         public JobDataCommon jobDataCommon { get; set; }
 
         /// <summary>
+        /// Parámetros(datos) para el trabajador.
+        /// </summary>
+        public static JobDataCommon jobDataCommonStatic { get; set; }
+
+        /// <summary>
         /// Contructor.
         /// </summary>
         public SoftPhoneUtils()
@@ -128,6 +133,7 @@ namespace TimbresIP.Utils
         //public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
         public void start()
         {
+            jobDataCommonStatic = jobDataCommon;
             //var account = new SIPAccount(registrationRequired, displayName, userName, authenticationId, registerPassword, domainHost, domainPort);
             var account = new SIPAccount(jobDataCommon.registrationRequired, jobDataCommon.connectionCallServer.displayName, jobDataCommon.connectionCallServer.userName, jobDataCommon.connectionCallServer.registerName, jobDataCommon.connectionCallServer.registerPassword, jobDataCommon.domainHost, jobDataCommon.domainPort);
 
@@ -232,7 +238,6 @@ namespace TimbresIP.Utils
         /// </summary>
         private static void startCall()
         {
-            //var numberToDial = "853";
             try
             {
                 call = softphone.CreateCallObject(phoneLine, registerName);
@@ -315,15 +320,8 @@ namespace TimbresIP.Utils
             System.Threading.Tasks.Task.Run(() =>
             {
                 System.Threading.Thread.Sleep(milliseconds);
-                //call.HangUp();
-                //log.Info("Colgando llamada!");
                 callHangUpNow();
             });
-
-            ////Alternativa 2
-            //System.Threading.Tasks.Task.Delay(milliseconds);
-            //call.HangUp();
-            //log.Info("Colgando llamada!");
         }
 
         /// <summary>
@@ -335,6 +333,16 @@ namespace TimbresIP.Utils
             {
                 call.HangUp();
                 log.Info("Colgando llamada!");
+                //if (jobDataCommonStatic.softPhoneUtilsList.Contains(jobDataCommonStatic.idJob))
+                //{
+                //    jobDataCommonStatic.softPhoneUtilsList.Remove(jobDataCommonStatic.idJob);
+                //}
+                getCallsRunningUtils();
+                if (callsRunningUtils.idsList.Contains(jobDataCommonStatic.idJob))
+                {
+                    callsRunningUtils.idsList.Remove(jobDataCommonStatic.idJob);
+                    setCallsRunningUtils();
+                }
             }
             else
             {

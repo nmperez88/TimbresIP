@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimbresIP.Model;
-using TimbresIP.Utils;
-using TimbresIP.Common;
+﻿using Newtonsoft.Json;
 using Quartz;
 using Quartz.Impl;
-using Quartz.Impl.Calendar;
-using Quartz.Impl.Matchers;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using TimbresIP.Common;
+using TimbresIP.Model;
+using TimbresIP.Utils;
 
 namespace TimbresIP.Controller
 {
@@ -56,11 +52,6 @@ namespace TimbresIP.Controller
         /// </summary>
         private String jsonFileFullPathEncrypted;
 
-        /// <summary>
-        /// Gestiona contenido de archivo JSON.
-        /// </summary>
-        private JsonHandlerUtils jsonHandlerUtils;
-
         ///// <summary>
         ///// SoftPhone.
         ///// </summary>
@@ -70,6 +61,11 @@ namespace TimbresIP.Controller
         /// Mapa de llamadas. identificador de trabajo(idJob) y su llamada(SoftPhone) asociada.
         /// </summary>
         private Dictionary<string, SoftPhoneUtils> softPhoneUtilsMap = new Dictionary<string, SoftPhoneUtils>();
+
+        ///// <summary>
+        ///// Mapa de llamadas. identificador de trabajo(idJob).
+        ///// </summary>
+        //private List<string> softPhoneUtilsList = new List<string>();
 
         ///// <summary>
         ///// Lista de horas en las que debe ejecutarse un timbre.
@@ -84,6 +80,9 @@ namespace TimbresIP.Controller
         /// </summary>
         public void init()
         {
+
+            //callsRunningJsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.callsRunning + Properties.Settings.Default.jsonExtension;
+
             jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
             jsonFileFullPathEncrypted = jsonFileFullPath + Properties.Settings.Default.encryptedExtension;
 
@@ -117,10 +116,6 @@ namespace TimbresIP.Controller
                 //Hay horarios configurados?.
                 if (automaticRingSystem.horaryList.Any())
                 {
-                    //automaticRingSystemToExecute.registrationRequired = automaticRingSystem.registrationRequired;
-                    //automaticRingSystemToExecute.domainHost = automaticRingSystem.domainHost;
-                    //automaticRingSystemToExecute.domainPort = automaticRingSystem.domainPort;
-
                     automaticRingSystem.horaryList.ForEach(h =>
                     {
                         //Tiene el horario definidos los parámetros para llamar al servidor?.
@@ -257,39 +252,6 @@ namespace TimbresIP.Controller
                 foreach (var cs in h.callServerList)
                 {
                     startJobs(h, cs, false);
-                    //String idJob = h.randomId + cs.randomId;
-                    //String hour = cs.startAt.Substring(0, 2);//start:"12:30"
-                    //String min = cs.startAt.Substring(3);
-                    //JobDataMap jobDataMap = new JobDataMap();
-                    //softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystemToExecute.registrationRequired, automaticRingSystemToExecute.domainHost, automaticRingSystemToExecute.domainPort, h.connectionCallServer, cs);
-                    //jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
-
-                    ////Definir job.
-                    //IJobDetail job = JobBuilder.Create<RingJobUtils>()
-                    //    .WithIdentity(idJob, groupJobs)
-                    //    //.UsingJobData("horary", JsonConvert.SerializeObject(h))
-                    //    .SetJobData(jobDataMap)
-                    //    .Build();
-
-                    ////Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
-                    //ITrigger trigger = TriggerBuilder.Create()
-                    //    .WithIdentity(idJob, groupJobs)
-                    //    //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
-                    //    .WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
-                    //    //.StartNow()
-                    //    .ForJob(idJob, groupJobs)
-                    //    .Build();
-
-                    ////Eliminar trabajo si existe
-                    //if (await scheduler.CheckExists(new JobKey(idJob, groupJobs)))
-                    //{
-                    //    await scheduler.DeleteJob(new JobKey(idJob, groupJobs));
-                    //}
-
-                    ////Asignar trigger a job en el programador de llamadas(scheduler)
-                    //await scheduler.ScheduleJob(job, trigger);
-                    ////Sintaxis para asignarle varios triggers a un treabajo.
-                    ////await scheduler.ScheduleJob(objJob, new[] { trigger, trigger1, trigger2, trigger3 }, true);
                 }
             }
         }
@@ -315,7 +277,6 @@ namespace TimbresIP.Controller
                     initScheduler();
                     startScheduler();
                 }
-                //initSoftPhone();
             }
 
             SoftPhoneUtils softPhoneUtils = new SoftPhoneUtils();
@@ -324,31 +285,32 @@ namespace TimbresIP.Controller
             String hour = startNow ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
             String min = startNow ? "00" : callServer.startAt.Substring(3, 2);
             String sec = startNow ? "00" : callServer.startAt.Substring(6);
-            JobDataMap jobDataMap = new JobDataMap();
-            softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer);
-            jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
-
-            //if (startNow)
-            //{
-            //    if (softPhoneUtilsMap.ContainsKey(idJob))
-            //    {
-            //        idJobSoftPhoneRunningByCallNowMap[idJob] = softPhoneUtils;
-            //    }
-            //    else
-            //    {
-            //        idJobSoftPhoneRunningByCallNowMap.Add(idJob, softPhoneUtils);
-            //    }
-
-            //}
 
             if (softPhoneUtilsMap.ContainsKey(idJob))
             {
                 softPhoneUtilsMap[idJob] = softPhoneUtils;
+
             }
             else
             {
                 softPhoneUtilsMap.Add(idJob, softPhoneUtils);
             }
+
+            //if (!softPhoneUtilsList.Contains(idJob))
+            //{
+            //    softPhoneUtilsList.Add(idJob);
+            //}
+            getCallsRunningUtils();
+            if (!callsRunningUtils.idsList.Contains(idJob))
+            {
+                callsRunningUtils.idsList.Add(idJob);
+            }
+            setCallsRunningUtils();
+
+            JobDataMap jobDataMap = new JobDataMap();
+            //softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, softPhoneUtilsList, idJob);
+            softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, idJob);
+            jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
 
             //Definir job.
             IJobDetail job = JobBuilder.Create<RingJobUtils>()
@@ -372,10 +334,7 @@ namespace TimbresIP.Controller
                 //Disparador de trabajos a hora y minuto de lunes a viernes: "0 30 10 ? * WED,FRI"
                 trigger = TriggerBuilder.Create()
                     .WithIdentity(idJob, groupJobs)
-                    //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI,SUN")
-                    //.WithCronSchedule("0 " + min + " " + hour + " ? * MON-FRI")
                     .WithCronSchedule(sec + " " + min + " " + hour + " ? * MON-FRI")
-                    //.StartNow()
                     .ForJob(idJob, groupJobs)
                     .Build();
             }
@@ -400,7 +359,17 @@ namespace TimbresIP.Controller
         /// <param name="callServer"></param>
         public void startJobNow(HoraryModel horary, CallServerModel callServer)
         {
-            startJobs(horary, callServer, true);
+            String idJob = horary.randomId + callServer.randomId + "now";
+            //if (!softPhoneUtilsList.Contains(idJob))
+            //{
+            //    startJobs(horary, callServer, true);
+            //}
+            getCallsRunningUtils();
+            if (!callsRunningUtils.idsList.Contains(idJob))
+            {
+                startJobs(horary, callServer, true);
+            }
+
         }
 
         /// <summary>
@@ -409,9 +378,25 @@ namespace TimbresIP.Controller
         public void hangUpNow(HoraryModel horary, CallServerModel callServer)
         {
             String idJob = horary.randomId + callServer.randomId + "now";
-            if (softPhoneUtilsMap.ContainsKey(idJob))
+            //if (softPhoneUtilsList.Contains(idJob))
+            //{
+
+            //    if (softPhoneUtilsMap.ContainsKey(idJob))
+            //    {
+            //        softPhoneUtilsMap[idJob].hangUpNow();
+            //        softPhoneUtilsMap.Remove(idJob);
+            //    }
+            //    softPhoneUtilsList.Remove(idJob);
+            //}
+            if (callsRunningUtils.idsList.Contains(idJob))
             {
-                softPhoneUtilsMap[idJob].hangUpNow();
+
+                if (softPhoneUtilsMap.ContainsKey(idJob))
+                {
+                    softPhoneUtilsMap[idJob].hangUpNow();
+                    softPhoneUtilsMap.Remove(idJob);
+                }
+                callsRunningUtils.idsList.Remove(idJob);
             }
         }
 
@@ -449,9 +434,7 @@ namespace TimbresIP.Controller
         public MainController()
         {
             init();
-            //Descomentar para probar. Este método debe llamarse luego de visualizar el formulario.
             start();
-
         }
 
         /// <summary>
@@ -495,5 +478,6 @@ namespace TimbresIP.Controller
         {
             return JsonConvert.SerializeObject(automaticRingSystem).CompareTo(automaticRingSystemToMatchSerialized) == 0;
         }
+
     }
 }

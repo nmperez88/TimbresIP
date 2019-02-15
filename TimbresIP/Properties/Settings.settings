@@ -44,5 +44,8 @@
     <Setting Name="encryptedExtension" Type="System.String" Scope="User">
       <Value Profile="(Default)">.aes</Value>
     </Setting>
+    <Setting Name="callsRunning" Type="System.String" Scope="User">
+      <Value Profile="(Default)">callsRunning</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
