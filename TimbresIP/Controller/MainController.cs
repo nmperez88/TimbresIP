@@ -470,6 +470,7 @@ namespace TimbresIP.Controller
         {
             save();
             stop();
+            resetCallsRunningUtils();
             init();
             start();
         }

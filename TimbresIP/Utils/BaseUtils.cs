@@ -104,5 +104,17 @@ namespace TimbresIP.Utils
 
             return callsRunningUtils;
         }
+
+        /// <summary>
+        /// Inicializar lista de llamadas en ejecución. Estático.
+        /// </summary>
+        /// <returns></returns>
+        public static void resetCallsRunningUtils()
+        {
+            callsRunningUtils = new CallsRunningUtils();
+            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+            jsonHandlerUtils.serialize(callsRunningUtils);
+
+        }
     }
 }
