@@ -282,9 +282,9 @@ namespace TimbresIP.Controller
             SoftPhoneUtils softPhoneUtils = new SoftPhoneUtils();
 
             String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
-            String hour = startNow ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
-            String min = startNow ? "00" : callServer.startAt.Substring(3, 2);
-            String sec = startNow ? "00" : callServer.startAt.Substring(6);
+            String hour = callServer.startAt.Length < 2 ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
+            String min = callServer.startAt.Length < 5 ? "00" : callServer.startAt.Substring(3, 2);
+            String sec = callServer.startAt.Length < 8 ? "00" : callServer.startAt.Substring(6);
 
             if (softPhoneUtilsMap.ContainsKey(idJob))
             {
