@@ -34,8 +34,8 @@ namespace TimbresIP.Model
         ///        
         public ConfigurationParametersModel()
         {
-            this.numberHours = 3;
-            this.numberschedules = 2;
+            this.numberHours = 60;
+            this.numberschedules = 60;
         }
         /// <summary>
         /// Constructor de la clase con parametros
@@ -43,11 +43,11 @@ namespace TimbresIP.Model
         /// <param name="flag"></param>
         public ConfigurationParametersModel(bool flag)
         {
-            this.numberHours = 3;
-            this.numberschedules = 2;
+            this.numberHours = 60;
+            this.numberschedules = 60;
             this.sendedEMail = flag;
             this.installedDate = DateTime.Now;
-            this.lisenceTime = 365;
+            this.lisenceTime = 999999;
         }
     }
 }
