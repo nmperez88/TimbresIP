@@ -104,7 +104,7 @@ namespace TimbresIP.Utils
         {
             try
             {
-                if (LicenseManager.Instance.LicenseType.ToString().Equals("Expired"))
+                if (LicenseManager.Instance.LicenseType.ToString().Equals("Expired") || LicenseManager.Instance.LicenseType.ToString().Equals("Trial"))
                 {
                     var userName = "OZSDK-CALL-1234567-IWAREZ 2017";
                     var key = "UDoyMDMzLTEyLTI1LFVQOjIwMzMtMDEtMDEsTUNDOjUwMCxNUEw6NTAwLE1TTEM6NTAwLE1GQzo1MDAsRzcyOTp0cnVlLE1XUEM6NTAwLE1JUEM6NTAwfHFQZDBhQnhlaEFGaTlNMmV4cXZxaHUyVE5rMWh2S0FzaUZlVlowbFFseTZWZ3JKbmFMTXh3ZVV2elBGcEliTFpwNHZtZDArZlZwc2VkRGpjQWdKR3ZnPT0=";
