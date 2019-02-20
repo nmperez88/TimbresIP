@@ -158,7 +158,7 @@ namespace TimbresIP
                 if (validData && !generalRingUserControl.horary.connectionCallServer.isValid())
                 {
                     validData = false;
-                    MessageBox.Show("Existen sonidos generales con parámetros de la extensión IP incompletos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Sonidos generales con parámetros de la extensión IP incompletos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 generalRingUserControl.horary.callServerList = ((List<CallServerModel>)generalRingUserControl.bindingSource().DataSource);
                 generalRings.Add(generalRingUserControl.horary);
@@ -437,9 +437,7 @@ namespace TimbresIP
                 mainController.stop();
             }
         }
-
         #endregion
     }
-
 }
 

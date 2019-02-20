@@ -371,12 +371,12 @@ namespace TimbresIP
             {
                 dataGridViewGeneralSound.Rows.RemoveAt(selectedRow.Index);
             }
+            this.buttonGeneralDelSounds.Enabled = false;
         }
-        #endregion
-
         private void dataGridViewGeneralSound_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             this.buttonGeneralDelSounds.Enabled = true;
         }
+        #endregion
     }
 }

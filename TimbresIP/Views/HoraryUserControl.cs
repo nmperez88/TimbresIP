@@ -334,7 +334,7 @@ namespace TimbresIP
                     {
                         if (!regularExpression.IsMatch(e.FormattedValue.ToString()) || e.FormattedValue.ToString().Equals(""))
                         {
-                            MessageBox.Show("La hora indicada no es correcta", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("La hora indicada no es correcta, debe ser formato hh:mm:ss", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dataGridViewHorary.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo horario";
                             e.Cancel = true;
                         }
@@ -460,7 +460,7 @@ namespace TimbresIP
             {
                 dataGridViewHorary.Rows.RemoveAt(selectedRow.Index);
             }
-
+            this.buttonHoraryDelHours.Enabled = false;
         }
 
         private void dataGridViewHorary_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
