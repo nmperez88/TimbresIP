@@ -104,6 +104,33 @@ namespace TimbresIP
         {
             return callServerModelBindingSource;
         }
+
+
+        /// <summary>
+        /// Chequear si son válidas las columnas requeridas en las filas del horario.
+        /// </summary>
+        /// <returns></returns>
+        public Boolean isValid()
+        {
+
+            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "startAtDataGridViewTextBoxColumn", "ColumnEndCall" };
+            Boolean isRowValid = true;
+            dataGridViewGeneralSound.CurrentRow.Cells.ForEach(c =>
+            {
+                DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+                if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+                {
+                    isRowValid = false;
+
+                }
+            });
+
+            if (!isRowValid)
+            {
+                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            return isRowValid;
+        }
         #endregion
 
         #region Eventos
@@ -309,30 +336,33 @@ namespace TimbresIP
 
         private void dataGridViewGeneralSound_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "startAtDataGridViewTextBoxColumn", "ColumnEndCall" };
-            Boolean isRowValid = true;
-            dataGridViewGeneralSound.CurrentRow.Cells.ForEach(c =>
-            {
-                DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
-                if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
-                {
-                    isRowValid = false;
+            //String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "startAtDataGridViewTextBoxColumn", "ColumnEndCall" };
+            //Boolean isRowValid = true;
+            //dataGridViewGeneralSound.CurrentRow.Cells.ForEach(c =>
+            //{
+            //    DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+            //    if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+            //    {
+            //        isRowValid = false;
 
-                }
-            });
+            //    }
+            //});
 
-            if (!isRowValid)
-            {
-                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                e.Cancel = true;
-                //this.dataGridViewHorary.AllowUserToAddRows = false;
-            }
+            //if (!isRowValid)
+            //{
+            //    MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    e.Cancel = true;
+            //    //this.dataGridViewHorary.AllowUserToAddRows = false;
+            //}
         }
         private void buttonGeneralAddSounds_Click(object sender, EventArgs e)
         {
-            int no = bindingSource().Count > 0 ? (bindingSource()[bindingSource().Count - 1] as CallServerModel).no + 1 : 1;
-            bindingSource().Add(new CallServerModel(no));
-            dataGridViewGeneralSound.CurrentCell = dataGridViewGeneralSound.Rows[dataGridViewGeneralSound.Rows.Count - 1].Cells[0];
+            if (isValid())
+            {
+                int no = bindingSource().Count > 0 ? (bindingSource()[bindingSource().Count - 1] as CallServerModel).no + 1 : 1;
+                bindingSource().Add(new CallServerModel(no));
+                dataGridViewGeneralSound.CurrentCell = dataGridViewGeneralSound.Rows[dataGridViewGeneralSound.Rows.Count - 1].Cells[0];
+            }
         }
         private void buttonGeneralDelSounds_Click(object sender, EventArgs e)
         {

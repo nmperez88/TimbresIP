@@ -77,6 +77,36 @@ namespace TimbresIP
 
         }
 
+        /// <summary>
+        /// Validar parámetros introducidos en los horarios.
+        /// </summary>
+        /// <returns></returns>
+        private Boolean validateParamsHoraries()
+        {
+            Boolean validParams = true;
+
+            for (int i = 0; i < this.tabControlHorary.TabPages.Count; i++)
+            {
+                HoraryUserControl horaryUserControl = (this.tabControlHorary.TabPages[i].Controls[0] as HoraryUserControl);
+                if (!horaryUserControl.isValid())
+                {
+                    validParams = false;
+                    break;
+                }
+
+            }
+            return validParams;
+        }
+
+        /// <summary>
+        /// Validar parámetros introducidos en los sonidos generales.
+        /// </summary>
+        /// <returns></returns>
+        private Boolean validateParamsGeneralRings()
+        {
+            return generalRingUserControl.isValid();
+        }
+
         private Boolean save()
         {
             buttonSaveAll.Enabled = false;
@@ -85,6 +115,14 @@ namespace TimbresIP
             {
                 validData = false;
                 MessageBox.Show("Establezca los parámetros del servidor antes de guardar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (!validateParamsHoraries())
+            {
+                validData = false;
+            }
+            else if (!validateParamsGeneralRings())
+            {
+                validData = false;
             }
             else
             {
@@ -110,7 +148,7 @@ namespace TimbresIP
 
                         BaseUtils.log.Error(e);
                     }
-                    
+
                     horaries.Add(horaryUserControl.horary);
 
                 }
@@ -158,12 +196,13 @@ namespace TimbresIP
                         );
                         if (finded.Count() > 0)
                         {
-                            string horaryName =hcs.NameHorary;
+                            string horaryName = hcs.NameHorary;
 
-                            finded.ToList().ForEach(f => {
+                            finded.ToList().ForEach(f =>
+                            {
                                 if (!f.NameHorary.Equals(hcs.NameHorary))
                                 {
-                                    horaryName +=  ", " + f.NameHorary;
+                                    horaryName += ", " + f.NameHorary;
                                 }
                             });
 

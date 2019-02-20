@@ -107,6 +107,35 @@ namespace TimbresIP
             return callServerModelBindingSource;
         }
 
+        /// <summary>
+        /// Chequear si son válidas las columnas requeridas en las filas del horario.
+        /// </summary>
+        /// <returns></returns>
+        public Boolean isValid()
+        {
+            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn", "ColumnEndCall" };
+            Boolean isRowValid = true;
+            dataGridViewHorary.Rows.ForEach(r =>
+            {
+                DataGridViewRow dataGridViewRow = ((DataGridViewRow)r);
+                dataGridViewRow.Cells.ForEach(c =>
+                 {
+                     DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+                     if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+                     {
+                         isRowValid = false;
+
+                     }
+                 });
+            });
+
+            if (!isRowValid)
+            {
+                MessageBox.Show("Existen filas con datos erróneos o incompletos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            return isRowValid;
+        }
+
         #endregion
 
         #region Eventos
@@ -389,36 +418,39 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn", "ColumnEndCall" };
-            Boolean isRowValid = true;
-            dataGridViewHorary.CurrentRow.Cells.ForEach(c =>
-            {
-                DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
-                if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
-                {
-                    isRowValid = false;
+            //String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn", "ColumnEndCall" };
+            //Boolean isRowValid = true;
+            //dataGridViewHorary.CurrentRow.Cells.ForEach(c =>
+            //{
+            //    DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+            //    if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+            //    {
+            //        isRowValid = false;
 
-                }
-            });
+            //    }
+            //});
 
-            if (!isRowValid)
-            {
-                MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                e.Cancel = true;
-                //this.dataGridViewHorary.AllowUserToAddRows = false;
-            }
+            //if (!isRowValid)
+            //{
+            //    MessageBox.Show("Debe introducir todos los campos requeridos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    e.Cancel = true;
+            //    //this.dataGridViewHorary.AllowUserToAddRows = false;
+            //}
         }
         private void buttonHoraryAddHours_Click(object sender, EventArgs e)
         {
-            if (this.dataGridViewHorary.Rows.Count == configurationParametersModel.numberHours + 1)
-            {
-                MessageBox.Show("No se puede crear más horas, ya exedió el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                int no = bindingSource().Count > 0 ? (bindingSource()[bindingSource().Count - 1] as CallServerModel).no + 1 : 1;
-                bindingSource().Add(new CallServerModel(no));
-                dataGridViewHorary.CurrentCell = dataGridViewHorary.Rows[dataGridViewHorary.Rows.Count - 1].Cells[1];
+            if (isValid())
+            { 
+                if (this.dataGridViewHorary.Rows.Count == configurationParametersModel.numberHours + 1)
+                {
+                    MessageBox.Show("No se puede crear más horas, ya exedió el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    int no = bindingSource().Count > 0 ? (bindingSource()[bindingSource().Count - 1] as CallServerModel).no + 1 : 1;
+                    bindingSource().Add(new CallServerModel(no));
+                    dataGridViewHorary.CurrentCell = dataGridViewHorary.Rows[dataGridViewHorary.Rows.Count - 1].Cells[1];
+                }
             }
         }
         private void buttonHoraryDelHours_Click(object sender, EventArgs e)
@@ -430,12 +462,13 @@ namespace TimbresIP
             }
 
         }
-        #endregion
 
         private void dataGridViewHorary_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             this.buttonHoraryDelHours.Enabled = true;
         }
+        #endregion
+
     }
 }
 
