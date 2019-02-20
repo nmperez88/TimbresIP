@@ -14,7 +14,7 @@ namespace TimbresIP.Utils
         /// Expresion regular para formatos Hora
         /// </summary>
         //private static string timeRegularExpression = "^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$";
-        private static string timeRegularExpression = "^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$";
+        private static string timeRegularExpression = "^([01]?[0-9]|2[0-3])(:[0-5][0-9]:[0-5][0-9])?$";
         /// <summary>
         /// Expresion regular para Numeros
         /// </summary>
@@ -111,5 +111,27 @@ namespace TimbresIP.Utils
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         }
+        ///// <summary>
+        ///// Validar celdas vacias
+        ///// </summary>
+        ///// <param name="dgvListas"></param>
+        ///// <returns></returns>
+        //public bool validateEmptyCells(DataGridView dataGridView)
+        //{
+        //    for (int i = 0; i < dataGridView.RowCount - 1; i++)
+        //    {
+        //        if (dataGridView.Columns[i].Name != "observationsDataGridViewTextBoxColumn")
+        //        {
+        //            for (int j = 0; j < dataGridView.ColumnCount; j++)
+        //            {
+        //                if (string.IsNullOrEmpty(dataGridView.Rows[i].Cells[j].Value.ToString()))
+        //                {
+        //                    return true;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
     }
 }

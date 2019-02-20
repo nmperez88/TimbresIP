@@ -343,10 +343,10 @@ namespace TimbresIP
                 this.dataGridViewHorary.AllowUserToAddRows = false;
                 MessageBox.Show("No se puede crear más horas, ya exedio el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else
-            {
-                this.dataGridViewHorary.AllowUserToAddRows = true;
-            }
+            //else
+            //{
+            //    this.dataGridViewHorary.AllowUserToAddRows = true;
+            //}
         }
 
         private void HoraryUserControl_Load(object sender, EventArgs e)
@@ -389,7 +389,6 @@ namespace TimbresIP
 
         private void dataGridViewHorary_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-
             String[] columnsToJump = new String[] { "ColumnCall", "observationsDataGridViewTextBoxColumn", "enabledDataGridViewCheckBoxColumn", "ColumnEndCall" };
             Boolean isRowValid = true;
             dataGridViewHorary.CurrentRow.Cells.ForEach(c =>
@@ -409,7 +408,34 @@ namespace TimbresIP
                 //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
         }
+        private void buttonHoraryAddHours_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridViewHorary.Rows.Count == configurationParametersModel.numberHours + 1)
+            {
+                MessageBox.Show("No se puede crear más horas, ya exedió el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int no = bindingSource().Count > 0 ? (bindingSource()[bindingSource().Count - 1] as CallServerModel).no + 1 : 1;
+                bindingSource().Add(new CallServerModel(no));
+                dataGridViewHorary.CurrentCell = dataGridViewHorary.Rows[dataGridViewHorary.Rows.Count - 1].Cells[1];
+            }
+        }
+        private void buttonHoraryDelHours_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dataGridViewHorary.CurrentRow;
+            if (selectedRow != null)
+            {
+                dataGridViewHorary.Rows.RemoveAt(selectedRow.Index);
+            }
+
+        }
         #endregion
+
+        private void dataGridViewHorary_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.buttonHoraryDelHours.Enabled = true;
+        }
     }
 }
 

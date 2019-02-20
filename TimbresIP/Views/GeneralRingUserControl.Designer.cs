@@ -39,21 +39,25 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
+            this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnEndCall = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonGeneralAddSounds = new System.Windows.Forms.Button();
+            this.buttonGeneralDelSounds = new System.Windows.Forms.Button();
+            this.groupBoxGeneralActions = new System.Windows.Forms.GroupBox();
             this.callTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCall = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnEndCall = new System.Windows.Forms.DataGridViewButtonColumn();
             this.observationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
             this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
+            this.groupBoxGeneralActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.soundFileModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -165,6 +169,8 @@
             // 
             // dataGridViewGeneralSound
             // 
+            this.dataGridViewGeneralSound.AllowUserToAddRows = false;
+            this.dataGridViewGeneralSound.AllowUserToDeleteRows = false;
             this.dataGridViewGeneralSound.AutoGenerateColumns = false;
             this.dataGridViewGeneralSound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGeneralSound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -189,7 +195,73 @@
             this.dataGridViewGeneralSound.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneralSound_CellEndEdit);
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             this.dataGridViewGeneralSound.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewGeneralSound_CellValidating);
+            this.dataGridViewGeneralSound.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewGeneralSound_RowHeaderMouseClick);
             this.dataGridViewGeneralSound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewGeneralSound_RowValidating);
+            // 
+            // ColumnCall
+            // 
+            this.ColumnCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnCall.HeaderText = "Llamar";
+            this.ColumnCall.Name = "ColumnCall";
+            this.ColumnCall.Text = "Llamar";
+            this.ColumnCall.Width = 40;
+            // 
+            // ColumnEndCall
+            // 
+            this.ColumnEndCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnEndCall.HeaderText = "Colgar";
+            this.ColumnEndCall.Name = "ColumnEndCall";
+            this.ColumnEndCall.Text = "Colgar";
+            this.ColumnEndCall.Width = 40;
+            // 
+            // toolTipGeneralRings
+            // 
+            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipGeneralRings.ToolTipTitle = "Información";
+            // 
+            // buttonGeneralAddSounds
+            // 
+            this.buttonGeneralAddSounds.FlatAppearance.BorderSize = 0;
+            this.buttonGeneralAddSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralAddSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralAddSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGeneralAddSounds.Image = global::TimbresIP.Properties.Resources.addc20x20;
+            this.buttonGeneralAddSounds.Location = new System.Drawing.Point(6, 35);
+            this.buttonGeneralAddSounds.Name = "buttonGeneralAddSounds";
+            this.buttonGeneralAddSounds.Size = new System.Drawing.Size(33, 30);
+            this.buttonGeneralAddSounds.TabIndex = 15;
+            this.buttonGeneralAddSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralAddSounds, "Agregar sonido");
+            this.buttonGeneralAddSounds.UseVisualStyleBackColor = true;
+            this.buttonGeneralAddSounds.Click += new System.EventHandler(this.buttonGeneralAddSounds_Click);
+            // 
+            // buttonGeneralDelSounds
+            // 
+            this.buttonGeneralDelSounds.Enabled = false;
+            this.buttonGeneralDelSounds.FlatAppearance.BorderSize = 0;
+            this.buttonGeneralDelSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralDelSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralDelSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGeneralDelSounds.Image = global::TimbresIP.Properties.Resources.removec20x20;
+            this.buttonGeneralDelSounds.Location = new System.Drawing.Point(45, 35);
+            this.buttonGeneralDelSounds.Name = "buttonGeneralDelSounds";
+            this.buttonGeneralDelSounds.Size = new System.Drawing.Size(33, 30);
+            this.buttonGeneralDelSounds.TabIndex = 16;
+            this.buttonGeneralDelSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralDelSounds, "Eliminar sonido");
+            this.buttonGeneralDelSounds.UseVisualStyleBackColor = true;
+            this.buttonGeneralDelSounds.Click += new System.EventHandler(this.buttonGeneralDelSounds_Click);
+            // 
+            // groupBoxGeneralActions
+            // 
+            this.groupBoxGeneralActions.Controls.Add(this.buttonGeneralDelSounds);
+            this.groupBoxGeneralActions.Controls.Add(this.buttonGeneralAddSounds);
+            this.groupBoxGeneralActions.Location = new System.Drawing.Point(521, 0);
+            this.groupBoxGeneralActions.Name = "groupBoxGeneralActions";
+            this.groupBoxGeneralActions.Size = new System.Drawing.Size(107, 162);
+            this.groupBoxGeneralActions.TabIndex = 5;
+            this.groupBoxGeneralActions.TabStop = false;
+            this.groupBoxGeneralActions.Text = "Acciones sobre Sonidos";
             // 
             // callTimeDataGridViewTextBoxColumn
             // 
@@ -214,22 +286,6 @@
             this.registerNameDataGridViewTextBoxColumn.HeaderText = "Extensión";
             this.registerNameDataGridViewTextBoxColumn.Name = "registerNameDataGridViewTextBoxColumn";
             this.registerNameDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // ColumnCall
-            // 
-            this.ColumnCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnCall.HeaderText = "Llamar";
-            this.ColumnCall.Name = "ColumnCall";
-            this.ColumnCall.Text = "Llamar";
-            this.ColumnCall.Width = 40;
-            // 
-            // ColumnEndCall
-            // 
-            this.ColumnEndCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnEndCall.HeaderText = "Colgar";
-            this.ColumnEndCall.Name = "ColumnEndCall";
-            this.ColumnEndCall.Text = "Colgar";
-            this.ColumnEndCall.Width = 40;
             // 
             // observationsDataGridViewTextBoxColumn
             // 
@@ -270,11 +326,6 @@
             // 
             this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
             // 
-            // toolTipGeneralRings
-            // 
-            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipGeneralRings.ToolTipTitle = "Información";
-            // 
             // soundFileModelBindingSource
             // 
             this.soundFileModelBindingSource.DataSource = typeof(TimbresIP.Model.SoundFileModel);
@@ -284,6 +335,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.groupBoxGeneralActions);
             this.Controls.Add(this.dataGridViewGeneralSound);
             this.Controls.Add(this.groupBoxGeneralSoundExtension);
             this.Name = "GeneralRingUserControl";
@@ -291,6 +343,7 @@
             this.groupBoxGeneralSoundExtension.ResumeLayout(false);
             this.groupBoxGeneralSoundExtension.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).EndInit();
+            this.groupBoxGeneralActions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.soundFileModelBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -322,5 +375,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.GroupBox groupBoxGeneralActions;
+        private System.Windows.Forms.Button buttonGeneralDelSounds;
+        private System.Windows.Forms.Button buttonGeneralAddSounds;
     }
 }

@@ -81,7 +81,6 @@ namespace TimbresIP
             //});
 
         }
-
         /// <summary>
         /// Cargar datos del comboBox en interfaz.
         /// </summary>
@@ -329,6 +328,25 @@ namespace TimbresIP
                 //this.dataGridViewHorary.AllowUserToAddRows = false;
             }
         }
+        private void buttonGeneralAddSounds_Click(object sender, EventArgs e)
+        {
+            int no = bindingSource().Count > 0 ? (bindingSource()[bindingSource().Count - 1] as CallServerModel).no + 1 : 1;
+            bindingSource().Add(new CallServerModel(no));
+            dataGridViewGeneralSound.CurrentCell = dataGridViewGeneralSound.Rows[dataGridViewGeneralSound.Rows.Count - 1].Cells[0];
+        }
+        private void buttonGeneralDelSounds_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dataGridViewGeneralSound.CurrentRow;
+            if (selectedRow != null)
+            {
+                dataGridViewGeneralSound.Rows.RemoveAt(selectedRow.Index);
+            }
+        }
         #endregion
+
+        private void dataGridViewGeneralSound_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.buttonGeneralDelSounds.Enabled = true;
+        }
     }
 }
