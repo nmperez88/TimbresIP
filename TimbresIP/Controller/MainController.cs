@@ -52,28 +52,15 @@ namespace TimbresIP.Controller
         /// </summary>
         private String jsonFileFullPathEncrypted;
 
-        ///// <summary>
-        ///// SoftPhone.
-        ///// </summary>
-        //private SoftPhoneUtils softPhoneUtils;
+        /// <summary>
+        /// Mapa de llamadas. identificador de trabajo(idJob) y su reproductor asociada.
+        /// </summary>
+        private Dictionary<string, MediaBaseUtils> playerUtilsMap = new Dictionary<string, MediaBaseUtils>();
 
         /// <summary>
-        /// Mapa de llamadas. identificador de trabajo(idJob) y su llamada(SoftPhone) asociada.
+        /// Lista de modos de reproducción de medios.
         /// </summary>
-        private Dictionary<string, SoftPhoneUtils> softPhoneUtilsMap = new Dictionary<string, SoftPhoneUtils>();
-
-        ///// <summary>
-        ///// Mapa de llamadas. identificador de trabajo(idJob).
-        ///// </summary>
-        //private List<string> softPhoneUtilsList = new List<string>();
-
-        ///// <summary>
-        ///// Lista de horas en las que debe ejecutarse un timbre.
-        ///// </summary>
-        ///// <remarks>
-        /////  Construir estructura que permita chequear de forma rápida utilizando quartz.
-        ///// </remarks>
-        //private List<String> plannedHours;
+        public List<ModeModel> modeList = new List<ModeModel>() { new ModeModel("Llamada", "softphone"), new ModeModel("Jack 3.5", "jack") };
 
         /// <summary>
         /// Inicializar datos de la aplicación.
@@ -186,26 +173,6 @@ namespace TimbresIP.Controller
         }
 
         /// <summary>
-        /// Inicializar softPhone.
-        /// </summary>
-        //private void initSoftPhone()
-        //{
-        //    instanceSoftPhone();
-        //}
-
-        /// <summary>
-        /// Instanciar softPhone.
-        /// </summary>
-        //private void instanceSoftPhone()
-        //{
-        //    if (softPhoneUtils == null)
-        //    {
-        //        softPhoneUtils = new SoftPhoneUtils();
-        //    }
-
-        //}
-
-        /// <summary>
         /// Inicializar programador de llamadas.
         /// </summary>
         private async void initScheduler()
@@ -279,27 +246,30 @@ namespace TimbresIP.Controller
                 }
             }
 
-            SoftPhoneUtils softPhoneUtils = new SoftPhoneUtils();
-
-            String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
-            String hour = callServer.startAt ==null || callServer.startAt.Length < 2 ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
-            String min = callServer.startAt == null || callServer.startAt.Length < 5 ? "00" : callServer.startAt.Substring(3, 2);
-            String sec = callServer.startAt == null || callServer.startAt.Length < 8 ? "00" : callServer.startAt.Substring(6);
-
-            if (softPhoneUtilsMap.ContainsKey(idJob))
+            MediaBaseUtils mediaBase = null;
+            if (callServer.mode.value.Equals("softphone"))
             {
-                softPhoneUtilsMap[idJob] = softPhoneUtils;
-
+                mediaBase = new SoftPhoneUtils();
             }
             else
             {
-                softPhoneUtilsMap.Add(idJob, softPhoneUtils);
+                mediaBase = new JackCableUtils();
             }
 
-            //if (!softPhoneUtilsList.Contains(idJob))
-            //{
-            //    softPhoneUtilsList.Add(idJob);
-            //}
+            String idJob = horary.randomId + callServer.randomId + (startNow ? "now" : "");
+            String hour = callServer.startAt == null || callServer.startAt.Length < 2 ? "00" : callServer.startAt.Substring(0, 2);//start:"12:30:10"
+            String min = callServer.startAt == null || callServer.startAt.Length < 5 ? "00" : callServer.startAt.Substring(3, 2);
+            String sec = callServer.startAt == null || callServer.startAt.Length < 8 ? "00" : callServer.startAt.Substring(6);
+
+            if (playerUtilsMap.ContainsKey(idJob))
+            {
+                playerUtilsMap[idJob] = mediaBase;
+            }
+            else
+            {
+                playerUtilsMap.Add(idJob, mediaBase);
+            }
+
             if (startNow)
             {
                 getCallsRunningUtils();
@@ -311,9 +281,19 @@ namespace TimbresIP.Controller
             }
 
             JobDataMap jobDataMap = new JobDataMap();
-            //softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, softPhoneUtilsList, idJob);
-            softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, idJob);
-            jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
+            //softPhoneUtils.jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, idJob);
+            //jobDataMap.Put("softPhone", JsonConvert.SerializeObject(softPhoneUtils));
+
+            if (callServer.mode.value.Equals("softphone"))
+            {
+                ((SoftPhoneUtils)mediaBase).jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, idJob);
+                jobDataMap.Put("softPhone", JsonConvert.SerializeObject((SoftPhoneUtils)mediaBase));
+            }
+            else
+            {
+                ((JackCableUtils)mediaBase).jobDataCommon = new JobDataCommon(automaticRingSystem.registrationRequired, automaticRingSystem.domainHost, automaticRingSystem.domainPort, horary.connectionCallServer, callServer, idJob);
+                jobDataMap.Put("jackCable", JsonConvert.SerializeObject((JackCableUtils)mediaBase));
+            }
 
             //Definir job.
             IJobDetail job = JobBuilder.Create<RingJobUtils>()
@@ -363,10 +343,6 @@ namespace TimbresIP.Controller
         public void startJobNow(HoraryModel horary, CallServerModel callServer)
         {
             String idJob = horary.randomId + callServer.randomId + "now";
-            //if (!softPhoneUtilsList.Contains(idJob))
-            //{
-            //    startJobs(horary, callServer, true);
-            //}
             getCallsRunningUtils();
             if (!callsRunningUtils.idsList.Contains(idJob))
             {
@@ -381,23 +357,14 @@ namespace TimbresIP.Controller
         public void hangUpNow(HoraryModel horary, CallServerModel callServer)
         {
             String idJob = horary.randomId + callServer.randomId + "now";
-            //if (softPhoneUtilsList.Contains(idJob))
-            //{
 
-            //    if (softPhoneUtilsMap.ContainsKey(idJob))
-            //    {
-            //        softPhoneUtilsMap[idJob].hangUpNow();
-            //        softPhoneUtilsMap.Remove(idJob);
-            //    }
-            //    softPhoneUtilsList.Remove(idJob);
-            //}
             if (callsRunningUtils.idsList.Contains(idJob))
             {
 
-                if (softPhoneUtilsMap.ContainsKey(idJob))
+                if (playerUtilsMap.ContainsKey(idJob))
                 {
-                    softPhoneUtilsMap[idJob].hangUpNow();
-                    softPhoneUtilsMap.Remove(idJob);
+                    playerUtilsMap[idJob].hangUpNow();
+                    playerUtilsMap.Remove(idJob);
                 }
                 callsRunningUtils.idsList.Remove(idJob);
             }

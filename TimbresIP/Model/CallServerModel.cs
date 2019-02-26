@@ -42,12 +42,6 @@ namespace TimbresIP.Model
         /// </summary>
         public SoundFileModel soundFile { get; set; }
 
-        ///// <summary>
-        ///// Archivo de sonido.
-        ///// </summary>
-        ////public SoundFileModel soundFile { get; set; }
-        //public List<SoundFileModel> soundFile { get; set; }
-
         /// <summary>
         /// Habilitado.
         /// </summary>
@@ -62,6 +56,11 @@ namespace TimbresIP.Model
         /// Observaciones.
         /// </summary>
         public String observations { get; set; }
+
+        /// <summary>
+        /// Modo de ejecución. Por defecto llamada softphone
+        /// </summary>
+        public ModeModel mode { get; set; } = new ModeModel("Llamada", "softphone");
 
         /// <summary>
         /// Constructor. Necesario para serialización.

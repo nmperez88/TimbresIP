@@ -2,7 +2,6 @@
 using Ozeki.Media;
 using Ozeki.VoIP;
 using System;
-using System.Collections.Generic;
 using TimbresIP.Common;
 
 namespace TimbresIP.Utils
@@ -10,7 +9,7 @@ namespace TimbresIP.Utils
     /// <summary>
     /// Gestionar conexión con el servidor.
     /// </summary>
-    class SoftPhoneUtils : BaseUtils
+    class SoftPhoneUtils : MediaBaseUtils
     {
         /// <summary>
         /// SoftPhone.
@@ -47,35 +46,10 @@ namespace TimbresIP.Utils
         /// </summary>
         static WaveStreamPlayback wavPlayer;
 
-        ///// <summary>
-        ///// Tipo de archivo a reproducir. Por defecto wav/wave.
-        ///// </summary>
-        //static String mimeTypePlayer = "audio/x-wav";
-
-        /// <summary>
-        /// Tipo de extensión de archivo a reproducir. Por defecto wav.
-        /// </summary>
-        static String extTypePlayer = "wav";
-
-        /// <summary>
-        /// Tipo de extensión wav. 
-        /// </summary>
-        static List<String> extTypeWav = new List<string>() { "wav", "wave", ".wav", ".wave" };
-
         /// <summary>
         /// Extensión a llamar. Generalmente es la extensión telefónica. numberToDial.
         /// </summary>
         static String registerName { get; set; }
-
-        /// <summary>
-        /// Tiempo de duración de la llamada. Utilizado para colgar(hangUp).
-        /// </summary>
-        static int callTime { get; set; } = !Properties.Settings.Default.callTime.Equals(0) ? Properties.Settings.Default.callTime : 30;
-
-        /// <summary>
-        /// Ruta a archivo de sonido.
-        /// </summary>
-        static String audioFilePath { get; set; }
 
         /// <summary>
         /// Variable que define el mínimo del rango.
@@ -128,23 +102,21 @@ namespace TimbresIP.Utils
         }
 
         /// <summary>
-        /// Iniciar lamada.
+        /// Iniciar llamada.
         /// </summary>
-        //public void start(Boolean registrationRequired, String domainHost, int domainPort, ConnectionCallServerModel connectionCallServer, CallServerModel callServer)
-        public void start()
+        public override void start()
         {
             jobDataCommonStatic = jobDataCommon;
-            //var account = new SIPAccount(registrationRequired, displayName, userName, authenticationId, registerPassword, domainHost, domainPort);
             var account = new SIPAccount(jobDataCommon.registrationRequired, jobDataCommon.connectionCallServer.displayName, jobDataCommon.connectionCallServer.userName, jobDataCommon.connectionCallServer.registerName, jobDataCommon.connectionCallServer.registerPassword, jobDataCommon.domainHost, jobDataCommon.domainPort);
 
             //Extensión a llamar. numberToDial.
             registerName = jobDataCommon.callServer.registerName;
 
             //Tiempo de duración de la llamada. En segundos.
-            resetCallTime();
+            resetTime();
             if (!jobDataCommon.callServer.callTime.Equals(0))
             {
-                callTime = jobDataCommon.callServer.callTime;
+                time = jobDataCommon.callServer.callTime;
             }
 
             //Registrar cuenta. Los eventos desencadenan la ejecución de la llamada.
@@ -156,7 +128,6 @@ namespace TimbresIP.Utils
             {
                 try
                 {
-                    //mimeTypePlayer = HeyRed.Mime.MimeGuesser.GuessExtension(jobDataCommon.callServer.soundFile.targetPath);//QUITAR paquete nuget mime
                     extTypePlayer = System.IO.Path.GetExtension(jobDataCommon.callServer.soundFile.targetPath).ToLower();
                 }
                 catch (Exception e)
@@ -186,14 +157,6 @@ namespace TimbresIP.Utils
             {
                 mp3Player = new MP3StreamPlayback(jobDataCommon.callServer.soundFile.targetPath);
             }
-        }
-
-        /// <summary>
-        /// Establecer valor por defecto a callTime.
-        /// </summary>
-        public void resetCallTime()
-        {
-            callTime = !Properties.Settings.Default.callTime.Equals(0) ? Properties.Settings.Default.callTime : 30;
         }
 
         /// <summary>
@@ -262,7 +225,7 @@ namespace TimbresIP.Utils
             mp3Player.Start();
 
             log.Info("Reproduciendo mp3 player!.");
-            callHangUp();
+            HangUp();
         }
 
         /// <summary>
@@ -276,7 +239,7 @@ namespace TimbresIP.Utils
             wavPlayer.Start();
 
             log.Info("Reproduciendo wav player!.");
-            callHangUp();
+            HangUp();
         }
 
         /// <summary>
@@ -313,30 +276,26 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Colgar llamada.
         /// </summary>
-        static void callHangUp()
+        static void HangUp()
         {
-            int milliseconds = (int)TimeSpan.FromSeconds(callTime).TotalMilliseconds;
+            int milliseconds = (int)TimeSpan.FromSeconds(time).TotalMilliseconds;
 
             System.Threading.Tasks.Task.Run(() =>
             {
                 System.Threading.Thread.Sleep(milliseconds);
-                callHangUpNow();
+                mediaHangUpNow();
             });
         }
 
         /// <summary>
         /// Colgar llamada ahora. Estático
         /// </summary>
-        static void callHangUpNow()
+        static void mediaHangUpNow()
         {
             if (call != null)
             {
                 call.HangUp();
                 log.Info("Colgando llamada!");
-                //if (jobDataCommonStatic.softPhoneUtilsList.Contains(jobDataCommonStatic.idJob))
-                //{
-                //    jobDataCommonStatic.softPhoneUtilsList.Remove(jobDataCommonStatic.idJob);
-                //}
                 getCallsRunningUtils();
                 if (callsRunningUtils.idsList.Contains(jobDataCommonStatic.idJob))
                 {
@@ -353,9 +312,9 @@ namespace TimbresIP.Utils
         /// <summary>
         /// Colgar llamada ahora.
         /// </summary>
-        public void hangUpNow()
+        public override void hangUpNow()
         {
-            callHangUpNow();
+            mediaHangUpNow();
         }
     }
 }

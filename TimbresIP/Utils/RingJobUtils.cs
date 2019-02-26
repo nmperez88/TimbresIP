@@ -21,9 +21,18 @@ namespace TimbresIP.Utils
         public Task Execute(IJobExecutionContext context)
         {
             JobDataMap dataMap = context.MergedJobDataMap;
-            SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"), Type.GetType("TimbresIP.Utils.SoftPhoneUtils"));
 
-            softPhoneUtils.start();
+            if (dataMap.GetString("softPhone") != null && !dataMap.GetString("softPhone").Equals(""))
+            {
+                SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"), Type.GetType("TimbresIP.Utils.SoftPhoneUtils"));
+                softPhoneUtils.start();
+            }
+
+            if (dataMap.GetString("jackCable") != null && !dataMap.GetString("jackCable").Equals(""))
+            {
+                JackCableUtils jackCableUtils = (JackCableUtils)JsonConvert.DeserializeObject(dataMap.GetString("jackCable"), Type.GetType("TimbresIP.Utils.JackCableUtils"));
+                jackCableUtils.start();
+            }
 
             return Task.CompletedTask;
         }

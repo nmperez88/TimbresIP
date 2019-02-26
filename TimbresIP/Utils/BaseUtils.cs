@@ -22,6 +22,7 @@ namespace TimbresIP.Utils
             Properties.Settings.Default.Save();
             //Properties.Settings.Default.Reload();
         }
+        
         /// <summary>
         /// Obtener startId.
         /// </summary>
@@ -56,25 +57,6 @@ namespace TimbresIP.Utils
         /// Gestiona contenido de archivo JSON.
         /// </summary>
         public static JsonHandlerUtils jsonHandlerUtils;
-
-        ///// <summary>
-        ///// Obtener lista de llamadas en ejecución.
-        ///// </summary>
-        ///// <returns></returns>
-        //public CallsRunningUtils getCallsRunningUtils()
-        //{
-        //    jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
-        //    if (!System.IO.File.Exists(callsRunningJsonFileFullPath))
-        //    {
-        //        jsonHandlerUtils.serialize(callsRunningUtils);
-        //    }
-        //    else
-        //    {
-        //        callsRunningUtils = (CallsRunningUtils)jsonHandlerUtils.deserialize();
-        //    }
-
-        //    return callsRunningUtils;
-        //}
 
         /// <summary>
         /// Establecer lista de llamadas en ejecución.

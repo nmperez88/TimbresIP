@@ -50,6 +50,9 @@ namespace TimbresIP
             textBoxGeneralSoundExtExtension.Text = horary.connectionCallServer.registerName;
             textBoxGeneralSoundPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
+            modeModelBindingSource.DataSource = mainController.modeList;
+            object pm = dataGridViewGeneralSound.Columns[5].CellType;
+
             //Llamadas.
             List<CallServerModel> callServerListToAdded = new List<CallServerModel>();
             if (horary.callServerList.Any())
@@ -66,23 +69,11 @@ namespace TimbresIP
                 });
             }
             callServerModelBindingSource.DataSource = callServerListToAdded;
-            //horary.callServerList.ForEach(cs =>
-            //{
-            //    DataTable dataTable = (DataTable)dataGridViewGeneralSound.DataSource;
-            //    DataRow dataRowToAdd = dataTable.NewRow();
-
-            //    //dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile.targetPath;
-            //    dataRowToAdd["soundFileDataGridViewTextBoxColumn"] = cs.soundFile;
-            //    dataRowToAdd["registerNameDataGridViewTextBoxColumn"] = cs.registerName;
-            //    dataRowToAdd["observationsDataGridViewTextBoxColumn"] = cs.observations;
-
-            //    dataTable.Rows.Add(dataRowToAdd);
-            //    dataTable.AcceptChanges();
-            //});
 
         }
+
         /// <summary>
-        /// Cargar datos del comboBox en interfaz.
+        /// Cargar datos del comboBox de sonido en interfaz.
         /// </summary>
         private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
         {
@@ -93,6 +84,20 @@ namespace TimbresIP
                 soundFile = soundFileRef;
             }
             return soundFile;
+
+        }
+
+        /// <summary>
+        /// Cargar datos del comboBox de modos en interfaz.
+        /// </summary>
+        private ModeModel loadDataCellMode(ModeModel mode)
+        {
+            ModeModel modeRef = null;
+            if (Dialog.SelectMode("Modos disponibles", "Seleccione el modo:", ref modeRef, mainController.modeList) == DialogResult.OK)
+            {
+                mode = modeRef;
+            }
+            return mode;
 
         }
 
@@ -266,6 +271,13 @@ namespace TimbresIP
                             else
                             {
                                 MessageBox.Show("Establezca los parametros del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            break;
+
+                        case "modeDataGridViewTextBoxColumn":
+                            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                            {
+                                callServer.mode = loadDataCellMode(callServer.mode);
                             }
                             break;
                     }

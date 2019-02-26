@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseCommon.cs" />
+    <Compile Include="Utils\MediaBaseUtils.cs" />
     <Compile Include="Utils\CallsRunningUtils.cs" />
     <Compile Include="Utils\CypherUtils.cs" />
     <Compile Include="Model\ConfigurationParametersModel.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Common\JobDataCommon.cs" />
     <Compile Include="Utils\HoraryCallServerUtils.cs" />
+    <Compile Include="Model\ModeModel.cs" />
     <Compile Include="Utils\SendMailUtils.cs" />
     <Compile Include="Utils\FeaturesUtils.cs" />
     <Compile Include="Settings.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Utils\FileHandlerUtils.cs" />
     <Compile Include="Utils\JsonHandlerUtils.cs" />
     <Compile Include="Utils\RingJobUtils.cs" />
+    <Compile Include="Utils\JackCableUtils.cs" />
     <Compile Include="Utils\SoftPhoneUtils.cs" />
     <Compile Include="Utils\ValidateEntriesUtils.cs" />
     <Compile Include="Views\GeneralRingUserControl.cs">
@@ -167,6 +170,7 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\TimbresIP.Model.CallServerModel.datasource" />
+    <None Include="Properties\DataSources\TimbresIP.Model.ModeModel.datasource" />
     <None Include="Properties\DataSources\TimbresIP.Model.SoundFileModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -226,6 +230,17 @@
   <ItemGroup>
     <None Include="Resources\Images\endcall16x16.png" />
     <Content Include="sound.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
