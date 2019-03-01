@@ -108,7 +108,7 @@
     <Compile Include="Common\JobDataCommon.cs" />
     <Compile Include="Utils\HoraryCallServerUtils.cs" />
     <Compile Include="Model\ModeModel.cs" />
-    <Compile Include="Utils\SendMailUtils.cs" />
+    <Compile Include="Utils\MailUtils.cs" />
     <Compile Include="Utils\FeaturesUtils.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Utils\BaseUtils.cs" />

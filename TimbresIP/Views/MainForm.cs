@@ -18,7 +18,7 @@ namespace TimbresIP
     {
         ValidateEntriesUtils validationEntries = new ValidateEntriesUtils();
         JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
-        SendMailUtils sendMailUtils = new SendMailUtils();
+        MailUtils sendMailUtils = new MailUtils();
         ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
         //CypherUtils cypherUtils = new CypherUtils();
 
@@ -332,7 +332,7 @@ namespace TimbresIP
 
                     if (!configurationParametersModel.sendedEMail)
                     {
-                        if (sendMailUtils.sendMail())
+                        if (sendMailUtils.send())
                         {
                             configurationParametersModel = new ConfigurationParametersModel(true);
                             jsonHandlerUtils.serialize(configurationParametersModel);
@@ -361,7 +361,7 @@ namespace TimbresIP
                     }
 
                 }
-                else if (sendMailUtils.sendMail())
+                else if (sendMailUtils.send())
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
