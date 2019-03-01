@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {
     /// <summary>
     /// Gestionar archivos.

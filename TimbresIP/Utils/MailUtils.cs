@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
-using TimbresIP.Model;
+using STA.Model;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {   /// <summary>
     /// Envio de correo electrónico    
     /// </summary>

@@ -2,11 +2,11 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
-using TimbresIP.Controller;
-using TimbresIP.Model;
-using TimbresIP.Utils;
+using STA.Controller;
+using STA.Model;
+using STA.Utils;
 
-namespace TimbresIP
+namespace STA
 {
     static class Program
     {

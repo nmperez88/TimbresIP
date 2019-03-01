@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Media;
-using TimbresIP.Common;
+using STA.Common;
 using WMPLib;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {
     /// <summary>
     /// Conector de audio jack 3.5.

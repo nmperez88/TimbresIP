@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {
     class FeaturesUtils : BaseUtils
     {

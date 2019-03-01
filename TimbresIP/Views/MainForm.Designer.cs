@@ -1,4 +1,4 @@
-﻿namespace TimbresIP
+﻿namespace STA
 {
     partial class MainForm
     {
@@ -79,7 +79,7 @@
             this.buttonEditServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonEditServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonEditServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEditServer.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonEditServer.Image = global::STA.Properties.Resources.editc20x20;
             this.buttonEditServer.Location = new System.Drawing.Point(347, 18);
             this.buttonEditServer.Name = "buttonEditServer";
             this.buttonEditServer.Size = new System.Drawing.Size(33, 30);
@@ -96,7 +96,7 @@
             this.buttonSaveServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonSaveServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonSaveServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveServer.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonSaveServer.Image = global::STA.Properties.Resources.savec20x20;
             this.buttonSaveServer.Location = new System.Drawing.Point(388, 18);
             this.buttonSaveServer.Name = "buttonSaveServer";
             this.buttonSaveServer.Size = new System.Drawing.Size(33, 30);
@@ -185,7 +185,7 @@
             this.buttonDeleteHorary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonDeleteHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonDeleteHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteHorary.Image = global::TimbresIP.Properties.Resources.removec20x20;
+            this.buttonDeleteHorary.Image = global::STA.Properties.Resources.removec20x20;
             this.buttonDeleteHorary.Location = new System.Drawing.Point(84, 18);
             this.buttonDeleteHorary.Name = "buttonDeleteHorary";
             this.buttonDeleteHorary.Size = new System.Drawing.Size(33, 30);
@@ -200,7 +200,7 @@
             this.buttonEditHorary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonEditHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonEditHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEditHorary.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonEditHorary.Image = global::STA.Properties.Resources.editc20x20;
             this.buttonEditHorary.Location = new System.Drawing.Point(45, 18);
             this.buttonEditHorary.Name = "buttonEditHorary";
             this.buttonEditHorary.Size = new System.Drawing.Size(33, 30);
@@ -216,7 +216,7 @@
             this.buttonAddHorary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonAddHorary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonAddHorary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddHorary.Image = global::TimbresIP.Properties.Resources.addc20x20;
+            this.buttonAddHorary.Image = global::STA.Properties.Resources.addc20x20;
             this.buttonAddHorary.Location = new System.Drawing.Point(6, 18);
             this.buttonAddHorary.Name = "buttonAddHorary";
             this.buttonAddHorary.Size = new System.Drawing.Size(33, 30);
@@ -261,7 +261,7 @@
             this.buttonSaveAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveAll.Image = global::TimbresIP.Properties.Resources.savec24x24;
+            this.buttonSaveAll.Image = global::STA.Properties.Resources.savec24x24;
             this.buttonSaveAll.Location = new System.Drawing.Point(22, 18);
             this.buttonSaveAll.Name = "buttonSaveAll";
             this.buttonSaveAll.Size = new System.Drawing.Size(33, 30);
@@ -272,7 +272,7 @@
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxLogo.Image = global::TimbresIP.Properties.Resources.soundwhite32x32;
+            this.pictureBoxLogo.Image = global::STA.Properties.Resources.soundwhite32x32;
             this.pictureBoxLogo.Location = new System.Drawing.Point(222, 28);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(32, 32);
@@ -295,7 +295,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administrador de Horarios";
+            this.Text = "Sistema de Timbres Automáticos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.groupBoxMainControl.ResumeLayout(false);

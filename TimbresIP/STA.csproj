@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C51085EC-37CA-4392-9C40-33DE2C19E081}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TimbresIP</RootNamespace>
-    <AssemblyName>TimbresIP</AssemblyName>
+    <RootNamespace>STA</RootNamespace>
+    <AssemblyName>STA</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

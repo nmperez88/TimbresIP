@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {
     /// <summary>
     /// Crear y actualizar archivo JSON.

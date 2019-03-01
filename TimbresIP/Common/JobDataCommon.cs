@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TimbresIP.Model;
-using TimbresIP.Utils;
+using STA.Model;
+using STA.Utils;
 
-namespace TimbresIP.Common
+namespace STA.Common
 {
     /// <summary>
     /// Estructura de datos para los trabajadores.

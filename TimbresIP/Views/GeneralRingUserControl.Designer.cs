@@ -1,4 +1,4 @@
-﻿namespace TimbresIP
+﻿namespace STA
 {
     partial class GeneralRingUserControl
     {
@@ -90,7 +90,7 @@
             this.buttonGeneralSoundSaveExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralSoundSaveExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralSoundSaveExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeneralSoundSaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonGeneralSoundSaveExtension.Image = global::STA.Properties.Resources.savec20x20;
             this.buttonGeneralSoundSaveExtension.Location = new System.Drawing.Point(132, 115);
             this.buttonGeneralSoundSaveExtension.Name = "buttonGeneralSoundSaveExtension";
             this.buttonGeneralSoundSaveExtension.Size = new System.Drawing.Size(33, 30);
@@ -106,7 +106,7 @@
             this.buttonGeneralSoundEditExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralSoundEditExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralSoundEditExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeneralSoundEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonGeneralSoundEditExtension.Image = global::STA.Properties.Resources.editc20x20;
             this.buttonGeneralSoundEditExtension.Location = new System.Drawing.Point(89, 115);
             this.buttonGeneralSoundEditExtension.Name = "buttonGeneralSoundEditExtension";
             this.buttonGeneralSoundEditExtension.Size = new System.Drawing.Size(33, 30);
@@ -204,11 +204,11 @@
             // 
             // modeModelBindingSource
             // 
-            this.modeModelBindingSource.DataSource = typeof(TimbresIP.Model.ModeModel);
+            this.modeModelBindingSource.DataSource = typeof(STA.Model.ModeModel);
             // 
             // callServerModelBindingSource
             // 
-            this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
+            this.callServerModelBindingSource.DataSource = typeof(STA.Model.CallServerModel);
             // 
             // toolTipGeneralRings
             // 
@@ -221,7 +221,7 @@
             this.buttonGeneralAddSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralAddSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralAddSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeneralAddSounds.Image = global::TimbresIP.Properties.Resources.addc20x20;
+            this.buttonGeneralAddSounds.Image = global::STA.Properties.Resources.addc20x20;
             this.buttonGeneralAddSounds.Location = new System.Drawing.Point(6, 35);
             this.buttonGeneralAddSounds.Name = "buttonGeneralAddSounds";
             this.buttonGeneralAddSounds.Size = new System.Drawing.Size(33, 30);
@@ -238,7 +238,7 @@
             this.buttonGeneralDelSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralDelSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonGeneralDelSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeneralDelSounds.Image = global::TimbresIP.Properties.Resources.removec20x20;
+            this.buttonGeneralDelSounds.Image = global::STA.Properties.Resources.removec20x20;
             this.buttonGeneralDelSounds.Location = new System.Drawing.Point(45, 35);
             this.buttonGeneralDelSounds.Name = "buttonGeneralDelSounds";
             this.buttonGeneralDelSounds.Size = new System.Drawing.Size(33, 30);
@@ -261,7 +261,7 @@
             // 
             // soundFileModelBindingSource
             // 
-            this.soundFileModelBindingSource.DataSource = typeof(TimbresIP.Model.SoundFileModel);
+            this.soundFileModelBindingSource.DataSource = typeof(STA.Model.SoundFileModel);
             // 
             // callTimeDataGridViewTextBoxColumn
             // 

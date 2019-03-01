@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimbresIP", "TimbresIP\TimbresIP.csproj", "{C51085EC-37CA-4392-9C40-33DE2C19E081}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STA", "TimbresIP\STA.csproj", "{C51085EC-37CA-4392-9C40-33DE2C19E081}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

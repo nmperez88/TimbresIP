@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimbresIP.Model
+namespace STA.Model
 {
     /// <summary>
     /// Archivo de sonido utilizado en los tonos de llamada del horario.

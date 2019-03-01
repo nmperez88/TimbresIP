@@ -1,4 +1,4 @@
-﻿namespace TimbresIP
+﻿namespace STA
 {
     partial class HoraryUserControl
     {
@@ -145,7 +145,7 @@
             this.buttonHorarySaveExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonHorarySaveExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonHorarySaveExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHorarySaveExtension.Image = global::TimbresIP.Properties.Resources.savec20x20;
+            this.buttonHorarySaveExtension.Image = global::STA.Properties.Resources.savec20x20;
             this.buttonHorarySaveExtension.Location = new System.Drawing.Point(134, 132);
             this.buttonHorarySaveExtension.Name = "buttonHorarySaveExtension";
             this.buttonHorarySaveExtension.Size = new System.Drawing.Size(33, 30);
@@ -161,7 +161,7 @@
             this.buttonHoraryEditExtension.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonHoraryEditExtension.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonHoraryEditExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHoraryEditExtension.Image = global::TimbresIP.Properties.Resources.editc20x20;
+            this.buttonHoraryEditExtension.Image = global::STA.Properties.Resources.editc20x20;
             this.buttonHoraryEditExtension.Location = new System.Drawing.Point(91, 132);
             this.buttonHoraryEditExtension.Name = "buttonHoraryEditExtension";
             this.buttonHoraryEditExtension.Size = new System.Drawing.Size(33, 30);
@@ -236,7 +236,7 @@
             this.buttonHoraryAddHours.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonHoraryAddHours.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonHoraryAddHours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHoraryAddHours.Image = global::TimbresIP.Properties.Resources.addc20x20;
+            this.buttonHoraryAddHours.Image = global::STA.Properties.Resources.addc20x20;
             this.buttonHoraryAddHours.Location = new System.Drawing.Point(10, 17);
             this.buttonHoraryAddHours.Name = "buttonHoraryAddHours";
             this.buttonHoraryAddHours.Size = new System.Drawing.Size(33, 30);
@@ -253,7 +253,7 @@
             this.buttonHoraryDelHours.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonHoraryDelHours.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonHoraryDelHours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHoraryDelHours.Image = global::TimbresIP.Properties.Resources.removec20x20;
+            this.buttonHoraryDelHours.Image = global::STA.Properties.Resources.removec20x20;
             this.buttonHoraryDelHours.Location = new System.Drawing.Point(49, 17);
             this.buttonHoraryDelHours.Name = "buttonHoraryDelHours";
             this.buttonHoraryDelHours.Size = new System.Drawing.Size(33, 30);
@@ -338,11 +338,11 @@
             // 
             // callServerModelBindingSource
             // 
-            this.callServerModelBindingSource.DataSource = typeof(TimbresIP.Model.CallServerModel);
+            this.callServerModelBindingSource.DataSource = typeof(STA.Model.CallServerModel);
             // 
             // soundFileModelBindingSource
             // 
-            this.soundFileModelBindingSource.DataSource = typeof(TimbresIP.Model.SoundFileModel);
+            this.soundFileModelBindingSource.DataSource = typeof(STA.Model.SoundFileModel);
             // 
             // HoraryUserControl
             // 

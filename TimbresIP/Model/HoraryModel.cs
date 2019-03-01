@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TimbresIP.Model
+namespace STA.Model
 {
     /// <summary>
     /// Horario.

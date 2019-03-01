@@ -3,7 +3,7 @@ using Quartz;
 using System;
 using System.Threading.Tasks;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {
     /// <summary>
     /// Tareas para timbres de llamadas.

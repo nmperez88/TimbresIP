@@ -2,9 +2,9 @@
 using Ozeki.Media;
 using Ozeki.VoIP;
 using System;
-using TimbresIP.Common;
+using STA.Common;
 
-namespace TimbresIP.Utils
+namespace STA.Utils
 {
     /// <summary>
     /// Gestionar conexión con el servidor.

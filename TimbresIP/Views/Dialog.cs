@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using TimbresIP.Model;
-using TimbresIP.Utils;
+using STA.Model;
+using STA.Utils;
 using utils;
 
-namespace TimbresIP
+namespace STA
 {
     class Dialog
     {

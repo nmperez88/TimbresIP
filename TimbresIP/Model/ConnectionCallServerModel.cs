@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimbresIP.Model
+namespace STA.Model
 {
     /// <summary>
     /// Datos de conexión para hacer llamadas.

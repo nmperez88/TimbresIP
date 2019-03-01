@@ -1,6 +1,6 @@
-﻿using TimbresIP.Utils;
+﻿using STA.Utils;
 
-namespace TimbresIP.Common
+namespace STA.Common
 {
     class BaseCommon : BaseUtils
     {

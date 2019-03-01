@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using TimbresIP.Utils;
+using STA.Utils;
 
-namespace TimbresIP.Model
+namespace STA.Model
 {
     /// <summary>
     /// Caracteristicas de la PC cliente

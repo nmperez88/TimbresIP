@@ -6,12 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using TimbresIP.Controller;
-using TimbresIP.Model;
-using TimbresIP.Utils;
+using STA.Controller;
+using STA.Model;
+using STA.Utils;
 using utils;
 
-namespace TimbresIP
+namespace STA
 {
     partial class HoraryUserControl : UserControl
     {

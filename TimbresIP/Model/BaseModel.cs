@@ -1,6 +1,6 @@
-﻿using TimbresIP.Utils;
+﻿using STA.Utils;
 
-namespace TimbresIP.Model
+namespace STA.Model
 {
     class BaseModel : BaseUtils
     {

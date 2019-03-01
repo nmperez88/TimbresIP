@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimbresIP.Model
+namespace STA.Model
 {
     /// <summary>
     /// Modo de ejecución. Llamada o jack audio 3.5

@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TimbresIP.Utils;
-using TimbresIP.Model;
-using TimbresIP.Controller;
-namespace TimbresIP
+using STA.Utils;
+using STA.Model;
+using STA.Controller;
+namespace STA
 {
     public partial class MainForm : MaterialSkin.Controls.MaterialForm
     {
