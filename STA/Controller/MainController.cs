@@ -76,7 +76,7 @@ namespace STA.Controller
             if (System.IO.File.Exists(jsonFileFullPathEncrypted))
             {
                 cypherUtils.FileDecrypt(jsonFileFullPathEncrypted, jsonFileFullPath, Properties.Settings.Default.cypherPassword);
-                jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath, "TimbresIP.Model.AutomaticRingSystemModel");
+                jsonHandlerUtils = new JsonHandlerUtils(jsonFileFullPath, "STA.Model.AutomaticRingSystemModel");
                 automaticRingSystem = (AutomaticRingSystemModel)jsonHandlerUtils.deserialize();
                 try
                 {

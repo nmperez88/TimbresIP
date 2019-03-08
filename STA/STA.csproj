@@ -72,6 +72,9 @@
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -169,9 +172,8 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
-    <None Include="Properties\DataSources\TimbresIP.Model.CallServerModel.datasource" />
-    <None Include="Properties\DataSources\TimbresIP.Model.ModeModel.datasource" />
-    <None Include="Properties\DataSources\TimbresIP.Model.SoundFileModel.datasource" />
+    <None Include="Properties\DataSources\STA.Model.CallServerModel.datasource" />
+    <None Include="Properties\DataSources\STA.Model.SoundFileModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

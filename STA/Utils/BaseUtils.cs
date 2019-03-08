@@ -64,7 +64,7 @@ namespace STA.Utils
         /// <returns></returns>
         public static void setCallsRunningUtils()
         {
-            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "STA.Utils.CallsRunningUtils");
             jsonHandlerUtils.serialize(callsRunningUtils);
         }
 
@@ -74,7 +74,7 @@ namespace STA.Utils
         /// <returns></returns>
         public static CallsRunningUtils getCallsRunningUtils()
         {
-            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "STA.Utils.CallsRunningUtils");
             if (!System.IO.File.Exists(callsRunningJsonFileFullPath))
             {
                 jsonHandlerUtils.serialize(callsRunningUtils);
@@ -94,7 +94,7 @@ namespace STA.Utils
         public static void resetCallsRunningUtils()
         {
             callsRunningUtils = new CallsRunningUtils();
-            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "TimbresIP.Utils.CallsRunningUtils");
+            jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "STA.Utils.CallsRunningUtils");
             jsonHandlerUtils.serialize(callsRunningUtils);
 
         }

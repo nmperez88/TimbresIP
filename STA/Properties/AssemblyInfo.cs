@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TimbresIP")]
-[assembly: AssemblyDescription("Aplicación para automatizar los timbres de cambios de hora sobre protocolo SIP")]
+[assembly: AssemblyTitle("STA")]
+[assembly: AssemblyDescription("Aplicación para automatizar los timbres de cambios de hora")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BITDATA")]
-[assembly: AssemblyProduct("AdminHorarios")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyProduct("STA")]
+[assembly: AssemblyCopyright("Copyright © 2018")]
 [assembly: AssemblyTrademark("BITDATA")]
 [assembly: AssemblyCulture("")]
 

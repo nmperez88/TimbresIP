@@ -65,7 +65,7 @@ namespace STA.Utils
         /// Nombre de clase. Incluir espacio de nombres.
         /// Ej: 
         ///     Clase: BaseUtils 
-        /// className: TimbresIP.Utils.BaseUtils
+        /// className: STA.Utils.BaseUtils
         /// </param>
         public JsonHandlerUtils(string fullPath, String className)
         {

@@ -50,7 +50,6 @@ namespace STA
             textBoxGeneralSoundExtExtension.Text = horary.connectionCallServer.registerName;
             textBoxGeneralSoundPasswordExtension.Text = horary.connectionCallServer.registerPassword;
 
-            modeModelBindingSource.DataSource = mainController.modeList;
             object pm = dataGridViewGeneralSound.Columns[5].CellType;
 
             //Llamadas.
@@ -79,7 +78,7 @@ namespace STA
         {
             string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds;
             SoundFileModel soundFileRef = null;
-            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", ref soundFileRef, soundDir) == DialogResult.OK)
+            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", soundFile, ref soundFileRef, soundDir) == DialogResult.OK)
             {
                 soundFile = soundFileRef;
             }
@@ -93,7 +92,7 @@ namespace STA
         private ModeModel loadDataCellMode(ModeModel mode)
         {
             ModeModel modeRef = null;
-            if (Dialog.SelectMode("Modos disponibles", "Seleccione el modo:", ref modeRef, mainController.modeList) == DialogResult.OK)
+            if (Dialog.SelectMode("Modos disponibles", "Seleccione el modo:", mode, ref modeRef, mainController.modeList) == DialogResult.OK)
             {
                 mode = modeRef;
             }

@@ -296,16 +296,16 @@ namespace STA.Utils
             {
                 call.HangUp();
                 log.Info("Colgando llamada!");
-                getCallsRunningUtils();
-                if (callsRunningUtils.idsList.Contains(jobDataCommonStatic.idJob))
-                {
-                    callsRunningUtils.idsList.Remove(jobDataCommonStatic.idJob);
-                    setCallsRunningUtils();
-                }
             }
             else
             {
                 log.Info("Llamada no inicializada!");
+            }
+            getCallsRunningUtils();
+            if (callsRunningUtils.idsList.Contains(jobDataCommonStatic.idJob))
+            {
+                callsRunningUtils.idsList.Remove(jobDataCommonStatic.idJob);
+                setCallsRunningUtils();
             }
         }
 

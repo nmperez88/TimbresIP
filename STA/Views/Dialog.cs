@@ -60,7 +60,7 @@ namespace STA
             return dialogResult;
         }
 
-        static public DialogResult SelectSoundFile(string title, string promptText, ref SoundFileModel soundFile, string soundDir)
+        static public DialogResult SelectSoundFile(string title, string promptText, SoundFileModel soundFile, ref SoundFileModel soundFileRef, string soundDir)
         {
             Form form = new Form();
             Label label = new Label();
@@ -74,17 +74,26 @@ namespace STA
 
             try
             {
-               List<SoundFileModel> soundFileList = new List<SoundFileModel>();
+                List<SoundFileModel> soundFileList = new List<SoundFileModel>();
                 DirectoryInfo dirInfo = new DirectoryInfo(soundDir);
 
                 dirInfo.GetFiles().ForEach(f =>
                 {
-                    SoundFileModel soundFileModel=  new SoundFileModel();
+                    SoundFileModel soundFileModel = new SoundFileModel();
                     soundFileModel.name = ((FileInfo)f).Name;
                     soundFileModel.targetPath = ((FileInfo)f).FullName;
                     soundFileList.Add(soundFileModel);
                 });
                 comboBox.DataSource = soundFileList;
+                comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+                form.Shown += (s, e) =>
+                {
+                    SoundFileModel selectedItem = soundFileList.Find(sf => sf.name.Equals(soundFile.name));
+                    if (selectedItem != null)
+                    {
+                        comboBox.SelectedItem = selectedItem;
+                    }
+                };
             }
             catch (Exception er)
             {
@@ -106,16 +115,9 @@ namespace STA
             buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
-            //pictureBox.Location = new System.Drawing.Point(50, 70);
-            //pictureBox.Size = new System.Drawing.Size(24, 24);
-            //pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
-            //pictureBox.Image = Properties.Resources.information24x24;
-
             form.ClientSize = new Size(396, 107);
-            //form.Controls.AddRange(new Control[] { pictureBox, label, comboBox, buttonOk, buttonCancel });
             form.Controls.AddRange(new Control[] { label, comboBox, buttonOk, buttonCancel });
             form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-            //form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.FormBorderStyle = FormBorderStyle.None;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MinimizeBox = false;
@@ -124,12 +126,12 @@ namespace STA
             form.CancelButton = buttonCancel;
 
             DialogResult dialogResult = form.ShowDialog();
-            soundFile = (SoundFileModel)comboBox.SelectedValue;
+            soundFileRef = (SoundFileModel)comboBox.SelectedValue;
             return dialogResult;
         }
 
 
-        static public DialogResult SelectMode(string title, string promptText, ref ModeModel mode, List<ModeModel> modeList)
+        static public DialogResult SelectMode(string title, string promptText, ModeModel mode, ref ModeModel modeRef, List<ModeModel> modeList)
         {
             Form form = new Form();
             Label label = new Label();
@@ -142,7 +144,15 @@ namespace STA
             label.Text = promptText;
 
             comboBox.DataSource = modeList;
-
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            form.Shown += (s, e) =>
+            {
+                ModeModel selectedItem = modeList.Find(m => m.value.Equals(mode.value));
+                if (selectedItem != null)
+                {
+                    comboBox.SelectedItem = selectedItem;
+                }
+            };
 
             buttonOk.Text = "OK";
             buttonCancel.Text = "Cancel";
@@ -170,7 +180,7 @@ namespace STA
             form.CancelButton = buttonCancel;
 
             DialogResult dialogResult = form.ShowDialog();
-            mode = (ModeModel)comboBox.SelectedValue;
+            modeRef = (ModeModel)comboBox.SelectedValue;
             return dialogResult;
         }
     }

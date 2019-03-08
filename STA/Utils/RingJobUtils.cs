@@ -24,13 +24,13 @@ namespace STA.Utils
 
             if (dataMap.GetString("softPhone") != null && !dataMap.GetString("softPhone").Equals(""))
             {
-                SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"), Type.GetType("TimbresIP.Utils.SoftPhoneUtils"));
+                SoftPhoneUtils softPhoneUtils = (SoftPhoneUtils)JsonConvert.DeserializeObject(dataMap.GetString("softPhone"), Type.GetType("STA.Utils.SoftPhoneUtils"));
                 softPhoneUtils.start();
             }
 
             if (dataMap.GetString("jackCable") != null && !dataMap.GetString("jackCable").Equals(""))
             {
-                JackCableUtils jackCableUtils = (JackCableUtils)JsonConvert.DeserializeObject(dataMap.GetString("jackCable"), Type.GetType("TimbresIP.Utils.JackCableUtils"));
+                JackCableUtils jackCableUtils = (JackCableUtils)JsonConvert.DeserializeObject(dataMap.GetString("jackCable"), Type.GetType("STA.Utils.JackCableUtils"));
                 jackCableUtils.start();
             }
 
