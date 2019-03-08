@@ -157,9 +157,6 @@ namespace STA
                 switch (this.dataGridViewGeneralSound.Columns[e.ColumnIndex].Name)
                 {
                     case "ColumnCall":
-                        //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                        //DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
                         image = Properties.Resources.call16x16;
                         e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
@@ -169,9 +166,6 @@ namespace STA
                         e.Handled = true;
                         break;
                     case "ColumnEndCall":
-                        //e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                        //DataGridViewButtonCell cellBoton = this.dataGridViewHorary.Rows[e.RowIndex].Cells["ColumnCall"] as DataGridViewButtonCell;
                         image = Properties.Resources.endcall16x16;
                         e.Graphics.DrawImage(image, e.CellBounds.Left + 12, e.CellBounds.Top + 3);
 
