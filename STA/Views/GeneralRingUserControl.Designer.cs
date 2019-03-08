@@ -39,6 +39,12 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
+            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonGeneralAddSounds = new System.Windows.Forms.Button();
+            this.buttonGeneralDelSounds = new System.Windows.Forms.Button();
+            this.groupBoxGeneralActions = new System.Windows.Forms.GroupBox();
+            this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.callTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,12 +56,6 @@
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonGeneralAddSounds = new System.Windows.Forms.Button();
-            this.buttonGeneralDelSounds = new System.Windows.Forms.Button();
-            this.groupBoxGeneralActions = new System.Windows.Forms.GroupBox();
-            this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
@@ -201,90 +201,6 @@
             this.dataGridViewGeneralSound.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewGeneralSound_RowHeaderMouseClick);
             this.dataGridViewGeneralSound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewGeneralSound_RowValidating);
             // 
-            // callTimeDataGridViewTextBoxColumn
-            // 
-            this.callTimeDataGridViewTextBoxColumn.DataPropertyName = "callTime";
-            this.callTimeDataGridViewTextBoxColumn.HeaderText = "T/Sonido";
-            this.callTimeDataGridViewTextBoxColumn.Name = "callTimeDataGridViewTextBoxColumn";
-            this.callTimeDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // soundFileDataGridViewTextBoxColumn
-            // 
-            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
-            this.soundFileDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.soundFileDataGridViewTextBoxColumn.HeaderText = "Tono";
-            this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
-            this.soundFileDataGridViewTextBoxColumn.ReadOnly = true;
-            this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // registerNameDataGridViewTextBoxColumn
-            // 
-            this.registerNameDataGridViewTextBoxColumn.DataPropertyName = "registerName";
-            this.registerNameDataGridViewTextBoxColumn.HeaderText = "Extensión";
-            this.registerNameDataGridViewTextBoxColumn.Name = "registerNameDataGridViewTextBoxColumn";
-            this.registerNameDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // ColumnCall
-            // 
-            this.ColumnCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnCall.HeaderText = "Llamar";
-            this.ColumnCall.Name = "ColumnCall";
-            this.ColumnCall.Text = "Llamar";
-            this.ColumnCall.Width = 40;
-            // 
-            // ColumnEndCall
-            // 
-            this.ColumnEndCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnEndCall.HeaderText = "Colgar";
-            this.ColumnEndCall.Name = "ColumnEndCall";
-            this.ColumnEndCall.Text = "Colgar";
-            this.ColumnEndCall.Width = 40;
-            // 
-            // modeDataGridViewTextBoxColumn
-            // 
-            this.modeDataGridViewTextBoxColumn.DataPropertyName = "mode";
-            this.modeDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.modeDataGridViewTextBoxColumn.HeaderText = "Modo";
-            this.modeDataGridViewTextBoxColumn.Name = "modeDataGridViewTextBoxColumn";
-            this.modeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.modeDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // observationsDataGridViewTextBoxColumn
-            // 
-            this.observationsDataGridViewTextBoxColumn.DataPropertyName = "observations";
-            this.observationsDataGridViewTextBoxColumn.HeaderText = "Observaciones";
-            this.observationsDataGridViewTextBoxColumn.Name = "observationsDataGridViewTextBoxColumn";
-            // 
-            // randomIdDataGridViewTextBoxColumn
-            // 
-            this.randomIdDataGridViewTextBoxColumn.DataPropertyName = "randomId";
-            this.randomIdDataGridViewTextBoxColumn.HeaderText = "randomId";
-            this.randomIdDataGridViewTextBoxColumn.Name = "randomIdDataGridViewTextBoxColumn";
-            this.randomIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // noDataGridViewTextBoxColumn
-            // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "no";
-            this.noDataGridViewTextBoxColumn.HeaderText = "no";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            this.noDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // startAtDataGridViewTextBoxColumn
-            // 
-            this.startAtDataGridViewTextBoxColumn.DataPropertyName = "startAt";
-            this.startAtDataGridViewTextBoxColumn.HeaderText = "startAt";
-            this.startAtDataGridViewTextBoxColumn.Name = "startAtDataGridViewTextBoxColumn";
-            this.startAtDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // enabledDataGridViewCheckBoxColumn
-            // 
-            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "enabled";
-            this.enabledDataGridViewCheckBoxColumn.HeaderText = "enabled";
-            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
-            this.enabledDataGridViewCheckBoxColumn.Visible = false;
-            // 
             // callServerModelBindingSource
             // 
             this.callServerModelBindingSource.DataSource = typeof(STA.Model.CallServerModel);
@@ -342,6 +258,91 @@
             // soundFileModelBindingSource
             // 
             this.soundFileModelBindingSource.DataSource = typeof(STA.Model.SoundFileModel);
+            // 
+            // callTimeDataGridViewTextBoxColumn
+            // 
+            this.callTimeDataGridViewTextBoxColumn.DataPropertyName = "callTime";
+            this.callTimeDataGridViewTextBoxColumn.HeaderText = "T/Sonido";
+            this.callTimeDataGridViewTextBoxColumn.Name = "callTimeDataGridViewTextBoxColumn";
+            this.callTimeDataGridViewTextBoxColumn.Width = 55;
+            // 
+            // soundFileDataGridViewTextBoxColumn
+            // 
+            this.soundFileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soundFileDataGridViewTextBoxColumn.DataPropertyName = "soundFile";
+            this.soundFileDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.soundFileDataGridViewTextBoxColumn.HeaderText = "Tono";
+            this.soundFileDataGridViewTextBoxColumn.Name = "soundFileDataGridViewTextBoxColumn";
+            this.soundFileDataGridViewTextBoxColumn.ReadOnly = true;
+            this.soundFileDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // registerNameDataGridViewTextBoxColumn
+            // 
+            this.registerNameDataGridViewTextBoxColumn.DataPropertyName = "registerName";
+            this.registerNameDataGridViewTextBoxColumn.HeaderText = "Extensión";
+            this.registerNameDataGridViewTextBoxColumn.Name = "registerNameDataGridViewTextBoxColumn";
+            this.registerNameDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // ColumnCall
+            // 
+            this.ColumnCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnCall.HeaderText = "Llamar";
+            this.ColumnCall.Name = "ColumnCall";
+            this.ColumnCall.Text = "Llamar";
+            this.ColumnCall.Width = 40;
+            // 
+            // ColumnEndCall
+            // 
+            this.ColumnEndCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnEndCall.HeaderText = "Colgar";
+            this.ColumnEndCall.Name = "ColumnEndCall";
+            this.ColumnEndCall.Text = "Colgar";
+            this.ColumnEndCall.Width = 40;
+            // 
+            // modeDataGridViewTextBoxColumn
+            // 
+            this.modeDataGridViewTextBoxColumn.DataPropertyName = "mode";
+            this.modeDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.modeDataGridViewTextBoxColumn.HeaderText = "Modo";
+            this.modeDataGridViewTextBoxColumn.Name = "modeDataGridViewTextBoxColumn";
+            this.modeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.modeDataGridViewTextBoxColumn.Visible = false;
+            this.modeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // observationsDataGridViewTextBoxColumn
+            // 
+            this.observationsDataGridViewTextBoxColumn.DataPropertyName = "observations";
+            this.observationsDataGridViewTextBoxColumn.HeaderText = "Observaciones";
+            this.observationsDataGridViewTextBoxColumn.Name = "observationsDataGridViewTextBoxColumn";
+            // 
+            // randomIdDataGridViewTextBoxColumn
+            // 
+            this.randomIdDataGridViewTextBoxColumn.DataPropertyName = "randomId";
+            this.randomIdDataGridViewTextBoxColumn.HeaderText = "randomId";
+            this.randomIdDataGridViewTextBoxColumn.Name = "randomIdDataGridViewTextBoxColumn";
+            this.randomIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "no";
+            this.noDataGridViewTextBoxColumn.HeaderText = "no";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // startAtDataGridViewTextBoxColumn
+            // 
+            this.startAtDataGridViewTextBoxColumn.DataPropertyName = "startAt";
+            this.startAtDataGridViewTextBoxColumn.HeaderText = "startAt";
+            this.startAtDataGridViewTextBoxColumn.Name = "startAtDataGridViewTextBoxColumn";
+            this.startAtDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // enabledDataGridViewCheckBoxColumn
+            // 
+            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "enabled";
+            this.enabledDataGridViewCheckBoxColumn.HeaderText = "enabled";
+            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
+            this.enabledDataGridViewCheckBoxColumn.Visible = false;
             // 
             // GeneralRingUserControl
             // 
