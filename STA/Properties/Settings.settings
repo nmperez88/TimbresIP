@@ -23,19 +23,19 @@
     <Setting Name="softPhoneRangeMax" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10000</Value>
     </Setting>
-    <Setting Name="jsonConfigurationParametersName" Type="System.String" Scope="User">
+    <Setting Name="jsonConfigParamsName" Type="System.String" Scope="User">
       <Value Profile="(Default)">ConfigurationParameters</Value>
     </Setting>
-    <Setting Name="adminHorariosSoundFolderName" Type="System.String" Scope="User">
+    <Setting Name="soundFolderName" Type="System.String" Scope="User">
       <Value Profile="(Default)">AdminHorariosSounds</Value>
     </Setting>
     <Setting Name="callTime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
-    <Setting Name="GeneralSounds" Type="System.String" Scope="User">
+    <Setting Name="generalSounds" Type="System.String" Scope="User">
       <Value Profile="(Default)">GeneralSounds</Value>
     </Setting>
-    <Setting Name="HorarySounds" Type="System.String" Scope="User">
+    <Setting Name="horarySounds" Type="System.String" Scope="User">
       <Value Profile="(Default)">HorarySounds</Value>
     </Setting>
     <Setting Name="cypherPassword" Type="System.String" Scope="User">

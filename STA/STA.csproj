@@ -127,6 +127,12 @@
     <Compile Include="Utils\JackCableUtils.cs" />
     <Compile Include="Utils\SoftPhoneUtils.cs" />
     <Compile Include="Utils\ValidateEntriesUtils.cs" />
+    <Compile Include="Views\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\BaseUserControl.Designer.cs">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GeneralRingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

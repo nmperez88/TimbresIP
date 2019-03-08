@@ -9,35 +9,27 @@ using System.Windows.Forms;
 using STA.Controller;
 using STA.Model;
 using STA.Utils;
+using STA.Views;
 using utils;
 
 namespace STA
 {
-    partial class HoraryUserControl : UserControl
+    //partial class HoraryUserControl : UserControl
+    partial class HoraryUserControl : BaseUserControl
     {
-        ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
-        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-        JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
-
-        /// <summary>
-        /// Horario.
-        /// </summary>
-        public HoraryModel horary;
-
-        /// <summary>
-        /// Controlador principal.
-        /// </summary>
-        public MainController mainController;
+        //ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
+        //ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+        //JsonHandlerUtils jsonHandlerUtils = new JsonHandlerUtils();
 
         ///// <summary>
-        ///// Constructor por defecto.
+        ///// Horario.
         ///// </summary>
-        //public HoraryUserControl()
-        //{
-        //    horary = new HoraryModel();
-        //    InitializeComponent();
+        //public HoraryModel horary;
 
-        //}
+        ///// <summary>
+        ///// Controlador principal.
+        ///// </summary>
+        //public MainController mainController;
 
         /// <summary>
         /// Constructor. Para cargar datos en interfaz.
@@ -84,19 +76,40 @@ namespace STA
         }
 
         /// <summary>
-        /// Cargar datos del comboBox en interfaz.
+        /// Cargar datos del comboBox de sonido en interfaz.
         /// </summary>
-        private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
+        protected SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
         {
-            string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds;
-            SoundFileModel soundFileRef = null;
-            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", soundFile, ref soundFileRef, soundDir) == DialogResult.OK)
-            {
-                soundFile = soundFileRef;
-            }
-            return soundFile;
-
+            return loadDataCellSoundFile(soundFile, Properties.Settings.Default.horarySounds);
         }
+
+        ///// <summary>
+        ///// Cargar datos del comboBox en interfaz.
+        ///// </summary>
+        //private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
+        //{
+        //    string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.soundFolderName + "\\" + Properties.Settings.Default.horarySounds;
+        //    SoundFileModel soundFileRef = null;
+        //    if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", soundFile, ref soundFileRef, soundDir) == DialogResult.OK)
+        //    {
+        //        soundFile = soundFileRef;
+        //    }
+        //    return soundFile;
+
+        //}
+
+        ///// <summary>
+        ///// Cargar datos del comboBox de modos en interfaz.
+        ///// </summary>
+        //private ModeModel loadDataCellMode(ModeModel mode)
+        //{
+        //    ModeModel modeRef = null;
+        //    if (Dialog.SelectMode("Modos disponibles", "Seleccione el modo:", mode, ref modeRef, mainController.modeList) == DialogResult.OK)
+        //    {
+        //        mode = modeRef;
+        //    }
+        //    return mode;
+        //}
 
         /// <summary>
         /// Binding.
@@ -380,7 +393,7 @@ namespace STA
 
         private void HoraryUserControl_Load(object sender, EventArgs e)
         {
-            jsonHandlerUtils = new JsonHandlerUtils(validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "STA.Model.ConfigurationParametersModel");
+            jsonHandlerUtils = new JsonHandlerUtils(validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension, "STA.Model.ConfigurationParametersModel");
             configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
 
             loadData();
@@ -440,7 +453,7 @@ namespace STA
         private void buttonHoraryAddHours_Click(object sender, EventArgs e)
         {
             if (isValid())
-            { 
+            {
                 if (this.dataGridViewHorary.Rows.Count == configurationParametersModel.numberHours + 1)
                 {
                     MessageBox.Show("No se puede crear más horas, ya exedió el límite licenciado. Por favor póngase en contacto con el proveedor del sistema.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);

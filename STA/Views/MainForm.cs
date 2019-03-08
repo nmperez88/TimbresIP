@@ -312,13 +312,13 @@ namespace STA
             generalRingUserControl.Dock = DockStyle.Fill;
             try
             {
-                jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, "STA.Model.ConfigurationParametersModel");
+                jsonHandlerUtils = new JsonHandlerUtils(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension, "STA.Model.ConfigurationParametersModel");
 
-                if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes"))
+                if (File.Exists(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension + ".aes"))
                 {
-                    BaseUtils.cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    BaseUtils.cypherUtils.FileDecrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension + ".aes", validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
                     configurationParametersModel = (ConfigurationParametersModel)jsonHandlerUtils.deserialize();
-                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension);
 
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
@@ -365,8 +365,8 @@ namespace STA
                 {
                     configurationParametersModel = new ConfigurationParametersModel(true);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    BaseUtils.cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
-                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+                    BaseUtils.cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension);
                     this.groupBoxGeneralSound.Controls.Add(generalRingUserControl);
                     MessageBox.Show("Estimado usuario, hemos registrado la instalación de su producto satisfactoriamente con fecha: " + DateTime.Now + ". Esperamos sea de su agrado y utilidad. Equipo BITDATA", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadData();
@@ -375,8 +375,8 @@ namespace STA
                 {
                     configurationParametersModel = new ConfigurationParametersModel(false);
                     jsonHandlerUtils.serialize(configurationParametersModel);
-                    BaseUtils.cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
-                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigurationParametersName + Properties.Settings.Default.jsonExtension);
+                    BaseUtils.cypherUtils.FileEncrypt(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension, Properties.Settings.Default.cypherPassword);
+                    File.Delete(validationEntries.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonConfigParamsName + Properties.Settings.Default.jsonExtension);
                     DateTime fechaActual = DateTime.Now;
                     TimeSpan diferenciaDiasFechas = fechaActual - configurationParametersModel.installedDate;
                     int diasRestantes = diferenciaDiasFechas.Days;

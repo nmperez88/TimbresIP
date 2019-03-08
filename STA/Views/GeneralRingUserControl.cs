@@ -9,25 +9,27 @@ using System.Windows.Forms;
 using STA.Controller;
 using STA.Model;
 using STA.Utils;
+using STA.Views;
 using utils;
 
 namespace STA
 {
-    partial class GeneralRingUserControl : UserControl
+    //partial class GeneralRingUserControl : UserControl
+    partial class GeneralRingUserControl : BaseUserControl
     {
-        ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
-        ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
+        //ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
+        //ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
 
 
-        /// <summary>
-        /// Horario.
-        /// </summary>
-        public HoraryModel horary { get; set; }
+        ///// <summary>
+        ///// Horario.
+        ///// </summary>
+        //public HoraryModel horary { get; set; }
 
-        /// <summary>
-        /// Controlador principal.
-        /// </summary>
-        public MainController mainController;
+        ///// <summary>
+        ///// Controlador principal.
+        ///// </summary>
+        //public MainController mainController;
 
         /// <summary>
         /// Constructor por defecto.
@@ -74,31 +76,39 @@ namespace STA
         /// <summary>
         /// Cargar datos del comboBox de sonido en interfaz.
         /// </summary>
-        private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
+        protected SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
         {
-            string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.GeneralSounds;
-            SoundFileModel soundFileRef = null;
-            if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", soundFile, ref soundFileRef, soundDir) == DialogResult.OK)
-            {
-                soundFile = soundFileRef;
-            }
-            return soundFile;
-
+            return loadDataCellSoundFile(soundFile, Properties.Settings.Default.generalSounds);
         }
 
-        /// <summary>
-        /// Cargar datos del comboBox de modos en interfaz.
-        /// </summary>
-        private ModeModel loadDataCellMode(ModeModel mode)
-        {
-            ModeModel modeRef = null;
-            if (Dialog.SelectMode("Modos disponibles", "Seleccione el modo:", mode, ref modeRef, mainController.modeList) == DialogResult.OK)
-            {
-                mode = modeRef;
-            }
-            return mode;
+        ///// <summary>
+        ///// Cargar datos del comboBox de sonido en interfaz.
+        ///// </summary>
+        //private SoundFileModel loadDataCellSoundFile(SoundFileModel soundFile)
+        //{
+        //    string soundDir = BaseUtils.validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.soundFolderName + "\\" + Properties.Settings.Default.generalSounds;
+        //    SoundFileModel soundFileRef = null;
+        //    if (Dialog.SelectSoundFile("Tonos disponibles", "Seleccione el tono:", soundFile, ref soundFileRef, soundDir) == DialogResult.OK)
+        //    {
+        //        soundFile = soundFileRef;
+        //    }
+        //    return soundFile;
 
-        }
+        //}
+
+        ///// <summary>
+        ///// Cargar datos del comboBox de modos en interfaz.
+        ///// </summary>
+        //private ModeModel loadDataCellMode(ModeModel mode)
+        //{
+        //    ModeModel modeRef = null;
+        //    if (Dialog.SelectMode("Modos disponibles", "Seleccione el modo:", mode, ref modeRef, mainController.modeList) == DialogResult.OK)
+        //    {
+        //        mode = modeRef;
+        //    }
+        //    return mode;
+
+        //}
 
         /// <summary>
         /// Binding.

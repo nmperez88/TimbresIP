@@ -43,7 +43,7 @@ namespace STA
                         SoundFileModel soundFile = new SoundFileModel();
                         String filename = "helloworld" + a + ".mp3";
                         soundFile.name = filename;
-                        soundFile.targetPath = validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.adminHorariosSoundFolderName + "\\" + Properties.Settings.Default.HorarySounds + "\\" + filename;
+                        soundFile.targetPath = validateEntriesUtils.getMyDocumentsPath() + "\\" + Properties.Settings.Default.soundFolderName + "\\" + Properties.Settings.Default.horarySounds + "\\" + filename;
                         CallServerModel callServer = new CallServerModel(a + 1, "23:54:" + sec, 5, soundFile, true, "1300", "llamada " + a);
                         horary.callServerList.Add(callServer);
                     }

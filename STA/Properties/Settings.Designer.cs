@@ -111,24 +111,24 @@ namespace STA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ConfigurationParameters")]
-        public string jsonConfigurationParametersName {
+        public string jsonConfigParamsName {
             get {
-                return ((string)(this["jsonConfigurationParametersName"]));
+                return ((string)(this["jsonConfigParamsName"]));
             }
             set {
-                this["jsonConfigurationParametersName"] = value;
+                this["jsonConfigParamsName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("AdminHorariosSounds")]
-        public string adminHorariosSoundFolderName {
+        public string soundFolderName {
             get {
-                return ((string)(this["adminHorariosSoundFolderName"]));
+                return ((string)(this["soundFolderName"]));
             }
             set {
-                this["adminHorariosSoundFolderName"] = value;
+                this["soundFolderName"] = value;
             }
         }
         
@@ -147,24 +147,24 @@ namespace STA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("GeneralSounds")]
-        public string GeneralSounds {
+        public string generalSounds {
             get {
-                return ((string)(this["GeneralSounds"]));
+                return ((string)(this["generalSounds"]));
             }
             set {
-                this["GeneralSounds"] = value;
+                this["generalSounds"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("HorarySounds")]
-        public string HorarySounds {
+        public string horarySounds {
             get {
-                return ((string)(this["HorarySounds"]));
+                return ((string)(this["horarySounds"]));
             }
             set {
-                this["HorarySounds"] = value;
+                this["horarySounds"] = value;
             }
         }
         
