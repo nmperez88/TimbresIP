@@ -12,22 +12,8 @@ using utils;
 
 namespace STA
 {
-    //partial class GeneralRingUserControl : UserControl
     partial class GeneralRingUserControl : BaseUserControl
     {
-        //ValidateEntriesUtils validateEntriesUtils = new ValidateEntriesUtils();
-        //ConfigurationParametersModel configurationParametersModel = new ConfigurationParametersModel();
-
-
-        ///// <summary>
-        ///// Horario.
-        ///// </summary>
-        //public HoraryModel horary { get; set; }
-
-        ///// <summary>
-        ///// Controlador principal.
-        ///// </summary>
-        //public MainController mainController;
 
         /// <summary>
         /// Constructor por defecto.
