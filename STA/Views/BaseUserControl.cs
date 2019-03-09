@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using STA.Controller;
+﻿using STA.Controller;
 using STA.Model;
 using STA.Utils;
+using System;
+using System.Linq;
 using System.Windows.Forms;
+using utils;
 
 namespace STA.Views
 {
@@ -63,6 +58,34 @@ namespace STA.Views
             }
             return mode;
 
+        }
+
+
+        /// <summary>
+        /// Chequear si son válidas las columnas requeridas en las filas del horario.
+        /// </summary>
+        /// <returns></returns>
+        protected Boolean isValid(DataGridView dataGridView, String[] columnsToJump)
+        {
+            Boolean isRowValid = true;
+            dataGridView.Rows.ForEach(r =>
+            {
+                DataGridViewRow dataGridViewRow = ((DataGridViewRow)r);
+                dataGridViewRow.Cells.ForEach(c =>
+                {
+                    DataGridViewCell dataGridViewCell = ((DataGridViewCell)c);
+                    if (!columnsToJump.Contains(dataGridViewCell.OwningColumn.Name) && (dataGridViewCell.Value == null || dataGridViewCell.Value.Equals("")))
+                    {
+                        isRowValid = false;
+                    }
+                });
+            });
+
+            if (!isRowValid)
+            {
+                MessageBox.Show("Existen filas con datos erróneos o incompletos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            return isRowValid;
         }
     }
 }

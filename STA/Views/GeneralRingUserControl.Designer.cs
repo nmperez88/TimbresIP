@@ -39,12 +39,6 @@
             this.labelGeneralSoundExtension = new System.Windows.Forms.Label();
             this.textBoxGeneralSoundIdExtension = new System.Windows.Forms.TextBox();
             this.dataGridViewGeneralSound = new System.Windows.Forms.DataGridView();
-            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonGeneralAddSounds = new System.Windows.Forms.Button();
-            this.buttonGeneralDelSounds = new System.Windows.Forms.Button();
-            this.groupBoxGeneralActions = new System.Windows.Forms.GroupBox();
-            this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.callTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soundFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +50,12 @@
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.callServerModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTipGeneralRings = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonGeneralAddSounds = new System.Windows.Forms.Button();
+            this.buttonGeneralDelSounds = new System.Windows.Forms.Button();
+            this.groupBoxGeneralActions = new System.Windows.Forms.GroupBox();
+            this.soundFileModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxGeneralSoundExtension.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneralSound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.callServerModelBindingSource)).BeginInit();
@@ -198,64 +198,6 @@
             this.dataGridViewGeneralSound.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewGeneralSound_CellPainting);
             this.dataGridViewGeneralSound.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewGeneralSound_CellValidating);
             this.dataGridViewGeneralSound.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewGeneralSound_RowHeaderMouseClick);
-            this.dataGridViewGeneralSound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewGeneralSound_RowValidating);
-            // 
-            // callServerModelBindingSource
-            // 
-            this.callServerModelBindingSource.DataSource = typeof(STA.Model.CallServerModel);
-            // 
-            // toolTipGeneralRings
-            // 
-            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipGeneralRings.ToolTipTitle = "Información";
-            // 
-            // buttonGeneralAddSounds
-            // 
-            this.buttonGeneralAddSounds.FlatAppearance.BorderSize = 0;
-            this.buttonGeneralAddSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonGeneralAddSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonGeneralAddSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeneralAddSounds.Image = global::STA.Properties.Resources.addc20x20;
-            this.buttonGeneralAddSounds.Location = new System.Drawing.Point(6, 35);
-            this.buttonGeneralAddSounds.Name = "buttonGeneralAddSounds";
-            this.buttonGeneralAddSounds.Size = new System.Drawing.Size(33, 30);
-            this.buttonGeneralAddSounds.TabIndex = 15;
-            this.buttonGeneralAddSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralAddSounds, "Agregar sonido");
-            this.buttonGeneralAddSounds.UseVisualStyleBackColor = true;
-            this.buttonGeneralAddSounds.Click += new System.EventHandler(this.buttonGeneralAddSounds_Click);
-            // 
-            // buttonGeneralDelSounds
-            // 
-            this.buttonGeneralDelSounds.Enabled = false;
-            this.buttonGeneralDelSounds.FlatAppearance.BorderSize = 0;
-            this.buttonGeneralDelSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonGeneralDelSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonGeneralDelSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeneralDelSounds.Image = global::STA.Properties.Resources.removec20x20;
-            this.buttonGeneralDelSounds.Location = new System.Drawing.Point(45, 35);
-            this.buttonGeneralDelSounds.Name = "buttonGeneralDelSounds";
-            this.buttonGeneralDelSounds.Size = new System.Drawing.Size(33, 30);
-            this.buttonGeneralDelSounds.TabIndex = 16;
-            this.buttonGeneralDelSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralDelSounds, "Eliminar sonido");
-            this.buttonGeneralDelSounds.UseVisualStyleBackColor = true;
-            this.buttonGeneralDelSounds.Click += new System.EventHandler(this.buttonGeneralDelSounds_Click);
-            // 
-            // groupBoxGeneralActions
-            // 
-            this.groupBoxGeneralActions.Controls.Add(this.buttonGeneralDelSounds);
-            this.groupBoxGeneralActions.Controls.Add(this.buttonGeneralAddSounds);
-            this.groupBoxGeneralActions.Location = new System.Drawing.Point(521, 0);
-            this.groupBoxGeneralActions.Name = "groupBoxGeneralActions";
-            this.groupBoxGeneralActions.Size = new System.Drawing.Size(107, 162);
-            this.groupBoxGeneralActions.TabIndex = 5;
-            this.groupBoxGeneralActions.TabStop = false;
-            this.groupBoxGeneralActions.Text = "Acciones sobre Sonidos";
-            // 
-            // soundFileModelBindingSource
-            // 
-            this.soundFileModelBindingSource.DataSource = typeof(STA.Model.SoundFileModel);
             // 
             // callTimeDataGridViewTextBoxColumn
             // 
@@ -341,6 +283,63 @@
             this.enabledDataGridViewCheckBoxColumn.HeaderText = "enabled";
             this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
             this.enabledDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // callServerModelBindingSource
+            // 
+            this.callServerModelBindingSource.DataSource = typeof(STA.Model.CallServerModel);
+            // 
+            // toolTipGeneralRings
+            // 
+            this.toolTipGeneralRings.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipGeneralRings.ToolTipTitle = "Información";
+            // 
+            // buttonGeneralAddSounds
+            // 
+            this.buttonGeneralAddSounds.FlatAppearance.BorderSize = 0;
+            this.buttonGeneralAddSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralAddSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralAddSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGeneralAddSounds.Image = global::STA.Properties.Resources.addc20x20;
+            this.buttonGeneralAddSounds.Location = new System.Drawing.Point(6, 35);
+            this.buttonGeneralAddSounds.Name = "buttonGeneralAddSounds";
+            this.buttonGeneralAddSounds.Size = new System.Drawing.Size(33, 30);
+            this.buttonGeneralAddSounds.TabIndex = 15;
+            this.buttonGeneralAddSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralAddSounds, "Agregar sonido");
+            this.buttonGeneralAddSounds.UseVisualStyleBackColor = true;
+            this.buttonGeneralAddSounds.Click += new System.EventHandler(this.buttonGeneralAddSounds_Click);
+            // 
+            // buttonGeneralDelSounds
+            // 
+            this.buttonGeneralDelSounds.Enabled = false;
+            this.buttonGeneralDelSounds.FlatAppearance.BorderSize = 0;
+            this.buttonGeneralDelSounds.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralDelSounds.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonGeneralDelSounds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGeneralDelSounds.Image = global::STA.Properties.Resources.removec20x20;
+            this.buttonGeneralDelSounds.Location = new System.Drawing.Point(45, 35);
+            this.buttonGeneralDelSounds.Name = "buttonGeneralDelSounds";
+            this.buttonGeneralDelSounds.Size = new System.Drawing.Size(33, 30);
+            this.buttonGeneralDelSounds.TabIndex = 16;
+            this.buttonGeneralDelSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralDelSounds, "Eliminar sonido");
+            this.buttonGeneralDelSounds.UseVisualStyleBackColor = true;
+            this.buttonGeneralDelSounds.Click += new System.EventHandler(this.buttonGeneralDelSounds_Click);
+            // 
+            // groupBoxGeneralActions
+            // 
+            this.groupBoxGeneralActions.Controls.Add(this.buttonGeneralDelSounds);
+            this.groupBoxGeneralActions.Controls.Add(this.buttonGeneralAddSounds);
+            this.groupBoxGeneralActions.Location = new System.Drawing.Point(521, 0);
+            this.groupBoxGeneralActions.Name = "groupBoxGeneralActions";
+            this.groupBoxGeneralActions.Size = new System.Drawing.Size(107, 162);
+            this.groupBoxGeneralActions.TabIndex = 5;
+            this.groupBoxGeneralActions.TabStop = false;
+            this.groupBoxGeneralActions.Text = "Acciones sobre Sonidos";
+            // 
+            // soundFileModelBindingSource
+            // 
+            this.soundFileModelBindingSource.DataSource = typeof(STA.Model.SoundFileModel);
             // 
             // GeneralRingUserControl
             // 

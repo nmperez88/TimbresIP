@@ -88,10 +88,13 @@ namespace STA
                 comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
                 form.Shown += (s, e) =>
                 {
-                    SoundFileModel selectedItem = soundFileList.Find(sf => sf.name.Equals(soundFile.name));
-                    if (selectedItem != null)
+                    if (soundFile != null)
                     {
-                        comboBox.SelectedItem = selectedItem;
+                        SoundFileModel selectedItem = soundFileList.Find(sf => sf.name.Equals(soundFile.name));
+                        if (selectedItem != null)
+                        {
+                            comboBox.SelectedItem = selectedItem;
+                        }
                     }
                 };
             }
@@ -147,10 +150,13 @@ namespace STA
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             form.Shown += (s, e) =>
             {
-                ModeModel selectedItem = modeList.Find(m => m.value.Equals(mode.value));
-                if (selectedItem != null)
+                if (mode != null)
                 {
-                    comboBox.SelectedItem = selectedItem;
+                    ModeModel selectedItem = modeList.Find(m => m.value.Equals(mode.value));
+                    if (selectedItem != null)
+                    {
+                        comboBox.SelectedItem = selectedItem;
+                    }
                 }
             };
 
