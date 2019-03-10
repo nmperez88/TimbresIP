@@ -273,7 +273,7 @@
             // 
             this.pictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxLogo.Image = global::STA.Properties.Resources.soundwhite32x32;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(222, 28);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(266, 28);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(32, 32);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
