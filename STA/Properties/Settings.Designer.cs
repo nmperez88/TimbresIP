@@ -122,7 +122,7 @@ namespace STA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AdminHorariosSounds")]
+        [global::System.Configuration.DefaultSettingValueAttribute("STASounds")]
         public string soundFolderName {
             get {
                 return ((string)(this["soundFolderName"]));
