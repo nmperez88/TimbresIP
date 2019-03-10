@@ -190,7 +190,7 @@
             this.buttonDeleteHorary.Name = "buttonDeleteHorary";
             this.buttonDeleteHorary.Size = new System.Drawing.Size(33, 30);
             this.buttonDeleteHorary.TabIndex = 5;
-            this.toolTipFormPrincipal.SetToolTip(this.buttonDeleteHorary, "Seleccione primero el TabPage a eliminar");
+            this.toolTipFormPrincipal.SetToolTip(this.buttonDeleteHorary, "Eliminar horario. Debe ser seleccionado previamente");
             this.buttonDeleteHorary.UseVisualStyleBackColor = true;
             this.buttonDeleteHorary.Click += new System.EventHandler(this.buttonDeleteHorary_Click);
             // 
@@ -206,7 +206,7 @@
             this.buttonEditHorary.Size = new System.Drawing.Size(33, 30);
             this.buttonEditHorary.TabIndex = 4;
             this.buttonEditHorary.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipFormPrincipal.SetToolTip(this.buttonEditHorary, "Seleccionar primero el TabPage a modificar");
+            this.toolTipFormPrincipal.SetToolTip(this.buttonEditHorary, "Editar nombre de horario. Debe ser seleccionado previamente");
             this.buttonEditHorary.UseVisualStyleBackColor = true;
             this.buttonEditHorary.Click += new System.EventHandler(this.buttonEditHorary_Click);
             // 
@@ -222,7 +222,7 @@
             this.buttonAddHorary.Size = new System.Drawing.Size(33, 30);
             this.buttonAddHorary.TabIndex = 3;
             this.buttonAddHorary.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTipFormPrincipal.SetToolTip(this.buttonAddHorary, "Agregar Horario");
+            this.toolTipFormPrincipal.SetToolTip(this.buttonAddHorary, "Agregar");
             this.buttonAddHorary.UseVisualStyleBackColor = true;
             this.buttonAddHorary.Click += new System.EventHandler(this.buttonAddHorary_Click);
             // 
@@ -242,7 +242,7 @@
             this.groupBoxManageHorary.Size = new System.Drawing.Size(129, 61);
             this.groupBoxManageHorary.TabIndex = 6;
             this.groupBoxManageHorary.TabStop = false;
-            this.groupBoxManageHorary.Text = "Gestionar Horarios";
+            this.groupBoxManageHorary.Text = "Gestionar horarios";
             // 
             // groupBoxActions
             // 
@@ -254,6 +254,7 @@
             this.groupBoxActions.TabIndex = 7;
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Acciones";
+            this.toolTipFormPrincipal.SetToolTip(this.groupBoxActions, "Acciones generales");
             // 
             // buttonSaveAll
             // 
@@ -266,6 +267,7 @@
             this.buttonSaveAll.Name = "buttonSaveAll";
             this.buttonSaveAll.Size = new System.Drawing.Size(33, 30);
             this.buttonSaveAll.TabIndex = 0;
+            this.toolTipFormPrincipal.SetToolTip(this.buttonSaveAll, "Guardar configuración y reiniciar servicio de timbres automáticos");
             this.buttonSaveAll.UseVisualStyleBackColor = true;
             this.buttonSaveAll.Click += new System.EventHandler(this.buttonSaveAll_Click);
             // 

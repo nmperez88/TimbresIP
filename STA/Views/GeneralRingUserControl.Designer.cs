@@ -79,7 +79,8 @@
             this.groupBoxGeneralSoundExtension.Size = new System.Drawing.Size(237, 162);
             this.groupBoxGeneralSoundExtension.TabIndex = 0;
             this.groupBoxGeneralSoundExtension.TabStop = false;
-            this.groupBoxGeneralSoundExtension.Text = "Extensión";
+            this.groupBoxGeneralSoundExtension.Text = "Configurar extensión";
+            this.toolTipGeneralRings.SetToolTip(this.groupBoxGeneralSoundExtension, "Configurar extensión de los sonidos generales");
             // 
             // buttonGeneralSoundSaveExtension
             // 
@@ -305,7 +306,7 @@
             this.buttonGeneralAddSounds.Size = new System.Drawing.Size(33, 30);
             this.buttonGeneralAddSounds.TabIndex = 15;
             this.buttonGeneralAddSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralAddSounds, "Agregar sonido");
+            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralAddSounds, "Agregar");
             this.buttonGeneralAddSounds.UseVisualStyleBackColor = true;
             this.buttonGeneralAddSounds.Click += new System.EventHandler(this.buttonGeneralAddSounds_Click);
             // 
@@ -322,7 +323,7 @@
             this.buttonGeneralDelSounds.Size = new System.Drawing.Size(33, 30);
             this.buttonGeneralDelSounds.TabIndex = 16;
             this.buttonGeneralDelSounds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralDelSounds, "Eliminar sonido");
+            this.toolTipGeneralRings.SetToolTip(this.buttonGeneralDelSounds, "Eliminar");
             this.buttonGeneralDelSounds.UseVisualStyleBackColor = true;
             this.buttonGeneralDelSounds.Click += new System.EventHandler(this.buttonGeneralDelSounds_Click);
             // 
@@ -335,7 +336,8 @@
             this.groupBoxGeneralActions.Size = new System.Drawing.Size(107, 162);
             this.groupBoxGeneralActions.TabIndex = 5;
             this.groupBoxGeneralActions.TabStop = false;
-            this.groupBoxGeneralActions.Text = "Acciones sobre Sonidos";
+            this.groupBoxGeneralActions.Text = "Acciones";
+            this.toolTipGeneralRings.SetToolTip(this.groupBoxGeneralActions, "Acciones sobre los timbres de sonidos generales");
             // 
             // soundFileModelBindingSource
             // 

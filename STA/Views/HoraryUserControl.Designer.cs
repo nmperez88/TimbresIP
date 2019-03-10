@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHorary = new System.Windows.Forms.DataGridView();
             this.randomIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,14 +69,14 @@
             this.dataGridViewHorary.AllowUserToAddRows = false;
             this.dataGridViewHorary.AllowUserToDeleteRows = false;
             this.dataGridViewHorary.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewHorary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHorary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewHorary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewHorary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.randomIdDataGridViewTextBoxColumn,
@@ -121,8 +121,8 @@
             // startAtDataGridViewTextBoxColumn
             // 
             this.startAtDataGridViewTextBoxColumn.DataPropertyName = "startAt";
-            dataGridViewCellStyle2.NullValue = null;
-            this.startAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.NullValue = null;
+            this.startAtDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.startAtDataGridViewTextBoxColumn.HeaderText = "H/Inicio";
             this.startAtDataGridViewTextBoxColumn.Name = "startAtDataGridViewTextBoxColumn";
             this.startAtDataGridViewTextBoxColumn.Width = 50;
@@ -200,7 +200,8 @@
             this.groupBoxHoraryExtension.Size = new System.Drawing.Size(237, 175);
             this.groupBoxHoraryExtension.TabIndex = 3;
             this.groupBoxHoraryExtension.TabStop = false;
-            this.groupBoxHoraryExtension.Text = "Extensión";
+            this.groupBoxHoraryExtension.Text = "Configurar extensión";
+            this.toolTipHorary.SetToolTip(this.groupBoxHoraryExtension, "Configurar extensión del horario");
             // 
             // buttonHorarySaveExtension
             // 
@@ -306,7 +307,7 @@
             this.buttonHoraryAddHours.Size = new System.Drawing.Size(33, 30);
             this.buttonHoraryAddHours.TabIndex = 7;
             this.buttonHoraryAddHours.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipHorary.SetToolTip(this.buttonHoraryAddHours, "Agregar hora");
+            this.toolTipHorary.SetToolTip(this.buttonHoraryAddHours, "Agregar");
             this.buttonHoraryAddHours.UseVisualStyleBackColor = true;
             this.buttonHoraryAddHours.Click += new System.EventHandler(this.buttonHoraryAddHours_Click);
             // 
@@ -323,7 +324,7 @@
             this.buttonHoraryDelHours.Size = new System.Drawing.Size(33, 30);
             this.buttonHoraryDelHours.TabIndex = 8;
             this.buttonHoraryDelHours.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTipHorary.SetToolTip(this.buttonHoraryDelHours, "Editar");
+            this.toolTipHorary.SetToolTip(this.buttonHoraryDelHours, "Eliminar");
             this.buttonHoraryDelHours.UseVisualStyleBackColor = true;
             this.buttonHoraryDelHours.Click += new System.EventHandler(this.buttonHoraryDelHours_Click);
             // 
@@ -336,7 +337,8 @@
             this.groupBoxHoraryActions.Size = new System.Drawing.Size(237, 53);
             this.groupBoxHoraryActions.TabIndex = 5;
             this.groupBoxHoraryActions.TabStop = false;
-            this.groupBoxHoraryActions.Text = "Acciones sobre las Horas";
+            this.groupBoxHoraryActions.Text = "Acciones";
+            this.toolTipHorary.SetToolTip(this.groupBoxHoraryActions, "Acciones sobre los timbres del horario");
             // 
             // soundFileModelBindingSource
             // 
