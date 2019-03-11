@@ -67,16 +67,6 @@ namespace STA
                 //crear archivo JSON FIN
             }
 
-
-            //TODO callTime => ToTest!
-            //TODO guardar => ToTest!
-            //TODO cargar combobox => BASOFIA!
-
-            //MainController mainController = new MainController();
-            //mainController.init();
-            //mainController.start();
-            //Console.ReadLine();
-
             if (run)
             {
                 try
@@ -89,10 +79,7 @@ namespace STA
                 {
                     BaseUtils.log.Error(e);
                 }
-
             }
-
-
         }
     }
 }
