@@ -57,7 +57,7 @@ namespace STA.Model
         /// <summary>
         /// Fecha y hora
         /// </summary>
-        String dateTime { get; set; }
+        public String dateTime { get; set; }
 
         /// <summary>
         /// Instancia de la clase FeaturesUtils
