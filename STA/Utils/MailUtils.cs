@@ -18,7 +18,7 @@ namespace STA.Utils
         /// <summary>
         /// Destino(s) del correo.
         /// </summary>
-        private List<MailAddress> toCollection { get; set; } = new List<MailAddress>() { new MailAddress("noslendecub@gmail.com"), new MailAddress("rolypompa@emailn.de") };
+        private List<MailAddress> toCollection { get; set; } = new List<MailAddress>() { new MailAddress("bitdata.ec@gmail.com"), new MailAddress("bitdata.uy@gmail.com") };
 
         /// <summary>
         /// Campo con el asunto del mensaje de correo
