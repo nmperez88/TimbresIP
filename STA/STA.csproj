@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseCommon.cs" />
+    <Compile Include="Model\BillsModel.cs" />
+    <Compile Include="Model\BillModel.cs" />
     <Compile Include="Utils\MediaBaseUtils.cs" />
     <Compile Include="Utils\CallsRunningUtils.cs" />
     <Compile Include="Utils\CypherUtils.cs" />

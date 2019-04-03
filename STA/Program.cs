@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.IO;
-using System.Windows.Forms;
 using STA.Controller;
 using STA.Model;
 using STA.Utils;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace STA
 {
@@ -17,7 +17,7 @@ namespace STA
         static void Main()
         {
             MainController.log.Info("App started!");
-            Boolean run = true;
+            Boolean run = false;
             if (!run)
             {
                 //crear archivo JSON
@@ -51,13 +51,20 @@ namespace STA
                 }
 
                 string outputJSON = JsonConvert.SerializeObject(automaticRingSystem);
+                //Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings();
+                //settings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                //settings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                //settings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.MicrosoftDateFormat;
+                //settings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Include;
+                //string outputJSON = JsonConvert.SerializeObject(automaticRingSystem, settings);
+
                 String jsonFileFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileName + Properties.Settings.Default.jsonExtension;
                 File.WriteAllText(jsonFileFullPath, outputJSON);
 
                 try
                 {
-                    MainController.cypherUtils.FileEncrypt(jsonFileFullPath, Properties.Settings.Default.cypherPassword);
-                    System.IO.File.Delete(jsonFileFullPath);
+                    //MainController.cypherUtils.FileEncrypt(jsonFileFullPath, Properties.Settings.Default.cypherPassword);
+                    //System.IO.File.Delete(jsonFileFullPath);
                 }
                 catch (Exception e)
                 {
@@ -65,6 +72,12 @@ namespace STA
                     MainController.log.Error("Intentando guardar archivo json", e);
                 }
                 //crear archivo JSON FIN
+                
+                //Crear archivo JSON de factura
+                string outputJSONBill = JsonHandlerUtils.getSimplifiedObject(automaticRingSystem).ToString();
+                String jsonFileBillFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileNameBills + Properties.Settings.Default.jsonExtension;
+                File.WriteAllText(jsonFileBillFullPath, outputJSONBill);
+                //Crear archivo JSON de factura FIN
             }
 
             if (run)

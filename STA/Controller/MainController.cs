@@ -62,6 +62,22 @@ namespace STA.Controller
         /// </summary>
         public List<ModeModel> modeList = new List<ModeModel>() { new ModeModel("Llamada", "softphone"), new ModeModel("Jack 3.5", "jack") };
 
+
+        /// <summary>
+        /// Ruta de archivo Json para factura.
+        /// </summary>
+        private String jsonFileBillsFullPath;
+
+        /// <summary>
+        /// Ruta de archivo Json para factura encriptado.
+        /// </summary>
+        private String jsonFileBillsFullPathEncrypted;
+
+        /// <summary>
+        /// Lista de facturas
+        /// </summary>
+        public BillsModel bills;
+
         /// <summary>
         /// Inicializar datos de la aplicación.
         /// </summary>
@@ -449,6 +465,73 @@ namespace STA.Controller
         {
             return JsonConvert.SerializeObject(automaticRingSystem).CompareTo(automaticRingSystemToMatchSerialized) == 0;
         }
+
+
+        /// <summary>
+        /// Crear archivo JSON de factura diaria si no existe y leerlo
+        /// </summary>
+        public void getBillsContent()
+        {
+            jsonFileBillsFullPath = validateEntriesUtils.getProgramDataPath() + "\\" + Properties.Settings.Default.jsonFileNameBills + Properties.Settings.Default.jsonExtension;
+            jsonFileBillsFullPathEncrypted = jsonFileBillsFullPath + Properties.Settings.Default.encryptedExtension;
+
+            try
+            {
+                System.IO.File.SetAttributes(jsonFileBillsFullPath, System.IO.FileAttributes.Hidden);
+            }
+            catch (Exception e)
+            {
+                log.Error("Intentando ocultar archivo json", e);
+            }
+
+            if (!System.IO.File.Exists(jsonFileBillsFullPathEncrypted))
+            {
+                cypherUtils.FileDecrypt(jsonFileBillsFullPathEncrypted, jsonFileBillsFullPath, Properties.Settings.Default.cypherPassword);
+                jsonHandlerUtils = new JsonHandlerUtils(jsonFileBillsFullPath, "STA.Model.BillsModel");
+                bills = (BillsModel)jsonHandlerUtils.deserialize();
+                try
+                {
+                    System.IO.File.Delete(jsonFileBillsFullPath);
+                }
+                catch (Exception e)
+                {
+                    log.Error("Intentando eliminar archivo json", e);
+                }
+            }
+
+            try
+            {
+                System.IO.File.SetAttributes(jsonFileBillsFullPathEncrypted, System.IO.FileAttributes.Hidden);
+            }
+            catch (Exception e)
+            {
+                log.Error("Intentando ocultar archivo json", e);
+            }
+
+            cypherUtils.FileDecrypt(jsonFileBillsFullPathEncrypted, jsonFileBillsFullPath, Properties.Settings.Default.cypherPassword);
+            jsonHandlerUtils = new JsonHandlerUtils(jsonFileBillsFullPath, "STA.Model.BillsModel");
+            bills = (BillsModel)jsonHandlerUtils.deserialize();
+            try
+            {
+                System.IO.File.Delete(jsonFileBillsFullPath);
+            }
+            catch (Exception e)
+            {
+                log.Error("Intentando eliminar archivo json", e);
+            }
+
+
+        }
+
+        ///// <summary>
+        ///// Agregar registro de llamada al archivo JSON de factura
+        ///// </summary>
+        ///// <param name="billModel"></param>
+        //public void add(BillModel billModel)
+        //{
+
+
+        //}
 
     }
 }

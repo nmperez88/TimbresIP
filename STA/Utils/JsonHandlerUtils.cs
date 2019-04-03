@@ -1,5 +1,6 @@
 ﻿
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 
@@ -126,6 +127,89 @@ namespace STA.Utils
                 fullPath += Properties.Settings.Default.jsonExtension;
             }
 
+        }
+
+
+        /// <summary>
+        /// Obtener JSON simplificado dado objeto
+        /// </summary>
+        /// <param name="o"></param>
+        public static JArray getSimplifiedObject(object o)
+        {
+            JObject jo = JObject.FromObject(o);
+            JArray ja = new JArray();
+            foreach (var value in jo.Values())
+            {
+
+                if (value.Type == JTokenType.Array)
+                {
+                    getValues(value, ja);
+                }
+                else
+                    ja.Add(value);
+            }
+
+            return ja;
+        }
+
+        /// <summary>
+        /// Completar JSON simplificado recursivamente dado JToken
+        /// </summary>
+        /// <param name="jt"></param>
+        /// <param name="jaRef"></param>
+        private static void getValues(JToken jt, JArray jaRef)
+        {
+            JArray ja = new JArray();
+            foreach (var value in jt.Values())
+            {
+                var tmp = value;
+                if (tmp.Type == JTokenType.Property)
+                {
+                    tmp = value.First;
+                    if (tmp.Type == JTokenType.Object || tmp.Type == JTokenType.Array)
+                    {
+                        getValues(tmp, ja);
+                    }
+                    else
+                    {
+                        ja.Add(tmp);
+                    }
+                }
+                else
+                {
+                    if (tmp.Type == JTokenType.Object || tmp.Type == JTokenType.Array)
+                    {
+                        getValues(tmp, ja);
+                    }
+                    else
+                    {
+                        ja.Add(tmp);
+                    }
+                }
+            }
+            jaRef.Add(ja);
+        }
+
+        /// <summary>
+        /// Completar JSON simplificado recursivamente dado JObjeto
+        /// </summary>
+        /// <param name="jo"></param>
+        /// <param name="jaRef"></param>
+        private static void getValues(JObject jo, JArray jaRef)
+        {
+            JArray ja = new JArray();
+            foreach (var value in jo.Values())
+            {
+                if (value.Type == JTokenType.Object || value.Type == JTokenType.Array)
+                {
+                    getValues(value, ja);
+                }
+                else
+                {
+                    ja.Add(value);
+                }
+            }
+            jaRef.Add(ja);
         }
     }
 }

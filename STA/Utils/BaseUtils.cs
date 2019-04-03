@@ -22,7 +22,7 @@ namespace STA.Utils
             Properties.Settings.Default.Save();
             //Properties.Settings.Default.Reload();
         }
-        
+
         /// <summary>
         /// Obtener startId.
         /// </summary>
@@ -96,7 +96,6 @@ namespace STA.Utils
             callsRunningUtils = new CallsRunningUtils();
             jsonHandlerUtils = new JsonHandlerUtils(callsRunningJsonFileFullPath, "STA.Utils.CallsRunningUtils");
             jsonHandlerUtils.serialize(callsRunningUtils);
-
         }
     }
 }

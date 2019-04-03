@@ -203,5 +203,17 @@ namespace STA.Properties {
                 this["callsRunning"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("bills")]
+        public string jsonFileNameBills {
+            get {
+                return ((string)(this["jsonFileNameBills"]));
+            }
+            set {
+                this["jsonFileNameBills"] = value;
+            }
+        }
     }
 }

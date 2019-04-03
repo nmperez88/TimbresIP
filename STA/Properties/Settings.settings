@@ -47,5 +47,8 @@
     <Setting Name="callsRunning" Type="System.String" Scope="User">
       <Value Profile="(Default)">callsRunning</Value>
     </Setting>
+    <Setting Name="jsonFileNameBills" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bills</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
