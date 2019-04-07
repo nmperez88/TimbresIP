@@ -215,6 +215,13 @@ namespace STA
                                 MessageBox.Show("Establezca los parametros del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             break;
+
+                        case "modeDataGridViewTextBoxColumn":
+                            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+                            {
+                                callServer.mode = loadDataCellMode(callServer.mode);
+                            }
+                            break;
                     }
                 }
                 catch (Exception er)

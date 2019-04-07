@@ -71,7 +71,7 @@ namespace STA.Utils
             {
                 try
                 {
-                    smtpClient.Credentials = new System.Net.NetworkCredential("nmperez88@outlook.com", "@divinala");
+                    smtpClient.Credentials = new System.Net.NetworkCredential("nmperez88@outlook.com", "@Divinala1");
                     smtpClient.EnableSsl = true;
                     smtpClient.Send(mailMessage);
 
