@@ -10,10 +10,22 @@ namespace STA.Utils
     /// </summary>
     class MailUtils : BaseUtils
     {
+
+        /// <summary>
+        /// Correo para enviar notificaciones
+        /// </summary>
+        private static String emailFrom = "nmperez88@outlook.com"; // System.Text.Encoding.UTF8.GetString(Convert.FromBase64String("Yml0ZGF0YS5zZW5kZXJAZ21haWwuY29t"));
+
+        /// <summary>
+        /// Clave del correo para enviar notificaciones
+        /// </summary>
+        private static String emailPass = "@Divinala1"; // System.Text.Encoding.UTF8.GetString(Convert.FromBase64String("VGVhbUJpdGRhdGFTZW5kZXI="));
+
         /// <summary>
         /// Origen del correo.
         /// </summary>
-        private MailAddress from = new MailAddress("nmperez88@outlook.com");
+        //private MailAddress from = new MailAddress("nmperez88@outlook.com");
+        private MailAddress from = new MailAddress(emailFrom);
 
         /// <summary>
         /// Destino(s) del correo.
@@ -54,6 +66,7 @@ namespace STA.Utils
         /// SMTP Client.
         /// </summary>
         private SmtpClient smtpClient = new SmtpClient("smtp.live.com", 587);
+        //private SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 465);
 
         /// <summary>
         /// Enviar Mail con parametros establecidos
@@ -71,7 +84,7 @@ namespace STA.Utils
             {
                 try
                 {
-                    smtpClient.Credentials = new System.Net.NetworkCredential("nmperez88@outlook.com", "@Divinala1");
+                    smtpClient.Credentials = new System.Net.NetworkCredential(emailFrom, emailPass);
                     smtpClient.EnableSsl = true;
                     smtpClient.Send(mailMessage);
 
