@@ -14,12 +14,14 @@ namespace STA.Utils
         /// <summary>
         /// Correo para enviar notificaciones
         /// </summary>
-        private static String emailFrom = "nmperez88@outlook.com"; // System.Text.Encoding.UTF8.GetString(Convert.FromBase64String("Yml0ZGF0YS5zZW5kZXJAZ21haWwuY29t"));
+        //private static String emailFrom = "nmperez88@outlook.com";
+        private static String emailFrom = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String("Yml0ZGF0YS5zZW5kZXJAZ21haWwuY29t"));
 
         /// <summary>
         /// Clave del correo para enviar notificaciones
         /// </summary>
-        private static String emailPass = "@Divinala1"; // System.Text.Encoding.UTF8.GetString(Convert.FromBase64String("VGVhbUJpdGRhdGFTZW5kZXI="));
+        //private static String emailPass = "@Divinala1";
+        private static String emailPass = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String("VGVhbUJpdGRhdGFTZW5kZXI="));
 
         /// <summary>
         /// Origen del correo.
@@ -65,8 +67,9 @@ namespace STA.Utils
         /// <summary>
         /// SMTP Client.
         /// </summary>
-        private SmtpClient smtpClient = new SmtpClient("smtp.live.com", 587);
+        //private SmtpClient smtpClient = new SmtpClient("smtp.live.com", 587);
         //private SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 465);
+        private SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
         /// <summary>
         /// Enviar Mail con parametros establecidos
